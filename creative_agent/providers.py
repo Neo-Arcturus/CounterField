@@ -89,8 +89,13 @@ class MockIdeaProvider:
         return EvaluationScores(novelty=.8, appropriateness=.75, utility=.7, surprise=.7, coherence=.85, mechanism_uniqueness=.8)
 
     def describe_niche(self, problem, candidate):
-        choices = [("individual", "low", "immediate"), ("team", "medium", "short"), ("organization", "high", "long")]
-        return NicheDescriptor(*choices[int(candidate.id[-2:], 16) % len(choices)])
+        choices: list[tuple[Any, Any, Any]] = [
+            ("individual", "low", "immediate"),
+            ("team", "medium", "short"),
+            ("organization", "high", "long"),
+        ]
+        lvl, res, hor = choices[int(candidate.id[-2:], 16) % len(choices)]
+        return NicheDescriptor(intervention_level=lvl, resource_intensity=res, feedback_horizon=hor)
 
     def _candidate(self, problem, title, description, operator, index):
         return IdeaCandidate(

@@ -1,7 +1,0 @@
-
-The bundled provider is deliberately mock-only. It performs no network access and uses a deterministic SHA-256 hash embedding as a lexical proxy, not semantic understanding.
-
-The pipeline normalizes a problem, mines a negative archive of conventional mechanisms, generates operator-specific alternatives, evaluates lexical, embedding, and structural similarity, and stores feasible results in MAP-Elites-style niche cells plus a Pareto reservoir.
-
-Novelty is:
-

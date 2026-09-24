@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "creative-agent"
+version = "0.1.0"
+description = "Production-grade Quality-Diversity (QD) Ideation & Brainstorming Harness"
+authors = [{ name = "Northroom" }]
+dependencies = [
+    "pydantic>=2.0.0",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
