@@ -1,0 +1,692 @@
+{
+  "status": "COMPLETED",
+  "termination_reason": "budget exhausted",
+  "metrics": {
+    "coverage": 0.1111111111111111,
+    "duplicate_rate": 0.0,
+    "attempts": 6,
+    "occupied_niches": 4
+  },
+  "selected": [
+    {
+      "candidate": {
+        "id": "4b900334feedc9ec",
+        "problem_id": "1da0020222498935",
+        "title": "Ma-ai: Cavitation of Negative Space",
+        "description": "Anchored in the Japanese aesthetic-philosophical concept of 'Ma' (the pregnant pause and purposeful negative space), this encounter pits the player against an armored entity whose kinetic strikes paint dense, volumetric ink-like fields ('Filled Space') across the 3D arena. Direct player attacks on the boss deflect off its hardened lacquer carapace. Instead of passively dodging, the player uses core weapon swings and movement to carve and reshape the boundaries of this 'Filled Space', actively sculpting the unpainted void ('Ma'). When the boss concludes its movement and detonates the filled fields, the surrounding vacuum rushes violently into the negative space. If the player has successfully carved the void so that the boss's anchored stance or limb is caught inside the boundary of the 'Ma', the resulting atmospheric cavitation rips off plates of the boss's armor and deals massive kinetic trauma. The encounter is telegraphed without UI: 'Filled Space' emits a rising string-drone and dense sumi-e smoke, the 'Ma' creates hyper-clear silence, and detonation timing is signaled by the boss's sharp physical inhalation and the chromatic contraction of the arena mist.",
+        "mechanism": {
+          "core_mechanism": "Player weapon strikes excise portions of the boss's persistent attack volumes to sculpt negative space, which cavitates upon detonation to deal proportionate structural damage if the boss is framed within the carved void.",
+          "causal_structure": [
+            {
+              "cause": "Player attacks against volumetric hazard boundaries",
+              "relation": "increases",
+              "effect": "Volume and geometry of negative space (Ma)"
+            },
+            {
+              "cause": "Boss positioning within sculpted negative space boundary",
+              "relation": "enables",
+              "effect": "Cavitation rupture upon hazard detonation"
+            },
+            {
+              "cause": "Direct player weapon attacks on boss shell",
+              "relation": "prevents",
+              "effect": "Armor penetration and boss stagger"
+            },
+            {
+              "cause": "Cavitation rupture",
+              "relation": "decreases",
+              "effect": "Boss carapace integrity and phase threshold"
+            }
+          ],
+          "affected_system": "boss combat encounter",
+          "payoff": "Inverts the standard dodge-and-punish tempo by forcing the player into proactive spatial sculpting during enemy attack wind-ups; high-stakes tension stems from standing close to lethal hazard lines to ensure the boss's hitbox is perfectly isolated inside the sculpted void."
+        },
+        "operator": "Multilingual/cultural conceptualization",
+        "worker_id": "worker-0",
+        "generation": 0,
+        "parent_id": null,
+        "assumptions": [],
+        "provenance": {
+          "source_domain": "Multilingual/cultural conceptualization",
+          "culture_language_lens": "none",
+          "provider_mode": "llm"
+        }
+      },
+      "niche": {
+        "intervention_level": "individual",
+        "resource_intensity": "low",
+        "feedback_horizon": "short"
+      },
+      "scores": {
+        "novelty": 0.6961429139812677,
+        "appropriateness": 0.94,
+        "utility": 0.88,
+        "surprise": 0.89,
+        "coherence": 0.83,
+        "mechanism_uniqueness": 0.9546176046176046
+      },
+      "diagnostics": {
+        "lexical_similarity": 0.040100250626566414,
+        "embedding_similarity": 0.9104861273407379,
+        "structural_similarity": 0.04538239538239538,
+        "nearest_baseline_ids": [
+          "c1753aa930d0d404",
+          "ca9bf7c0d356a0ce",
+          "a5b0090bc190969a"
+        ],
+        "feasibility_reasons": [],
+        "provider_mode": "external",
+        "embedding_mode": "hash-lexical-proxy"
+      },
+      "insertion_generation": 0
+    },
+    {
+      "candidate": {
+        "id": "836f9e3f89c1a9e1",
+        "problem_id": "1da0020222498935",
+        "title": "Hydrostatic Lysis: The Brine Engine Encounter",
+        "description": "The boss, an undulating bio-mechanical automaton encased in a semipermeable hydrostatic mantle, absorbs direct weapon damage with zero core degradation, converting strikes into kinetic shockwaves. The arena is ringed with dry brine-crystal pillars and pressurized fresh-water conduits. Using standard weapon strikes, players shatter brine pillars to aerosolize solute crystals onto their weapons and the floor. Hitting the boss with solute-charged attacks forces an osmotic imbalance: the mantle frantically draws fluid from its internal cooling core to balance salinity, causing its outer membrane to visibly swell, turn crystalline-taut, and hiss with escalating acoustic pitch. Once over-saturated, the mantle suffers osmotic lysis\u2014violently rupturing without a cutscene, stunning its limbs against the floor, and venting internal heat sinks that take critical standard damage. However, the rupture floods the immediate arena floor with boiling brine, restricting safe footing and compelling the player to dynamically herd the boss into uncorrupted zones before initiating subsequent lysis cycles.",
+        "mechanism": {
+          "core_mechanism": "Targeting the boss with environmentally harvested hyper-saline solutes draws internal hydraulic fluid across its semipermeable armor via osmotic pressure, catastrophically rupturing the defense envelope and exposing damage-critical heat sinks at the cost of turning the surrounding terrain into hazardous fluid hazards.",
+          "causal_structure": [
+            {
+              "cause": "Player attacks against arena brine-pillars",
+              "relation": "enables",
+              "effect": "Solute particle coating on player attacks"
+            },
+            {
+              "cause": "Solute accumulation on boss mantle",
+              "relation": "increases",
+              "effect": "Internal-to-external osmotic fluid draw"
+            },
+            {
+              "cause": "Osmotic fluid draw",
+              "relation": "decreases",
+              "effect": "Internal cooling core stability"
+            },
+            {
+              "cause": "Peak mantle swelling (osmotic threshold)",
+              "relation": "enables",
+              "effect": "Mantle lysis rupture exposing core heat sinks"
+            },
+            {
+              "cause": "Mantle lysis rupture",
+              "relation": "increases",
+              "effect": "Persistent boiling brine hazard pools on the arena floor"
+            }
+          ],
+          "affected_system": "boss combat encounter",
+          "payoff": "Replaces standard dodge-and-punish loops with aggressive spatial engineering; players control the timing, vulnerability windows, and environmental hazard density by intentionally driving a biological equilibrium failure."
+        },
+        "operator": "Cross-domain analogy",
+        "worker_id": "worker-0",
+        "generation": 0,
+        "parent_id": null,
+        "assumptions": [],
+        "provenance": {
+          "source_domain": "Cross-domain analogy",
+          "culture_language_lens": "none",
+          "provider_mode": "llm"
+        }
+      },
+      "niche": {
+        "intervention_level": "individual",
+        "resource_intensity": "medium",
+        "feedback_horizon": "immediate"
+      },
+      "scores": {
+        "novelty": 0.7067612181739691,
+        "appropriateness": 0.94,
+        "utility": 0.87,
+        "surprise": 0.85,
+        "coherence": 0.86,
+        "mechanism_uniqueness": 0.9674705334987593
+      },
+      "diagnostics": {
+        "lexical_similarity": 0.03508771929824561,
+        "embedding_similarity": 0.8998550157192047,
+        "structural_similarity": 0.032529466501240695,
+        "nearest_baseline_ids": [
+          "c1753aa930d0d404",
+          "ca9bf7c0d356a0ce",
+          "a5b0090bc190969a"
+        ],
+        "feasibility_reasons": [],
+        "provider_mode": "external",
+        "embedding_mode": "hash-lexical-proxy"
+      },
+      "insertion_generation": 0
+    },
+    {
+      "candidate": {
+        "id": "93585a01c4716381",
+        "problem_id": "1da0020222498935",
+        "title": "Harmonic Shearing: The Kinetic Sovereign",
+        "description": "A boss encounter where the boss has zero hit points and takes no direct damage from player attacks, completely removing the conventional boss health bar. Instead, the boss's armored exoskeleton is vulnerable solely to its own kinetic energy. The arena is ringed with free-standing acoustic prisms that players rotate and tune using standard attack verbs (melee strikes rotate angle; ranged shots modulate frequency pitch). When the boss executes massive, directional kinetic attacks (cleaves, pile-bunkers, shockwaves), the projectile or wave reflects off tuned prisms. Players must dynamically route these environmental reflections back into the boss's load-bearing joints during recovery windows. Severing a joint permanently alters the boss's center of mass, locomotion patterns, and attack arcs in real time without cutscenes, eventually forcing structural collapse.",
+        "mechanism": {
+          "core_mechanism": "Player weapons modulate environmental reflection geometry to redirect the boss's self-generated impact forces back into its load-bearing structural nodes, dismantling the entity entirely through indirect kinetic reflection.",
+          "causal_structure": [
+            {
+              "cause": "Player weapon strikes on arena prisms",
+              "relation": "enables",
+              "effect": "Dynamic realignment of acoustic deflection angles and resonance frequencies"
+            },
+            {
+              "cause": "Accurate alignment of prism reflection vectors",
+              "relation": "increases",
+              "effect": "Reflected kinetic force delivered back into the boss's exposed joints"
+            },
+            {
+              "cause": "Impact of reflected harmonic force on unbraced joints",
+              "relation": "decreases",
+              "effect": "Boss structural integrity and limb stability"
+            },
+            {
+              "cause": "Loss of structural limb support",
+              "relation": "enables",
+              "effect": "Emergent gait changes, erratic attack vectors, and exposure of core anchor nodes"
+            },
+            {
+              "cause": "Destruction of all primary anchor nodes",
+              "relation": "enables",
+              "effect": "Total kinetic collapse of the boss without depleting a health pool"
+            }
+          ],
+          "affected_system": "boss combat encounter",
+          "payoff": "Transforms the combat dynamic from a passive 'survive-and-chip-away' loop into high-stakes spatial choreography where every lethal attack from the boss is actively coveted and maneuvered as the player's primary weapon."
+        },
+        "operator": "Removal",
+        "worker_id": "worker-0",
+        "generation": 0,
+        "parent_id": null,
+        "assumptions": [],
+        "provenance": {
+          "source_domain": "Removal",
+          "culture_language_lens": "none",
+          "provider_mode": "llm"
+        }
+      },
+      "niche": {
+        "intervention_level": "individual",
+        "resource_intensity": "medium",
+        "feedback_horizon": "immediate"
+      },
+      "scores": {
+        "novelty": 0.6896685319221094,
+        "appropriateness": 0.95,
+        "utility": 0.92,
+        "surprise": 0.85,
+        "coherence": 0.9,
+        "mechanism_uniqueness": 0.9446338383838384
+      },
+      "diagnostics": {
+        "lexical_similarity": 0.04790419161676647,
+        "embedding_similarity": 0.910225163154855,
+        "structural_similarity": 0.05536616161616161,
+        "nearest_baseline_ids": [
+          "c1753aa930d0d404",
+          "ca9bf7c0d356a0ce",
+          "a5b0090bc190969a"
+        ],
+        "feasibility_reasons": [],
+        "provider_mode": "external",
+        "embedding_mode": "hash-lexical-proxy"
+      },
+      "insertion_generation": 0
+    },
+    {
+      "candidate": {
+        "id": "c4d832cabb7c8c82",
+        "problem_id": "1da0020222498935",
+        "title": "Tectonic Dominion: The Tri-State Conduit",
+        "description": "The boss arena features an active orbital hazard matrix ('The Conduit') that controls tectonic floor slabs, thermal vents, and kinetic beam sweeps. Ownership of the Conduit constantly shifts between the Boss, the Player, and the Environment based on mechanical state triggers. During 'Boss Ownership', the boss acts as a zone-controller, projecting kinetic waves and locking arena sectors, forcing the player to navigate hazards using core movement (sprint, dash, jump) while targeting kinetic anchors on the boss's armor. Once all anchors are shattered via direct combat strikes, control slips: the Conduit tethers to the player ('Player Ownership'). The player retains full mobility and core attack verbs, but their primary attacks and movement paths now actively project the orbital beams and tectonic shifts, turning the boss's own arena traps against them while the boss dynamically shifts into an agile, aggressive pursuit predator trying to reclaim the link. If the player takes a heavy kinetic impact, the Conduit tethers directly into the arena floor ('Environmental State'), turning the arena into a neutral, autonomous hazard network governed by telegraphed audio-visual rhythmic pulses, compelling both combatants to reposition and contest the central uplink plate.",
+        "mechanism": {
+          "core_mechanism": "Dynamic transfer of arena-controlling lethal hazards between boss, player, and neutral environment based on localized spatial damage and physical stagger thresholds.",
+          "causal_structure": [
+            {
+              "cause": "Player destroys boss kinetic anchors via standard attacks",
+              "relation": "enables",
+              "effect": "Player ownership of the Conduit hazard matrix"
+            },
+            {
+              "cause": "Player ownership of the Conduit",
+              "relation": "increases",
+              "effect": "Boss pursuit velocity and lethal close-quarters aggression"
+            },
+            {
+              "cause": "Player moving and executing standard attacks while tethered",
+              "relation": "enables",
+              "effect": "Directional orbital beam strikes targeted at the boss"
+            },
+            {
+              "cause": "Heavy impact suffered by the tethered player",
+              "relation": "decreases",
+              "effect": "Player control, shifting the Conduit into autonomous environmental state"
+            },
+            {
+              "cause": "Autonomous environmental state active",
+              "relation": "depends_on",
+              "effect": "Contestation of the central uplink plate to restore entity-level control"
+            }
+          ],
+          "affected_system": "boss combat encounter",
+          "payoff": "Inverts the traditional combat dynamic by cycling the player between agile prey navigating zoning hazards, an arena-wielding juggernaut turning spatial traps onto the predator, and an opportunist surviving chaotic environmental neutral states without ever interrupting player control."
+        },
+        "operator": "Role shift",
+        "worker_id": "worker-0",
+        "generation": 0,
+        "parent_id": null,
+        "assumptions": [],
+        "provenance": {
+          "source_domain": "Role shift",
+          "culture_language_lens": "none",
+          "provider_mode": "llm"
+        }
+      },
+      "niche": {
+        "intervention_level": "individual",
+        "resource_intensity": "medium",
+        "feedback_horizon": "immediate"
+      },
+      "scores": {
+        "novelty": 0.7047183333393832,
+        "appropriateness": 0.95,
+        "utility": 0.88,
+        "surprise": 0.8,
+        "coherence": 0.91,
+        "mechanism_uniqueness": 0.9524984963913392
+      },
+      "diagnostics": {
+        "lexical_similarity": 0.035443037974683546,
+        "embedding_similarity": 0.8814743575378324,
+        "structural_similarity": 0.04750150360866079,
+        "nearest_baseline_ids": [
+          "c1753aa930d0d404",
+          "ca9bf7c0d356a0ce",
+          "a5b0090bc190969a"
+        ],
+        "feasibility_reasons": [],
+        "provider_mode": "external",
+        "embedding_mode": "hash-lexical-proxy"
+      },
+      "insertion_generation": 0
+    }
+  ],
+  "frontier": [
+    {
+      "candidate": {
+        "id": "4b900334feedc9ec",
+        "problem_id": "1da0020222498935",
+        "title": "Ma-ai: Cavitation of Negative Space",
+        "description": "Anchored in the Japanese aesthetic-philosophical concept of 'Ma' (the pregnant pause and purposeful negative space), this encounter pits the player against an armored entity whose kinetic strikes paint dense, volumetric ink-like fields ('Filled Space') across the 3D arena. Direct player attacks on the boss deflect off its hardened lacquer carapace. Instead of passively dodging, the player uses core weapon swings and movement to carve and reshape the boundaries of this 'Filled Space', actively sculpting the unpainted void ('Ma'). When the boss concludes its movement and detonates the filled fields, the surrounding vacuum rushes violently into the negative space. If the player has successfully carved the void so that the boss's anchored stance or limb is caught inside the boundary of the 'Ma', the resulting atmospheric cavitation rips off plates of the boss's armor and deals massive kinetic trauma. The encounter is telegraphed without UI: 'Filled Space' emits a rising string-drone and dense sumi-e smoke, the 'Ma' creates hyper-clear silence, and detonation timing is signaled by the boss's sharp physical inhalation and the chromatic contraction of the arena mist.",
+        "mechanism": {
+          "core_mechanism": "Player weapon strikes excise portions of the boss's persistent attack volumes to sculpt negative space, which cavitates upon detonation to deal proportionate structural damage if the boss is framed within the carved void.",
+          "causal_structure": [
+            {
+              "cause": "Player attacks against volumetric hazard boundaries",
+              "relation": "increases",
+              "effect": "Volume and geometry of negative space (Ma)"
+            },
+            {
+              "cause": "Boss positioning within sculpted negative space boundary",
+              "relation": "enables",
+              "effect": "Cavitation rupture upon hazard detonation"
+            },
+            {
+              "cause": "Direct player weapon attacks on boss shell",
+              "relation": "prevents",
+              "effect": "Armor penetration and boss stagger"
+            },
+            {
+              "cause": "Cavitation rupture",
+              "relation": "decreases",
+              "effect": "Boss carapace integrity and phase threshold"
+            }
+          ],
+          "affected_system": "boss combat encounter",
+          "payoff": "Inverts the standard dodge-and-punish tempo by forcing the player into proactive spatial sculpting during enemy attack wind-ups; high-stakes tension stems from standing close to lethal hazard lines to ensure the boss's hitbox is perfectly isolated inside the sculpted void."
+        },
+        "operator": "Multilingual/cultural conceptualization",
+        "worker_id": "worker-0",
+        "generation": 0,
+        "parent_id": null,
+        "assumptions": [],
+        "provenance": {
+          "source_domain": "Multilingual/cultural conceptualization",
+          "culture_language_lens": "none",
+          "provider_mode": "llm"
+        }
+      },
+      "niche": {
+        "intervention_level": "individual",
+        "resource_intensity": "low",
+        "feedback_horizon": "short"
+      },
+      "scores": {
+        "novelty": 0.6961429139812677,
+        "appropriateness": 0.94,
+        "utility": 0.88,
+        "surprise": 0.89,
+        "coherence": 0.83,
+        "mechanism_uniqueness": 0.9546176046176046
+      },
+      "diagnostics": {
+        "lexical_similarity": 0.040100250626566414,
+        "embedding_similarity": 0.9104861273407379,
+        "structural_similarity": 0.04538239538239538,
+        "nearest_baseline_ids": [
+          "c1753aa930d0d404",
+          "ca9bf7c0d356a0ce",
+          "a5b0090bc190969a"
+        ],
+        "feasibility_reasons": [],
+        "provider_mode": "external",
+        "embedding_mode": "hash-lexical-proxy"
+      },
+      "insertion_generation": 0
+    },
+    {
+      "candidate": {
+        "id": "836f9e3f89c1a9e1",
+        "problem_id": "1da0020222498935",
+        "title": "Hydrostatic Lysis: The Brine Engine Encounter",
+        "description": "The boss, an undulating bio-mechanical automaton encased in a semipermeable hydrostatic mantle, absorbs direct weapon damage with zero core degradation, converting strikes into kinetic shockwaves. The arena is ringed with dry brine-crystal pillars and pressurized fresh-water conduits. Using standard weapon strikes, players shatter brine pillars to aerosolize solute crystals onto their weapons and the floor. Hitting the boss with solute-charged attacks forces an osmotic imbalance: the mantle frantically draws fluid from its internal cooling core to balance salinity, causing its outer membrane to visibly swell, turn crystalline-taut, and hiss with escalating acoustic pitch. Once over-saturated, the mantle suffers osmotic lysis\u2014violently rupturing without a cutscene, stunning its limbs against the floor, and venting internal heat sinks that take critical standard damage. However, the rupture floods the immediate arena floor with boiling brine, restricting safe footing and compelling the player to dynamically herd the boss into uncorrupted zones before initiating subsequent lysis cycles.",
+        "mechanism": {
+          "core_mechanism": "Targeting the boss with environmentally harvested hyper-saline solutes draws internal hydraulic fluid across its semipermeable armor via osmotic pressure, catastrophically rupturing the defense envelope and exposing damage-critical heat sinks at the cost of turning the surrounding terrain into hazardous fluid hazards.",
+          "causal_structure": [
+            {
+              "cause": "Player attacks against arena brine-pillars",
+              "relation": "enables",
+              "effect": "Solute particle coating on player attacks"
+            },
+            {
+              "cause": "Solute accumulation on boss mantle",
+              "relation": "increases",
+              "effect": "Internal-to-external osmotic fluid draw"
+            },
+            {
+              "cause": "Osmotic fluid draw",
+              "relation": "decreases",
+              "effect": "Internal cooling core stability"
+            },
+            {
+              "cause": "Peak mantle swelling (osmotic threshold)",
+              "relation": "enables",
+              "effect": "Mantle lysis rupture exposing core heat sinks"
+            },
+            {
+              "cause": "Mantle lysis rupture",
+              "relation": "increases",
+              "effect": "Persistent boiling brine hazard pools on the arena floor"
+            }
+          ],
+          "affected_system": "boss combat encounter",
+          "payoff": "Replaces standard dodge-and-punish loops with aggressive spatial engineering; players control the timing, vulnerability windows, and environmental hazard density by intentionally driving a biological equilibrium failure."
+        },
+        "operator": "Cross-domain analogy",
+        "worker_id": "worker-0",
+        "generation": 0,
+        "parent_id": null,
+        "assumptions": [],
+        "provenance": {
+          "source_domain": "Cross-domain analogy",
+          "culture_language_lens": "none",
+          "provider_mode": "llm"
+        }
+      },
+      "niche": {
+        "intervention_level": "individual",
+        "resource_intensity": "medium",
+        "feedback_horizon": "immediate"
+      },
+      "scores": {
+        "novelty": 0.7067612181739691,
+        "appropriateness": 0.94,
+        "utility": 0.87,
+        "surprise": 0.85,
+        "coherence": 0.86,
+        "mechanism_uniqueness": 0.9674705334987593
+      },
+      "diagnostics": {
+        "lexical_similarity": 0.03508771929824561,
+        "embedding_similarity": 0.8998550157192047,
+        "structural_similarity": 0.032529466501240695,
+        "nearest_baseline_ids": [
+          "c1753aa930d0d404",
+          "ca9bf7c0d356a0ce",
+          "a5b0090bc190969a"
+        ],
+        "feasibility_reasons": [],
+        "provider_mode": "external",
+        "embedding_mode": "hash-lexical-proxy"
+      },
+      "insertion_generation": 0
+    },
+    {
+      "candidate": {
+        "id": "93585a01c4716381",
+        "problem_id": "1da0020222498935",
+        "title": "Harmonic Shearing: The Kinetic Sovereign",
+        "description": "A boss encounter where the boss has zero hit points and takes no direct damage from player attacks, completely removing the conventional boss health bar. Instead, the boss's armored exoskeleton is vulnerable solely to its own kinetic energy. The arena is ringed with free-standing acoustic prisms that players rotate and tune using standard attack verbs (melee strikes rotate angle; ranged shots modulate frequency pitch). When the boss executes massive, directional kinetic attacks (cleaves, pile-bunkers, shockwaves), the projectile or wave reflects off tuned prisms. Players must dynamically route these environmental reflections back into the boss's load-bearing joints during recovery windows. Severing a joint permanently alters the boss's center of mass, locomotion patterns, and attack arcs in real time without cutscenes, eventually forcing structural collapse.",
+        "mechanism": {
+          "core_mechanism": "Player weapons modulate environmental reflection geometry to redirect the boss's self-generated impact forces back into its load-bearing structural nodes, dismantling the entity entirely through indirect kinetic reflection.",
+          "causal_structure": [
+            {
+              "cause": "Player weapon strikes on arena prisms",
+              "relation": "enables",
+              "effect": "Dynamic realignment of acoustic deflection angles and resonance frequencies"
+            },
+            {
+              "cause": "Accurate alignment of prism reflection vectors",
+              "relation": "increases",
+              "effect": "Reflected kinetic force delivered back into the boss's exposed joints"
+            },
+            {
+              "cause": "Impact of reflected harmonic force on unbraced joints",
+              "relation": "decreases",
+              "effect": "Boss structural integrity and limb stability"
+            },
+            {
+              "cause": "Loss of structural limb support",
+              "relation": "enables",
+              "effect": "Emergent gait changes, erratic attack vectors, and exposure of core anchor nodes"
+            },
+            {
+              "cause": "Destruction of all primary anchor nodes",
+              "relation": "enables",
+              "effect": "Total kinetic collapse of the boss without depleting a health pool"
+            }
+          ],
+          "affected_system": "boss combat encounter",
+          "payoff": "Transforms the combat dynamic from a passive 'survive-and-chip-away' loop into high-stakes spatial choreography where every lethal attack from the boss is actively coveted and maneuvered as the player's primary weapon."
+        },
+        "operator": "Removal",
+        "worker_id": "worker-0",
+        "generation": 0,
+        "parent_id": null,
+        "assumptions": [],
+        "provenance": {
+          "source_domain": "Removal",
+          "culture_language_lens": "none",
+          "provider_mode": "llm"
+        }
+      },
+      "niche": {
+        "intervention_level": "individual",
+        "resource_intensity": "medium",
+        "feedback_horizon": "immediate"
+      },
+      "scores": {
+        "novelty": 0.6896685319221094,
+        "appropriateness": 0.95,
+        "utility": 0.92,
+        "surprise": 0.85,
+        "coherence": 0.9,
+        "mechanism_uniqueness": 0.9446338383838384
+      },
+      "diagnostics": {
+        "lexical_similarity": 0.04790419161676647,
+        "embedding_similarity": 0.910225163154855,
+        "structural_similarity": 0.05536616161616161,
+        "nearest_baseline_ids": [
+          "c1753aa930d0d404",
+          "ca9bf7c0d356a0ce",
+          "a5b0090bc190969a"
+        ],
+        "feasibility_reasons": [],
+        "provider_mode": "external",
+        "embedding_mode": "hash-lexical-proxy"
+      },
+      "insertion_generation": 0
+    },
+    {
+      "candidate": {
+        "id": "c4d832cabb7c8c82",
+        "problem_id": "1da0020222498935",
+        "title": "Tectonic Dominion: The Tri-State Conduit",
+        "description": "The boss arena features an active orbital hazard matrix ('The Conduit') that controls tectonic floor slabs, thermal vents, and kinetic beam sweeps. Ownership of the Conduit constantly shifts between the Boss, the Player, and the Environment based on mechanical state triggers. During 'Boss Ownership', the boss acts as a zone-controller, projecting kinetic waves and locking arena sectors, forcing the player to navigate hazards using core movement (sprint, dash, jump) while targeting kinetic anchors on the boss's armor. Once all anchors are shattered via direct combat strikes, control slips: the Conduit tethers to the player ('Player Ownership'). The player retains full mobility and core attack verbs, but their primary attacks and movement paths now actively project the orbital beams and tectonic shifts, turning the boss's own arena traps against them while the boss dynamically shifts into an agile, aggressive pursuit predator trying to reclaim the link. If the player takes a heavy kinetic impact, the Conduit tethers directly into the arena floor ('Environmental State'), turning the arena into a neutral, autonomous hazard network governed by telegraphed audio-visual rhythmic pulses, compelling both combatants to reposition and contest the central uplink plate.",
+        "mechanism": {
+          "core_mechanism": "Dynamic transfer of arena-controlling lethal hazards between boss, player, and neutral environment based on localized spatial damage and physical stagger thresholds.",
+          "causal_structure": [
+            {
+              "cause": "Player destroys boss kinetic anchors via standard attacks",
+              "relation": "enables",
+              "effect": "Player ownership of the Conduit hazard matrix"
+            },
+            {
+              "cause": "Player ownership of the Conduit",
+              "relation": "increases",
+              "effect": "Boss pursuit velocity and lethal close-quarters aggression"
+            },
+            {
+              "cause": "Player moving and executing standard attacks while tethered",
+              "relation": "enables",
+              "effect": "Directional orbital beam strikes targeted at the boss"
+            },
+            {
+              "cause": "Heavy impact suffered by the tethered player",
+              "relation": "decreases",
+              "effect": "Player control, shifting the Conduit into autonomous environmental state"
+            },
+            {
+              "cause": "Autonomous environmental state active",
+              "relation": "depends_on",
+              "effect": "Contestation of the central uplink plate to restore entity-level control"
+            }
+          ],
+          "affected_system": "boss combat encounter",
+          "payoff": "Inverts the traditional combat dynamic by cycling the player between agile prey navigating zoning hazards, an arena-wielding juggernaut turning spatial traps onto the predator, and an opportunist surviving chaotic environmental neutral states without ever interrupting player control."
+        },
+        "operator": "Role shift",
+        "worker_id": "worker-0",
+        "generation": 0,
+        "parent_id": null,
+        "assumptions": [],
+        "provenance": {
+          "source_domain": "Role shift",
+          "culture_language_lens": "none",
+          "provider_mode": "llm"
+        }
+      },
+      "niche": {
+        "intervention_level": "individual",
+        "resource_intensity": "medium",
+        "feedback_horizon": "immediate"
+      },
+      "scores": {
+        "novelty": 0.7047183333393832,
+        "appropriateness": 0.95,
+        "utility": 0.88,
+        "surprise": 0.8,
+        "coherence": 0.91,
+        "mechanism_uniqueness": 0.9524984963913392
+      },
+      "diagnostics": {
+        "lexical_similarity": 0.035443037974683546,
+        "embedding_similarity": 0.8814743575378324,
+        "structural_similarity": 0.04750150360866079,
+        "nearest_baseline_ids": [
+          "c1753aa930d0d404",
+          "ca9bf7c0d356a0ce",
+          "a5b0090bc190969a"
+        ],
+        "feasibility_reasons": [],
+        "provider_mode": "external",
+        "embedding_mode": "hash-lexical-proxy"
+      },
+      "insertion_generation": 0
+    },
+    {
+      "candidate": {
+        "id": "db078205ed80a3b5",
+        "problem_id": "1da0020222498935",
+        "title": "Sympathetic Echo: The Choreographed Rupture",
+        "description": "An invulnerable boss, the Harmonic Husk, possesses no independent attack patterns and takes no direct weapon damage. Instead, the boss permanently mirrors the player's movement trajectory and weapon swings on an exact, visible 3-second temporal delay, amplifying them by a factor of five into arena-shattering shockwaves and cleaves. The arena is ringed with dormant Resonant Pylons that tether the boss's shields. Direct attacks on pylons glance off, but the boss's mirrored super-attacks shatter them. The player must deliberately perform aggressive attack strings into empty space at calculated angles, then use their standard movement and dashes to evacuate the strike zone before their own delayed echo triggers and strikes the pylon behind them. As pylons break, the temporal delay shrinks (3.0s down to 1.5s, then 0.8s), escalating the kinetic pacing without altering core movement verbs or taking away player control.",
+        "mechanism": {
+          "core_mechanism": "The boss duplicates the player's offensive actions and trajectories at massive scale after a strict temporal delay, forcing the player to choreograph their own attacks as environmental hazards that destroy the boss's invulnerability nodes.",
+          "causal_structure": [
+            {
+              "cause": "Player executes offensive attack vector",
+              "relation": "enables",
+              "effect": "Boss delayed super-scale attack execution"
+            },
+            {
+              "cause": "Boss super-scale attack collides with resonant pylon",
+              "relation": "decreases",
+              "effect": "Boss shield integrity"
+            },
+            {
+              "cause": "Destruction of resonant pylons",
+              "relation": "decreases",
+              "effect": "Temporal replication delay"
+            },
+            {
+              "cause": "Decreased temporal replication delay",
+              "relation": "increases",
+              "effect": "Spatial routing difficulty and execution risk"
+            }
+          ],
+          "affected_system": "boss combat encounter",
+          "payoff": "Inverts the traditional reactive dodge-and-punish loop into proactive choreography, where high player aggression actively generates the encounter's lethal obstacles and the only path to victory is weaponizing your own past actions."
+        },
+        "operator": "Inversion",
+        "worker_id": "worker-0",
+        "generation": 0,
+        "parent_id": null,
+        "assumptions": [],
+        "provenance": {
+          "source_domain": "Inversion",
+          "culture_language_lens": "none",
+          "provider_mode": "llm"
+        }
+      },
+      "niche": {
+        "intervention_level": "individual",
+        "resource_intensity": "medium",
+        "feedback_horizon": "short"
+      },
+      "scores": {
+        "novelty": 0.6896718412144436,
+        "appropriateness": 0.95,
+        "utility": 0.89,
+        "surprise": 0.87,
+        "coherence": 0.92,
+        "mechanism_uniqueness": 0.9444444444444444
+      },
+      "diagnostics": {
+        "lexical_similarity": 0.04748603351955307,
+        "embedding_similarity": 0.9101772476795602,
+        "structural_similarity": 0.05555555555555555,
+        "nearest_baseline_ids": [
+          "c1753aa930d0d404",
+          "ca9bf7c0d356a0ce",
+          "a5b0090bc190969a"
+        ],
+        "feasibility_reasons": [],
+        "provider_mode": "external",
+        "embedding_mode": "hash-lexical-proxy"
+      },
+      "insertion_generation": 0
+    }
+  ]
+}

@@ -17,16 +17,20 @@ class IdeationHarness:
         evaluator = ThreeLayerEvaluator(self.provider, self.embeddings)
         archive = QDArchive()
         budget = min(config.total_budget, config.generations * config.population_size)
+        operators = ["Inversion", "Extreme constraints", "Removal", "Cross-domain analogy", "Role shift", "Multilingual/cultural conceptualization"]
         for slot in range(budget):
-            operator = ["Inversion", "Extreme constraints", "Removal", "Cross-domain analogy", "Role shift", "Multilingual/cultural conceptualization"][slot % 6]
-            candidate = self.provider.generate(normalized, operator, (), 1)[0]
-            candidate = candidate.model_copy(update={"generation": slot // config.population_size})
+            operator = operators[slot % len(operators)]
             try:
+                candidates = self.provider.generate(normalized, operator, (), 1)
+                if not candidates:
+                    continue
+                candidate = candidates[0].model_copy(update={"generation": slot // config.population_size})
                 scores, diagnostics, feasible = evaluator.evaluate(normalized, candidate, negative, (config.appropriateness_threshold, config.coherence_threshold))
                 canonical = self.provider.canonicalize(normalized, candidate)
-                entry = QDArchiveEntry(candidate=canonical, niche=self.provider.describe_niche(normalized, canonical), scores=scores, diagnostics=diagnostics, insertion_generation=candidate.generation)
+                niche = self.provider.describe_niche(normalized, canonical)
+                entry = QDArchiveEntry(candidate=canonical, niche=niche, scores=scores, diagnostics=diagnostics, insertion_generation=candidate.generation)
                 archive.insert(entry, feasible=feasible, blacklisted=canonical.mechanism.fingerprint in {x.fingerprint for x in negative.mechanisms})
-            except Exception:
+            except Exception as exc:
                 continue
         return HarnessResult(
             status="COMPLETED", termination_reason="budget exhausted",

@@ -2,12 +2,12 @@ import argparse
 import json
 import sys
 from .models import HarnessConfig
-from .providers import MockIdeaProvider
+from .providers import MockIdeaProvider, LLMIdeaProvider
 from .harness import IdeationHarness
 
 
 SAMPLES = {
-    "game-mechanics": "Create a game mechanic that makes cooperation rewarding.",
+    "game-mechanics": "Design an innovative boss fight mechanism without quick-time events",
     "system-design": "Reduce onboarding friction without more meetings.",
 }
 
@@ -17,12 +17,13 @@ def main(argv=None):
     source = parser.add_mutually_exclusive_group(required=True)
     source.add_argument("--problem")
     source.add_argument("--sample", choices=SAMPLES)
-    parser.add_argument("--provider", default="mock", choices=("mock",))
+    parser.add_argument("--provider", default="mock", choices=("mock", "llm"))
+    parser.add_argument("--model", default="Hermes-delegate", help="Model name for LLM provider")
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--workers", type=int, default=1)
-    parser.add_argument("--generations", type=int, default=3)
+    parser.add_argument("--generations", type=int, default=2)
     parser.add_argument("--population-size", type=int, default=6)
-    parser.add_argument("--total-budget", type=int, default=18)
+    parser.add_argument("--total-budget", type=int, default=12)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--best-of-k", type=int, default=5)
     parser.add_argument("--format", choices=("text", "json"), default="text")
@@ -30,7 +31,11 @@ def main(argv=None):
     args = parser.parse_args(argv)
     try:
         config = HarnessConfig(workers=args.workers, generations=args.generations, population_size=args.population_size, total_budget=args.total_budget, seed=args.seed)
-        result = IdeationHarness(MockIdeaProvider()).run(args.problem or SAMPLES[args.sample], config)
+        if args.provider == "llm":
+            provider = LLMIdeaProvider(model=args.model)
+        else:
+            provider = MockIdeaProvider()
+        result = IdeationHarness(provider).run(args.problem or SAMPLES[args.sample], config)
         data = result.model_dump(mode="json")
         if args.format == "json":
             output = json.dumps(data, indent=2)
