@@ -4,7 +4,7 @@ import hashlib
 import math
 import re
 from enum import Enum
-from typing import Literal
+from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
@@ -117,6 +117,36 @@ class ValidationReport(StrictModel):
     issues: list[ValidationIssue] = Field(default_factory=list)
 
 
+class PlaytestIssue(StrictModel):
+    """A reproducible problem found by an adversarial simulation bot."""
+
+    severity: Literal["FATAL", "WARNING"]
+    bot_name: str
+    issue_type: str
+    description: str
+    witness_actions: tuple[str, ...] = ()
+
+    _text = field_validator("bot_name", "issue_type", "description")(clean)
+
+
+class PlaytestReport(StrictModel):
+    """Aggregate result of exploit, fatigue, and chaos playtesting."""
+
+    is_passed: bool
+    exploit_detected: bool
+    fatigue_score: float = Field(ge=0, le=1)
+    robustness_score: float = Field(ge=0, le=1)
+    issues: list[PlaytestIssue] = Field(default_factory=list)
+    bot_results: dict[str, Any] = Field(default_factory=dict)
+
+    @field_validator("fatigue_score", "robustness_score")
+    @classmethod
+    def finite_playtest_score(cls, value: float) -> float:
+        if not math.isfinite(value):
+            raise ValueError("playtest scores must be finite")
+        return value
+
+
 class EvaluationDiagnostics(StrictModel):
     lexical_similarity: float = 0
     embedding_similarity: float = 0
@@ -126,6 +156,7 @@ class EvaluationDiagnostics(StrictModel):
     provider_mode: str = "mock"
     embedding_mode: str = "hash-lexical-proxy"
     validation_report: ValidationReport | None = None
+    playtest_report: PlaytestReport | None = None
 
 
 class QDArchiveEntry(StrictModel):
