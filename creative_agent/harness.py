@@ -32,10 +32,33 @@ class IdeationHarness:
                 if not validation_report.is_valid:
                     structural_failures += 1
                     continue
-                scores, diagnostics, feasible = evaluator.evaluate(normalized, canonical, negative, (config.appropriateness_threshold, config.coherence_threshold))
+                evaluation = evaluator.evaluate(
+                    normalized,
+                    canonical,
+                    negative,
+                    (config.appropriateness_threshold, config.coherence_threshold),
+                )
+                scores = evaluation.scores
+                if scores is None:
+                    continue
+                diagnostics = evaluation.diagnostics
                 niche = self.provider.describe_niche(normalized, canonical)
-                entry = QDArchiveEntry(candidate=canonical, niche=niche, scores=scores, diagnostics=diagnostics, insertion_generation=candidate.generation)
-                archive.insert(entry, feasible=feasible, blacklisted=canonical.mechanism.fingerprint in {x.fingerprint for x in negative.mechanisms})
+                entry = QDArchiveEntry(
+                    candidate=canonical,
+                    niche=niche,
+                    scores=scores,
+                    diagnostics=diagnostics,
+                    insertion_generation=candidate.generation,
+                    dynamics=evaluation.dynamics,
+                    evaluation=evaluation,
+                )
+                archive.insert(
+                    entry,
+                    admission=evaluation.admission,
+                    blacklisted=canonical.mechanism.fingerprint in {
+                        x.fingerprint for x in negative.mechanisms
+                    },
+                )
             except Exception as exc:
                 continue
         return HarnessResult(
@@ -46,6 +69,8 @@ class IdeationHarness:
                 "attempts": attempts,
                 "structural_failures": structural_failures,
                 "occupied_niches": len(archive.elites),
+                "repair_incubator": len(archive.repair_incubator),
+                "failure_archive": len(archive.failure_archive),
             },
             selected=archive.best_of_k(min(5, len(archive.elites))) if archive.elites else (),
             frontier=archive.frontier(),

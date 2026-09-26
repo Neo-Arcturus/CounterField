@@ -6,6 +6,9 @@ from typing import Iterable
 import networkx as nx
 
 from .models import (
+    AdmissionResult,
+    AdmissionStage,
+    AdmissionStatus,
     CanonicalMechanism,
     IdeaCandidate,
     ValidationIssue,
@@ -24,6 +27,14 @@ class StructuralValidationError(ValueError):
 
     def __init__(self, report: ValidationReport):
         self.report = report
+        self.admission = AdmissionResult(
+            status=AdmissionStatus.REJECTED,
+            stage=AdmissionStage.STRUCTURAL_VALIDITY,
+            reasons=tuple(
+                issue.message for issue in report.issues
+                if issue.severity == ValidationSeverity.FATAL
+            ),
+        )
         rules = ", ".join(issue.rule for issue in report.issues if issue.severity == ValidationSeverity.FATAL)
         super().__init__(f"causal mechanism failed structural validation: {rules}")
 

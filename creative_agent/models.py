@@ -74,6 +74,8 @@ class IdeaCandidate(StrictModel):
 
 
 class NicheDescriptor(StrictModel):
+    """Contextual/operational niche dimensions, independent of quality."""
+
     intervention_level: Literal["individual", "team", "organization", "ecosystem"]
     resource_intensity: Literal["low", "medium", "high"]
     feedback_horizon: Literal["immediate", "short", "long"]
@@ -81,6 +83,41 @@ class NicheDescriptor(StrictModel):
     @property
     def key(self) -> str:
         return f"{self.intervention_level}:{self.resource_intensity}:{self.feedback_horizon}"
+
+
+class DynamicalNicheDescriptor(StrictModel):
+    """Measured behavior of a mechanism, never a quality or feasibility score."""
+
+    causal_depth: int = Field(ge=0)
+    branching_factor: float = Field(ge=0)
+    loop_density: float = Field(ge=0, le=1)
+    payoff_path_length: int | None = Field(default=None, ge=0)
+
+    @field_validator("branching_factor", "loop_density")
+    @classmethod
+    def finite_dynamics(cls, value: float) -> float:
+        if not math.isfinite(value):
+            raise ValueError("dynamical descriptors must be finite")
+        return value
+
+    @property
+    def key(self) -> str:
+        payoff = "unreachable" if self.payoff_path_length is None else str(self.payoff_path_length)
+        return (
+            f"depth={self.causal_depth}:branch={self.branching_factor:.3f}:"
+            f"loops={self.loop_density:.3f}:payoff={payoff}"
+        )
+
+
+class QDDescriptor(StrictModel):
+    """Composition of independent contextual and dynamical descriptors."""
+
+    context: NicheDescriptor
+    dynamics: DynamicalNicheDescriptor
+
+    @property
+    def key(self) -> str:
+        return f"{self.context.key}|{self.dynamics.key}"
 
 
 class EvaluationScores(StrictModel):
@@ -97,6 +134,45 @@ class EvaluationScores(StrictModel):
         if not math.isfinite(value):
             raise ValueError("scores must be finite")
         return value
+
+
+class AdmissionStatus(str, Enum):
+    ACCEPTED = "ACCEPTED"
+    REPAIRABLE = "REPAIRABLE"
+    REJECTED = "REJECTED"
+    INVALID_EVALUATION = "INVALID_EVALUATION"
+
+
+class AdmissionStage(str, Enum):
+    EVALUATION_INTEGRITY = "evaluation_integrity"
+    STRUCTURAL_VALIDITY = "structural_validity"
+    QUALITY_CONSTRAINTS = "quality_constraints"
+    RED_TEAM = "red_team"
+    NOVELTY_POLICY = "novelty_policy"
+    COMPLETE = "complete"
+
+
+class AdmissionResult(StrictModel):
+    """A terminal, lexicographically-gated admission decision."""
+
+    status: AdmissionStatus
+    stage: AdmissionStage
+    reasons: tuple[str, ...] = ()
+
+    @property
+    def accepted(self) -> bool:
+        return self.status == AdmissionStatus.ACCEPTED
+
+    @property
+    def route(self) -> Literal["production_archive", "repair_incubator", "failure_archive"]:
+        if self.status == AdmissionStatus.ACCEPTED:
+            return "production_archive"
+        if self.status == AdmissionStatus.REPAIRABLE:
+            return "repair_incubator"
+        return "failure_archive"
+
+    def __bool__(self) -> bool:
+        return self.accepted
 
 
 class ValidationSeverity(str, Enum):
@@ -147,6 +223,26 @@ class PlaytestReport(StrictModel):
         return value
 
 
+ScalarValue = int | float | bool | str
+
+
+class Counterexample(StrictModel):
+    """Replayable evidence that a concrete action sequence violates an invariant."""
+
+    witness_actions: tuple[str, ...]
+    initial_state: dict[str, ScalarValue]
+    violated_invariant: str
+
+    _invariant = field_validator("violated_invariant")(clean)
+
+
+class RepairOperator(str, Enum):
+    STRENGTHEN_GUARD = "strengthen_guard"
+    SPLIT_TRANSITION = "split_transition"
+    DIMINISHING_RETURN = "diminishing_return"
+    INTRODUCE_EXIT = "introduce_exit"
+
+
 class EvaluationDiagnostics(StrictModel):
     lexical_similarity: float = 0
     embedding_similarity: float = 0
@@ -157,6 +253,31 @@ class EvaluationDiagnostics(StrictModel):
     embedding_mode: str = "hash-lexical-proxy"
     validation_report: ValidationReport | None = None
     playtest_report: PlaytestReport | None = None
+    counterexamples: tuple[Counterexample, ...] = ()
+
+
+class EvaluationBundle(StrictModel):
+    """Immutable snapshot of evidence and its typed admission decision.
+
+    Iteration retains the historical ``scores, diagnostics, feasible`` calling
+    convention while new code consumes the named fields and AdmissionResult.
+    """
+
+    scores: EvaluationScores | None
+    diagnostics: EvaluationDiagnostics
+    admission: AdmissionResult
+    dynamics: DynamicalNicheDescriptor | None = None
+
+    def __iter__(self):
+        yield self.scores
+        yield self.diagnostics
+        yield self.admission.accepted
+
+    def __len__(self) -> int:
+        return 3
+
+    def __getitem__(self, index: int):
+        return tuple(iter(self))[index]
 
 
 class QDArchiveEntry(StrictModel):
@@ -165,11 +286,15 @@ class QDArchiveEntry(StrictModel):
     scores: EvaluationScores
     diagnostics: EvaluationDiagnostics
     insertion_generation: int = 0
+    dynamics: DynamicalNicheDescriptor | None = None
+    evaluation: EvaluationBundle | None = None
 
     @model_validator(mode="after")
     def mechanism_required(self):
         if self.candidate.mechanism is None:
             raise ValueError("archive entries require a mechanism")
+        if self.evaluation is not None and self.evaluation.scores != self.scores:
+            raise ValueError("archive entry scores must match its evaluation bundle")
         return self
 
 

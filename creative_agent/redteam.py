@@ -16,12 +16,23 @@ from typing import Any
 from .dsl import (
     DSLAction,
     DSLProgram,
+    GuardCondition,
     Scalar,
     SimulationTrace,
+    StateEffect,
     StateMachineSimulator,
+    StateVariable,
+    TerminalCondition,
     canonical_mechanism_to_dsl,
 )
-from .models import CanonicalMechanism, PlaytestIssue, PlaytestReport
+from .models import (
+    CanonicalMechanism,
+    Counterexample,
+    PlaytestIssue,
+    PlaytestReport,
+    RepairOperator,
+    StrictModel,
+)
 
 
 def _state_key(state: Mapping[str, Scalar]) -> tuple[tuple[str, Scalar], ...]:
@@ -50,7 +61,9 @@ class ExploitBot:
 
         for action in program.actions:
             witness = self._spam_to_win(simulator, action)
-            if witness is None:
+            # A single legitimate transition is not "spam".  The exploit is
+            # specifically repeated use of one action to collapse progression.
+            if witness is None or len(witness) < 2:
                 continue
             spam_witnesses[action.name] = witness
             issues.append(PlaytestIssue(
@@ -439,3 +452,373 @@ class AdversarialPlaytester:
                 self.chaos_bot.name: chaos.metrics,
             },
         )
+
+
+class CounterexampleReplay(StrictModel):
+    reproduced: bool
+    outcome: str
+    final_state: dict[str, Scalar]
+    error: str | None = None
+
+
+class RepairStep(StrictModel):
+    operator: RepairOperator
+    counterexample: Counterexample
+    witness_reproduced: bool
+
+
+class RepairResult(StrictModel):
+    program: DSLProgram
+    healed: bool
+    steps: tuple[RepairStep, ...]
+    remaining_counterexamples: tuple[Counterexample, ...]
+    playtest_report: PlaytestReport
+
+
+def counterexamples_from_report(
+    report: PlaytestReport, program: DSLProgram
+) -> tuple[Counterexample, ...]:
+    initial_state = StateMachineSimulator(program).initial_state()
+    return tuple(
+        Counterexample(
+            witness_actions=issue.witness_actions,
+            initial_state=initial_state,
+            violated_invariant=issue.issue_type,
+        )
+        for issue in report.issues
+        if issue.severity == "FATAL"
+    )
+
+
+def replay_counterexample(
+    program: DSLProgram, counterexample: Counterexample
+) -> CounterexampleReplay:
+    """Replay exactly the captured witness and classify the original invariant."""
+    simulator = StateMachineSimulator(program)
+    state = dict(counterexample.initial_state)
+    if set(state) != set(program.states):
+        # A repair may add bookkeeping state.  Preserve the captured values and
+        # initialize only the newly introduced variables.
+        state = simulator.initial_state() | {
+            key: value for key, value in state.items() if key in program.states
+        }
+    states = [dict(state)]
+    error = None
+    try:
+        for action_name in counterexample.witness_actions:
+            state = simulator.transition(state, action_name)
+            states.append(dict(state))
+    except Exception as exc:
+        error = f"{type(exc).__name__}: {exc}"
+
+    outcome = simulator.terminal_outcome(state) if error is None else None
+    invariant = counterexample.violated_invariant
+    if invariant in {"single_action_spam", "payoff_shortcut"}:
+        reproduced = outcome == "win"
+    elif invariant == "transition_crash":
+        reproduced = error is not None and "unknown action" not in error
+    elif invariant == "broken_invariant":
+        reproduced = error is not None
+    elif invariant == "reachable_stuck_state":
+        reproduced = (
+            error is None
+            and outcome is None
+            and not simulator.available_actions(state)
+        )
+    elif invariant in {"non_evolving_loop", "repetitive_grind"}:
+        repeated_states = len({_state_key(item) for item in states}) < len(states)
+        repeated_actions = len(set(counterexample.witness_actions)) < len(
+            counterexample.witness_actions
+        )
+        reproduced = error is None and outcome != "win" and (
+            repeated_states or repeated_actions
+        )
+    else:
+        reproduced = error is not None or outcome == "win"
+    return CounterexampleReplay(
+        reproduced=reproduced,
+        outcome=outcome or ("error" if error else "non_terminal"),
+        final_state=state,
+        error=error,
+    )
+
+
+class CEGISRepairEngine:
+    """Counterexample-guided repair with typed, deterministic operators."""
+
+    def __init__(self, *, max_iterations: int = 8, chaos_episodes: int = 32, seed: int = 0):
+        if max_iterations <= 0:
+            raise ValueError("max_iterations must be greater than zero")
+        self.max_iterations = max_iterations
+        self.playtester = AdversarialPlaytester(
+            chaos_episodes=chaos_episodes,
+            seed=seed,
+        )
+
+    def heal(
+        self,
+        program: DSLProgram,
+        counterexamples: tuple[Counterexample, ...] | None = None,
+    ) -> RepairResult:
+        current = program
+        report = self.playtester.run_playtest(current)
+        active = counterexamples or counterexamples_from_report(report, current)
+        steps: list[RepairStep] = []
+
+        for iteration in range(self.max_iterations):
+            if not active:
+                break
+            counterexample = active[0]
+            operator = self._select_operator(counterexample, iteration)
+            repaired = self.apply_operator(current, counterexample, operator)
+            replay = replay_counterexample(repaired, counterexample)
+            steps.append(RepairStep(
+                operator=operator,
+                counterexample=counterexample,
+                witness_reproduced=replay.reproduced,
+            ))
+            current = repaired
+            report = self.playtester.run_playtest(current)
+            active = counterexamples_from_report(report, current)
+            if report.is_passed:
+                active = ()
+                break
+
+        return RepairResult(
+            program=current,
+            healed=report.is_passed and not active,
+            steps=tuple(steps),
+            remaining_counterexamples=tuple(active),
+            playtest_report=report,
+        )
+
+    @staticmethod
+    def _select_operator(counterexample: Counterexample, iteration: int) -> RepairOperator:
+        invariant = counterexample.violated_invariant
+        if invariant == "single_action_spam":
+            return RepairOperator.SPLIT_TRANSITION
+        if invariant == "payoff_shortcut":
+            return (
+                RepairOperator.STRENGTHEN_GUARD
+                if iteration % 2 == 0 else RepairOperator.SPLIT_TRANSITION
+            )
+        if invariant in {"repetitive_grind", "non_evolving_loop"}:
+            return RepairOperator.DIMINISHING_RETURN
+        if invariant == "reachable_stuck_state":
+            return RepairOperator.INTRODUCE_EXIT
+        return RepairOperator.STRENGTHEN_GUARD
+
+    def apply_operator(
+        self,
+        program: DSLProgram,
+        counterexample: Counterexample,
+        operator: RepairOperator,
+    ) -> DSLProgram:
+        if operator == RepairOperator.STRENGTHEN_GUARD:
+            return self._strengthen_guard(program, counterexample)
+        if operator == RepairOperator.SPLIT_TRANSITION:
+            return self._split_transition(program, counterexample)
+        if operator == RepairOperator.DIMINISHING_RETURN:
+            return self._diminishing_return(program, counterexample)
+        return self._introduce_exit(program)
+
+    @staticmethod
+    def _action(program: DSLProgram, name: str) -> DSLAction | None:
+        return next((action for action in program.actions if action.name == name), None)
+
+    def _strengthen_guard(
+        self, program: DSLProgram, counterexample: Counterexample
+    ) -> DSLProgram:
+        target_name = counterexample.witness_actions[-1]
+        target = self._action(program, target_name)
+        if target is None:
+            return program
+        simulator = StateMachineSimulator(program)
+        state = simulator.initial_state()
+        for action_name in counterexample.witness_actions[:-1]:
+            try:
+                state = simulator.transition(state, action_name)
+            except ValueError:
+                return program
+        guarded = {guard.var_name for guard in target.guards}
+        affected = {effect.var_name for effect in target.effects}
+        candidate = next(
+            (
+                name for name, value in state.items()
+                if name not in guarded
+                and name not in affected
+                and value != program.states[name].initial_value
+            ),
+            None,
+        )
+        if candidate is None:
+            # No existing proposition distinguishes the witness.  Add a
+            # bounded usage proposition and make the counterexample's final
+            # repetition unavailable.
+            uses = counterexample.witness_actions.count(target_name)
+            limit = max(0, uses - 1)
+            state_name = self._unique_name(program, f"repair_guard_{target_name}")
+            states = dict(program.states)
+            states[state_name] = StateVariable(
+                name=state_name,
+                var_type="int",
+                initial_value=0,
+                min_val=0,
+                max_val=max(0, limit),
+            )
+            replacement = target.model_copy(update={
+                "guards": (*target.guards, GuardCondition(
+                    var_name=state_name,
+                    op="lt",
+                    value=limit,
+                )),
+                "effects": (*target.effects, StateEffect(
+                    var_name=state_name,
+                    op="add",
+                    value=1,
+                )),
+            })
+            return DSLProgram(
+                states=states,
+                actions=tuple(
+                    replacement if action.name == target_name else action
+                    for action in program.actions
+                ),
+                terminal_conditions=program.terminal_conditions,
+                max_steps=program.max_steps,
+            )
+        replacement = target.model_copy(update={
+            "guards": (*target.guards, GuardCondition(
+                var_name=candidate,
+                op="eq",
+                value=state[candidate],
+            )),
+        })
+        return program.model_copy(update={
+            "actions": tuple(
+                replacement if action.name == target_name else action
+                for action in program.actions
+            ),
+        })
+
+    def _split_transition(
+        self, program: DSLProgram, counterexample: Counterexample
+    ) -> DSLProgram:
+        counts = Counter(counterexample.witness_actions)
+        target_name, stages = max(counts.items(), key=lambda item: (item[1], item[0]))
+        target = self._action(program, target_name)
+        if target is None or stages < 2:
+            return self._introduce_exit(program)
+        state_name = self._unique_name(program, f"repair_stage_{target_name}")
+        states = dict(program.states)
+        states[state_name] = StateVariable(
+            name=state_name,
+            var_type="enum",
+            initial_value="0",
+        )
+        replacements = tuple(
+            target.model_copy(update={
+                "name": f"{target.name}__stage_{index + 1}",
+                "guards": (*target.guards, GuardCondition(
+                    var_name=state_name,
+                    op="eq",
+                    value=str(index),
+                )),
+                "effects": (*target.effects, StateEffect(
+                    var_name=state_name,
+                    op="set",
+                    value=str(index + 1),
+                )),
+            })
+            for index in range(stages)
+        )
+        actions: list[DSLAction] = []
+        for action in program.actions:
+            actions.extend(replacements if action.name == target_name else (action,))
+        return DSLProgram(
+            states=states,
+            actions=tuple(actions),
+            terminal_conditions=program.terminal_conditions,
+            max_steps=program.max_steps,
+        )
+
+    def _diminishing_return(
+        self, program: DSLProgram, counterexample: Counterexample
+    ) -> DSLProgram:
+        counts = Counter(counterexample.witness_actions)
+        target_name, uses = max(counts.items(), key=lambda item: (item[1], item[0]))
+        target = self._action(program, target_name)
+        if target is None or uses < 2:
+            return self._introduce_exit(program)
+        state_name = self._unique_name(program, f"repair_uses_{target_name}")
+        limit = uses - 1
+        states = dict(program.states)
+        states[state_name] = StateVariable(
+            name=state_name,
+            var_type="int",
+            initial_value=0,
+            min_val=0,
+            max_val=limit,
+        )
+        replacement = target.model_copy(update={
+            "guards": (*target.guards, GuardCondition(
+                var_name=state_name,
+                op="lt",
+                value=limit,
+            )),
+            "effects": (*target.effects, StateEffect(
+                var_name=state_name,
+                op="add",
+                value=1,
+            )),
+        })
+        return DSLProgram(
+            states=states,
+            actions=tuple(
+                replacement if action.name == target_name else action
+                for action in program.actions
+            ),
+            terminal_conditions=program.terminal_conditions,
+            max_steps=program.max_steps,
+        )
+
+    @staticmethod
+    def _introduce_exit(program: DSLProgram) -> DSLProgram:
+        base = "repair_exit"
+        state_name = base
+        suffix = 2
+        while state_name in program.states:
+            state_name = f"{base}_{suffix}"
+            suffix += 1
+        states = dict(program.states)
+        states[state_name] = StateVariable(
+            name=state_name,
+            var_type="bool",
+            initial_value=False,
+        )
+        action_name = state_name
+        return DSLProgram(
+            states=states,
+            actions=(*program.actions, DSLAction(
+                name=action_name,
+                actor="player",
+                guards=(GuardCondition(var_name=state_name, op="eq", value=False),),
+                effects=(StateEffect(var_name=state_name, op="set", value=True),),
+                description="Explicitly exit an otherwise trapped trajectory.",
+            )),
+            terminal_conditions=(*program.terminal_conditions, TerminalCondition(
+                outcome="loss",
+                guards=(GuardCondition(var_name=state_name, op="eq", value=True),),
+                description="Safe repair exit",
+            )),
+            max_steps=program.max_steps,
+        )
+
+    @staticmethod
+    def _unique_name(program: DSLProgram, base: str) -> str:
+        name = base
+        suffix = 2
+        while name in program.states:
+            name = f"{base}_{suffix}"
+            suffix += 1
+        return name

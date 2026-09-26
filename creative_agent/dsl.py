@@ -121,6 +121,83 @@ class DSLAction(StrictModel):
         return self
 
 
+class Proposition(StrictModel):
+    """A fact that may be satisfied in the semantic intermediate form."""
+
+    id: str
+    label: str
+    initially_satisfied: bool = False
+
+    _text = field_validator("id", "label")(clean)
+
+
+class ActionObligation(StrictModel):
+    """An operation required to establish one proposition."""
+
+    id: str
+    establishes: str
+    description: str = ""
+
+    _text = field_validator("id", "establishes")(clean)
+
+
+class Dependency(StrictModel):
+    """A proposition precondition on an action, not an executable action."""
+
+    proposition_id: str
+    action_id: str
+    relation: Literal["increases", "decreases", "enables", "prevents", "depends_on"]
+    required_value: bool
+
+    _text = field_validator("proposition_id", "action_id")(clean)
+
+
+class PayoffObligation(StrictModel):
+    proposition_id: str
+
+    _proposition = field_validator("proposition_id")(clean)
+
+
+class SemanticIR(StrictModel):
+    """Typed boundary between causal interpretation and executable DSL."""
+
+    propositions: tuple[Proposition, ...]
+    actions: tuple[ActionObligation, ...]
+    dependencies: tuple[Dependency, ...]
+    payoff: PayoffObligation
+
+    @model_validator(mode="after")
+    def validate_references(self):
+        proposition_ids = {item.id for item in self.propositions}
+        action_ids = {item.id for item in self.actions}
+        if len(proposition_ids) != len(self.propositions):
+            raise ValueError("semantic proposition ids must be unique")
+        if len(action_ids) != len(self.actions):
+            raise ValueError("semantic action ids must be unique")
+        if self.payoff.proposition_id not in proposition_ids:
+            raise ValueError("payoff must reference a semantic proposition")
+        for action in self.actions:
+            if action.establishes not in proposition_ids:
+                raise ValueError("actions must establish known propositions")
+        for dependency in self.dependencies:
+            if dependency.proposition_id not in proposition_ids:
+                raise ValueError("dependencies must reference known propositions")
+            if dependency.action_id not in action_ids:
+                raise ValueError("dependencies must reference known actions")
+        return self
+
+
+class CompilationInvariantReport(StrictModel):
+    is_valid: bool
+    violations: tuple[str, ...] = ()
+
+
+class CompilationInvariantError(ValueError):
+    def __init__(self, report: CompilationInvariantReport):
+        self.report = report
+        super().__init__("DSL compilation invariants failed: " + "; ".join(report.violations))
+
+
 class TerminalCondition(StrictModel):
     """A conjunction of guards which produces a terminal outcome."""
 
@@ -509,48 +586,223 @@ def _identifier(text: str, used: set[str]) -> str:
     return candidate
 
 
-def canonical_mechanism_to_dsl(mechanism: CanonicalMechanism, *, max_steps: int = 50) -> DSLProgram:
-    """Create a conservative boolean reachability simulation from a causal graph."""
-    labels: list[str] = []
+def mechanism_to_semantic_ir(mechanism: CanonicalMechanism) -> SemanticIR:
+    """Interpret a causal graph as obligations without making edges executable.
+
+    Multiple links targeting the same proposition become dependencies of one
+    synthesized action.  Inhibitory links require their source proposition to
+    be absent; all other links require it to be present.
+    """
+    def node_key(value: str) -> str:
+        return " ".join(value.casefold().split())
+
+    labels_by_key: dict[str, str] = {}
     for link in mechanism.causal_structure:
         for label in (link.cause, link.effect):
-            if label not in labels:
-                labels.append(label)
-    if mechanism.payoff not in labels:
-        labels.append(mechanism.payoff)
+            labels_by_key.setdefault(node_key(label), label)
+    payoff_key = node_key(mechanism.payoff)
+    labels_by_key.setdefault(payoff_key, mechanism.payoff)
     used: set[str] = set()
-    names = {label: _identifier(label, used) for label in labels}
-    incoming = {link.effect for link in mechanism.causal_structure}
-    states = {
-        names[label]: StateVariable(
-            name=names[label], var_type="bool", initial_value=label not in incoming
+    names = {
+        key: _identifier(label, used) for key, label in labels_by_key.items()
+    }
+    incoming = {node_key(link.effect) for link in mechanism.causal_structure}
+    propositions = tuple(
+        Proposition(
+            id=names[key],
+            label=label,
+            initially_satisfied=key not in incoming and key != payoff_key,
         )
-        for label in labels
+        for key, label in labels_by_key.items()
+    )
+
+    action_used: set[str] = set()
+    action_by_effect: dict[str, str] = {}
+    actions: list[ActionObligation] = []
+    for effect_key, effect_label in labels_by_key.items():
+        links = [
+            link for link in mechanism.causal_structure
+            if node_key(link.effect) == effect_key
+        ]
+        if not links:
+            continue
+        action_id = _identifier(f"satisfy_{effect_label}", action_used)
+        action_by_effect[effect_key] = action_id
+        actions.append(ActionObligation(
+            id=action_id,
+            establishes=names[effect_key],
+            description="; ".join(
+                f"{link.cause} {link.relation} {link.effect}" for link in links
+            ),
+        ))
+
+    dependencies = tuple(
+        Dependency(
+            proposition_id=names[node_key(link.cause)],
+            action_id=action_by_effect[node_key(link.effect)],
+            relation=link.relation,
+            required_value=link.relation not in {"prevents", "decreases"},
+        )
+        for link in mechanism.causal_structure
+    )
+    return SemanticIR(
+        propositions=propositions,
+        actions=tuple(actions),
+        dependencies=dependencies,
+        payoff=PayoffObligation(proposition_id=names[payoff_key]),
+    )
+
+
+def compile_semantic_ir(ir: SemanticIR, *, max_steps: int = 50) -> DSLProgram:
+    """Compile semantic obligations into guarded state-machine transitions."""
+    states = {
+        proposition.id: StateVariable(
+            name=proposition.id,
+            var_type="bool",
+            initial_value=proposition.initially_satisfied,
+        )
+        for proposition in ir.propositions
     }
     actions = []
-    for index, link in enumerate(mechanism.causal_structure, 1):
-        positive = link.relation in {"increases", "enables", "depends_on"}
-        desired_value = positive
-        actions.append(DSLAction(
-            name=f"causal_link_{index}",
-            actor="environment",
-            guards=(
-                GuardCondition(var_name=names[link.cause], op="eq", value=True),
-                GuardCondition(var_name=names[link.effect], op="neq", value=desired_value),
-            ),
-            effects=(StateEffect(var_name=names[link.effect], op="set", value=desired_value),),
-            description=f"{link.cause} {link.relation} {link.effect}",
+    for obligation in ir.actions:
+        dependencies = tuple(
+            dependency for dependency in ir.dependencies
+            if dependency.action_id == obligation.id
+        )
+        guards = [
+            GuardCondition(
+                var_name=dependency.proposition_id,
+                op="eq",
+                value=dependency.required_value,
+            )
+            for dependency in dependencies
+        ]
+        guards.append(GuardCondition(
+            var_name=obligation.establishes,
+            op="neq",
+            value=True,
         ))
-    return DSLProgram(
+        actions.append(DSLAction(
+            name=obligation.id,
+            actor="environment",
+            guards=tuple(guards),
+            effects=(StateEffect(
+                var_name=obligation.establishes,
+                op="set",
+                value=True,
+            ),),
+            description=obligation.description,
+        ))
+
+    program = DSLProgram(
         states=states,
         actions=tuple(actions),
         terminal_conditions=(TerminalCondition(
             outcome="win",
-            guards=(GuardCondition(var_name=names[mechanism.payoff], op="eq", value=True),),
-            description=mechanism.payoff,
+            guards=(GuardCondition(
+                var_name=ir.payoff.proposition_id,
+                op="eq",
+                value=True,
+            ),),
+            description="semantic payoff",
         ),),
         max_steps=max_steps,
     )
+    report = verify_compilation_invariants(ir, program)
+    if not report.is_valid:
+        raise CompilationInvariantError(report)
+    return program
+
+
+def verify_compilation_invariants(
+    ir: SemanticIR, program: DSLProgram
+) -> CompilationInvariantReport:
+    """Verify that compilation preserved obligations and dependency guards."""
+    violations: list[str] = []
+    proposition_ids = {item.id for item in ir.propositions}
+    if set(program.states) != proposition_ids:
+        violations.append("program states do not exactly represent propositions")
+    for proposition in ir.propositions:
+        state = program.states.get(proposition.id)
+        if state is None:
+            continue
+        if (
+            state.var_type != "bool"
+            or state.initial_value != proposition.initially_satisfied
+        ):
+            violations.append(
+                f"state '{proposition.id}' does not preserve its proposition initialization"
+            )
+
+    actions_by_name = {action.name: action for action in program.actions}
+    if set(actions_by_name) != {action.id for action in ir.actions}:
+        violations.append("program actions do not exactly represent action obligations")
+
+    for obligation in ir.actions:
+        action = actions_by_name.get(obligation.id)
+        if action is None:
+            continue
+        expected_effect = StateEffect(
+            var_name=obligation.establishes,
+            op="set",
+            value=True,
+        )
+        if action.effects != (expected_effect,):
+            violations.append(f"action '{obligation.id}' does not establish its proposition")
+        actual_guards = {(guard.var_name, guard.op, guard.value) for guard in action.guards}
+        for dependency in (
+            item for item in ir.dependencies if item.action_id == obligation.id
+        ):
+            required = (dependency.proposition_id, "eq", dependency.required_value)
+            if required not in actual_guards:
+                violations.append(
+                    f"dependency '{dependency.relation}' is not a guard on '{obligation.id}'"
+                )
+
+    payoff_guard = GuardCondition(
+        var_name=ir.payoff.proposition_id,
+        op="eq",
+        value=True,
+    )
+    win_guards = {
+        guard
+        for terminal in program.terminal_conditions
+        if terminal.outcome == "win"
+        for guard in terminal.guards
+    }
+    if payoff_guard not in win_guards:
+        violations.append("payoff obligation is not represented by a win condition")
+    payoff_state = program.states.get(ir.payoff.proposition_id)
+    if payoff_state is not None and payoff_state.initial_value is not False:
+        violations.append("payoff proposition must not be initially satisfied")
+
+    payoff_actions = [
+        item for item in ir.actions if item.establishes == ir.payoff.proposition_id
+    ]
+    for payoff_action in payoff_actions:
+        compiled = actions_by_name.get(payoff_action.id)
+        if compiled is None:
+            continue
+        expected_dependencies = {
+            (item.proposition_id, item.required_value)
+            for item in ir.dependencies if item.action_id == payoff_action.id
+        }
+        actual_dependencies = {
+            (guard.var_name, guard.value)
+            for guard in compiled.guards if guard.op == "eq"
+        }
+        if not expected_dependencies <= actual_dependencies:
+            violations.append("a payoff action can bypass prerequisite propositions")
+
+    return CompilationInvariantReport(
+        is_valid=not violations,
+        violations=tuple(violations),
+    )
+
+
+def canonical_mechanism_to_dsl(mechanism: CanonicalMechanism, *, max_steps: int = 50) -> DSLProgram:
+    """Compile a causal graph through a typed semantic IR into executable DSL."""
+    return compile_semantic_ir(mechanism_to_semantic_ir(mechanism), max_steps=max_steps)
 
 
 def dsl_program_to_mechanism(
