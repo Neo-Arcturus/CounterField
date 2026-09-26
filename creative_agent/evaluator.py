@@ -5,6 +5,7 @@ import re
 from typing import Callable
 from .models import *
 from .providers import EmbeddingProvider, IdeaProvider
+from .verifier import CausalGraphValidator, StructuralValidationError
 
 
 def tokens(text: str) -> set[str]:
@@ -22,12 +23,22 @@ def jaccard(a, b):
 
 class ThreeLayerEvaluator:
     def __init__(self, provider: IdeaProvider, embeddings: EmbeddingProvider | None = None,
-                 structural_comparator: Callable | None = None):
+                 structural_comparator: Callable | None = None,
+                 validator: CausalGraphValidator | None = None):
         self.provider, self.embeddings = provider, embeddings
         self.structural_comparator = structural_comparator
+        self.validator = validator or CausalGraphValidator()
+
+    def validate(self, problem, candidate):
+        """Canonicalize a candidate and run the structural validity gate."""
+        canonical = self.provider.canonicalize(problem, candidate)
+        return canonical, self.validator.validate(canonical)
 
     def evaluate(self, problem, candidate, negative_archive, thresholds=(.5, .5)):
-        candidate = self.provider.canonicalize(problem, candidate)
+        candidate, validation_report = self.validate(problem, candidate)
+        if not validation_report.is_valid:
+            # Quality scores are intentionally never requested for invalid structures.
+            raise StructuralValidationError(validation_report)
         mechanism = candidate.mechanism
         if mechanism is None:
             raise ValueError("candidate has no mechanism")
@@ -47,6 +58,7 @@ class ThreeLayerEvaluator:
             feasibility_reasons=() if feasible else ("appropriateness or coherence below threshold",),
             provider_mode="mock" if getattr(self.provider, "mode", "") == "mock" else "external",
             embedding_mode=getattr(self.embeddings, "mode", "unavailable"),
+            validation_report=validation_report,
         )
         return scores, diagnostics, feasible
 

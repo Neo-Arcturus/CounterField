@@ -16,6 +16,7 @@ class IdeationHarness:
         negative = BaselineClicheMiner(self.provider).mine(normalized)
         evaluator = ThreeLayerEvaluator(self.provider, self.embeddings)
         archive = QDArchive()
+        attempts = structural_failures = 0
         budget = min(config.total_budget, config.generations * config.population_size)
         operators = ["Inversion", "Extreme constraints", "Removal", "Cross-domain analogy", "Role shift", "Multilingual/cultural conceptualization"]
         for slot in range(budget):
@@ -25,8 +26,13 @@ class IdeationHarness:
                 if not candidates:
                     continue
                 candidate = candidates[0].model_copy(update={"generation": slot // config.population_size})
-                scores, diagnostics, feasible = evaluator.evaluate(normalized, candidate, negative, (config.appropriateness_threshold, config.coherence_threshold))
                 canonical = self.provider.canonicalize(normalized, candidate)
+                attempts += 1
+                validation_report = evaluator.validator.validate(canonical)
+                if not validation_report.is_valid:
+                    structural_failures += 1
+                    continue
+                scores, diagnostics, feasible = evaluator.evaluate(normalized, canonical, negative, (config.appropriateness_threshold, config.coherence_threshold))
                 niche = self.provider.describe_niche(normalized, canonical)
                 entry = QDArchiveEntry(candidate=canonical, niche=niche, scores=scores, diagnostics=diagnostics, insertion_generation=candidate.generation)
                 archive.insert(entry, feasible=feasible, blacklisted=canonical.mechanism.fingerprint in {x.fingerprint for x in negative.mechanisms})
@@ -34,7 +40,13 @@ class IdeationHarness:
                 continue
         return HarnessResult(
             status="COMPLETED", termination_reason="budget exhausted",
-            metrics={"coverage": archive.coverage, "duplicate_rate": archive.duplicate_rate, "attempts": archive.attempts, "occupied_niches": len(archive.elites)},
+            metrics={
+                "coverage": archive.coverage,
+                "duplicate_rate": archive.duplicate_rate,
+                "attempts": attempts,
+                "structural_failures": structural_failures,
+                "occupied_niches": len(archive.elites),
+            },
             selected=archive.best_of_k(min(5, len(archive.elites))) if archive.elites else (),
             frontier=archive.frontier(),
         )

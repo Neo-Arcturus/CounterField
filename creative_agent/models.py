@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import math
 import re
+from enum import Enum
 from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
@@ -98,6 +99,24 @@ class EvaluationScores(StrictModel):
         return value
 
 
+class ValidationSeverity(str, Enum):
+    FATAL = "FATAL"
+    WARNING = "WARNING"
+
+
+class ValidationIssue(StrictModel):
+    severity: ValidationSeverity
+    rule: str
+    message: str
+    involved_nodes: tuple[str, ...] = ()
+    witness_path: tuple[str, ...] = ()
+
+
+class ValidationReport(StrictModel):
+    is_valid: bool
+    issues: list[ValidationIssue] = Field(default_factory=list)
+
+
 class EvaluationDiagnostics(StrictModel):
     lexical_similarity: float = 0
     embedding_similarity: float = 0
@@ -106,6 +125,7 @@ class EvaluationDiagnostics(StrictModel):
     feasibility_reasons: tuple[str, ...] = ()
     provider_mode: str = "mock"
     embedding_mode: str = "hash-lexical-proxy"
+    validation_report: ValidationReport | None = None
 
 
 class QDArchiveEntry(StrictModel):

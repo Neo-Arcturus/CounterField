@@ -83,7 +83,7 @@ class MockIdeaProvider:
     def canonicalize(self, problem, candidate):
         if candidate.mechanism:
             return candidate
-        link = CausalLink(cause=candidate.title, relation="increases", effect="useful feedback")
+        link = CausalLink(cause=candidate.title, relation="increases", effect="lower friction")
         return candidate.model_copy(update={"mechanism": CanonicalMechanism(
             core_mechanism=candidate.description, causal_structure=(link,),
             affected_system=problem.affected_system, payoff="lower friction",
@@ -359,4 +359,3 @@ class LLMIdeaProvider:
             return NicheDescriptor(intervention_level=lvl, resource_intensity=res_int, feedback_horizon=hor)
         except Exception:
             return MockIdeaProvider().describe_niche(problem, candidate)
-
