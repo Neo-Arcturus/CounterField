@@ -51,6 +51,12 @@ class ThreeLayerEvaluator:
             "mechanism_uniqueness": max(0, 1 - structural),
         })
         feasible = scores.appropriateness >= thresholds[0] and scores.coherence >= thresholds[1]
+        playtest_report = None
+        try:
+            from .redteam import AdversarialPlaytester
+            playtest_report = AdversarialPlaytester().run_playtest(mechanism)
+        except Exception:
+            pass
         diagnostics = EvaluationDiagnostics(
             lexical_similarity=lexical, embedding_similarity=embedding,
             structural_similarity=structural,
@@ -59,6 +65,7 @@ class ThreeLayerEvaluator:
             provider_mode="mock" if getattr(self.provider, "mode", "") == "mock" else "external",
             embedding_mode=getattr(self.embeddings, "mode", "unavailable"),
             validation_report=validation_report,
+            playtest_report=playtest_report,
         )
         return scores, diagnostics, feasible
 

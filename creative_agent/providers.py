@@ -115,7 +115,22 @@ class LLMIdeaProvider:
     def __init__(self, base_url: str | None = None, model: str = "Hermes-delegate", api_key: str | None = None):
         self.base_url = (base_url or os.environ.get("OPENAI_BASE_URL", "http://127.0.0.1:20128/v1")).rstrip("/")
         self.model = model
-        self.api_key = api_key or os.environ.get("OPENAI_API_KEY", "")
+        resolved_key = api_key or os.environ.get("OPENAI_API_KEY", "")
+        if not resolved_key:
+            try:
+                import yaml
+                cfg_path = os.path.expanduser("~/.hermes/config.yaml")
+                if os.path.exists(cfg_path):
+                    with open(cfg_path, "r", encoding="utf-8") as f:
+                        cfg = yaml.safe_load(f)
+                    for item in cfg.get("custom_providers", []):
+                        if isinstance(item, dict) and ("20128" in str(item.get("base_url", "")) or "localhost" in str(item.get("base_url", ""))):
+                            resolved_key = item.get("api_key", "")
+                            if resolved_key:
+                                break
+            except Exception:
+                pass
+        self.api_key = resolved_key
 
     def _call(self, prompt: str, system: str = "You are a specialized game design and ideation engine. Output strictly valid JSON without preamble.") -> Any:
         url = f"{self.base_url}/chat/completions"
@@ -211,7 +226,7 @@ class LLMIdeaProvider:
             "- 'description': concrete gameplay mechanics\n"
             "- 'core_mechanism': 1-sentence underlying mechanical causal logic\n"
             "- 'causal_structure': list of {'cause': string, 'relation': 'increases'|'decreases'|'enables'|'prevents'|'depends_on', 'effect': string}\n"
-            "- 'payoff': tactical tension or gameplay payoff\n"
+            "- 'payoff': exact target state/gameplay payoff (CRITICAL: at least one causal link's effect MUST end in this exact 'payoff' string so the intervention graph reaches it)\n"
             "- 'niche': {'intervention_level': 'individual'|'team'|'organization'|'ecosystem', 'resource_intensity': 'low'|'medium'|'high', 'feedback_horizon': 'immediate'|'short'|'long'}\n"
         )
         try:
