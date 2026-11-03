@@ -1,0 +1,48 @@
+/home/arcturus/hermesWorkspace/projects/CounterField/.venv/lib/python3.12/site-packages/networkx/utils/backends.py:551: UserWarning: The hashes produced for directed graphs changed in version v3.5 due to a bugfix to track in and out edges separately (see documentation).
+  return self.orig_func(*args, **kwargs)
+{
+ "mode": "llm",
+ "elites": 6,
+ "admitted": 14,
+ "metrics": {
+  "coverage": null,
+  "duplicate_rate": 0.0,
+  "attempts": 48,
+  "structural_failures": 1,
+  "occupied_niches": 6,
+  "repair_incubator": 71,
+  "failure_archive": 0,
+  "generation_errors": 0,
+  "canonicalize_errors": 0,
+  "validation_errors": 0,
+  "evaluation_errors": 0,
+  "evidence_errors": 0,
+  "provider_fallbacks": 0,
+  "inversion_attempts": 0,
+  "inversion_successes": 0,
+  "isomorphism_attempts": 14,
+  "isomorphism_successes": 14,
+  "synthesis_attempts": 38,
+  "synthesis_successes": 0,
+  "rules_promoted": 0,
+  "niche_count": 6,
+  "qd_score": 7.0402338170455625
+ },
+ "meta": {
+  "mode": "llm",
+  "date": "2026-10-22",
+  "seed": 20261022,
+  "budget": 48,
+  "problem": "Design a self-improving hypothesis-evolution engine for one person. Failure increases wasted effort. Forgetting decreases accuracy. Disagreement prevents convergence. Noise decreases signal quality.",
+  "provider": "LLMIdeaProvider",
+  "model": "cc/claude-sonnet-5-5",
+  "provider_fallbacks": 0,
+  "backend_stats": {
+   "backend_ok": 36
+  },
+  "template_library": "/home/arcturus/hermesWorkspace/projects/CounterField/data/templates/defect_harvest_v2_20261022.json",
+  "wall_seconds": 974.1
+ }
+}
+wrote /home/arcturus/hermesWorkspace/projects/CounterField/daily_research/2026-10-22/archive_llm.json
+EXIT:0

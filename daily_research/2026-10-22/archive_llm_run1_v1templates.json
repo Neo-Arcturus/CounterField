@@ -1,0 +1,178 @@
+{
+  "meta": {
+    "mode": "llm",
+    "date": "2026-10-22",
+    "seed": 20261022,
+    "budget": 48,
+    "problem": "Design a self-improving hypothesis-evolution engine for one person. Failure increases wasted effort. Forgetting decreases accuracy. Disagreement prevents convergence. Noise decreases signal quality.",
+    "provider": "LLMIdeaProvider",
+    "model": "cc/claude-sonnet-5-5",
+    "provider_fallbacks": 0,
+    "backend_stats": {
+      "backend_ok": 36
+    },
+    "template_library": "/home/arcturus/hermesWorkspace/projects/CounterField/data/templates/defect_harvest_20261022.json",
+    "wall_seconds": 964.7
+  },
+  "metrics": {
+    "coverage": null,
+    "duplicate_rate": 0.0,
+    "attempts": 48,
+    "structural_failures": 7,
+    "occupied_niches": 1,
+    "repair_incubator": 99,
+    "failure_archive": 0,
+    "generation_errors": 0,
+    "canonicalize_errors": 0,
+    "validation_errors": 0,
+    "evaluation_errors": 0,
+    "evidence_errors": 0,
+    "provider_fallbacks": 0,
+    "inversion_attempts": 0,
+    "inversion_successes": 0,
+    "isomorphism_attempts": 2,
+    "isomorphism_successes": 2,
+    "synthesis_attempts": 60,
+    "synthesis_successes": 0,
+    "rules_promoted": 0,
+    "niche_count": 1,
+    "qd_score": 1.2376151486517633
+  },
+  "admission_log": [
+    {
+      "operator": "dialectic",
+      "status": "REPAIRABLE",
+      "stage": "red_team",
+      "n": 60
+    },
+    {
+      "operator": "inversion",
+      "status": "REPAIRABLE",
+      "stage": "red_team",
+      "n": 12
+    },
+    {
+      "operator": "isomorphism",
+      "status": "ACCEPTED",
+      "stage": "complete",
+      "n": 2
+    },
+    {
+      "operator": "isomorphism",
+      "status": "REPAIRABLE",
+      "stage": "red_team",
+      "n": 27
+    }
+  ],
+  "centroids": [
+    [
+      0.0,
+      0.5,
+      1.0,
+      0.2,
+      0.2571428,
+      0.333333,
+      0.2
+    ]
+  ],
+  "elites": [
+    {
+      "niche_key": "centroid_0",
+      "id": "2e60fb2b3b7379ef",
+      "title": "The Sparring Ledger",
+      "description": "Each week you let noisy observations feed a 'devil's advocate' log in which you write the sharpest counterexample you can against each of your live hypotheses. These counterexamples set how severe your kill-tests are, and tougher tests force you to keep a wide bench of rival hypotheses, so no single objection wipes out your whole position. Beliefs that survive the tests are written to a compact archive, which you consult before starting any new experiment so you stop repeating dead ends.",
+      "operator": "isomorphism",
+      "source_domain": "coevolution",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Noise and disagreement are recycled into sharper counterexamples, which raise test severity and force a broad bench of rival hypotheses, and together these produce a durable memory of battle-tested beliefs.",
+        "causal_structure": [
+          {
+            "cause": "Counterexample sharpening",
+            "relation": "increases",
+            "effect": "Kill-test severity"
+          },
+          {
+            "cause": "Kill-test severity",
+            "relation": "increases",
+            "effect": "Breadth of live competing hypotheses"
+          },
+          {
+            "cause": "Breadth of live competing hypotheses",
+            "relation": "decreases",
+            "effect": "Counterexample sharpening"
+          },
+          {
+            "cause": "Breadth of live competing hypotheses",
+            "relation": "enables",
+            "effect": "Durable memory of battle-tested beliefs"
+          },
+          {
+            "cause": "Kill-test severity",
+            "relation": "enables",
+            "effect": "Durable memory of battle-tested beliefs"
+          },
+          {
+            "cause": "Noisy incoming signals",
+            "relation": "increases",
+            "effect": "Counterexample sharpening"
+          },
+          {
+            "cause": "Breadth of live competing hypotheses",
+            "relation": "increases",
+            "effect": "Internal disagreement"
+          },
+          {
+            "cause": "Kill-test severity",
+            "relation": "decreases",
+            "effect": "Internal disagreement"
+          },
+          {
+            "cause": "Durable memory of battle-tested beliefs",
+            "relation": "prevents",
+            "effect": "Repeated dead-end experiments"
+          }
+        ],
+        "affected_system": "Personal hypothesis-evolution engine (single-user hypothesis lifecycle, memory, adjudication, and signal-filtering pipeline)",
+        "payoff": "Durable memory of battle-tested beliefs"
+      },
+      "mechanism_fingerprint": "aaeb0e5983a368b6",
+      "wl_hash": "512ccbc25b55012d9172d55afe5a3cd6",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "red_queen_antagonistic_diversity",
+        "role_map": {
+          "parasite_adaptation": "Counterexample sharpening",
+          "selection_pressure": "Kill-test severity",
+          "host_diversity": "Breadth of live competing hypotheses",
+          "lineage_persistence": "Durable memory of battle-tested beliefs"
+        }
+      },
+      "scores": {
+        "novelty": 0.6876151486517632,
+        "appropriateness": 0.6,
+        "utility": 0.55,
+        "surprise": 0.4,
+        "coherence": 0.68,
+        "mechanism_uniqueness": 0.9349653028118241
+      },
+      "niche": {
+        "intervention_level": "individual",
+        "resource_intensity": "medium",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 3,
+        "branching_factor": 1.285714,
+        "loop_density": 0.333333,
+        "payoff_path_length": 3
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": []
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+ M .gitignore
+ M creative_agent/__init__.py
+ M creative_agent/archive.py
+ M creative_agent/cli.py
+ M creative_agent/evaluator.py
+ M creative_agent/harness.py
+ M creative_agent/models.py
+ M creative_agent/providers.py
+ M pyproject.toml
+?? INSTRUCTION_MODULAR_CONTRACTS.md
+?? INSTRUCTION_P0_REPAIR.md
+?? INSTRUCTION_PHASE_0_FOUNDATION.md
+?? INSTRUCTION_PHASE_1_DIALECTIC.md
+?? INSTRUCTION_PHASE_2_INVERSION.md
+?? INSTRUCTION_PHASE_3_ISOMORPHISM.md
+?? INSTRUCTION_PHASE_4_OPEN_NICHES.md
+?? creative_agent/contracts.py
+?? creative_agent/creativity/
+?? daily_research/
+?? data/
+?? docs/
+?? run_daily_research.sh
+?? run_design_ideation_30.py
+?? tests/test_creativity_phase0.py
+?? tests/test_creativity_phase1.py
+?? tests/test_creativity_phase2.py
+?? tests/test_creativity_phase3.py
+?? tests/test_creativity_phase4.py
+?? tests/test_curated_templates.py
+?? tests/test_llm_provider_sse.py
+?? tests/test_modular_contracts.py
+?? tests/test_p0_invariants.py
+?? tests/test_template_lint.py

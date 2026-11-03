@@ -1,0 +1,10 @@
+{
+ "mode": "control",
+ "context": "team",
+ "admitted": 6,
+ "elites": 4,
+ "all_pass": true,
+ "failed": [],
+ "unique_wl_hashes": 5,
+ "unique_fingerprints": 6
+}

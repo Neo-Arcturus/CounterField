@@ -66,9 +66,23 @@ from .redteam import (
     counterexamples_from_report,
     replay_counterexample,
 )
+from .contracts import (
+    BehaviorExtractor,
+    DefaultBehaviorExtractor,
+    DefaultDomainAdapter,
+    DefaultVerificationOracle,
+    DomainAdapter,
+    VerificationOracle,
+)
 from .qd import dynamical_niche_descriptor
 
 __all__ = [
+    "BehaviorExtractor",
+    "DefaultBehaviorExtractor",
+    "DefaultDomainAdapter",
+    "DefaultVerificationOracle",
+    "DomainAdapter",
+    "VerificationOracle",
     "AdversarialPlaytester",
     "AdmissionController",
     "AdmissionResult",

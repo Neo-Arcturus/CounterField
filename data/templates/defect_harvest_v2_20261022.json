@@ -1,0 +1,680 @@
+{
+  "templates": [
+    {
+      "id": "parrondo_losing_pair_ratchet",
+      "domain": "nonlinear_stat_physics",
+      "roles": [
+        "alternation_clock",
+        "losing_game_a",
+        "state_remap",
+        "losing_game_b",
+        "ratchet_gain"
+      ],
+      "links": [
+        {
+          "cause": "alternation_clock",
+          "relation": "enables",
+          "effect": "losing_game_a"
+        },
+        {
+          "cause": "losing_game_a",
+          "relation": "enables",
+          "effect": "state_remap"
+        },
+        {
+          "cause": "state_remap",
+          "relation": "enables",
+          "effect": "losing_game_b"
+        },
+        {
+          "cause": "alternation_clock",
+          "relation": "enables",
+          "effect": "losing_game_b"
+        },
+        {
+          "cause": "losing_game_b",
+          "relation": "increases",
+          "effect": "ratchet_gain"
+        },
+        {
+          "cause": "state_remap",
+          "relation": "increases",
+          "effect": "ratchet_gain"
+        }
+      ],
+      "motifs": [
+        "asymmetry"
+      ],
+      "curated_by": "Minerva Lead 2026-10-22 (Defect-Harvesting H-20261022, AR-1 epoch-unrolled)",
+      "source_ref": "Harmer & Abbott 1999, Parrondo's paradox, Statistical Science 14(2):206-213",
+      "domain_vocabulary": [
+        "parrondo",
+        "ratchet",
+        "paradox",
+        "gambling",
+        "capital",
+        "coin",
+        "flashing",
+        "losing"
+      ],
+      "meta": {
+        "hypothesis": "H-20261022 Defect-Harvesting",
+        "adapter_rule": "AR-1 epoch-unrolling",
+        "lint": "R1-R4 pass"
+      }
+    },
+    {
+      "id": "hormetic_dose_overcompensation",
+      "domain": "toxicology",
+      "roles": [
+        "sublethal_stressor",
+        "damage_signal",
+        "repair_response",
+        "adaptive_capacity",
+        "second_exposure",
+        "overcompensated_resilience"
+      ],
+      "links": [
+        {
+          "cause": "sublethal_stressor",
+          "relation": "increases",
+          "effect": "damage_signal"
+        },
+        {
+          "cause": "damage_signal",
+          "relation": "enables",
+          "effect": "repair_response"
+        },
+        {
+          "cause": "repair_response",
+          "relation": "increases",
+          "effect": "adaptive_capacity"
+        },
+        {
+          "cause": "second_exposure",
+          "relation": "enables",
+          "effect": "overcompensated_resilience"
+        },
+        {
+          "cause": "adaptive_capacity",
+          "relation": "enables",
+          "effect": "overcompensated_resilience"
+        }
+      ],
+      "motifs": [
+        "asymmetry",
+        "bottleneck"
+      ],
+      "curated_by": "Minerva Lead 2026-10-22 (Defect-Harvesting H-20261022, AR-1 epoch-unrolled)",
+      "source_ref": "Calabrese & Baldwin 2003, Hormesis: the dose-response revolution, Annu Rev Pharmacol Toxicol 43:175-197",
+      "domain_vocabulary": [
+        "hormesis",
+        "dose",
+        "toxin",
+        "toxic",
+        "poison",
+        "xenobiotic",
+        "stressor",
+        "damage"
+      ],
+      "meta": {
+        "hypothesis": "H-20261022 Defect-Harvesting",
+        "adapter_rule": "AR-1 epoch-unrolling",
+        "lint": "R1-R4 pass"
+      }
+    },
+    {
+      "id": "clonal_two_round_affinity_maturation",
+      "domain": "immunology",
+      "roles": [
+        "antigen_encounter",
+        "clonal_expansion_one",
+        "mutation_burst_one",
+        "affinity_selection_one",
+        "antigen_persistence",
+        "clonal_expansion_two",
+        "mutation_burst_two",
+        "affinity_selection_two",
+        "memory_repertoire"
+      ],
+      "links": [
+        {
+          "cause": "antigen_encounter",
+          "relation": "enables",
+          "effect": "clonal_expansion_one"
+        },
+        {
+          "cause": "clonal_expansion_one",
+          "relation": "increases",
+          "effect": "mutation_burst_one"
+        },
+        {
+          "cause": "mutation_burst_one",
+          "relation": "increases",
+          "effect": "affinity_selection_one"
+        },
+        {
+          "cause": "affinity_selection_one",
+          "relation": "enables",
+          "effect": "clonal_expansion_two"
+        },
+        {
+          "cause": "antigen_persistence",
+          "relation": "enables",
+          "effect": "clonal_expansion_two"
+        },
+        {
+          "cause": "clonal_expansion_two",
+          "relation": "increases",
+          "effect": "mutation_burst_two"
+        },
+        {
+          "cause": "mutation_burst_two",
+          "relation": "increases",
+          "effect": "affinity_selection_two"
+        },
+        {
+          "cause": "affinity_selection_two",
+          "relation": "enables",
+          "effect": "memory_repertoire"
+        }
+      ],
+      "motifs": [
+        "bottleneck"
+      ],
+      "curated_by": "Minerva Lead 2026-10-22 (Defect-Harvesting H-20261022, AR-1 epoch-unrolled)",
+      "source_ref": "Burnet 1959, The Clonal Selection Theory of Acquired Immunity (Vanderbilt Univ. Press); Eisen & Siskind 1964, Biochemistry 3(7):996-1008",
+      "domain_vocabulary": [
+        "antibody",
+        "antigen",
+        "lymphocyte",
+        "germinal",
+        "bcell",
+        "immune",
+        "clonal",
+        "mutation",
+        "affinity"
+      ],
+      "meta": {
+        "hypothesis": "H-20261022 Defect-Harvesting",
+        "adapter_rule": "AR-1 epoch-unrolling",
+        "lint": "R1-R4 pass"
+      }
+    },
+    {
+      "id": "physarum_flux_pruning_network",
+      "domain": "biological_network_design",
+      "roles": [
+        "food_source_pair",
+        "flux_early",
+        "conductivity_early",
+        "decay_pressure",
+        "branch_pruning",
+        "conductivity_late",
+        "network_efficiency"
+      ],
+      "links": [
+        {
+          "cause": "food_source_pair",
+          "relation": "increases",
+          "effect": "flux_early"
+        },
+        {
+          "cause": "flux_early",
+          "relation": "increases",
+          "effect": "conductivity_early"
+        },
+        {
+          "cause": "decay_pressure",
+          "relation": "enables",
+          "effect": "branch_pruning"
+        },
+        {
+          "cause": "conductivity_early",
+          "relation": "enables",
+          "effect": "branch_pruning"
+        },
+        {
+          "cause": "conductivity_early",
+          "relation": "increases",
+          "effect": "conductivity_late"
+        },
+        {
+          "cause": "branch_pruning",
+          "relation": "enables",
+          "effect": "network_efficiency"
+        },
+        {
+          "cause": "conductivity_late",
+          "relation": "enables",
+          "effect": "network_efficiency"
+        }
+      ],
+      "motifs": [
+        "asymmetry",
+        "bottleneck"
+      ],
+      "curated_by": "Minerva Lead 2026-10-22 (Defect-Harvesting H-20261022, AR-1 epoch-unrolled)",
+      "source_ref": "Tero et al. 2010, Rules for biologically inspired adaptive network design, Science 327(5964):439-442",
+      "domain_vocabulary": [
+        "physarum",
+        "slime",
+        "mold",
+        "polycephalum",
+        "tube",
+        "plasmodium",
+        "flux",
+        "conductivity",
+        "pruning"
+      ],
+      "meta": {
+        "hypothesis": "H-20261022 Defect-Harvesting",
+        "adapter_rule": "AR-1 epoch-unrolling",
+        "lint": "R1-R4 pass"
+      }
+    },
+    {
+      "id": "kuramoto_heterogeneity_cluster_lock",
+      "domain": "nonlinear_dynamics",
+      "roles": [
+        "frequency_heterogeneity",
+        "coupling_strength",
+        "drift_dispersion",
+        "cluster_lock",
+        "mean_field_amplitude",
+        "collective_rhythm"
+      ],
+      "links": [
+        {
+          "cause": "frequency_heterogeneity",
+          "relation": "increases",
+          "effect": "drift_dispersion"
+        },
+        {
+          "cause": "drift_dispersion",
+          "relation": "enables",
+          "effect": "cluster_lock"
+        },
+        {
+          "cause": "coupling_strength",
+          "relation": "enables",
+          "effect": "cluster_lock"
+        },
+        {
+          "cause": "cluster_lock",
+          "relation": "increases",
+          "effect": "mean_field_amplitude"
+        },
+        {
+          "cause": "mean_field_amplitude",
+          "relation": "enables",
+          "effect": "collective_rhythm"
+        },
+        {
+          "cause": "coupling_strength",
+          "relation": "enables",
+          "effect": "collective_rhythm"
+        }
+      ],
+      "motifs": [
+        "asymmetry",
+        "bottleneck"
+      ],
+      "curated_by": "Minerva Lead 2026-10-22 (Defect-Harvesting H-20261022, AR-1 epoch-unrolled)",
+      "source_ref": "Strogatz 2000, From Kuramoto to Crawford: exploring the onset of synchronization, Physica D 143(1-4):1-20",
+      "domain_vocabulary": [
+        "kuramoto",
+        "oscillator",
+        "synchronization",
+        "phase",
+        "firefly",
+        "pendulum",
+        "coupling",
+        "frequency"
+      ],
+      "meta": {
+        "hypothesis": "H-20261022 Defect-Harvesting",
+        "adapter_rule": "AR-1 epoch-unrolling",
+        "lint": "R1-R4 pass"
+      }
+    },
+    {
+      "id": "stochastic_resonance_chain",
+      "domain": "signal_processing",
+      "roles": [
+        "weak_signal",
+        "noise_amplitude",
+        "threshold_crossing",
+        "spike_coherence",
+        "signal_detectability"
+      ],
+      "links": [
+        {
+          "cause": "weak_signal",
+          "relation": "enables",
+          "effect": "threshold_crossing"
+        },
+        {
+          "cause": "noise_amplitude",
+          "relation": "increases",
+          "effect": "threshold_crossing"
+        },
+        {
+          "cause": "threshold_crossing",
+          "relation": "increases",
+          "effect": "spike_coherence"
+        },
+        {
+          "cause": "spike_coherence",
+          "relation": "increases",
+          "effect": "signal_detectability"
+        },
+        {
+          "cause": "weak_signal",
+          "relation": "enables",
+          "effect": "signal_detectability"
+        }
+      ],
+      "motifs": [
+        "asymmetry",
+        "bottleneck"
+      ],
+      "curated_by": "Minerva Lead 2026-10-22 (Defect-Harvesting H-20261022, AR-1 epoch-unrolled)",
+      "source_ref": "Benzi, Sutera & Vulpiani 1981, The mechanism of stochastic resonance, J. Phys. A 14(11):L453-L457",
+      "domain_vocabulary": [
+        "resonance",
+        "stochastic",
+        "noise",
+        "snr",
+        "bistable",
+        "threshold",
+        "spike",
+        "detectability"
+      ],
+      "meta": {
+        "hypothesis": "H-20261022 Defect-Harvesting",
+        "adapter_rule": "AR-1 epoch-unrolling",
+        "lint": "R1-R4 pass"
+      }
+    },
+    {
+      "id": "negative_selection_censoring",
+      "domain": "artificial_immune_systems",
+      "roles": [
+        "random_detector_pool",
+        "self_profile",
+        "candidate_detector",
+        "censoring_step",
+        "mature_repertoire",
+        "nonself_detection"
+      ],
+      "links": [
+        {
+          "cause": "random_detector_pool",
+          "relation": "enables",
+          "effect": "candidate_detector"
+        },
+        {
+          "cause": "candidate_detector",
+          "relation": "enables",
+          "effect": "censoring_step"
+        },
+        {
+          "cause": "self_profile",
+          "relation": "enables",
+          "effect": "censoring_step"
+        },
+        {
+          "cause": "censoring_step",
+          "relation": "enables",
+          "effect": "mature_repertoire"
+        },
+        {
+          "cause": "mature_repertoire",
+          "relation": "enables",
+          "effect": "nonself_detection"
+        }
+      ],
+      "motifs": [
+        "bottleneck"
+      ],
+      "curated_by": "Minerva Lead 2026-10-22 (Defect-Harvesting H-20261022, AR-1 epoch-unrolled)",
+      "source_ref": "Forrest, Perelson, Allen & Cherukuri 1994, Self-nonself discrimination in a computer, IEEE Symp. Security and Privacy, pp.202-212",
+      "domain_vocabulary": [
+        "detector",
+        "censor",
+        "tolerance",
+        "thymus",
+        "anomaly",
+        "intrusion",
+        "repertoire",
+        "nonself"
+      ],
+      "meta": {
+        "hypothesis": "H-20261022 Defect-Harvesting",
+        "adapter_rule": "AR-1 epoch-unrolling",
+        "lint": "R1-R4 pass"
+      }
+    },
+    {
+      "id": "red_queen_two_round_arms_race",
+      "domain": "coevolution",
+      "roles": [
+        "parasite_adaptation_one",
+        "selection_pressure_one",
+        "host_variant_one",
+        "arms_clock",
+        "parasite_adaptation_two",
+        "selection_pressure_two",
+        "host_variant_two",
+        "lineage_persistence"
+      ],
+      "links": [
+        {
+          "cause": "parasite_adaptation_one",
+          "relation": "increases",
+          "effect": "selection_pressure_one"
+        },
+        {
+          "cause": "selection_pressure_one",
+          "relation": "increases",
+          "effect": "host_variant_one"
+        },
+        {
+          "cause": "host_variant_one",
+          "relation": "enables",
+          "effect": "parasite_adaptation_two"
+        },
+        {
+          "cause": "arms_clock",
+          "relation": "enables",
+          "effect": "parasite_adaptation_two"
+        },
+        {
+          "cause": "parasite_adaptation_two",
+          "relation": "increases",
+          "effect": "selection_pressure_two"
+        },
+        {
+          "cause": "selection_pressure_two",
+          "relation": "increases",
+          "effect": "host_variant_two"
+        },
+        {
+          "cause": "host_variant_two",
+          "relation": "enables",
+          "effect": "lineage_persistence"
+        },
+        {
+          "cause": "host_variant_one",
+          "relation": "enables",
+          "effect": "lineage_persistence"
+        }
+      ],
+      "motifs": [
+        "asymmetry",
+        "bottleneck"
+      ],
+      "curated_by": "Minerva Lead 2026-10-22 (Defect-Harvesting H-20261022, AR-1 epoch-unrolled)",
+      "source_ref": "Van Valen 1973, A new evolutionary law, Evolutionary Theory 1:1-30",
+      "domain_vocabulary": [
+        "parasite",
+        "host",
+        "red",
+        "queen",
+        "coevolution",
+        "pathogen",
+        "lineage",
+        "arms",
+        "race"
+      ],
+      "meta": {
+        "hypothesis": "H-20261022 Defect-Harvesting",
+        "adapter_rule": "AR-1 epoch-unrolling",
+        "lint": "R1-R4 pass"
+      }
+    },
+    {
+      "id": "stigmergic_evaporation_route_lock",
+      "domain": "collective_insect_behaviour",
+      "roles": [
+        "agent_walk_early",
+        "pheromone_trace",
+        "trail_choice",
+        "agent_walk_late",
+        "evaporation_clock",
+        "stale_trace_erasure",
+        "shortest_route_lock",
+        "colony_throughput"
+      ],
+      "links": [
+        {
+          "cause": "agent_walk_early",
+          "relation": "increases",
+          "effect": "pheromone_trace"
+        },
+        {
+          "cause": "pheromone_trace",
+          "relation": "increases",
+          "effect": "trail_choice"
+        },
+        {
+          "cause": "trail_choice",
+          "relation": "increases",
+          "effect": "agent_walk_late"
+        },
+        {
+          "cause": "evaporation_clock",
+          "relation": "enables",
+          "effect": "stale_trace_erasure"
+        },
+        {
+          "cause": "trail_choice",
+          "relation": "enables",
+          "effect": "stale_trace_erasure"
+        },
+        {
+          "cause": "stale_trace_erasure",
+          "relation": "enables",
+          "effect": "shortest_route_lock"
+        },
+        {
+          "cause": "agent_walk_late",
+          "relation": "enables",
+          "effect": "shortest_route_lock"
+        },
+        {
+          "cause": "shortest_route_lock",
+          "relation": "enables",
+          "effect": "colony_throughput"
+        }
+      ],
+      "motifs": [
+        "bottleneck"
+      ],
+      "curated_by": "Minerva Lead 2026-10-22 (Defect-Harvesting H-20261022, AR-1 epoch-unrolled)",
+      "source_ref": "Grasse 1959, La reconstruction du nid et les coordinations interindividuelles chez Bellicositermes natalensis, Insectes Sociaux 6(1):41-80",
+      "domain_vocabulary": [
+        "stigmergy",
+        "pheromone",
+        "ant",
+        "termite",
+        "evaporation",
+        "colony",
+        "trail",
+        "walk",
+        "route"
+      ],
+      "meta": {
+        "hypothesis": "H-20261022 Defect-Harvesting",
+        "adapter_rule": "AR-1 epoch-unrolling",
+        "lint": "R1-R4 pass"
+      }
+    },
+    {
+      "id": "crdt_divergence_join_convergence",
+      "domain": "distributed_systems",
+      "roles": [
+        "concurrent_updates",
+        "replica_divergence",
+        "gossip_round",
+        "anti_entropy_exchange",
+        "semilattice_rule",
+        "join_merge",
+        "converged_state"
+      ],
+      "links": [
+        {
+          "cause": "concurrent_updates",
+          "relation": "increases",
+          "effect": "replica_divergence"
+        },
+        {
+          "cause": "replica_divergence",
+          "relation": "enables",
+          "effect": "anti_entropy_exchange"
+        },
+        {
+          "cause": "gossip_round",
+          "relation": "enables",
+          "effect": "anti_entropy_exchange"
+        },
+        {
+          "cause": "anti_entropy_exchange",
+          "relation": "enables",
+          "effect": "join_merge"
+        },
+        {
+          "cause": "semilattice_rule",
+          "relation": "enables",
+          "effect": "join_merge"
+        },
+        {
+          "cause": "join_merge",
+          "relation": "enables",
+          "effect": "converged_state"
+        }
+      ],
+      "motifs": [
+        "bottleneck"
+      ],
+      "curated_by": "Minerva Lead 2026-10-22 (Defect-Harvesting H-20261022, AR-1 epoch-unrolled)",
+      "source_ref": "Shapiro, Preguica, Baquero & Zawirski 2011, Conflict-free replicated data types, SSS 2011, LNCS 6976:386-400",
+      "domain_vocabulary": [
+        "crdt",
+        "replica",
+        "semilattice",
+        "merge",
+        "consistency",
+        "gossip",
+        "divergence",
+        "convergence"
+      ],
+      "meta": {
+        "hypothesis": "H-20261022 Defect-Harvesting",
+        "adapter_rule": "AR-1 epoch-unrolling",
+        "lint": "R1-R4 pass"
+      }
+    }
+  ]
+}

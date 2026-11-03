@@ -1,0 +1,9 @@
+{
+ "mode": "llm",
+ "admitted": 14,
+ "elites": 6,
+ "all_pass": true,
+ "failed": [],
+ "unique_wl_hashes": 14,
+ "unique_fingerprints": 14
+}

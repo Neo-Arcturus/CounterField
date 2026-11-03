@@ -1,0 +1,89 @@
+{
+  "summary": {
+    "mode": "control",
+    "context": "team",
+    "admitted": 6,
+    "elites": 4,
+    "all_pass": true,
+    "failed": [],
+    "unique_wl_hashes": 5,
+    "unique_fingerprints": 6
+  },
+  "rows": [
+    {
+      "id": "eeed6645c1077a59",
+      "operator": "isomorphism",
+      "structural_valid": true,
+      "fatal_playtest": [],
+      "wl_hash_match": true,
+      "fp_match": true,
+      "dynamics_match": true,
+      "payoff_in_graph": true,
+      "iso_template": "entropy_barrier",
+      "iso_reasons": [],
+      "iso_verified": true,
+      "pass": true
+    },
+    {
+      "id": "c275735fb957e4c6",
+      "operator": "inversion",
+      "structural_valid": true,
+      "fatal_playtest": [],
+      "wl_hash_match": true,
+      "fp_match": true,
+      "dynamics_match": true,
+      "payoff_in_graph": true,
+      "pass": true
+    },
+    {
+      "id": "5d163566b6a2182d",
+      "operator": "inversion",
+      "structural_valid": true,
+      "fatal_playtest": [],
+      "wl_hash_match": true,
+      "fp_match": true,
+      "dynamics_match": true,
+      "payoff_in_graph": true,
+      "pass": true
+    },
+    {
+      "id": "cf8f45453014ae14",
+      "operator": "isomorphism",
+      "structural_valid": true,
+      "fatal_playtest": [],
+      "wl_hash_match": true,
+      "fp_match": true,
+      "dynamics_match": true,
+      "payoff_in_graph": true,
+      "iso_template": "clearinghouse_settlement",
+      "iso_reasons": [],
+      "iso_verified": true,
+      "pass": true
+    },
+    {
+      "id": "f2b03f53937f0d61",
+      "operator": "inversion",
+      "structural_valid": true,
+      "fatal_playtest": [],
+      "wl_hash_match": true,
+      "fp_match": true,
+      "dynamics_match": true,
+      "payoff_in_graph": true,
+      "pass": true
+    },
+    {
+      "id": "c9b172fb66669764",
+      "operator": "isomorphism",
+      "structural_valid": true,
+      "fatal_playtest": [],
+      "wl_hash_match": true,
+      "fp_match": true,
+      "dynamics_match": true,
+      "payoff_in_graph": true,
+      "iso_template": "copy_on_write",
+      "iso_reasons": [],
+      "iso_verified": true,
+      "pass": true
+    }
+  ]
+}

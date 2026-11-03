@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import hashlib
+import unicodedata
 import math
 import re
 from enum import Enum
@@ -10,7 +11,7 @@ from pydantic import BaseModel, ConfigDict, Field, field_validator, model_valida
 
 
 def clean(value: str) -> str:
-    value = " ".join(value.normalize("NFKC").split()) if hasattr(value, "normalize") else " ".join(value.split())
+    value = " ".join(unicodedata.normalize("NFKC", value).split())
     if not value:
         raise ValueError("value must not be blank")
     return value
@@ -43,7 +44,7 @@ class CanonicalMechanism(StrictModel):
     @property
     def fingerprint(self) -> str:
         links = sorted(
-            f"{clean(x.cause).casefold()}|{x.relation}|{clean(x.effect).casefold()}"
+            f"{clean(x.cause).casefold().replace('|', chr(92) + '|')}|{x.relation}|{clean(x.effect).casefold().replace('|', chr(92) + '|')}"
             for x in self.causal_structure
         )
         return stable_id(self.core_mechanism, self.affected_system, self.payoff, *links)
@@ -57,6 +58,28 @@ class Provenance(StrictModel):
     _text = field_validator("source_domain", "culture_language_lens", "provider_mode")(clean)
 
 
+class InversionEvidence(StrictModel):
+    kind: Literal["inversion"] = "inversion"
+    claim_id: str
+    bound_link_indices: tuple[int, ...]
+    flipped_polarity: bool
+
+class IsomorphismEvidence(StrictModel):
+    kind: Literal["isomorphism"] = "isomorphism"
+    template_id: str
+    role_map: dict[str, str]
+
+class DialecticEvidence(StrictModel):
+    kind: Literal["dialectic"] = "dialectic"
+    counterexample_hash: str
+    parent_fingerprint: str
+    synthesis_ops: tuple[str, ...]
+
+class CreativeLineage(StrictModel):
+    operator: str
+    evidence: InversionEvidence | IsomorphismEvidence | DialecticEvidence | None = None
+    parent_ids: tuple[str, ...] = ()
+
 class IdeaCandidate(StrictModel):
     id: str
     problem_id: str
@@ -69,6 +92,7 @@ class IdeaCandidate(StrictModel):
     parent_id: str | None = None
     assumptions: tuple[str, ...] = ()
     provenance: Provenance = Provenance()
+    lineage: CreativeLineage | None = None
 
     _text = field_validator("id", "problem_id", "title", "description")(clean)
 
@@ -267,6 +291,8 @@ class EvaluationBundle(StrictModel):
     diagnostics: EvaluationDiagnostics
     admission: AdmissionResult
     dynamics: DynamicalNicheDescriptor | None = None
+    candidate_id: str | None = None
+    candidate_fingerprint: str | None = None
 
     def __iter__(self):
         yield self.scores
@@ -295,6 +321,13 @@ class QDArchiveEntry(StrictModel):
             raise ValueError("archive entries require a mechanism")
         if self.evaluation is not None and self.evaluation.scores != self.scores:
             raise ValueError("archive entry scores must match its evaluation bundle")
+        if self.evaluation is not None:
+            bound_id = self.evaluation.candidate_id
+            bound_fp = self.evaluation.candidate_fingerprint
+            if bound_id is not None and bound_id != self.candidate.id:
+                raise ValueError("evaluation bundle is bound to a different candidate id")
+            if bound_fp is not None and bound_fp != self.candidate.mechanism.fingerprint:
+                raise ValueError("evaluation bundle is bound to a different mechanism fingerprint")
         return self
 
 
@@ -341,6 +374,6 @@ class GenerationStats(StrictModel):
 class HarnessResult(StrictModel):
     status: str
     termination_reason: str
-    metrics: dict[str, float | int]
+    metrics: dict[str, float | int | None]
     selected: tuple[QDArchiveEntry, ...] = ()
     frontier: tuple[QDArchiveEntry, ...] = ()

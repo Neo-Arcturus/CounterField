@@ -31,7 +31,8 @@ def main(argv=None):
     args = parser.parse_args(argv)
     try:
         config = HarnessConfig(workers=args.workers, generations=args.generations, population_size=args.population_size, total_budget=args.total_budget, seed=args.seed)
-        if args.provider == "llm":
+        # dry-run must never touch the network, so it always uses the mock provider
+        if args.provider == "llm" and not args.dry_run:
             provider = LLMIdeaProvider(model=args.model)
         else:
             provider = MockIdeaProvider()

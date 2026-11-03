@@ -1,0 +1,3261 @@
+{
+  "meta": {
+    "mode": "llm",
+    "context": "organization",
+    "date": "2026-10-23",
+    "seed": 20261023,
+    "budget": 48,
+    "problem": "Design an organization-wide portfolio process that decides which of hundreds of competing research hypotheses get funded. Sunk cost increases escalation. Reporting overhead decreases experimentation speed. Prestige bias prevents unusual ideas from surviving review.",
+    "provider": "LLMIdeaProvider",
+    "model": "cc/claude-sonnet-5-5",
+    "provider_fallbacks": 0,
+    "backend_stats": {
+      "backend_ok": 35
+    },
+    "template_library": "/home/arcturus/hermesWorkspace/projects/CounterField/data/templates/negative_space_v3_20261023.json",
+    "wall_seconds": 813.8
+  },
+  "metrics": {
+    "coverage": null,
+    "duplicate_rate": 0.0,
+    "attempts": 47,
+    "structural_failures": 0,
+    "occupied_niches": 8,
+    "repair_incubator": 59,
+    "failure_archive": 0,
+    "generation_errors": 1,
+    "canonicalize_errors": 0,
+    "validation_errors": 0,
+    "evaluation_errors": 0,
+    "evidence_errors": 0,
+    "provider_fallbacks": 0,
+    "inversion_attempts": 0,
+    "inversion_successes": 0,
+    "isomorphism_attempts": 18,
+    "isomorphism_successes": 18,
+    "synthesis_attempts": 30,
+    "synthesis_successes": 0,
+    "rules_promoted": 0,
+    "niche_count": 8,
+    "qd_score": 9.283381329126541
+  },
+  "admission_log": [
+    {
+      "operator": "dialectic",
+      "status": "REPAIRABLE",
+      "stage": "red_team",
+      "n": 30
+    },
+    {
+      "operator": "inversion",
+      "status": "REPAIRABLE",
+      "stage": "quality_constraints",
+      "n": 1
+    },
+    {
+      "operator": "inversion",
+      "status": "REPAIRABLE",
+      "stage": "red_team",
+      "n": 11
+    },
+    {
+      "operator": "isomorphism",
+      "status": "ACCEPTED",
+      "stage": "complete",
+      "n": 18
+    },
+    {
+      "operator": "isomorphism",
+      "status": "REPAIRABLE",
+      "stage": "quality_constraints",
+      "n": 4
+    },
+    {
+      "operator": "isomorphism",
+      "status": "REPAIRABLE",
+      "stage": "red_team",
+      "n": 13
+    }
+  ],
+  "centroids": [
+    [
+      1.0,
+      0.0,
+      0.5,
+      0.6,
+      0.26666660000000003,
+      0.0,
+      0.1
+    ],
+    [
+      1.0,
+      0.5,
+      0.5,
+      0.4,
+      0.24,
+      0.0,
+      0.2
+    ],
+    [
+      0.66,
+      0.5,
+      1.0,
+      0.5,
+      0.21818179999999998,
+      0.0,
+      0.4
+    ],
+    [
+      0.66,
+      0.5,
+      0.5,
+      0.6,
+      0.21818179999999998,
+      0.0,
+      0.1
+    ],
+    [
+      0.66,
+      0.0,
+      0.5,
+      0.4,
+      0.21818179999999998,
+      0.0,
+      0.1
+    ],
+    [
+      0.66,
+      0.5,
+      1.0,
+      0.4,
+      0.2,
+      0.0,
+      0.2
+    ],
+    [
+      1.0,
+      0.0,
+      1.0,
+      0.3,
+      0.2,
+      0.0,
+      0.2
+    ],
+    [
+      0.66,
+      0.5,
+      0.5,
+      0.5,
+      0.21818179999999998,
+      0.0,
+      0.3
+    ]
+  ],
+  "elites": [
+    {
+      "niche_key": "centroid_0",
+      "id": "e017ca0b431e007a",
+      "title": "Expiring Seed Grants with Rapid Sunset Sweeps",
+      "description": "Every proposal enters a rolling intake and receives a small, fixed-size seed grant that expires automatically after a short window, with only a one-page pre-registered result note required. A frequent sunset sweep closes every seed that missed its pre-declared signal, with no appeals or defense meetings, so the seed-tier queue never swells into a backlog that forces reviewers to rely on reputation. Researchers whose ideas clear the evidence gate advance to larger tiers, while expired seeds leave no sunk-cost claim, which keeps experiment velocity high.",
+      "operator": "isomorphism",
+      "source_domain": "runtime_memory_management",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A frequent, automatic, low-ceremony sunset sweep prevents the seed-tier queue from overloading reviewers (and from accumulating sunk-cost claims), so only evidence-qualified ideas advance and experiment velocity stays high.",
+        "causal_structure": [
+          {
+            "cause": "Rolling proposal intake",
+            "relation": "enables",
+            "effect": "Seed-tier queue load"
+          },
+          {
+            "cause": "Seed-tier queue load",
+            "relation": "enables",
+            "effect": "Review-capacity overload"
+          },
+          {
+            "cause": "Early-failure base rate: most ideas die fast",
+            "relation": "enables",
+            "effect": "Rapid sunset sweep"
+          },
+          {
+            "cause": "Seed-tier queue load",
+            "relation": "enables",
+            "effect": "Rapid sunset sweep"
+          },
+          {
+            "cause": "Rapid sunset sweep",
+            "relation": "prevents",
+            "effect": "Review-capacity overload"
+          },
+          {
+            "cause": "Rapid sunset sweep",
+            "relation": "enables",
+            "effect": "Evidence-gated tier advancement"
+          },
+          {
+            "cause": "Evidence-gated tier advancement",
+            "relation": "enables",
+            "effect": "Sustained experiment velocity"
+          },
+          {
+            "cause": "Rolling proposal intake",
+            "relation": "enables",
+            "effect": "Sustained experiment velocity"
+          },
+          {
+            "cause": "Review-capacity overload",
+            "relation": "increases",
+            "effect": "Prestige-based shortcut judging"
+          },
+          {
+            "cause": "Prestige-based shortcut judging",
+            "relation": "decreases",
+            "effect": "Evidence-gated tier advancement"
+          },
+          {
+            "cause": "Rapid sunset sweep",
+            "relation": "decreases",
+            "effect": "Sunk-cost escalation"
+          },
+          {
+            "cause": "Sunk-cost escalation",
+            "relation": "decreases",
+            "effect": "Sustained experiment velocity"
+          }
+        ],
+        "affected_system": "Organization-wide research portfolio funding and governance process (hypothesis intake, review, staged funding allocation, and continuation/termination decision system)",
+        "payoff": "Sustained experiment velocity"
+      },
+      "mechanism_fingerprint": "da1f5b96db6545f3",
+      "wl_hash": "eab4928b1d46f3839da2e1f1fbc15b19",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "generational_gc_reclaim_gate",
+        "role_map": {
+          "allocation_stream": "Rolling proposal intake",
+          "weak_generational_hypothesis": "Early-failure base rate: most ideas die fast",
+          "young_space_fill": "Seed-tier queue load",
+          "minor_collection": "Rapid sunset sweep",
+          "heap_exhaustion_risk": "Review-capacity overload",
+          "survivor_promotion": "Evidence-gated tier advancement",
+          "stable_throughput": "Sustained experiment velocity"
+        }
+      },
+      "scores": {
+        "novelty": 0.6587808917074057,
+        "appropriateness": 0.82,
+        "utility": 0.55,
+        "surprise": 0.4,
+        "coherence": 0.85,
+        "mechanism_uniqueness": 0.8919642857142858
+      },
+      "niche": {
+        "intervention_level": "ecosystem",
+        "resource_intensity": "low",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 6,
+        "branching_factor": 1.333333,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "54 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_sunk_cost_escalation",
+            "satisfy_seed_tier_queue_load",
+            "satisfy_rapid_sunset_sweep",
+            "satisfy_evidence_gated_tier_advancement"
+          ]
+        }
+      ]
+    },
+    {
+      "niche_key": "centroid_1",
+      "id": "0a26a3f20a3826e4",
+      "title": "Tapering Ladder with an Open Ledger",
+      "description": "Every funded hypothesis is published on a shared ledger with a pre-declared tapering ladder: a missed milestone triggers an automatic one-step budget cut, not a committee debate. Researchers in neighboring teams read each other's ledger entries because they draw on the same scarce pool. When a stalled project is stepped down, its sponsor can no longer double down on sunk costs before the next gate, and the freed money goes to a less prestigious but fast-moving idea. Teams learn that filing an honest early kill-report costs less than being cut, so they file one.",
+      "operator": "isomorphism",
+      "source_domain": "institutional_economics",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Scarce stage-gate budgets make peers read each other's ledger entries, and a pre-declared tapering ladder turns that reading into automatic funding step-downs that prevent sunk-cost escalation inside the review window, so honest early kill-reports become routine and a varied, fast-cycling portfolio survives.",
+        "causal_structure": [
+          {
+            "cause": "Funding scarcity surge at stage gates",
+            "relation": "enables",
+            "effect": "Peer-team ledger reading"
+          },
+          {
+            "cause": "Funding scarcity surge at stage gates",
+            "relation": "enables",
+            "effect": "Urge to double down on sunk-cost projects"
+          },
+          {
+            "cause": "Pre-declared tapering ladder for stalled bets",
+            "relation": "enables",
+            "effect": "Executed funding step-down"
+          },
+          {
+            "cause": "Peer-team ledger reading",
+            "relation": "enables",
+            "effect": "Executed funding step-down"
+          },
+          {
+            "cause": "Executed funding step-down",
+            "relation": "prevents",
+            "effect": "Urge to double down on sunk-cost projects"
+          },
+          {
+            "cause": "Executed funding step-down",
+            "relation": "enables",
+            "effect": "Habit of honest early kill-reports"
+          },
+          {
+            "cause": "Habit of honest early kill-reports",
+            "relation": "enables",
+            "effect": "Sustained pool of fast-cycling, varied hypotheses"
+          },
+          {
+            "cause": "Peer-team ledger reading",
+            "relation": "enables",
+            "effect": "Sustained pool of fast-cycling, varied hypotheses"
+          },
+          {
+            "cause": "Peer-team ledger reading",
+            "relation": "decreases",
+            "effect": "Reporting overhead per milestone"
+          },
+          {
+            "cause": "Peer-team ledger reading",
+            "relation": "decreases",
+            "effect": "Prestige-weighted review"
+          },
+          {
+            "cause": "Pre-declared tapering ladder for stalled bets",
+            "relation": "prevents",
+            "effect": "Prestige-based budget exemptions"
+          },
+          {
+            "cause": "Sunk-cost attachment",
+            "relation": "increases",
+            "effect": "Urge to double down on sunk-cost projects"
+          }
+        ],
+        "affected_system": "Organization-wide research portfolio funding and governance process (hypothesis intake, review, staged funding allocation, and continuation/termination decision system)",
+        "payoff": "Sustained pool of fast-cycling, varied hypotheses"
+      },
+      "mechanism_fingerprint": "75c82c80779a4efd",
+      "wl_hash": "5da0c87aec9c9c1d0471a874a89bbceb",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "ostrom_graduated_sanction_commons",
+        "role_map": {
+          "harvest_pressure": "Funding scarcity surge at stage gates",
+          "monitoring_by_users": "Peer-team ledger reading",
+          "graduated_sanction_rule": "Pre-declared tapering ladder for stalled bets",
+          "sanction_application": "Executed funding step-down",
+          "defection_temptation": "Urge to double down on sunk-cost projects",
+          "compliance_norm": "Habit of honest early kill-reports",
+          "commons_persistence": "Sustained pool of fast-cycling, varied hypotheses"
+        }
+      },
+      "scores": {
+        "novelty": 0.6453218802269367,
+        "appropriateness": 0.68,
+        "utility": 0.5,
+        "surprise": 0.4,
+        "coherence": 0.72,
+        "mechanism_uniqueness": 0.8834050992703207
+      },
+      "niche": {
+        "intervention_level": "ecosystem",
+        "resource_intensity": "medium",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 4,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": []
+    },
+    {
+      "niche_key": "centroid_2",
+      "id": "5378924383641ff2",
+      "title": "Tripwire Freeze: Earned Funding Pauses with a Revision Period",
+      "description": "Every funded hypothesis carries a few pre-registered falsifier metrics. When a blind reviewer panel, shielded from the sponsor's identity, confirms that a pilot result contradicts them, the next funding tranche freezes automatically. The team gets a fixed-length revision period to rework the hypothesis, narrow it, or produce rescue evidence. Sponsor enthusiasm and sunk-cost pressure cannot push more money through during that period. At the end of the period, a pre-registered verdict either releases funds or winds the project down with salvage. Results go into a reusable archive, and the capital freed is recycled toward unusual ideas.",
+      "operator": "isomorphism",
+      "source_domain": "cell_biology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A confirmed contradicting result triggers an automatic funding freeze that blocks sunk-cost-driven tranche escalation during a bounded revision period, so only revised hypotheses that pass the pre-registered verdict continue and the rest are cleanly wound down.",
+        "causal_structure": [
+          {
+            "cause": "Contradicting pilot result against a pre-registered falsifier",
+            "relation": "enables",
+            "effect": "Blind tripwire audit panel"
+          },
+          {
+            "cause": "Blind tripwire audit panel",
+            "relation": "enables",
+            "effect": "Automatic funding freeze"
+          },
+          {
+            "cause": "Prestige-backed sponsor enthusiasm",
+            "relation": "enables",
+            "effect": "Tranche escalation momentum"
+          },
+          {
+            "cause": "Automatic funding freeze",
+            "relation": "prevents",
+            "effect": "Tranche escalation momentum"
+          },
+          {
+            "cause": "Automatic funding freeze",
+            "relation": "enables",
+            "effect": "Bounded cooling-off revision period"
+          },
+          {
+            "cause": "Bounded cooling-off revision period",
+            "relation": "enables",
+            "effect": "Pre-registered termination verdict with salvage"
+          },
+          {
+            "cause": "Pre-registered termination verdict with salvage",
+            "relation": "enables",
+            "effect": "Portfolio health: freed capital and surviving unusual ideas"
+          },
+          {
+            "cause": "Bounded cooling-off revision period",
+            "relation": "enables",
+            "effect": "Portfolio health: freed capital and surviving unusual ideas"
+          },
+          {
+            "cause": "Accumulated sunk cost",
+            "relation": "increases",
+            "effect": "Tranche escalation momentum"
+          },
+          {
+            "cause": "Blind tripwire audit panel",
+            "relation": "decreases",
+            "effect": "Prestige bias in review"
+          },
+          {
+            "cause": "Pre-registered termination verdict with salvage",
+            "relation": "enables",
+            "effect": "Reusable negative-result archive"
+          },
+          {
+            "cause": "Reusable negative-result archive",
+            "relation": "enables",
+            "effect": "Portfolio health: freed capital and surviving unusual ideas"
+          }
+        ],
+        "affected_system": "Organization-wide research portfolio funding and governance process (hypothesis intake, review, staged funding allocation, and continuation/termination decision system)",
+        "payoff": "Portfolio health: freed capital and surviving unusual ideas"
+      },
+      "mechanism_fingerprint": "8fc46662b75e69ac",
+      "wl_hash": "b5fb89b2ec115920e5ec1e2a85f23a35",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "p53_damage_checkpoint_arrest",
+        "role_map": {
+          "genotoxic_lesion": "Contradicting pilot result against a pre-registered falsifier",
+          "growth_mitogen": "Prestige-backed sponsor enthusiasm",
+          "sensor_kinase": "Blind tripwire audit panel",
+          "checkpoint_effector": "Automatic funding freeze",
+          "division_drive": "Tranche escalation momentum",
+          "repair_window": "Bounded cooling-off revision period",
+          "apoptotic_commitment": "Pre-registered termination verdict with salvage",
+          "tissue_integrity": "Portfolio health: freed capital and surviving unusual ideas"
+        }
+      },
+      "scores": {
+        "novelty": 0.6519533687823842,
+        "appropriateness": 0.78,
+        "utility": 0.55,
+        "surprise": 0.35,
+        "coherence": 0.82,
+        "mechanism_uniqueness": 0.8787562704997106
+      },
+      "niche": {
+        "intervention_level": "organization",
+        "resource_intensity": "medium",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 6,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 4
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": []
+    },
+    {
+      "niche_key": "centroid_3",
+      "id": "480fedd79d2fe9b0",
+      "title": "Tripwire Sweeps for a Self-Pruning Research Portfolio",
+      "description": "Every funded project accrues sunk spend, and once a project's spend crosses a visible tripwire, a sweep of short stop-or-continue reviews fires across all projects near that level, scored blind to team prestige. Teams know that crossing the tripwire means a fast, scheduled, low-paperwork defense. Projects that fail are closed, and their freed funds and short lessons go straight back into the intake pool, so oddball proposals get seed money. The payoff comes from zombie lock-in that never forms, because sweeps pre-empt it.",
+      "operator": "isomorphism",
+      "source_domain": "statistical_physics",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Rising sunk spend on live projects periodically trips a cap, which triggers a sweep of blind stop-or-continue reviews that prevents zombie lock-in and returns freed funds and lessons to intake, so the portfolio stays lean and keeps room for oddball bets.",
+        "causal_structure": [
+          {
+            "cause": "Fresh proposal intake",
+            "relation": "increases",
+            "effect": "Mounting sunk spend on live projects"
+          },
+          {
+            "cause": "Mounting sunk spend on live projects",
+            "relation": "enables",
+            "effect": "Zombie project lock-in"
+          },
+          {
+            "cause": "Mounting sunk spend on live projects",
+            "relation": "enables",
+            "effect": "Tripwire breach"
+          },
+          {
+            "cause": "Tripwire breach",
+            "relation": "enables",
+            "effect": "Sweeping stop-or-continue reviews"
+          },
+          {
+            "cause": "Sweeping stop-or-continue reviews",
+            "relation": "prevents",
+            "effect": "Zombie project lock-in"
+          },
+          {
+            "cause": "Sweeping stop-or-continue reviews",
+            "relation": "enables",
+            "effect": "Freed funds, lessons shared"
+          },
+          {
+            "cause": "Freed funds, lessons shared",
+            "relation": "enables",
+            "effect": "Self-pruning portfolio with oddball bets"
+          },
+          {
+            "cause": "Fresh proposal intake",
+            "relation": "enables",
+            "effect": "Self-pruning portfolio with oddball bets"
+          },
+          {
+            "cause": "Mounting sunk spend on live projects",
+            "relation": "increases",
+            "effect": "Reluctance to stop"
+          },
+          {
+            "cause": "Reluctance to stop",
+            "relation": "enables",
+            "effect": "Zombie project lock-in"
+          },
+          {
+            "cause": "Blind scoring of proposals",
+            "relation": "prevents",
+            "effect": "Prestige-favoring panels"
+          },
+          {
+            "cause": "Light one-page reports",
+            "relation": "decreases",
+            "effect": "Slow experiment cycles"
+          }
+        ],
+        "affected_system": "Organization-wide research portfolio funding and governance process (hypothesis intake, review, staged funding allocation, and continuation/termination decision system)",
+        "payoff": "Self-pruning portfolio with oddball bets"
+      },
+      "mechanism_fingerprint": "38bcd18acbbb158f",
+      "wl_hash": "005bec4ac4881c146ab1b57cc9180f4d",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "sandpile_toppling_criticality",
+        "role_map": {
+          "grain_drop": "Fresh proposal intake",
+          "slope_buildup": "Mounting sunk spend on live projects",
+          "threshold_exceedance": "Tripwire breach",
+          "toppling_cascade": "Sweeping stop-or-continue reviews",
+          "runaway_slope": "Zombie project lock-in",
+          "dissipation_at_boundary": "Freed funds, lessons shared",
+          "critical_steady_state": "Self-pruning portfolio with oddball bets"
+        }
+      },
+      "scores": {
+        "novelty": 0.6542989903957057,
+        "appropriateness": 0.78,
+        "utility": 0.55,
+        "surprise": 0.4,
+        "coherence": 0.8,
+        "mechanism_uniqueness": 0.890625
+      },
+      "niche": {
+        "intervention_level": "organization",
+        "resource_intensity": "medium",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.0,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": []
+    },
+    {
+      "niche_key": "centroid_4",
+      "id": "129744b8c8e26559",
+      "title": "Pre-Committed Cheap-Kill Sweeps That Keep Escalation Gridlock From Forming",
+      "description": "Every proposal enters a fixed-size seed docket and is reviewed within weeks in a rapid, anonymous micro-review sweep: one-page, blind to the proposer's rank, with a pre-registered falsification test. Because most flawed ideas fail cheaply and early, the sweep ends them before money or reputation is sunk. The docket never clogs into a state where nobody can stop a project, and only proposals that survive repeated sweeps graduate to a larger tranche, with minimal reporting attached. Researchers see quick, low-stakes verdicts, and unusual ideas get a blind first read instead of a status-weighted one.",
+      "operator": "isomorphism",
+      "source_domain": "runtime_memory_management",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Frequent blind, cheap micro-reviews triggered by seed-docket crowding actively prevent sunk-cost escalation gridlock, so only vetted proposals graduate to larger tranches and results keep flowing.",
+        "causal_structure": [
+          {
+            "cause": "Continuous proposal intake flow",
+            "relation": "enables",
+            "effect": "Seed-stage docket crowding"
+          },
+          {
+            "cause": "Seed-stage docket crowding",
+            "relation": "enables",
+            "effect": "Sunk-cost escalation gridlock"
+          },
+          {
+            "cause": "Cheap-early-falsification regularity",
+            "relation": "enables",
+            "effect": "Rapid anonymous micro-review sweep"
+          },
+          {
+            "cause": "Seed-stage docket crowding",
+            "relation": "enables",
+            "effect": "Rapid anonymous micro-review sweep"
+          },
+          {
+            "cause": "Rapid anonymous micro-review sweep",
+            "relation": "prevents",
+            "effect": "Sunk-cost escalation gridlock"
+          },
+          {
+            "cause": "Rapid anonymous micro-review sweep",
+            "relation": "enables",
+            "effect": "Graduation of vetted proposals into larger funding tranche"
+          },
+          {
+            "cause": "Graduation of vetted proposals into larger funding tranche",
+            "relation": "enables",
+            "effect": "Sustained validated-result delivery"
+          },
+          {
+            "cause": "Continuous proposal intake flow",
+            "relation": "enables",
+            "effect": "Sustained validated-result delivery"
+          },
+          {
+            "cause": "Sunk-cost escalation gridlock",
+            "relation": "increases",
+            "effect": "Reporting burden per project"
+          },
+          {
+            "cause": "Reporting burden per project",
+            "relation": "decreases",
+            "effect": "Sustained validated-result delivery"
+          },
+          {
+            "cause": "Rapid anonymous micro-review sweep",
+            "relation": "decreases",
+            "effect": "Prestige-weighted reviewer deference"
+          },
+          {
+            "cause": "Prestige-weighted reviewer deference",
+            "relation": "decreases",
+            "effect": "Graduation of vetted proposals into larger funding tranche"
+          }
+        ],
+        "affected_system": "Organization-wide research portfolio funding and governance process (hypothesis intake, review, staged funding allocation, and continuation/termination decision system)",
+        "payoff": "Sustained validated-result delivery"
+      },
+      "mechanism_fingerprint": "ba3520df80af2b57",
+      "wl_hash": "c6c968b157c3dafbe21c44f75cbea600",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "generational_gc_reclaim_gate",
+        "role_map": {
+          "allocation_stream": "Continuous proposal intake flow",
+          "weak_generational_hypothesis": "Cheap-early-falsification regularity",
+          "young_space_fill": "Seed-stage docket crowding",
+          "minor_collection": "Rapid anonymous micro-review sweep",
+          "heap_exhaustion_risk": "Sunk-cost escalation gridlock",
+          "survivor_promotion": "Graduation of vetted proposals into larger funding tranche",
+          "stable_throughput": "Sustained validated-result delivery"
+        }
+      },
+      "scores": {
+        "novelty": 0.6500352893343588,
+        "appropriateness": 0.72,
+        "utility": 0.45,
+        "surprise": 0.3,
+        "coherence": 0.78,
+        "mechanism_uniqueness": 0.8875932835820896
+      },
+      "niche": {
+        "intervention_level": "organization",
+        "resource_intensity": "low",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.333333,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "55 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_prestige_weighted_reviewer_deference",
+            "satisfy_seed_stage_docket_crowding",
+            "satisfy_rapid_anonymous_micro_review_sweep"
+          ]
+        }
+      ]
+    },
+    {
+      "niche_key": "centroid_5",
+      "id": "9974fd3ed5bff94b",
+      "title": "Displacement-Pegged Staged Grants with Sealed Confidence Stamps",
+      "description": "Each researcher files a short, author-blind proposal with a sealed confidence stamp (their probability of success) and a staged ask. Reviewers fill the funded slots by ranking stamped expected value. Each funded team's stage grant is sized by the strongest displaced proposal's claim, not by its own stamp. So hedging to look safe or inflating to look bold gains nothing, and teams state what they actually believe. Because the stamps are candid, they also double as pre-registered kill thresholds at later stage gates.",
+      "operator": "isomorphism",
+      "source_domain": "auction_mechanism_design",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Sizing each stage grant by the displaced runner-up's claim, rather than the proposer's own, removes any payoff from hedging or hyping confidence, so candid private beliefs become the dominant strategy.",
+        "causal_structure": [
+          {
+            "cause": "Proposer's candid confidence in own hypothesis",
+            "relation": "enables",
+            "effect": "Sealed author-blind confidence-stamped filing"
+          },
+          {
+            "cause": "Sealed author-blind confidence-stamped filing",
+            "relation": "enables",
+            "effect": "Pull toward hedged or hyped confidence claims"
+          },
+          {
+            "cause": "Sealed author-blind confidence-stamped filing",
+            "relation": "enables",
+            "effect": "Portfolio slot allocation by stamped expected value"
+          },
+          {
+            "cause": "Runner-up-pegged grant formula",
+            "relation": "enables",
+            "effect": "Displacement-cost stage grant sizing"
+          },
+          {
+            "cause": "Portfolio slot allocation by stamped expected value",
+            "relation": "enables",
+            "effect": "Displacement-cost stage grant sizing"
+          },
+          {
+            "cause": "Displacement-cost stage grant sizing",
+            "relation": "prevents",
+            "effect": "Pull toward hedged or hyped confidence claims"
+          },
+          {
+            "cause": "Displacement-cost stage grant sizing",
+            "relation": "enables",
+            "effect": "Candid confidence disclosure across the portfolio"
+          },
+          {
+            "cause": "Proposer's candid confidence in own hypothesis",
+            "relation": "enables",
+            "effect": "Candid confidence disclosure across the portfolio"
+          },
+          {
+            "cause": "Candid confidence disclosure across the portfolio",
+            "relation": "decreases",
+            "effect": "Sunk-cost escalation at continuation gates"
+          },
+          {
+            "cause": "Displacement-cost stage grant sizing",
+            "relation": "decreases",
+            "effect": "Milestone-justification reporting overhead"
+          },
+          {
+            "cause": "Sealed author-blind confidence-stamped filing",
+            "relation": "decreases",
+            "effect": "Prestige halo in review"
+          },
+          {
+            "cause": "Prestige halo in review",
+            "relation": "decreases",
+            "effect": "Survival of unusual hypotheses"
+          }
+        ],
+        "affected_system": "Organization-wide research portfolio funding and governance process (hypothesis intake, review, staged funding allocation, and continuation/termination decision system)",
+        "payoff": "Candid confidence disclosure across the portfolio"
+      },
+      "mechanism_fingerprint": "12e5c44343242bb0",
+      "wl_hash": "385551ad38b73922a1a8b20a636e3cb4",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "vickrey_second_price_truth",
+        "role_map": {
+          "private_valuation": "Proposer's candid confidence in own hypothesis",
+          "second_price_rule": "Runner-up-pegged grant formula",
+          "bid_submission": "Sealed author-blind confidence-stamped filing",
+          "winner_selection": "Portfolio slot allocation by stamped expected value",
+          "bid_shading_incentive": "Pull toward hedged or hyped confidence claims",
+          "price_determination": "Displacement-cost stage grant sizing",
+          "truthful_revelation": "Candid confidence disclosure across the portfolio"
+        }
+      },
+      "scores": {
+        "novelty": 0.6615436173931218,
+        "appropriateness": 0.7,
+        "utility": 0.62,
+        "surprise": 0.63,
+        "coherence": 0.55,
+        "mechanism_uniqueness": 0.8975198412698413
+      },
+      "niche": {
+        "intervention_level": "organization",
+        "resource_intensity": "medium",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": []
+    },
+    {
+      "niche_key": "centroid_6",
+      "id": "1481595121cc4df9",
+      "title": "Reserve Lottery Portfolio: Sealed Quiet Tier That Shields Unusual Hypotheses from the Burn-Rate Cull",
+      "description": "Each cycle, a blind lottery that ignores author prestige moves a small share of incoming hypotheses into a quiet reserve. Reserve teams get a small stipend and file no status reports, so they stay invisible to the annual budget-contraction review. Projects that scale up fast and file heavy reports are culled by burn rate. After the cull, freed budget is released in staged funding waves to reserve hypotheses that show early evidence, and the successful ones become durable programs whose findings other teams reuse.",
+      "operator": "isomorphism",
+      "source_domain": "microbiology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A prestige-blind lottery seals a random slice of hypotheses into a report-free, low-burn reserve that cannot be hit by the burn-rate-triggered cull during the contraction review, so after the cull those unusual survivors are the ones funded in staged release and grown into durable programs.",
+        "causal_structure": [
+          {
+            "cause": "Blind Lottery Draw into Reserve Tier",
+            "relation": "enables",
+            "effect": "Quiet-Reserve Hypotheses (Stipend-Only, Report-Free)"
+          },
+          {
+            "cause": "Annual Budget-Contraction Review Round",
+            "relation": "enables",
+            "effect": "Burn-Rate-Triggered Cull of Visible Projects"
+          },
+          {
+            "cause": "Rapid Scale-Up with Heavy Status Reporting",
+            "relation": "enables",
+            "effect": "Burn-Rate-Triggered Cull of Visible Projects"
+          },
+          {
+            "cause": "Quiet-Reserve Hypotheses (Stipend-Only, Report-Free)",
+            "relation": "prevents",
+            "effect": "Burn-Rate-Triggered Cull of Visible Projects"
+          },
+          {
+            "cause": "Quiet-Reserve Hypotheses (Stipend-Only, Report-Free)",
+            "relation": "enables",
+            "effect": "Reserve Release into Staged Funding Wave"
+          },
+          {
+            "cause": "Annual Budget-Contraction Review Round",
+            "relation": "enables",
+            "effect": "Reserve Release into Staged Funding Wave"
+          },
+          {
+            "cause": "Reserve Release into Staged Funding Wave",
+            "relation": "enables",
+            "effect": "Durable Research Program Producing Reused Findings"
+          },
+          {
+            "cause": "Blind Lottery Draw into Reserve Tier",
+            "relation": "decreases",
+            "effect": "Prestige Bias in Review"
+          },
+          {
+            "cause": "Rapid Scale-Up with Heavy Status Reporting",
+            "relation": "increases",
+            "effect": "Sunk-Cost Escalation Pressure"
+          },
+          {
+            "cause": "Quiet-Reserve Hypotheses (Stipend-Only, Report-Free)",
+            "relation": "decreases",
+            "effect": "Reporting Overhead Drag"
+          },
+          {
+            "cause": "Reporting Overhead Drag",
+            "relation": "decreases",
+            "effect": "Experiment Speed"
+          }
+        ],
+        "affected_system": "Organization-wide research portfolio funding and governance process (hypothesis intake, review, staged funding allocation, and continuation/termination decision system)",
+        "payoff": "Durable Research Program Producing Reused Findings"
+      },
+      "mechanism_fingerprint": "9adf9cb0547263c5",
+      "wl_hash": "753e9344dc1a16d912e70b789b404a57",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "persister_bet_hedge_survival",
+        "role_map": {
+          "stochastic_switch": "Blind Lottery Draw into Reserve Tier",
+          "antibiotic_exposure": "Annual Budget-Contraction Review Round",
+          "dormant_subpopulation": "Quiet-Reserve Hypotheses (Stipend-Only, Report-Free)",
+          "growth_dependent_killing": "Burn-Rate-Triggered Cull of Visible Projects",
+          "active_division": "Rapid Scale-Up with Heavy Status Reporting",
+          "post_exposure_regrowth": "Reserve Release into Staged Funding Wave",
+          "lineage_survival": "Durable Research Program Producing Reused Findings"
+        }
+      },
+      "scores": {
+        "novelty": 0.6508667625006443,
+        "appropriateness": 0.6,
+        "utility": 0.45,
+        "surprise": 0.5,
+        "coherence": 0.5,
+        "mechanism_uniqueness": 0.8875
+      },
+      "niche": {
+        "intervention_level": "ecosystem",
+        "resource_intensity": "low",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 3,
+        "branching_factor": 1.0,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": []
+    },
+    {
+      "niche_key": "centroid_7",
+      "id": "cb5b1b961bde7978",
+      "title": "Earned Step-Down Gates",
+      "description": "Every funded hypothesis climbs a staged ladder of tranches, and each gate reads out evidence on a fixed cadence. A disconfirming result, combined with the ladder having reached that gate, automatically cuts the project's funding by half. No committee has to argue the case, and the team has no sunk-cost story to defend. The freed budget is re-pooled into unusual, low-prestige ideas, so the portfolio stays diverse because the lock-in spiral is never allowed to form.",
+      "operator": "isomorphism",
+      "source_domain": "network_congestion_control",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Because a disconfirming result automatically triggers a half-funding step-down at the gate, the sunk-cost lock-in spiral never forms, and the budget it would have absorbed is re-pooled into unusual ideas, which yields a diverse surviving portfolio.",
+        "causal_structure": [
+          {
+            "cause": "Stage-Gate Evidence Cadence",
+            "relation": "increases",
+            "effect": "Funding Ramp-Up"
+          },
+          {
+            "cause": "Funding Ramp-Up",
+            "relation": "enables",
+            "effect": "Sunk-Cost Lock-In Spiral"
+          },
+          {
+            "cause": "Disconfirming Result Report",
+            "relation": "enables",
+            "effect": "Automatic Half-Funding Step-Down"
+          },
+          {
+            "cause": "Funding Ramp-Up",
+            "relation": "enables",
+            "effect": "Automatic Half-Funding Step-Down"
+          },
+          {
+            "cause": "Automatic Half-Funding Step-Down",
+            "relation": "prevents",
+            "effect": "Sunk-Cost Lock-In Spiral"
+          },
+          {
+            "cause": "Automatic Half-Funding Step-Down",
+            "relation": "enables",
+            "effect": "Freed Budget Re-Pooling to Unusual Ideas"
+          },
+          {
+            "cause": "Funding Ramp-Up",
+            "relation": "enables",
+            "effect": "Freed Budget Re-Pooling to Unusual Ideas"
+          },
+          {
+            "cause": "Freed Budget Re-Pooling to Unusual Ideas",
+            "relation": "enables",
+            "effect": "Diverse Surviving Portfolio"
+          },
+          {
+            "cause": "Prestige Halo Bias",
+            "relation": "increases",
+            "effect": "Sunk-Cost Lock-In Spiral"
+          },
+          {
+            "cause": "Blinded Idea Review",
+            "relation": "prevents",
+            "effect": "Prestige Halo Bias"
+          },
+          {
+            "cause": "Reporting Overhead",
+            "relation": "decreases",
+            "effect": "Funding Ramp-Up"
+          },
+          {
+            "cause": "Lightweight Gate Template",
+            "relation": "decreases",
+            "effect": "Reporting Overhead"
+          }
+        ],
+        "affected_system": "Organization-wide research portfolio funding and governance process (hypothesis intake, review, staged funding allocation, and continuation/termination decision system)",
+        "payoff": "Diverse Surviving Portfolio"
+      },
+      "mechanism_fingerprint": "33686520c5ff437f",
+      "wl_hash": "1f345889604d6baba73781e3c23d665e",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "aimd_loss_backoff_fairness",
+        "role_map": {
+          "ack_clock": "Stage-Gate Evidence Cadence",
+          "send_rate_growth": "Funding Ramp-Up",
+          "loss_event": "Disconfirming Result Report",
+          "window_halving": "Automatic Half-Funding Step-Down",
+          "queue_overflow_risk": "Sunk-Cost Lock-In Spiral",
+          "flow_share_equalisation": "Freed Budget Re-Pooling to Unusual Ideas",
+          "fair_equilibrium": "Diverse Surviving Portfolio"
+        }
+      },
+      "scores": {
+        "novelty": 0.6405805287859843,
+        "appropriateness": 0.62,
+        "utility": 0.4,
+        "surprise": 0.3,
+        "coherence": 0.55,
+        "mechanism_uniqueness": 0.875
+      },
+      "niche": {
+        "intervention_level": "organization",
+        "resource_intensity": "medium",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 3
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": []
+    }
+  ],
+  "admitted": [
+    {
+      "niche_key": "centroid_0",
+      "id": "e017ca0b431e007a",
+      "title": "Expiring Seed Grants with Rapid Sunset Sweeps",
+      "description": "Every proposal enters a rolling intake and receives a small, fixed-size seed grant that expires automatically after a short window, with only a one-page pre-registered result note required. A frequent sunset sweep closes every seed that missed its pre-declared signal, with no appeals or defense meetings, so the seed-tier queue never swells into a backlog that forces reviewers to rely on reputation. Researchers whose ideas clear the evidence gate advance to larger tiers, while expired seeds leave no sunk-cost claim, which keeps experiment velocity high.",
+      "operator": "isomorphism",
+      "source_domain": "runtime_memory_management",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A frequent, automatic, low-ceremony sunset sweep prevents the seed-tier queue from overloading reviewers (and from accumulating sunk-cost claims), so only evidence-qualified ideas advance and experiment velocity stays high.",
+        "causal_structure": [
+          {
+            "cause": "Rolling proposal intake",
+            "relation": "enables",
+            "effect": "Seed-tier queue load"
+          },
+          {
+            "cause": "Seed-tier queue load",
+            "relation": "enables",
+            "effect": "Review-capacity overload"
+          },
+          {
+            "cause": "Early-failure base rate: most ideas die fast",
+            "relation": "enables",
+            "effect": "Rapid sunset sweep"
+          },
+          {
+            "cause": "Seed-tier queue load",
+            "relation": "enables",
+            "effect": "Rapid sunset sweep"
+          },
+          {
+            "cause": "Rapid sunset sweep",
+            "relation": "prevents",
+            "effect": "Review-capacity overload"
+          },
+          {
+            "cause": "Rapid sunset sweep",
+            "relation": "enables",
+            "effect": "Evidence-gated tier advancement"
+          },
+          {
+            "cause": "Evidence-gated tier advancement",
+            "relation": "enables",
+            "effect": "Sustained experiment velocity"
+          },
+          {
+            "cause": "Rolling proposal intake",
+            "relation": "enables",
+            "effect": "Sustained experiment velocity"
+          },
+          {
+            "cause": "Review-capacity overload",
+            "relation": "increases",
+            "effect": "Prestige-based shortcut judging"
+          },
+          {
+            "cause": "Prestige-based shortcut judging",
+            "relation": "decreases",
+            "effect": "Evidence-gated tier advancement"
+          },
+          {
+            "cause": "Rapid sunset sweep",
+            "relation": "decreases",
+            "effect": "Sunk-cost escalation"
+          },
+          {
+            "cause": "Sunk-cost escalation",
+            "relation": "decreases",
+            "effect": "Sustained experiment velocity"
+          }
+        ],
+        "affected_system": "Organization-wide research portfolio funding and governance process (hypothesis intake, review, staged funding allocation, and continuation/termination decision system)",
+        "payoff": "Sustained experiment velocity"
+      },
+      "mechanism_fingerprint": "da1f5b96db6545f3",
+      "wl_hash": "eab4928b1d46f3839da2e1f1fbc15b19",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "generational_gc_reclaim_gate",
+        "role_map": {
+          "allocation_stream": "Rolling proposal intake",
+          "weak_generational_hypothesis": "Early-failure base rate: most ideas die fast",
+          "young_space_fill": "Seed-tier queue load",
+          "minor_collection": "Rapid sunset sweep",
+          "heap_exhaustion_risk": "Review-capacity overload",
+          "survivor_promotion": "Evidence-gated tier advancement",
+          "stable_throughput": "Sustained experiment velocity"
+        }
+      },
+      "scores": {
+        "novelty": 0.6587808917074057,
+        "appropriateness": 0.82,
+        "utility": 0.55,
+        "surprise": 0.4,
+        "coherence": 0.85,
+        "mechanism_uniqueness": 0.8919642857142858
+      },
+      "niche": {
+        "intervention_level": "ecosystem",
+        "resource_intensity": "low",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 6,
+        "branching_factor": 1.333333,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "54 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_sunk_cost_escalation",
+            "satisfy_seed_tier_queue_load",
+            "satisfy_rapid_sunset_sweep",
+            "satisfy_evidence_gated_tier_advancement"
+          ]
+        }
+      ],
+      "is_niche_elite": true
+    },
+    {
+      "niche_key": "centroid_1",
+      "id": "341bb797c0335ea2",
+      "title": "Tapering Tranche Ladder with Peer Replication Checks",
+      "description": "Every funded hypothesis gets a pre-announced ladder of shrinking tranches. When the quarterly budget squeeze hits, rotating peers from other teams run short, blind-scored replication checks on stalled projects, and the check results trigger the next step down on the ladder automatically, whatever the PI's prestige. Because stopping early is routine and carries no stigma, teams no longer double down on sunk costs, and the freed budget and reusable negative results keep room open for odd, low-prestige ideas.",
+      "operator": "isomorphism",
+      "source_domain": "institutional_economics",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Pre-committed stepwise funding tapers, triggered by peer replication checks inside the budget-squeeze window, keep sunk-cost escalation from happening, so early stopping becomes a shared habit and exploratory capacity lasts.",
+        "causal_structure": [
+          {
+            "cause": "Quarterly budget scarcity squeeze",
+            "relation": "enables",
+            "effect": "Cross-team milestone replication checks"
+          },
+          {
+            "cause": "Quarterly budget scarcity squeeze",
+            "relation": "enables",
+            "effect": "Sunk-cost doubling-down urge"
+          },
+          {
+            "cause": "Stepped funding-taper ladder",
+            "relation": "enables",
+            "effect": "Tranche step-down cut on stalled projects"
+          },
+          {
+            "cause": "Cross-team milestone replication checks",
+            "relation": "enables",
+            "effect": "Tranche step-down cut on stalled projects"
+          },
+          {
+            "cause": "Tranche step-down cut on stalled projects",
+            "relation": "prevents",
+            "effect": "Sunk-cost doubling-down urge"
+          },
+          {
+            "cause": "Tranche step-down cut on stalled projects",
+            "relation": "enables",
+            "effect": "Culture of clean early stopping"
+          },
+          {
+            "cause": "Culture of clean early stopping",
+            "relation": "enables",
+            "effect": "Sustained exploratory capacity"
+          },
+          {
+            "cause": "Cross-team milestone replication checks",
+            "relation": "enables",
+            "effect": "Sustained exploratory capacity"
+          },
+          {
+            "cause": "Stepped funding-taper ladder",
+            "relation": "decreases",
+            "effect": "Status-report overhead per project"
+          },
+          {
+            "cause": "Status-report overhead per project",
+            "relation": "decreases",
+            "effect": "Experiment cycle speed"
+          },
+          {
+            "cause": "Cross-team milestone replication checks",
+            "relation": "prevents",
+            "effect": "Prestige bias in continuation votes"
+          },
+          {
+            "cause": "Prestige bias in continuation votes",
+            "relation": "decreases",
+            "effect": "Sustained exploratory capacity"
+          }
+        ],
+        "affected_system": "Organization-wide research portfolio funding and governance process (hypothesis intake, review, staged funding allocation, and continuation/termination decision system)",
+        "payoff": "Sustained exploratory capacity"
+      },
+      "mechanism_fingerprint": "b203445d317f8aa3",
+      "wl_hash": "440661598e1f785ba3d1f6c592deb4b9",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "ostrom_graduated_sanction_commons",
+        "role_map": {
+          "harvest_pressure": "Quarterly budget scarcity squeeze",
+          "monitoring_by_users": "Cross-team milestone replication checks",
+          "graduated_sanction_rule": "Stepped funding-taper ladder",
+          "sanction_application": "Tranche step-down cut on stalled projects",
+          "defection_temptation": "Sunk-cost doubling-down urge",
+          "compliance_norm": "Culture of clean early stopping",
+          "commons_persistence": "Sustained exploratory capacity"
+        }
+      },
+      "scores": {
+        "novelty": 0.6432414733638492,
+        "appropriateness": 0.72,
+        "utility": 0.5,
+        "surprise": 0.4,
+        "coherence": 0.62,
+        "mechanism_uniqueness": 0.8768382352941176
+      },
+      "niche": {
+        "intervention_level": "ecosystem",
+        "resource_intensity": "medium",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 4,
+        "branching_factor": 1.2,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "23 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_prestige_bias_in_continuation_votes",
+            "satisfy_cross_team_milestone_replication_checks",
+            "satisfy_experiment_cycle_speed",
+            "satisfy_tranche_step_down_cut_on_stalled_projects",
+            "satisfy_culture_of_clean_early_stopping"
+          ]
+        }
+      ],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_2",
+      "id": "63cd456a09e17f8f",
+      "title": "Tranche Freeze Gate: Earned Pause Before Escalation",
+      "description": "When a funded hypothesis produces a disconfirming pilot signal, a blind red-flag desk logs it. This triggers a mandatory freeze on the next funding tranche, regardless of sponsor prestige or how much has already been spent. During a fixed rework grace period, the team can fix, pivot, or document the idea. At the end, it either resumes with evidence or enters a pre-registered wind-down that archives its findings for reuse, so that the portfolio keeps credible, diverse bets instead of escalating on sunk cost.",
+      "operator": "isomorphism",
+      "source_domain": "cell_biology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A blind, evidence-triggered funding freeze prevents automatic escalation during a bounded rework period, so that each hypothesis either earns continued funding or is wound down with its findings salvaged.",
+        "causal_structure": [
+          {
+            "cause": "Disconfirming Pilot Signal",
+            "relation": "enables",
+            "effect": "Anonymous Red-Flag Desk"
+          },
+          {
+            "cause": "Anonymous Red-Flag Desk",
+            "relation": "enables",
+            "effect": "Mandatory Tranche Freeze"
+          },
+          {
+            "cause": "Sponsor Prestige Hype",
+            "relation": "enables",
+            "effect": "Automatic Tranche Escalation"
+          },
+          {
+            "cause": "Mandatory Tranche Freeze",
+            "relation": "prevents",
+            "effect": "Automatic Tranche Escalation"
+          },
+          {
+            "cause": "Mandatory Tranche Freeze",
+            "relation": "enables",
+            "effect": "Rework Grace Period"
+          },
+          {
+            "cause": "Rework Grace Period",
+            "relation": "enables",
+            "effect": "Pre-Registered Wind-Down"
+          },
+          {
+            "cause": "Pre-Registered Wind-Down",
+            "relation": "enables",
+            "effect": "Healthy Diverse Portfolio with Salvaged Findings"
+          },
+          {
+            "cause": "Rework Grace Period",
+            "relation": "enables",
+            "effect": "Healthy Diverse Portfolio with Salvaged Findings"
+          },
+          {
+            "cause": "Sunk Cost Pressure",
+            "relation": "increases",
+            "effect": "Automatic Tranche Escalation"
+          },
+          {
+            "cause": "Mandatory Tranche Freeze",
+            "relation": "decreases",
+            "effect": "Sunk Cost Pressure"
+          },
+          {
+            "cause": "Sponsor Prestige Hype",
+            "relation": "decreases",
+            "effect": "Unusual Idea Survival"
+          },
+          {
+            "cause": "Pre-Registered Wind-Down",
+            "relation": "enables",
+            "effect": "Reusable Result Archive"
+          }
+        ],
+        "affected_system": "Organization-wide research portfolio funding and governance process (hypothesis intake, review, staged funding allocation, and continuation/termination decision system)",
+        "payoff": "Healthy Diverse Portfolio with Salvaged Findings"
+      },
+      "mechanism_fingerprint": "b0f536bb487209eb",
+      "wl_hash": "7734f44a485049d04773095fdb979f67",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "p53_damage_checkpoint_arrest",
+        "role_map": {
+          "genotoxic_lesion": "Disconfirming Pilot Signal",
+          "growth_mitogen": "Sponsor Prestige Hype",
+          "sensor_kinase": "Anonymous Red-Flag Desk",
+          "checkpoint_effector": "Mandatory Tranche Freeze",
+          "division_drive": "Automatic Tranche Escalation",
+          "repair_window": "Rework Grace Period",
+          "apoptotic_commitment": "Pre-Registered Wind-Down",
+          "tissue_integrity": "Healthy Diverse Portfolio with Salvaged Findings"
+        }
+      },
+      "scores": {
+        "novelty": 0.6519069318019741,
+        "appropriateness": 0.78,
+        "utility": 0.45,
+        "surprise": 0.35,
+        "coherence": 0.8,
+        "mechanism_uniqueness": 0.8835227272727273
+      },
+      "niche": {
+        "intervention_level": "organization",
+        "resource_intensity": "medium",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 4
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_3",
+      "id": "dc2eece846d7479a",
+      "title": "Pressure-Valve Portfolio Culls",
+      "description": "Every new proposal gets a small staged grant, and the sunk spend across funded projects is tracked as one visible running pile. When the pile passes a preset limit, a portfolio-wide culling sweep opens stop-or-continue reviews on all stale projects, so zombie lock-in is stopped before it forms. Teams experience periodic, predictable culls with a one-page note instead of constant reporting. Released funds and shared lessons flow straight into new bets, and blind first-round scoring keeps odd ideas from being dismissed on prestige.",
+      "operator": "isomorphism",
+      "source_domain": "statistical_physics",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Steady intake of proposals piles up sunk commitment until a preset limit triggers a portfolio-wide culling sweep, which prevents zombie-project lock-in and returns funds and lessons to the pool.",
+        "causal_structure": [
+          {
+            "cause": "weekly proposal intake",
+            "relation": "increases",
+            "effect": "sunk commitment load"
+          },
+          {
+            "cause": "sunk commitment load",
+            "relation": "enables",
+            "effect": "zombie-project lock-in"
+          },
+          {
+            "cause": "sunk commitment load",
+            "relation": "enables",
+            "effect": "spend-limit review trigger"
+          },
+          {
+            "cause": "spend-limit review trigger",
+            "relation": "enables",
+            "effect": "portfolio-wide culling sweep"
+          },
+          {
+            "cause": "portfolio-wide culling sweep",
+            "relation": "prevents",
+            "effect": "zombie-project lock-in"
+          },
+          {
+            "cause": "portfolio-wide culling sweep",
+            "relation": "enables",
+            "effect": "released funds and shared lessons"
+          },
+          {
+            "cause": "released funds and shared lessons",
+            "relation": "enables",
+            "effect": "lean, self-tuning flow of funded bets"
+          },
+          {
+            "cause": "weekly proposal intake",
+            "relation": "enables",
+            "effect": "lean, self-tuning flow of funded bets"
+          },
+          {
+            "cause": "blind first-round scoring",
+            "relation": "prevents",
+            "effect": "prestige-driven dismissal of odd ideas"
+          },
+          {
+            "cause": "prestige-driven dismissal of odd ideas",
+            "relation": "decreases",
+            "effect": "lean, self-tuning flow of funded bets"
+          },
+          {
+            "cause": "zombie-project lock-in",
+            "relation": "increases",
+            "effect": "reporting burden"
+          },
+          {
+            "cause": "reporting burden",
+            "relation": "decreases",
+            "effect": "experiment speed"
+          }
+        ],
+        "affected_system": "Organization-wide research portfolio funding and governance process (hypothesis intake, review, staged funding allocation, and continuation/termination decision system)",
+        "payoff": "lean, self-tuning flow of funded bets"
+      },
+      "mechanism_fingerprint": "8eb8d7b3a6566b45",
+      "wl_hash": "dca8596f7f64ffae8cfa6fd175fa90c6",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "sandpile_toppling_criticality",
+        "role_map": {
+          "grain_drop": "weekly proposal intake",
+          "slope_buildup": "sunk commitment load",
+          "threshold_exceedance": "spend-limit review trigger",
+          "toppling_cascade": "portfolio-wide culling sweep",
+          "runaway_slope": "zombie-project lock-in",
+          "dissipation_at_boundary": "released funds and shared lessons",
+          "critical_steady_state": "lean, self-tuning flow of funded bets"
+        }
+      },
+      "scores": {
+        "novelty": 0.649296897994537,
+        "appropriateness": 0.8,
+        "utility": 0.6,
+        "surprise": 0.5,
+        "coherence": 0.75,
+        "mechanism_uniqueness": 0.884562629399586
+      },
+      "niche": {
+        "intervention_level": "organization",
+        "resource_intensity": "medium",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 6,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_4",
+      "id": "9226fab444d2e165",
+      "title": "Cheap Tripwire Gates: Pruning Seed-Tier Proposals Before Sunk Cost Can Build",
+      "description": "Every proposal enters a seed tier with a small fixed budget and a one-page, anonymized template that carries pre-registered kill criteria. On a fast cadence, a rotating panel runs a lightweight gate that reads only the criteria and the first cheap result, so most ideas are retired within weeks, before anyone has spent enough to feel committed. Because the early gate removes weak proposals quickly, the main review panel is not swamped. It can give real attention to the few ideas that earn graduation into staged funding, and results from both survivors and retired ideas are logged for reuse.",
+      "operator": "isomorphism",
+      "source_domain": "runtime_memory_management",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A frequent, cheap, anonymized pruning gate, run against pre-registered kill criteria while seed-tier queues are still filling, prevents reviewer and budget overload and sunk-cost lock-in, so only evidence-backed ideas graduate and the organization sustains a steady yield of validated results.",
+        "causal_structure": [
+          {
+            "cause": "Continuous proposal inflow",
+            "relation": "enables",
+            "effect": "Seed-tier queue saturation"
+          },
+          {
+            "cause": "Seed-tier queue saturation",
+            "relation": "enables",
+            "effect": "Reviewer and budget overload"
+          },
+          {
+            "cause": "Early-failure base rate: most ideas die fast",
+            "relation": "enables",
+            "effect": "Frequent lightweight pruning gate"
+          },
+          {
+            "cause": "Seed-tier queue saturation",
+            "relation": "enables",
+            "effect": "Frequent lightweight pruning gate"
+          },
+          {
+            "cause": "Frequent lightweight pruning gate",
+            "relation": "prevents",
+            "effect": "Reviewer and budget overload"
+          },
+          {
+            "cause": "Frequent lightweight pruning gate",
+            "relation": "enables",
+            "effect": "Graduation into staged funding"
+          },
+          {
+            "cause": "Graduation into staged funding",
+            "relation": "enables",
+            "effect": "Sustained validated-discovery yield"
+          },
+          {
+            "cause": "Continuous proposal inflow",
+            "relation": "enables",
+            "effect": "Sustained validated-discovery yield"
+          },
+          {
+            "cause": "Pre-registered kill criteria",
+            "relation": "enables",
+            "effect": "Frequent lightweight pruning gate"
+          },
+          {
+            "cause": "Anonymized one-page review",
+            "relation": "decreases",
+            "effect": "Prestige bias"
+          },
+          {
+            "cause": "Prestige bias",
+            "relation": "prevents",
+            "effect": "Graduation into staged funding"
+          },
+          {
+            "cause": "Reviewer and budget overload",
+            "relation": "increases",
+            "effect": "Sunk-cost escalation"
+          }
+        ],
+        "affected_system": "Organization-wide research portfolio funding and governance process (hypothesis intake, review, staged funding allocation, and continuation/termination decision system)",
+        "payoff": "Sustained validated-discovery yield"
+      },
+      "mechanism_fingerprint": "4a482ba127ecd6e1",
+      "wl_hash": "da412b77af9d15c19fe7c92f161d94d1",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "generational_gc_reclaim_gate",
+        "role_map": {
+          "allocation_stream": "Continuous proposal inflow",
+          "weak_generational_hypothesis": "Early-failure base rate: most ideas die fast",
+          "young_space_fill": "Seed-tier queue saturation",
+          "minor_collection": "Frequent lightweight pruning gate",
+          "heap_exhaustion_risk": "Reviewer and budget overload",
+          "survivor_promotion": "Graduation into staged funding",
+          "stable_throughput": "Sustained validated-discovery yield"
+        }
+      },
+      "scores": {
+        "novelty": 0.6490893493211929,
+        "appropriateness": 0.82,
+        "utility": 0.55,
+        "surprise": 0.3,
+        "coherence": 0.88,
+        "mechanism_uniqueness": 0.8840981012658228
+      },
+      "niche": {
+        "intervention_level": "organization",
+        "resource_intensity": "low",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 4,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_5",
+      "id": "441163805bbe73df",
+      "title": "Tranche Ladder with Downstream Audits",
+      "description": "Every funded hypothesis gets small staged tranches, and competition for scarce tranche slots forces peer teams that depend on the results to run short milestone audits. When an audit shows a project stalled, a pre-announced ladder triggers a stepwise tranche cut instead of a negotiated rescue. Sponsors therefore feel the sunk-cost pull to keep funding a favorite but are kept from acting on it, and over time teams come to honor stop criteria they set in advance. The kept-from-happening piece is the escalation: stalled favorites never get topped up, so slots stay free for unusual bets.",
+      "operator": "isomorphism",
+      "source_domain": "institutional_economics",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Scarce-slot competition prompts downstream teams to audit milestones, and a pre-announced reduction ladder turns those audits into automatic tranche cuts that stop sunk-cost escalation before it takes hold, leaving the portfolio diverse.",
+        "causal_structure": [
+          {
+            "cause": "Scarce-slot competition for tranches",
+            "relation": "enables",
+            "effect": "Downstream-team milestone audits"
+          },
+          {
+            "cause": "Scarce-slot competition for tranches",
+            "relation": "enables",
+            "effect": "Sunk-cost escalation urge"
+          },
+          {
+            "cause": "Tiered tranche-reduction ladder",
+            "relation": "enables",
+            "effect": "Stepwise tranche cut on stalled projects"
+          },
+          {
+            "cause": "Downstream-team milestone audits",
+            "relation": "enables",
+            "effect": "Stepwise tranche cut on stalled projects"
+          },
+          {
+            "cause": "Stepwise tranche cut on stalled projects",
+            "relation": "prevents",
+            "effect": "Sunk-cost escalation urge"
+          },
+          {
+            "cause": "Stepwise tranche cut on stalled projects",
+            "relation": "enables",
+            "effect": "Shared habit of honoring pre-set stop criteria"
+          },
+          {
+            "cause": "Shared habit of honoring pre-set stop criteria",
+            "relation": "enables",
+            "effect": "Sustained pool of diverse live bets"
+          },
+          {
+            "cause": "Downstream-team milestone audits",
+            "relation": "enables",
+            "effect": "Sustained pool of diverse live bets"
+          },
+          {
+            "cause": "Light one-page audit template",
+            "relation": "decreases",
+            "effect": "Reporting overhead load"
+          },
+          {
+            "cause": "Reporting overhead load",
+            "relation": "decreases",
+            "effect": "Experiment speed"
+          },
+          {
+            "cause": "Downstream-team milestone audits",
+            "relation": "decreases",
+            "effect": "Prestige halo"
+          },
+          {
+            "cause": "Prestige halo",
+            "relation": "prevents",
+            "effect": "Unusual hypothesis survival"
+          }
+        ],
+        "affected_system": "Organization-wide research portfolio funding and governance process (hypothesis intake, review, staged funding allocation, and continuation/termination decision system)",
+        "payoff": "Sustained pool of diverse live bets"
+      },
+      "mechanism_fingerprint": "da10863f38caa5aa",
+      "wl_hash": "0e4945a1bff63b30c86796fd6def12a6",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "ostrom_graduated_sanction_commons",
+        "role_map": {
+          "harvest_pressure": "Scarce-slot competition for tranches",
+          "monitoring_by_users": "Downstream-team milestone audits",
+          "graduated_sanction_rule": "Tiered tranche-reduction ladder",
+          "sanction_application": "Stepwise tranche cut on stalled projects",
+          "defection_temptation": "Sunk-cost escalation urge",
+          "compliance_norm": "Shared habit of honoring pre-set stop criteria",
+          "commons_persistence": "Sustained pool of diverse live bets"
+        }
+      },
+      "scores": {
+        "novelty": 0.6467038607142177,
+        "appropriateness": 0.74,
+        "utility": 0.58,
+        "surprise": 0.45,
+        "coherence": 0.55,
+        "mechanism_uniqueness": 0.8875723938223938
+      },
+      "niche": {
+        "intervention_level": "organization",
+        "resource_intensity": "medium",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 4,
+        "branching_factor": 1.0,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_6",
+      "id": "1481595121cc4df9",
+      "title": "Reserve Lottery Portfolio: Sealed Quiet Tier That Shields Unusual Hypotheses from the Burn-Rate Cull",
+      "description": "Each cycle, a blind lottery that ignores author prestige moves a small share of incoming hypotheses into a quiet reserve. Reserve teams get a small stipend and file no status reports, so they stay invisible to the annual budget-contraction review. Projects that scale up fast and file heavy reports are culled by burn rate. After the cull, freed budget is released in staged funding waves to reserve hypotheses that show early evidence, and the successful ones become durable programs whose findings other teams reuse.",
+      "operator": "isomorphism",
+      "source_domain": "microbiology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A prestige-blind lottery seals a random slice of hypotheses into a report-free, low-burn reserve that cannot be hit by the burn-rate-triggered cull during the contraction review, so after the cull those unusual survivors are the ones funded in staged release and grown into durable programs.",
+        "causal_structure": [
+          {
+            "cause": "Blind Lottery Draw into Reserve Tier",
+            "relation": "enables",
+            "effect": "Quiet-Reserve Hypotheses (Stipend-Only, Report-Free)"
+          },
+          {
+            "cause": "Annual Budget-Contraction Review Round",
+            "relation": "enables",
+            "effect": "Burn-Rate-Triggered Cull of Visible Projects"
+          },
+          {
+            "cause": "Rapid Scale-Up with Heavy Status Reporting",
+            "relation": "enables",
+            "effect": "Burn-Rate-Triggered Cull of Visible Projects"
+          },
+          {
+            "cause": "Quiet-Reserve Hypotheses (Stipend-Only, Report-Free)",
+            "relation": "prevents",
+            "effect": "Burn-Rate-Triggered Cull of Visible Projects"
+          },
+          {
+            "cause": "Quiet-Reserve Hypotheses (Stipend-Only, Report-Free)",
+            "relation": "enables",
+            "effect": "Reserve Release into Staged Funding Wave"
+          },
+          {
+            "cause": "Annual Budget-Contraction Review Round",
+            "relation": "enables",
+            "effect": "Reserve Release into Staged Funding Wave"
+          },
+          {
+            "cause": "Reserve Release into Staged Funding Wave",
+            "relation": "enables",
+            "effect": "Durable Research Program Producing Reused Findings"
+          },
+          {
+            "cause": "Blind Lottery Draw into Reserve Tier",
+            "relation": "decreases",
+            "effect": "Prestige Bias in Review"
+          },
+          {
+            "cause": "Rapid Scale-Up with Heavy Status Reporting",
+            "relation": "increases",
+            "effect": "Sunk-Cost Escalation Pressure"
+          },
+          {
+            "cause": "Quiet-Reserve Hypotheses (Stipend-Only, Report-Free)",
+            "relation": "decreases",
+            "effect": "Reporting Overhead Drag"
+          },
+          {
+            "cause": "Reporting Overhead Drag",
+            "relation": "decreases",
+            "effect": "Experiment Speed"
+          }
+        ],
+        "affected_system": "Organization-wide research portfolio funding and governance process (hypothesis intake, review, staged funding allocation, and continuation/termination decision system)",
+        "payoff": "Durable Research Program Producing Reused Findings"
+      },
+      "mechanism_fingerprint": "9adf9cb0547263c5",
+      "wl_hash": "753e9344dc1a16d912e70b789b404a57",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "persister_bet_hedge_survival",
+        "role_map": {
+          "stochastic_switch": "Blind Lottery Draw into Reserve Tier",
+          "antibiotic_exposure": "Annual Budget-Contraction Review Round",
+          "dormant_subpopulation": "Quiet-Reserve Hypotheses (Stipend-Only, Report-Free)",
+          "growth_dependent_killing": "Burn-Rate-Triggered Cull of Visible Projects",
+          "active_division": "Rapid Scale-Up with Heavy Status Reporting",
+          "post_exposure_regrowth": "Reserve Release into Staged Funding Wave",
+          "lineage_survival": "Durable Research Program Producing Reused Findings"
+        }
+      },
+      "scores": {
+        "novelty": 0.6508667625006443,
+        "appropriateness": 0.6,
+        "utility": 0.45,
+        "surprise": 0.5,
+        "coherence": 0.5,
+        "mechanism_uniqueness": 0.8875
+      },
+      "niche": {
+        "intervention_level": "ecosystem",
+        "resource_intensity": "low",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 3,
+        "branching_factor": 1.0,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": true
+    },
+    {
+      "niche_key": "centroid_1",
+      "id": "0bf4162687d49912",
+      "title": "Tripwire Sunset Sweeps",
+      "description": "Every submitted hypothesis gets a small seed tranche, so the pile of live commitments grows steadily. When that pile trips a pre-set review trigger, a mandatory name-blind sweep closes the weakest active projects in one batch, whoever sponsors them. Researchers see their project closed on a predictable schedule rather than dragged on, and the freed funds and write-ups of results go back to an open pool for the next submissions. Because the sweep happens before commitments harden, sunk-cost lock-in never gets the chance to form.",
+      "operator": "isomorphism",
+      "source_domain": "statistical_physics",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Steady intake of cheap seed bets builds up commitments until a tripwire forces a blind batch of closures, and those closures prevent sunk-cost lock-in while recycling funds and findings into a self-tuning portfolio.",
+        "causal_structure": [
+          {
+            "cause": "new hypothesis submission",
+            "relation": "increases",
+            "effect": "swelling pile of live commitments"
+          },
+          {
+            "cause": "swelling pile of live commitments",
+            "relation": "enables",
+            "effect": "sunk-cost lock-in of zombie projects"
+          },
+          {
+            "cause": "swelling pile of live commitments",
+            "relation": "enables",
+            "effect": "review trigger tripped"
+          },
+          {
+            "cause": "review trigger tripped",
+            "relation": "enables",
+            "effect": "chain of sunset closures"
+          },
+          {
+            "cause": "chain of sunset closures",
+            "relation": "prevents",
+            "effect": "sunk-cost lock-in of zombie projects"
+          },
+          {
+            "cause": "chain of sunset closures",
+            "relation": "enables",
+            "effect": "freed funds and findings returned to open pool"
+          },
+          {
+            "cause": "freed funds and findings returned to open pool",
+            "relation": "enables",
+            "effect": "self-tuning, lean, diverse portfolio"
+          },
+          {
+            "cause": "new hypothesis submission",
+            "relation": "enables",
+            "effect": "self-tuning, lean, diverse portfolio"
+          },
+          {
+            "cause": "swelling pile of live commitments",
+            "relation": "increases",
+            "effect": "reporting burden"
+          },
+          {
+            "cause": "reporting burden",
+            "relation": "decreases",
+            "effect": "experiment speed"
+          },
+          {
+            "cause": "name-blind scoring",
+            "relation": "decreases",
+            "effect": "prestige bias"
+          },
+          {
+            "cause": "name-blind scoring",
+            "relation": "enables",
+            "effect": "chain of sunset closures"
+          }
+        ],
+        "affected_system": "Organization-wide research portfolio funding and governance process (hypothesis intake, review, staged funding allocation, and continuation/termination decision system)",
+        "payoff": "self-tuning, lean, diverse portfolio"
+      },
+      "mechanism_fingerprint": "f985b613e1cc6860",
+      "wl_hash": "3ca0ca30ea342757d2742e2e1a32be22",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "sandpile_toppling_criticality",
+        "role_map": {
+          "grain_drop": "new hypothesis submission",
+          "slope_buildup": "swelling pile of live commitments",
+          "threshold_exceedance": "review trigger tripped",
+          "toppling_cascade": "chain of sunset closures",
+          "runaway_slope": "sunk-cost lock-in of zombie projects",
+          "dissipation_at_boundary": "freed funds and findings returned to open pool",
+          "critical_steady_state": "self-tuning, lean, diverse portfolio"
+        }
+      },
+      "scores": {
+        "novelty": 0.6515857862409885,
+        "appropriateness": 0.68,
+        "utility": 0.42,
+        "surprise": 0.45,
+        "coherence": 0.6,
+        "mechanism_uniqueness": 0.8865812629399586
+      },
+      "niche": {
+        "intervention_level": "ecosystem",
+        "resource_intensity": "medium",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_7",
+      "id": "cb5b1b961bde7978",
+      "title": "Earned Step-Down Gates",
+      "description": "Every funded hypothesis climbs a staged ladder of tranches, and each gate reads out evidence on a fixed cadence. A disconfirming result, combined with the ladder having reached that gate, automatically cuts the project's funding by half. No committee has to argue the case, and the team has no sunk-cost story to defend. The freed budget is re-pooled into unusual, low-prestige ideas, so the portfolio stays diverse because the lock-in spiral is never allowed to form.",
+      "operator": "isomorphism",
+      "source_domain": "network_congestion_control",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Because a disconfirming result automatically triggers a half-funding step-down at the gate, the sunk-cost lock-in spiral never forms, and the budget it would have absorbed is re-pooled into unusual ideas, which yields a diverse surviving portfolio.",
+        "causal_structure": [
+          {
+            "cause": "Stage-Gate Evidence Cadence",
+            "relation": "increases",
+            "effect": "Funding Ramp-Up"
+          },
+          {
+            "cause": "Funding Ramp-Up",
+            "relation": "enables",
+            "effect": "Sunk-Cost Lock-In Spiral"
+          },
+          {
+            "cause": "Disconfirming Result Report",
+            "relation": "enables",
+            "effect": "Automatic Half-Funding Step-Down"
+          },
+          {
+            "cause": "Funding Ramp-Up",
+            "relation": "enables",
+            "effect": "Automatic Half-Funding Step-Down"
+          },
+          {
+            "cause": "Automatic Half-Funding Step-Down",
+            "relation": "prevents",
+            "effect": "Sunk-Cost Lock-In Spiral"
+          },
+          {
+            "cause": "Automatic Half-Funding Step-Down",
+            "relation": "enables",
+            "effect": "Freed Budget Re-Pooling to Unusual Ideas"
+          },
+          {
+            "cause": "Funding Ramp-Up",
+            "relation": "enables",
+            "effect": "Freed Budget Re-Pooling to Unusual Ideas"
+          },
+          {
+            "cause": "Freed Budget Re-Pooling to Unusual Ideas",
+            "relation": "enables",
+            "effect": "Diverse Surviving Portfolio"
+          },
+          {
+            "cause": "Prestige Halo Bias",
+            "relation": "increases",
+            "effect": "Sunk-Cost Lock-In Spiral"
+          },
+          {
+            "cause": "Blinded Idea Review",
+            "relation": "prevents",
+            "effect": "Prestige Halo Bias"
+          },
+          {
+            "cause": "Reporting Overhead",
+            "relation": "decreases",
+            "effect": "Funding Ramp-Up"
+          },
+          {
+            "cause": "Lightweight Gate Template",
+            "relation": "decreases",
+            "effect": "Reporting Overhead"
+          }
+        ],
+        "affected_system": "Organization-wide research portfolio funding and governance process (hypothesis intake, review, staged funding allocation, and continuation/termination decision system)",
+        "payoff": "Diverse Surviving Portfolio"
+      },
+      "mechanism_fingerprint": "33686520c5ff437f",
+      "wl_hash": "1f345889604d6baba73781e3c23d665e",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "aimd_loss_backoff_fairness",
+        "role_map": {
+          "ack_clock": "Stage-Gate Evidence Cadence",
+          "send_rate_growth": "Funding Ramp-Up",
+          "loss_event": "Disconfirming Result Report",
+          "window_halving": "Automatic Half-Funding Step-Down",
+          "queue_overflow_risk": "Sunk-Cost Lock-In Spiral",
+          "flow_share_equalisation": "Freed Budget Re-Pooling to Unusual Ideas",
+          "fair_equilibrium": "Diverse Surviving Portfolio"
+        }
+      },
+      "scores": {
+        "novelty": 0.6405805287859843,
+        "appropriateness": 0.62,
+        "utility": 0.4,
+        "surprise": 0.3,
+        "coherence": 0.55,
+        "mechanism_uniqueness": 0.875
+      },
+      "niche": {
+        "intervention_level": "organization",
+        "resource_intensity": "medium",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 3
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": true
+    },
+    {
+      "niche_key": "centroid_4",
+      "id": "5f23289b9ec40cd7",
+      "title": "Blind Seed Sweep with Pre-Committed Kill Rules",
+      "description": "Proposals arrive continuously and enter a seed-tier docket. Because most proposals show fatal flaws at the first inexpensive probes, a frequent anonymous sweep closes stale or failing seeds on pre-committed criteria, using one-page reports and with author prestige hidden. The sweep keeps the docket from overloading reviewers, so they never fall back on name-recognition shortcuts. Only ideas that pass get a staged funding tranche, and results are reused by the whole organization at low reporting cost.",
+      "operator": "isomorphism",
+      "source_domain": "runtime_memory_management",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A frequent, blind, rule-bound triage sweep prevents reviewer overload, which would otherwise force prestige shortcuts and sunk-cost escalation, so only vetted ideas graduate to staged funding.",
+        "causal_structure": [
+          {
+            "cause": "Steady inflow of pitch submissions",
+            "relation": "enables",
+            "effect": "Seed-tier docket crowding with unvetted proposals"
+          },
+          {
+            "cause": "Seed-tier docket crowding with unvetted proposals",
+            "relation": "enables",
+            "effect": "Reviewer bandwidth overload"
+          },
+          {
+            "cause": "Observed pattern that most proposals show fatal flaws at the first inexpensive probes",
+            "relation": "enables",
+            "effect": "Frequent anonymous triage sweep with pre-committed kill rules"
+          },
+          {
+            "cause": "Seed-tier docket crowding with unvetted proposals",
+            "relation": "enables",
+            "effect": "Frequent anonymous triage sweep with pre-committed kill rules"
+          },
+          {
+            "cause": "Frequent anonymous triage sweep with pre-committed kill rules",
+            "relation": "prevents",
+            "effect": "Reviewer bandwidth overload"
+          },
+          {
+            "cause": "Frequent anonymous triage sweep with pre-committed kill rules",
+            "relation": "enables",
+            "effect": "Graduation of vetted ideas into a staged funding tranche"
+          },
+          {
+            "cause": "Graduation of vetted ideas into a staged funding tranche",
+            "relation": "enables",
+            "effect": "Sustained yield of validated, reusable findings"
+          },
+          {
+            "cause": "Steady inflow of pitch submissions",
+            "relation": "enables",
+            "effect": "Sustained yield of validated, reusable findings"
+          },
+          {
+            "cause": "Reviewer bandwidth overload",
+            "relation": "increases",
+            "effect": "Prestige-weighted shortcut reviews"
+          },
+          {
+            "cause": "Prestige-weighted shortcut reviews",
+            "relation": "prevents",
+            "effect": "Survival of unusual ideas"
+          },
+          {
+            "cause": "Frequent anonymous triage sweep with pre-committed kill rules",
+            "relation": "decreases",
+            "effect": "Sunk-cost escalation"
+          },
+          {
+            "cause": "Sunk-cost escalation",
+            "relation": "decreases",
+            "effect": "Sustained yield of validated, reusable findings"
+          }
+        ],
+        "affected_system": "Organization-wide research portfolio funding and governance process (hypothesis intake, review, staged funding allocation, and continuation/termination decision system)",
+        "payoff": "Sustained yield of validated, reusable findings"
+      },
+      "mechanism_fingerprint": "c46dcd091e72492f",
+      "wl_hash": "dd566f7ed6a9dd4085ee474a7353976b",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "generational_gc_reclaim_gate",
+        "role_map": {
+          "allocation_stream": "Steady inflow of pitch submissions",
+          "weak_generational_hypothesis": "Observed pattern that most proposals show fatal flaws at the first inexpensive probes",
+          "young_space_fill": "Seed-tier docket crowding with unvetted proposals",
+          "minor_collection": "Frequent anonymous triage sweep with pre-committed kill rules",
+          "heap_exhaustion_risk": "Reviewer bandwidth overload",
+          "survivor_promotion": "Graduation of vetted ideas into a staged funding tranche",
+          "stable_throughput": "Sustained yield of validated, reusable findings"
+        }
+      },
+      "scores": {
+        "novelty": 0.6508907585766381,
+        "appropriateness": 0.82,
+        "utility": 0.45,
+        "surprise": 0.37,
+        "coherence": 0.84,
+        "mechanism_uniqueness": 0.881737012987013
+      },
+      "niche": {
+        "intervention_level": "organization",
+        "resource_intensity": "low",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.2,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "50 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_survival_of_unusual_ideas",
+            "satisfy_sunk_cost_escalation",
+            "satisfy_seed_tier_docket_crowding_with_unvetted_proposals",
+            "satisfy_frequent_anonymous_triage_sweep_with_pre_committed_kill_rules",
+            "satisfy_graduation_of_vetted_ideas_into_a_staged_funding_tranche"
+          ]
+        }
+      ],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_3",
+      "id": "480fedd79d2fe9b0",
+      "title": "Tripwire Sweeps for a Self-Pruning Research Portfolio",
+      "description": "Every funded project accrues sunk spend, and once a project's spend crosses a visible tripwire, a sweep of short stop-or-continue reviews fires across all projects near that level, scored blind to team prestige. Teams know that crossing the tripwire means a fast, scheduled, low-paperwork defense. Projects that fail are closed, and their freed funds and short lessons go straight back into the intake pool, so oddball proposals get seed money. The payoff comes from zombie lock-in that never forms, because sweeps pre-empt it.",
+      "operator": "isomorphism",
+      "source_domain": "statistical_physics",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Rising sunk spend on live projects periodically trips a cap, which triggers a sweep of blind stop-or-continue reviews that prevents zombie lock-in and returns freed funds and lessons to intake, so the portfolio stays lean and keeps room for oddball bets.",
+        "causal_structure": [
+          {
+            "cause": "Fresh proposal intake",
+            "relation": "increases",
+            "effect": "Mounting sunk spend on live projects"
+          },
+          {
+            "cause": "Mounting sunk spend on live projects",
+            "relation": "enables",
+            "effect": "Zombie project lock-in"
+          },
+          {
+            "cause": "Mounting sunk spend on live projects",
+            "relation": "enables",
+            "effect": "Tripwire breach"
+          },
+          {
+            "cause": "Tripwire breach",
+            "relation": "enables",
+            "effect": "Sweeping stop-or-continue reviews"
+          },
+          {
+            "cause": "Sweeping stop-or-continue reviews",
+            "relation": "prevents",
+            "effect": "Zombie project lock-in"
+          },
+          {
+            "cause": "Sweeping stop-or-continue reviews",
+            "relation": "enables",
+            "effect": "Freed funds, lessons shared"
+          },
+          {
+            "cause": "Freed funds, lessons shared",
+            "relation": "enables",
+            "effect": "Self-pruning portfolio with oddball bets"
+          },
+          {
+            "cause": "Fresh proposal intake",
+            "relation": "enables",
+            "effect": "Self-pruning portfolio with oddball bets"
+          },
+          {
+            "cause": "Mounting sunk spend on live projects",
+            "relation": "increases",
+            "effect": "Reluctance to stop"
+          },
+          {
+            "cause": "Reluctance to stop",
+            "relation": "enables",
+            "effect": "Zombie project lock-in"
+          },
+          {
+            "cause": "Blind scoring of proposals",
+            "relation": "prevents",
+            "effect": "Prestige-favoring panels"
+          },
+          {
+            "cause": "Light one-page reports",
+            "relation": "decreases",
+            "effect": "Slow experiment cycles"
+          }
+        ],
+        "affected_system": "Organization-wide research portfolio funding and governance process (hypothesis intake, review, staged funding allocation, and continuation/termination decision system)",
+        "payoff": "Self-pruning portfolio with oddball bets"
+      },
+      "mechanism_fingerprint": "38bcd18acbbb158f",
+      "wl_hash": "005bec4ac4881c146ab1b57cc9180f4d",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "sandpile_toppling_criticality",
+        "role_map": {
+          "grain_drop": "Fresh proposal intake",
+          "slope_buildup": "Mounting sunk spend on live projects",
+          "threshold_exceedance": "Tripwire breach",
+          "toppling_cascade": "Sweeping stop-or-continue reviews",
+          "runaway_slope": "Zombie project lock-in",
+          "dissipation_at_boundary": "Freed funds, lessons shared",
+          "critical_steady_state": "Self-pruning portfolio with oddball bets"
+        }
+      },
+      "scores": {
+        "novelty": 0.6542989903957057,
+        "appropriateness": 0.78,
+        "utility": 0.55,
+        "surprise": 0.4,
+        "coherence": 0.8,
+        "mechanism_uniqueness": 0.890625
+      },
+      "niche": {
+        "intervention_level": "organization",
+        "resource_intensity": "medium",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.0,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": true
+    },
+    {
+      "niche_key": "centroid_5",
+      "id": "1163776e1fa99b5b",
+      "title": "Sunset Sweep Clears Room for Unconventional Pilots",
+      "description": "Unusual hypotheses that fail prestige-biased review go into a dormant vault instead of being killed. On a fixed budget deadline, a mandatory sunset review sweeps the stale project backlog, and every incumbent must re-justify itself against its forward value, ignoring spend to date. The sweep stops sunk-cost escalation from taking over the freed budget, and it also lifts the prestige lock on vault items, so anonymized, lightly reported pilots can claim the freed slots before incumbents re-entrench.",
+      "operator": "isomorphism",
+      "source_domain": "fire_ecology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A deadline-triggered sunset review both clears stale projects and releases the prestige lock on dormant ideas, and by suppressing sunk-cost escalation inside the short window it keeps freed budget slots available for unconventional pilots.",
+        "causal_structure": [
+          {
+            "cause": "Scheduled Portfolio-Wide Budget Shock",
+            "relation": "enables",
+            "effect": "Sunset Review Sweep"
+          },
+          {
+            "cause": "Accumulated Stale Project Backlog",
+            "relation": "enables",
+            "effect": "Sunset Review Sweep"
+          },
+          {
+            "cause": "Sunset Review Sweep",
+            "relation": "enables",
+            "effect": "Prestige Lock Release"
+          },
+          {
+            "cause": "Dormant Unconventional Hypothesis Vault",
+            "relation": "enables",
+            "effect": "Prestige Lock Release"
+          },
+          {
+            "cause": "Sunset Review Sweep",
+            "relation": "prevents",
+            "effect": "Sunk-Cost Escalation Creep"
+          },
+          {
+            "cause": "Sunset Review Sweep",
+            "relation": "enables",
+            "effect": "Freed Budget Slots"
+          },
+          {
+            "cause": "Prestige Lock Release",
+            "relation": "enables",
+            "effect": "Surge of Unconventional Funded Pilots"
+          },
+          {
+            "cause": "Freed Budget Slots",
+            "relation": "enables",
+            "effect": "Surge of Unconventional Funded Pilots"
+          },
+          {
+            "cause": "Accumulated Stale Project Backlog",
+            "relation": "increases",
+            "effect": "Sunk-Cost Escalation Creep"
+          },
+          {
+            "cause": "Sunk-Cost Escalation Creep",
+            "relation": "prevents",
+            "effect": "Freed Budget Slots"
+          },
+          {
+            "cause": "Lightweight Pilot Reporting Template",
+            "relation": "enables",
+            "effect": "Surge of Unconventional Funded Pilots"
+          }
+        ],
+        "affected_system": "Organization-wide research portfolio funding and governance process (hypothesis intake, review, staged funding allocation, and continuation/termination decision system)",
+        "payoff": "Surge of Unconventional Funded Pilots"
+      },
+      "mechanism_fingerprint": "aedc07cef740588f",
+      "wl_hash": "4e614598623ece27aba60c16ce1444fe",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "serotiny_fire_gated_release",
+        "role_map": {
+          "canopy_seed_store": "Dormant Unconventional Hypothesis Vault",
+          "heat_pulse": "Scheduled Portfolio-Wide Budget Shock",
+          "understory_fuel": "Accumulated Stale Project Backlog",
+          "ground_combustion": "Sunset Review Sweep",
+          "resin_seal_melt": "Prestige Lock Release",
+          "shade_competitor_growth": "Sunk-Cost Escalation Creep",
+          "open_seedbed": "Freed Budget Slots",
+          "regeneration_flush": "Surge of Unconventional Funded Pilots"
+        }
+      },
+      "scores": {
+        "novelty": 0.6513377044375348,
+        "appropriateness": 0.78,
+        "utility": 0.6,
+        "surprise": 0.5,
+        "coherence": 0.68,
+        "mechanism_uniqueness": 0.8873151181258686
+      },
+      "niche": {
+        "intervention_level": "organization",
+        "resource_intensity": "medium",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 4,
+        "branching_factor": 1.222222,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "28 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_sunk_cost_escalation_creep",
+            "satisfy_sunset_review_sweep",
+            "satisfy_prestige_lock_release"
+          ]
+        }
+      ],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_5",
+      "id": "9974fd3ed5bff94b",
+      "title": "Displacement-Pegged Staged Grants with Sealed Confidence Stamps",
+      "description": "Each researcher files a short, author-blind proposal with a sealed confidence stamp (their probability of success) and a staged ask. Reviewers fill the funded slots by ranking stamped expected value. Each funded team's stage grant is sized by the strongest displaced proposal's claim, not by its own stamp. So hedging to look safe or inflating to look bold gains nothing, and teams state what they actually believe. Because the stamps are candid, they also double as pre-registered kill thresholds at later stage gates.",
+      "operator": "isomorphism",
+      "source_domain": "auction_mechanism_design",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Sizing each stage grant by the displaced runner-up's claim, rather than the proposer's own, removes any payoff from hedging or hyping confidence, so candid private beliefs become the dominant strategy.",
+        "causal_structure": [
+          {
+            "cause": "Proposer's candid confidence in own hypothesis",
+            "relation": "enables",
+            "effect": "Sealed author-blind confidence-stamped filing"
+          },
+          {
+            "cause": "Sealed author-blind confidence-stamped filing",
+            "relation": "enables",
+            "effect": "Pull toward hedged or hyped confidence claims"
+          },
+          {
+            "cause": "Sealed author-blind confidence-stamped filing",
+            "relation": "enables",
+            "effect": "Portfolio slot allocation by stamped expected value"
+          },
+          {
+            "cause": "Runner-up-pegged grant formula",
+            "relation": "enables",
+            "effect": "Displacement-cost stage grant sizing"
+          },
+          {
+            "cause": "Portfolio slot allocation by stamped expected value",
+            "relation": "enables",
+            "effect": "Displacement-cost stage grant sizing"
+          },
+          {
+            "cause": "Displacement-cost stage grant sizing",
+            "relation": "prevents",
+            "effect": "Pull toward hedged or hyped confidence claims"
+          },
+          {
+            "cause": "Displacement-cost stage grant sizing",
+            "relation": "enables",
+            "effect": "Candid confidence disclosure across the portfolio"
+          },
+          {
+            "cause": "Proposer's candid confidence in own hypothesis",
+            "relation": "enables",
+            "effect": "Candid confidence disclosure across the portfolio"
+          },
+          {
+            "cause": "Candid confidence disclosure across the portfolio",
+            "relation": "decreases",
+            "effect": "Sunk-cost escalation at continuation gates"
+          },
+          {
+            "cause": "Displacement-cost stage grant sizing",
+            "relation": "decreases",
+            "effect": "Milestone-justification reporting overhead"
+          },
+          {
+            "cause": "Sealed author-blind confidence-stamped filing",
+            "relation": "decreases",
+            "effect": "Prestige halo in review"
+          },
+          {
+            "cause": "Prestige halo in review",
+            "relation": "decreases",
+            "effect": "Survival of unusual hypotheses"
+          }
+        ],
+        "affected_system": "Organization-wide research portfolio funding and governance process (hypothesis intake, review, staged funding allocation, and continuation/termination decision system)",
+        "payoff": "Candid confidence disclosure across the portfolio"
+      },
+      "mechanism_fingerprint": "12e5c44343242bb0",
+      "wl_hash": "385551ad38b73922a1a8b20a636e3cb4",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "vickrey_second_price_truth",
+        "role_map": {
+          "private_valuation": "Proposer's candid confidence in own hypothesis",
+          "second_price_rule": "Runner-up-pegged grant formula",
+          "bid_submission": "Sealed author-blind confidence-stamped filing",
+          "winner_selection": "Portfolio slot allocation by stamped expected value",
+          "bid_shading_incentive": "Pull toward hedged or hyped confidence claims",
+          "price_determination": "Displacement-cost stage grant sizing",
+          "truthful_revelation": "Candid confidence disclosure across the portfolio"
+        }
+      },
+      "scores": {
+        "novelty": 0.6615436173931218,
+        "appropriateness": 0.7,
+        "utility": 0.62,
+        "surprise": 0.63,
+        "coherence": 0.55,
+        "mechanism_uniqueness": 0.8975198412698413
+      },
+      "niche": {
+        "intervention_level": "organization",
+        "resource_intensity": "medium",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": true
+    },
+    {
+      "niche_key": "centroid_4",
+      "id": "129744b8c8e26559",
+      "title": "Pre-Committed Cheap-Kill Sweeps That Keep Escalation Gridlock From Forming",
+      "description": "Every proposal enters a fixed-size seed docket and is reviewed within weeks in a rapid, anonymous micro-review sweep: one-page, blind to the proposer's rank, with a pre-registered falsification test. Because most flawed ideas fail cheaply and early, the sweep ends them before money or reputation is sunk. The docket never clogs into a state where nobody can stop a project, and only proposals that survive repeated sweeps graduate to a larger tranche, with minimal reporting attached. Researchers see quick, low-stakes verdicts, and unusual ideas get a blind first read instead of a status-weighted one.",
+      "operator": "isomorphism",
+      "source_domain": "runtime_memory_management",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Frequent blind, cheap micro-reviews triggered by seed-docket crowding actively prevent sunk-cost escalation gridlock, so only vetted proposals graduate to larger tranches and results keep flowing.",
+        "causal_structure": [
+          {
+            "cause": "Continuous proposal intake flow",
+            "relation": "enables",
+            "effect": "Seed-stage docket crowding"
+          },
+          {
+            "cause": "Seed-stage docket crowding",
+            "relation": "enables",
+            "effect": "Sunk-cost escalation gridlock"
+          },
+          {
+            "cause": "Cheap-early-falsification regularity",
+            "relation": "enables",
+            "effect": "Rapid anonymous micro-review sweep"
+          },
+          {
+            "cause": "Seed-stage docket crowding",
+            "relation": "enables",
+            "effect": "Rapid anonymous micro-review sweep"
+          },
+          {
+            "cause": "Rapid anonymous micro-review sweep",
+            "relation": "prevents",
+            "effect": "Sunk-cost escalation gridlock"
+          },
+          {
+            "cause": "Rapid anonymous micro-review sweep",
+            "relation": "enables",
+            "effect": "Graduation of vetted proposals into larger funding tranche"
+          },
+          {
+            "cause": "Graduation of vetted proposals into larger funding tranche",
+            "relation": "enables",
+            "effect": "Sustained validated-result delivery"
+          },
+          {
+            "cause": "Continuous proposal intake flow",
+            "relation": "enables",
+            "effect": "Sustained validated-result delivery"
+          },
+          {
+            "cause": "Sunk-cost escalation gridlock",
+            "relation": "increases",
+            "effect": "Reporting burden per project"
+          },
+          {
+            "cause": "Reporting burden per project",
+            "relation": "decreases",
+            "effect": "Sustained validated-result delivery"
+          },
+          {
+            "cause": "Rapid anonymous micro-review sweep",
+            "relation": "decreases",
+            "effect": "Prestige-weighted reviewer deference"
+          },
+          {
+            "cause": "Prestige-weighted reviewer deference",
+            "relation": "decreases",
+            "effect": "Graduation of vetted proposals into larger funding tranche"
+          }
+        ],
+        "affected_system": "Organization-wide research portfolio funding and governance process (hypothesis intake, review, staged funding allocation, and continuation/termination decision system)",
+        "payoff": "Sustained validated-result delivery"
+      },
+      "mechanism_fingerprint": "ba3520df80af2b57",
+      "wl_hash": "c6c968b157c3dafbe21c44f75cbea600",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "generational_gc_reclaim_gate",
+        "role_map": {
+          "allocation_stream": "Continuous proposal intake flow",
+          "weak_generational_hypothesis": "Cheap-early-falsification regularity",
+          "young_space_fill": "Seed-stage docket crowding",
+          "minor_collection": "Rapid anonymous micro-review sweep",
+          "heap_exhaustion_risk": "Sunk-cost escalation gridlock",
+          "survivor_promotion": "Graduation of vetted proposals into larger funding tranche",
+          "stable_throughput": "Sustained validated-result delivery"
+        }
+      },
+      "scores": {
+        "novelty": 0.6500352893343588,
+        "appropriateness": 0.72,
+        "utility": 0.45,
+        "surprise": 0.3,
+        "coherence": 0.78,
+        "mechanism_uniqueness": 0.8875932835820896
+      },
+      "niche": {
+        "intervention_level": "organization",
+        "resource_intensity": "low",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.333333,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "55 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_prestige_weighted_reviewer_deference",
+            "satisfy_seed_stage_docket_crowding",
+            "satisfy_rapid_anonymous_micro_review_sweep"
+          ]
+        }
+      ],
+      "is_niche_elite": true
+    },
+    {
+      "niche_key": "centroid_5",
+      "id": "31da0221f770951b",
+      "title": "Stand-Down Holds: Earned Escalation Inhibition Between Rival Proposals",
+      "description": "When two proposals compete for the same funding niche, the one that posts a stage-gate readout first triggers a time-boxed stand-down hold on its rival's team. During that window the rival cannot file an escalation bid, even though its accumulated sunk-cost momentum pushes it to. The hold is earned only by a public readout and lapses if the readout is weak, so the committee faces a clean fund-versus-park fork. Over successive cycles this produces a portfolio that interleaves funded and parked bets instead of piling money onto one lineage.",
+      "operator": "isomorphism",
+      "source_domain": "developmental_biology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A rival's published stage-gate readout earns a stand-down hold that blocks the other team's sunk-cost-driven escalation bid inside the review window, forcing a fund-versus-park fork that yields an interleaved portfolio of distinct bets.",
+        "causal_structure": [
+          {
+            "cause": "early_pilot_lead_of_proposal_A",
+            "relation": "increases",
+            "effect": "published_stage_gate_readout_of_A"
+          },
+          {
+            "cause": "published_stage_gate_readout_of_A",
+            "relation": "enables",
+            "effect": "earned_stand_down_hold_on_B"
+          },
+          {
+            "cause": "sunk_cost_momentum_of_proposal_B",
+            "relation": "enables",
+            "effect": "escalation_bid_from_B"
+          },
+          {
+            "cause": "earned_stand_down_hold_on_B",
+            "relation": "prevents",
+            "effect": "escalation_bid_from_B"
+          },
+          {
+            "cause": "published_stage_gate_readout_of_A",
+            "relation": "enables",
+            "effect": "fund_versus_park_fork_decision"
+          },
+          {
+            "cause": "earned_stand_down_hold_on_B",
+            "relation": "enables",
+            "effect": "fund_versus_park_fork_decision"
+          },
+          {
+            "cause": "fund_versus_park_fork_decision",
+            "relation": "enables",
+            "effect": "interleaved_portfolio_of_distinct_funded_and_parked_bets"
+          },
+          {
+            "cause": "anonymized_readout_format",
+            "relation": "prevents",
+            "effect": "prestige_weighting_in_review"
+          },
+          {
+            "cause": "prestige_weighting_in_review",
+            "relation": "decreases",
+            "effect": "interleaved_portfolio_of_distinct_funded_and_parked_bets"
+          },
+          {
+            "cause": "one_page_readout_template",
+            "relation": "decreases",
+            "effect": "reporting_overhead"
+          },
+          {
+            "cause": "reporting_overhead",
+            "relation": "decreases",
+            "effect": "pilot_cycle_speed"
+          }
+        ],
+        "affected_system": "Organization-wide research portfolio funding and governance process (hypothesis intake, review, staged funding allocation, and continuation/termination decision system)",
+        "payoff": "interleaved_portfolio_of_distinct_funded_and_parked_bets"
+      },
+      "mechanism_fingerprint": "be8dede6183de1f7",
+      "wl_hash": "c659d8c3bffe18dfaa6ad051cb5c2e80",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "notch_lateral_inhibition_pattern",
+        "role_map": {
+          "proneural_bias_a": "early_pilot_lead_of_proposal_A",
+          "proneural_bias_b": "sunk_cost_momentum_of_proposal_B",
+          "delta_ligand_a": "published_stage_gate_readout_of_A",
+          "notch_signal_b": "earned_stand_down_hold_on_B",
+          "delta_ligand_b": "escalation_bid_from_B",
+          "fate_divergence": "fund_versus_park_fork_decision",
+          "fine_grained_pattern": "interleaved_portfolio_of_distinct_funded_and_parked_bets"
+        }
+      },
+      "scores": {
+        "novelty": 0.6587437474980811,
+        "appropriateness": 0.58,
+        "utility": 0.55,
+        "surprise": 0.5,
+        "coherence": 0.55,
+        "mechanism_uniqueness": 0.8930921052631579
+      },
+      "niche": {
+        "intervention_level": "organization",
+        "resource_intensity": "medium",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 4,
+        "branching_factor": 0.916667,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_1",
+      "id": "0a26a3f20a3826e4",
+      "title": "Tapering Ladder with an Open Ledger",
+      "description": "Every funded hypothesis is published on a shared ledger with a pre-declared tapering ladder: a missed milestone triggers an automatic one-step budget cut, not a committee debate. Researchers in neighboring teams read each other's ledger entries because they draw on the same scarce pool. When a stalled project is stepped down, its sponsor can no longer double down on sunk costs before the next gate, and the freed money goes to a less prestigious but fast-moving idea. Teams learn that filing an honest early kill-report costs less than being cut, so they file one.",
+      "operator": "isomorphism",
+      "source_domain": "institutional_economics",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Scarce stage-gate budgets make peers read each other's ledger entries, and a pre-declared tapering ladder turns that reading into automatic funding step-downs that prevent sunk-cost escalation inside the review window, so honest early kill-reports become routine and a varied, fast-cycling portfolio survives.",
+        "causal_structure": [
+          {
+            "cause": "Funding scarcity surge at stage gates",
+            "relation": "enables",
+            "effect": "Peer-team ledger reading"
+          },
+          {
+            "cause": "Funding scarcity surge at stage gates",
+            "relation": "enables",
+            "effect": "Urge to double down on sunk-cost projects"
+          },
+          {
+            "cause": "Pre-declared tapering ladder for stalled bets",
+            "relation": "enables",
+            "effect": "Executed funding step-down"
+          },
+          {
+            "cause": "Peer-team ledger reading",
+            "relation": "enables",
+            "effect": "Executed funding step-down"
+          },
+          {
+            "cause": "Executed funding step-down",
+            "relation": "prevents",
+            "effect": "Urge to double down on sunk-cost projects"
+          },
+          {
+            "cause": "Executed funding step-down",
+            "relation": "enables",
+            "effect": "Habit of honest early kill-reports"
+          },
+          {
+            "cause": "Habit of honest early kill-reports",
+            "relation": "enables",
+            "effect": "Sustained pool of fast-cycling, varied hypotheses"
+          },
+          {
+            "cause": "Peer-team ledger reading",
+            "relation": "enables",
+            "effect": "Sustained pool of fast-cycling, varied hypotheses"
+          },
+          {
+            "cause": "Peer-team ledger reading",
+            "relation": "decreases",
+            "effect": "Reporting overhead per milestone"
+          },
+          {
+            "cause": "Peer-team ledger reading",
+            "relation": "decreases",
+            "effect": "Prestige-weighted review"
+          },
+          {
+            "cause": "Pre-declared tapering ladder for stalled bets",
+            "relation": "prevents",
+            "effect": "Prestige-based budget exemptions"
+          },
+          {
+            "cause": "Sunk-cost attachment",
+            "relation": "increases",
+            "effect": "Urge to double down on sunk-cost projects"
+          }
+        ],
+        "affected_system": "Organization-wide research portfolio funding and governance process (hypothesis intake, review, staged funding allocation, and continuation/termination decision system)",
+        "payoff": "Sustained pool of fast-cycling, varied hypotheses"
+      },
+      "mechanism_fingerprint": "75c82c80779a4efd",
+      "wl_hash": "5da0c87aec9c9c1d0471a874a89bbceb",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "ostrom_graduated_sanction_commons",
+        "role_map": {
+          "harvest_pressure": "Funding scarcity surge at stage gates",
+          "monitoring_by_users": "Peer-team ledger reading",
+          "graduated_sanction_rule": "Pre-declared tapering ladder for stalled bets",
+          "sanction_application": "Executed funding step-down",
+          "defection_temptation": "Urge to double down on sunk-cost projects",
+          "compliance_norm": "Habit of honest early kill-reports",
+          "commons_persistence": "Sustained pool of fast-cycling, varied hypotheses"
+        }
+      },
+      "scores": {
+        "novelty": 0.6453218802269367,
+        "appropriateness": 0.68,
+        "utility": 0.5,
+        "surprise": 0.4,
+        "coherence": 0.72,
+        "mechanism_uniqueness": 0.8834050992703207
+      },
+      "niche": {
+        "intervention_level": "ecosystem",
+        "resource_intensity": "medium",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 4,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": true
+    },
+    {
+      "niche_key": "centroid_2",
+      "id": "5378924383641ff2",
+      "title": "Tripwire Freeze: Earned Funding Pauses with a Revision Period",
+      "description": "Every funded hypothesis carries a few pre-registered falsifier metrics. When a blind reviewer panel, shielded from the sponsor's identity, confirms that a pilot result contradicts them, the next funding tranche freezes automatically. The team gets a fixed-length revision period to rework the hypothesis, narrow it, or produce rescue evidence. Sponsor enthusiasm and sunk-cost pressure cannot push more money through during that period. At the end of the period, a pre-registered verdict either releases funds or winds the project down with salvage. Results go into a reusable archive, and the capital freed is recycled toward unusual ideas.",
+      "operator": "isomorphism",
+      "source_domain": "cell_biology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A confirmed contradicting result triggers an automatic funding freeze that blocks sunk-cost-driven tranche escalation during a bounded revision period, so only revised hypotheses that pass the pre-registered verdict continue and the rest are cleanly wound down.",
+        "causal_structure": [
+          {
+            "cause": "Contradicting pilot result against a pre-registered falsifier",
+            "relation": "enables",
+            "effect": "Blind tripwire audit panel"
+          },
+          {
+            "cause": "Blind tripwire audit panel",
+            "relation": "enables",
+            "effect": "Automatic funding freeze"
+          },
+          {
+            "cause": "Prestige-backed sponsor enthusiasm",
+            "relation": "enables",
+            "effect": "Tranche escalation momentum"
+          },
+          {
+            "cause": "Automatic funding freeze",
+            "relation": "prevents",
+            "effect": "Tranche escalation momentum"
+          },
+          {
+            "cause": "Automatic funding freeze",
+            "relation": "enables",
+            "effect": "Bounded cooling-off revision period"
+          },
+          {
+            "cause": "Bounded cooling-off revision period",
+            "relation": "enables",
+            "effect": "Pre-registered termination verdict with salvage"
+          },
+          {
+            "cause": "Pre-registered termination verdict with salvage",
+            "relation": "enables",
+            "effect": "Portfolio health: freed capital and surviving unusual ideas"
+          },
+          {
+            "cause": "Bounded cooling-off revision period",
+            "relation": "enables",
+            "effect": "Portfolio health: freed capital and surviving unusual ideas"
+          },
+          {
+            "cause": "Accumulated sunk cost",
+            "relation": "increases",
+            "effect": "Tranche escalation momentum"
+          },
+          {
+            "cause": "Blind tripwire audit panel",
+            "relation": "decreases",
+            "effect": "Prestige bias in review"
+          },
+          {
+            "cause": "Pre-registered termination verdict with salvage",
+            "relation": "enables",
+            "effect": "Reusable negative-result archive"
+          },
+          {
+            "cause": "Reusable negative-result archive",
+            "relation": "enables",
+            "effect": "Portfolio health: freed capital and surviving unusual ideas"
+          }
+        ],
+        "affected_system": "Organization-wide research portfolio funding and governance process (hypothesis intake, review, staged funding allocation, and continuation/termination decision system)",
+        "payoff": "Portfolio health: freed capital and surviving unusual ideas"
+      },
+      "mechanism_fingerprint": "8fc46662b75e69ac",
+      "wl_hash": "b5fb89b2ec115920e5ec1e2a85f23a35",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "p53_damage_checkpoint_arrest",
+        "role_map": {
+          "genotoxic_lesion": "Contradicting pilot result against a pre-registered falsifier",
+          "growth_mitogen": "Prestige-backed sponsor enthusiasm",
+          "sensor_kinase": "Blind tripwire audit panel",
+          "checkpoint_effector": "Automatic funding freeze",
+          "division_drive": "Tranche escalation momentum",
+          "repair_window": "Bounded cooling-off revision period",
+          "apoptotic_commitment": "Pre-registered termination verdict with salvage",
+          "tissue_integrity": "Portfolio health: freed capital and surviving unusual ideas"
+        }
+      },
+      "scores": {
+        "novelty": 0.6519533687823842,
+        "appropriateness": 0.78,
+        "utility": 0.55,
+        "surprise": 0.35,
+        "coherence": 0.82,
+        "mechanism_uniqueness": 0.8787562704997106
+      },
+      "niche": {
+        "intervention_level": "organization",
+        "resource_intensity": "medium",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 6,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 4
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": true
+    },
+    {
+      "niche_key": "centroid_6",
+      "id": "3037a3ee82aacd7b",
+      "title": "Lottery-Sheltered Reserve Slate",
+      "description": "Each funding cycle, a blind lottery moves a small share of hypotheses, regardless of prestige or scorecard rank, into a low-burn reserve. These projects file no progress reports and get a minimal stipend, so they are invisible to the austerity cull that cuts high-burn, heavily reported projects scored by prestige-weighted metrics. When the cull frees budget, reserve projects are relaunched at full funding, and their results enter the shared knowledge base. Researchers on reserve projects experience a quiet period of working without review, then a fresh start.",
+      "operator": "isomorphism",
+      "source_domain": "microbiology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A blind lottery shelters a few hypotheses from the scorecard-driven cull that hits high-burn, heavily reported projects, so unusual ideas survive the cut and are relaunched with the freed budget.",
+        "causal_structure": [
+          {
+            "cause": "Blind lottery draw into sheltered reserve",
+            "relation": "enables",
+            "effect": "Sheltered low-burn reserve cohort"
+          },
+          {
+            "cause": "Austerity budget-cut round",
+            "relation": "enables",
+            "effect": "Scorecard-driven culling of high-burn projects"
+          },
+          {
+            "cause": "High-visibility rapid-spend reporting cycle",
+            "relation": "enables",
+            "effect": "Scorecard-driven culling of high-burn projects"
+          },
+          {
+            "cause": "Sheltered low-burn reserve cohort",
+            "relation": "prevents",
+            "effect": "Scorecard-driven culling of high-burn projects"
+          },
+          {
+            "cause": "Sheltered low-burn reserve cohort",
+            "relation": "enables",
+            "effect": "Reserve relaunch funded from freed budget"
+          },
+          {
+            "cause": "Austerity budget-cut round",
+            "relation": "enables",
+            "effect": "Reserve relaunch funded from freed budget"
+          },
+          {
+            "cause": "Reserve relaunch funded from freed budget",
+            "relation": "enables",
+            "effect": "Idea family endures as reusable organizational knowledge"
+          },
+          {
+            "cause": "Prestige-weighted scorecard",
+            "relation": "increases",
+            "effect": "Scorecard-driven culling of high-burn projects"
+          },
+          {
+            "cause": "Accumulated sunk spend",
+            "relation": "increases",
+            "effect": "High-visibility rapid-spend reporting cycle"
+          },
+          {
+            "cause": "Sheltered low-burn reserve cohort",
+            "relation": "decreases",
+            "effect": "Reporting overhead burden"
+          },
+          {
+            "cause": "Reserve relaunch funded from freed budget",
+            "relation": "enables",
+            "effect": "Reusable result archive"
+          }
+        ],
+        "affected_system": "Organization-wide research portfolio funding and governance process (hypothesis intake, review, staged funding allocation, and continuation/termination decision system)",
+        "payoff": "Idea family endures as reusable organizational knowledge"
+      },
+      "mechanism_fingerprint": "cdbef0e72137cfcb",
+      "wl_hash": "12acacc78322f7a51b55d866cb1b0782",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "persister_bet_hedge_survival",
+        "role_map": {
+          "stochastic_switch": "Blind lottery draw into sheltered reserve",
+          "antibiotic_exposure": "Austerity budget-cut round",
+          "dormant_subpopulation": "Sheltered low-burn reserve cohort",
+          "growth_dependent_killing": "Scorecard-driven culling of high-burn projects",
+          "active_division": "High-visibility rapid-spend reporting cycle",
+          "post_exposure_regrowth": "Reserve relaunch funded from freed budget",
+          "lineage_survival": "Idea family endures as reusable organizational knowledge"
+        }
+      },
+      "scores": {
+        "novelty": 0.6543841340079688,
+        "appropriateness": 0.5,
+        "utility": 0.35,
+        "surprise": 0.5,
+        "coherence": 0.55,
+        "mechanism_uniqueness": 0.8917572463768116
+      },
+      "niche": {
+        "intervention_level": "ecosystem",
+        "resource_intensity": "low",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 3,
+        "branching_factor": 1.0,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": false
+    }
+  ]
+}

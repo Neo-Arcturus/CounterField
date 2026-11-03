@@ -1,0 +1,765 @@
+{
+  "templates": [
+    {
+      "id": "serotiny_fire_gated_release",
+      "domain": "fire_ecology",
+      "roles": [
+        "canopy_seed_store",
+        "heat_pulse",
+        "understory_fuel",
+        "ground_combustion",
+        "resin_seal_melt",
+        "shade_competitor_growth",
+        "open_seedbed",
+        "regeneration_flush"
+      ],
+      "links": [
+        {
+          "cause": "heat_pulse",
+          "relation": "enables",
+          "effect": "ground_combustion"
+        },
+        {
+          "cause": "understory_fuel",
+          "relation": "enables",
+          "effect": "ground_combustion"
+        },
+        {
+          "cause": "ground_combustion",
+          "relation": "enables",
+          "effect": "resin_seal_melt"
+        },
+        {
+          "cause": "canopy_seed_store",
+          "relation": "enables",
+          "effect": "resin_seal_melt"
+        },
+        {
+          "cause": "ground_combustion",
+          "relation": "prevents",
+          "effect": "shade_competitor_growth"
+        },
+        {
+          "cause": "ground_combustion",
+          "relation": "enables",
+          "effect": "open_seedbed"
+        },
+        {
+          "cause": "resin_seal_melt",
+          "relation": "enables",
+          "effect": "regeneration_flush"
+        },
+        {
+          "cause": "open_seedbed",
+          "relation": "enables",
+          "effect": "regeneration_flush"
+        }
+      ],
+      "motifs": [
+        "asymmetry",
+        "bottleneck"
+      ],
+      "curated_by": "Minerva Lead 2026-10-23 (Negative-Space Engine H-20261023, AR-2 earned-inhibition)",
+      "source_ref": "Lamont, Enright & He 1991, Canopy seed storage in woody plants, Botanical Review 57(4):277-317; Keeley & Zedler 1998, Evolution of life histories in Pinus, in Ecology and Biogeography of Pinus",
+      "domain_vocabulary": [
+        "serotiny",
+        "serotinous",
+        "cone",
+        "fire",
+        "wildfire",
+        "pine",
+        "resin",
+        "canopy",
+        "seedbed"
+      ],
+      "meta": {
+        "hypothesis": "H-20261023 Negative-Space Engine",
+        "adapter_rule": "AR-2 earned-inhibition",
+        "lint": "R1-R4 pass"
+      }
+    },
+    {
+      "id": "p53_damage_checkpoint_arrest",
+      "domain": "cell_biology",
+      "roles": [
+        "genotoxic_lesion",
+        "growth_mitogen",
+        "sensor_kinase",
+        "checkpoint_effector",
+        "division_drive",
+        "repair_window",
+        "apoptotic_commitment",
+        "tissue_integrity"
+      ],
+      "links": [
+        {
+          "cause": "genotoxic_lesion",
+          "relation": "enables",
+          "effect": "sensor_kinase"
+        },
+        {
+          "cause": "sensor_kinase",
+          "relation": "enables",
+          "effect": "checkpoint_effector"
+        },
+        {
+          "cause": "growth_mitogen",
+          "relation": "enables",
+          "effect": "division_drive"
+        },
+        {
+          "cause": "checkpoint_effector",
+          "relation": "prevents",
+          "effect": "division_drive"
+        },
+        {
+          "cause": "checkpoint_effector",
+          "relation": "enables",
+          "effect": "repair_window"
+        },
+        {
+          "cause": "repair_window",
+          "relation": "enables",
+          "effect": "apoptotic_commitment"
+        },
+        {
+          "cause": "apoptotic_commitment",
+          "relation": "enables",
+          "effect": "tissue_integrity"
+        },
+        {
+          "cause": "repair_window",
+          "relation": "enables",
+          "effect": "tissue_integrity"
+        }
+      ],
+      "motifs": [
+        "asymmetry",
+        "bottleneck"
+      ],
+      "curated_by": "Minerva Lead 2026-10-23 (Negative-Space Engine H-20261023, AR-2 earned-inhibition)",
+      "source_ref": "Vogelstein, Lane & Levine 2000, Surfing the p53 network, Nature 408:307-310; Hartwell & Weinert 1989, Checkpoints, Science 246:629-634",
+      "domain_vocabulary": [
+        "p53",
+        "apoptosis",
+        "caspase",
+        "cell",
+        "dna",
+        "checkpoint",
+        "mitosis",
+        "tumor",
+        "cancer"
+      ],
+      "meta": {
+        "hypothesis": "H-20261023 Negative-Space Engine",
+        "adapter_rule": "AR-2 earned-inhibition",
+        "lint": "R1-R4 pass"
+      }
+    },
+    {
+      "id": "aimd_loss_backoff_fairness",
+      "domain": "network_congestion_control",
+      "roles": [
+        "ack_clock",
+        "send_rate_growth",
+        "loss_event",
+        "window_halving",
+        "queue_overflow_risk",
+        "flow_share_equalisation",
+        "fair_equilibrium"
+      ],
+      "links": [
+        {
+          "cause": "ack_clock",
+          "relation": "increases",
+          "effect": "send_rate_growth"
+        },
+        {
+          "cause": "send_rate_growth",
+          "relation": "enables",
+          "effect": "queue_overflow_risk"
+        },
+        {
+          "cause": "loss_event",
+          "relation": "enables",
+          "effect": "window_halving"
+        },
+        {
+          "cause": "send_rate_growth",
+          "relation": "enables",
+          "effect": "window_halving"
+        },
+        {
+          "cause": "window_halving",
+          "relation": "prevents",
+          "effect": "queue_overflow_risk"
+        },
+        {
+          "cause": "window_halving",
+          "relation": "enables",
+          "effect": "flow_share_equalisation"
+        },
+        {
+          "cause": "send_rate_growth",
+          "relation": "enables",
+          "effect": "flow_share_equalisation"
+        },
+        {
+          "cause": "flow_share_equalisation",
+          "relation": "enables",
+          "effect": "fair_equilibrium"
+        }
+      ],
+      "motifs": [
+        "asymmetry",
+        "bottleneck"
+      ],
+      "curated_by": "Minerva Lead 2026-10-23 (Negative-Space Engine H-20261023, AR-2 earned-inhibition)",
+      "source_ref": "Chiu & Jain 1989, Analysis of the increase and decrease algorithms for congestion avoidance, Computer Networks and ISDN Systems 17(1):1-14; Jacobson 1988, Congestion avoidance and control, SIGCOMM '88",
+      "domain_vocabulary": [
+        "tcp",
+        "packet",
+        "congestion",
+        "router",
+        "window",
+        "aimd",
+        "bandwidth",
+        "ack",
+        "queue"
+      ],
+      "meta": {
+        "hypothesis": "H-20261023 Negative-Space Engine",
+        "adapter_rule": "AR-2 earned-inhibition",
+        "lint": "R1-R4 pass"
+      }
+    },
+    {
+      "id": "notch_lateral_inhibition_pattern",
+      "domain": "developmental_biology",
+      "roles": [
+        "proneural_bias_a",
+        "proneural_bias_b",
+        "delta_ligand_a",
+        "notch_signal_b",
+        "delta_ligand_b",
+        "fate_divergence",
+        "fine_grained_pattern"
+      ],
+      "links": [
+        {
+          "cause": "proneural_bias_a",
+          "relation": "increases",
+          "effect": "delta_ligand_a"
+        },
+        {
+          "cause": "delta_ligand_a",
+          "relation": "enables",
+          "effect": "notch_signal_b"
+        },
+        {
+          "cause": "proneural_bias_b",
+          "relation": "enables",
+          "effect": "delta_ligand_b"
+        },
+        {
+          "cause": "notch_signal_b",
+          "relation": "prevents",
+          "effect": "delta_ligand_b"
+        },
+        {
+          "cause": "delta_ligand_a",
+          "relation": "enables",
+          "effect": "fate_divergence"
+        },
+        {
+          "cause": "notch_signal_b",
+          "relation": "enables",
+          "effect": "fate_divergence"
+        },
+        {
+          "cause": "fate_divergence",
+          "relation": "enables",
+          "effect": "fine_grained_pattern"
+        }
+      ],
+      "motifs": [
+        "asymmetry",
+        "bottleneck"
+      ],
+      "curated_by": "Minerva Lead 2026-10-23 (Negative-Space Engine H-20261023, AR-2 earned-inhibition)",
+      "source_ref": "Collier, Monk, Maini & Lewis 1996, Pattern formation by lateral inhibition with feedback, J. Theor. Biol. 183(4):429-446; Heitzler & Simpson 1991, Cell 64(6):1083-1092",
+      "domain_vocabulary": [
+        "notch",
+        "delta",
+        "neuroblast",
+        "lateral",
+        "proneural",
+        "cell",
+        "fate",
+        "drosophila",
+        "ligand"
+      ],
+      "meta": {
+        "hypothesis": "H-20261023 Negative-Space Engine",
+        "adapter_rule": "AR-2 earned-inhibition",
+        "lint": "R1-R4 pass"
+      }
+    },
+    {
+      "id": "persister_bet_hedge_survival",
+      "domain": "microbiology",
+      "roles": [
+        "stochastic_switch",
+        "antibiotic_exposure",
+        "dormant_subpopulation",
+        "growth_dependent_killing",
+        "active_division",
+        "post_exposure_regrowth",
+        "lineage_survival"
+      ],
+      "links": [
+        {
+          "cause": "stochastic_switch",
+          "relation": "enables",
+          "effect": "dormant_subpopulation"
+        },
+        {
+          "cause": "antibiotic_exposure",
+          "relation": "enables",
+          "effect": "growth_dependent_killing"
+        },
+        {
+          "cause": "active_division",
+          "relation": "enables",
+          "effect": "growth_dependent_killing"
+        },
+        {
+          "cause": "dormant_subpopulation",
+          "relation": "prevents",
+          "effect": "growth_dependent_killing"
+        },
+        {
+          "cause": "dormant_subpopulation",
+          "relation": "enables",
+          "effect": "post_exposure_regrowth"
+        },
+        {
+          "cause": "antibiotic_exposure",
+          "relation": "enables",
+          "effect": "post_exposure_regrowth"
+        },
+        {
+          "cause": "post_exposure_regrowth",
+          "relation": "enables",
+          "effect": "lineage_survival"
+        }
+      ],
+      "motifs": [
+        "asymmetry",
+        "bottleneck"
+      ],
+      "curated_by": "Minerva Lead 2026-10-23 (Negative-Space Engine H-20261023, AR-2 earned-inhibition)",
+      "source_ref": "Balaban, Merrin, Chait, Kowalik & Leibler 2004, Bacterial persistence as a phenotypic switch, Science 305(5690):1622-1625",
+      "domain_vocabulary": [
+        "persister",
+        "antibiotic",
+        "bacteria",
+        "bacterial",
+        "dormant",
+        "dormancy",
+        "microbe",
+        "phenotypic",
+        "kill"
+      ],
+      "meta": {
+        "hypothesis": "H-20261023 Negative-Space Engine",
+        "adapter_rule": "AR-2 earned-inhibition",
+        "lint": "R1-R4 pass"
+      }
+    },
+    {
+      "id": "vickrey_second_price_truth",
+      "domain": "auction_mechanism_design",
+      "roles": [
+        "private_valuation",
+        "second_price_rule",
+        "bid_submission",
+        "winner_selection",
+        "bid_shading_incentive",
+        "price_determination",
+        "truthful_revelation"
+      ],
+      "links": [
+        {
+          "cause": "private_valuation",
+          "relation": "enables",
+          "effect": "bid_submission"
+        },
+        {
+          "cause": "bid_submission",
+          "relation": "enables",
+          "effect": "bid_shading_incentive"
+        },
+        {
+          "cause": "bid_submission",
+          "relation": "enables",
+          "effect": "winner_selection"
+        },
+        {
+          "cause": "second_price_rule",
+          "relation": "enables",
+          "effect": "price_determination"
+        },
+        {
+          "cause": "winner_selection",
+          "relation": "enables",
+          "effect": "price_determination"
+        },
+        {
+          "cause": "price_determination",
+          "relation": "prevents",
+          "effect": "bid_shading_incentive"
+        },
+        {
+          "cause": "price_determination",
+          "relation": "enables",
+          "effect": "truthful_revelation"
+        },
+        {
+          "cause": "private_valuation",
+          "relation": "enables",
+          "effect": "truthful_revelation"
+        }
+      ],
+      "motifs": [
+        "asymmetry",
+        "bottleneck"
+      ],
+      "curated_by": "Minerva Lead 2026-10-23 (Negative-Space Engine H-20261023, AR-2 earned-inhibition)",
+      "source_ref": "Vickrey 1961, Counterspeculation, auctions, and competitive sealed tenders, J. Finance 16(1):8-37; Clarke 1971, Public Choice 11:17-33",
+      "domain_vocabulary": [
+        "auction",
+        "bidder",
+        "vickrey",
+        "bid",
+        "valuation",
+        "reserve",
+        "seller",
+        "winner",
+        "payment"
+      ],
+      "meta": {
+        "hypothesis": "H-20261023 Negative-Space Engine",
+        "adapter_rule": "AR-2 earned-inhibition",
+        "lint": "R1-R4 pass"
+      }
+    },
+    {
+      "id": "generational_gc_reclaim_gate",
+      "domain": "runtime_memory_management",
+      "roles": [
+        "allocation_stream",
+        "weak_generational_hypothesis",
+        "young_space_fill",
+        "minor_collection",
+        "heap_exhaustion_risk",
+        "survivor_promotion",
+        "stable_throughput"
+      ],
+      "links": [
+        {
+          "cause": "allocation_stream",
+          "relation": "enables",
+          "effect": "young_space_fill"
+        },
+        {
+          "cause": "young_space_fill",
+          "relation": "enables",
+          "effect": "heap_exhaustion_risk"
+        },
+        {
+          "cause": "weak_generational_hypothesis",
+          "relation": "enables",
+          "effect": "minor_collection"
+        },
+        {
+          "cause": "young_space_fill",
+          "relation": "enables",
+          "effect": "minor_collection"
+        },
+        {
+          "cause": "minor_collection",
+          "relation": "prevents",
+          "effect": "heap_exhaustion_risk"
+        },
+        {
+          "cause": "minor_collection",
+          "relation": "enables",
+          "effect": "survivor_promotion"
+        },
+        {
+          "cause": "survivor_promotion",
+          "relation": "enables",
+          "effect": "stable_throughput"
+        },
+        {
+          "cause": "allocation_stream",
+          "relation": "enables",
+          "effect": "stable_throughput"
+        }
+      ],
+      "motifs": [
+        "asymmetry",
+        "bottleneck"
+      ],
+      "curated_by": "Minerva Lead 2026-10-23 (Negative-Space Engine H-20261023, AR-2 earned-inhibition)",
+      "source_ref": "Ungar 1984, Generation scavenging, ACM SIGPLAN Notices 19(5):157-167; Lieberman & Hewitt 1983, A real-time garbage collector based on the lifetimes of objects, CACM 26(6):419-429",
+      "domain_vocabulary": [
+        "garbage",
+        "heap",
+        "allocation",
+        "gc",
+        "pointer",
+        "malloc",
+        "jvm",
+        "collector",
+        "memory"
+      ],
+      "meta": {
+        "hypothesis": "H-20261023 Negative-Space Engine",
+        "adapter_rule": "AR-2 earned-inhibition",
+        "lint": "R1-R4 pass"
+      }
+    },
+    {
+      "id": "sandpile_toppling_criticality",
+      "domain": "statistical_physics",
+      "roles": [
+        "grain_drop",
+        "slope_buildup",
+        "threshold_exceedance",
+        "toppling_cascade",
+        "runaway_slope",
+        "dissipation_at_boundary",
+        "critical_steady_state"
+      ],
+      "links": [
+        {
+          "cause": "grain_drop",
+          "relation": "increases",
+          "effect": "slope_buildup"
+        },
+        {
+          "cause": "slope_buildup",
+          "relation": "enables",
+          "effect": "runaway_slope"
+        },
+        {
+          "cause": "slope_buildup",
+          "relation": "enables",
+          "effect": "threshold_exceedance"
+        },
+        {
+          "cause": "threshold_exceedance",
+          "relation": "enables",
+          "effect": "toppling_cascade"
+        },
+        {
+          "cause": "toppling_cascade",
+          "relation": "prevents",
+          "effect": "runaway_slope"
+        },
+        {
+          "cause": "toppling_cascade",
+          "relation": "enables",
+          "effect": "dissipation_at_boundary"
+        },
+        {
+          "cause": "dissipation_at_boundary",
+          "relation": "enables",
+          "effect": "critical_steady_state"
+        },
+        {
+          "cause": "grain_drop",
+          "relation": "enables",
+          "effect": "critical_steady_state"
+        }
+      ],
+      "motifs": [
+        "asymmetry"
+      ],
+      "curated_by": "Minerva Lead 2026-10-23 (Negative-Space Engine H-20261023, AR-2 earned-inhibition)",
+      "source_ref": "Bak, Tang & Wiesenfeld 1987, Self-organized criticality: an explanation of 1/f noise, Phys. Rev. Lett. 59(4):381-384",
+      "domain_vocabulary": [
+        "sandpile",
+        "avalanche",
+        "grain",
+        "critical",
+        "criticality",
+        "toppling",
+        "slope",
+        "power",
+        "noise"
+      ],
+      "meta": {
+        "hypothesis": "H-20261023 Negative-Space Engine",
+        "adapter_rule": "AR-2 earned-inhibition",
+        "lint": "R1-R4 pass"
+      }
+    },
+    {
+      "id": "ostrom_graduated_sanction_commons",
+      "domain": "institutional_economics",
+      "roles": [
+        "harvest_pressure",
+        "monitoring_by_users",
+        "graduated_sanction_rule",
+        "sanction_application",
+        "defection_temptation",
+        "compliance_norm",
+        "commons_persistence"
+      ],
+      "links": [
+        {
+          "cause": "harvest_pressure",
+          "relation": "enables",
+          "effect": "monitoring_by_users"
+        },
+        {
+          "cause": "harvest_pressure",
+          "relation": "enables",
+          "effect": "defection_temptation"
+        },
+        {
+          "cause": "graduated_sanction_rule",
+          "relation": "enables",
+          "effect": "sanction_application"
+        },
+        {
+          "cause": "monitoring_by_users",
+          "relation": "enables",
+          "effect": "sanction_application"
+        },
+        {
+          "cause": "sanction_application",
+          "relation": "prevents",
+          "effect": "defection_temptation"
+        },
+        {
+          "cause": "sanction_application",
+          "relation": "enables",
+          "effect": "compliance_norm"
+        },
+        {
+          "cause": "compliance_norm",
+          "relation": "enables",
+          "effect": "commons_persistence"
+        },
+        {
+          "cause": "monitoring_by_users",
+          "relation": "enables",
+          "effect": "commons_persistence"
+        }
+      ],
+      "motifs": [
+        "asymmetry",
+        "bottleneck"
+      ],
+      "curated_by": "Minerva Lead 2026-10-23 (Negative-Space Engine H-20261023, AR-2 earned-inhibition)",
+      "source_ref": "Ostrom 1990, Governing the Commons: The Evolution of Institutions for Collective Action, Cambridge University Press (design principles 4-5)",
+      "domain_vocabulary": [
+        "commons",
+        "sanction",
+        "irrigation",
+        "fishery",
+        "herder",
+        "tragedy",
+        "ostrom",
+        "harvest",
+        "appropriator"
+      ],
+      "meta": {
+        "hypothesis": "H-20261023 Negative-Space Engine",
+        "adapter_rule": "AR-2 earned-inhibition",
+        "lint": "R1-R4 pass"
+      }
+    },
+    {
+      "id": "trophic_cascade_predator_gate",
+      "domain": "community_ecology",
+      "roles": [
+        "herbivore_growth",
+        "predator_return",
+        "browsing_pressure",
+        "fear_avoidance_behaviour",
+        "riparian_overbrowse",
+        "seedling_escape",
+        "riparian_recovery"
+      ],
+      "links": [
+        {
+          "cause": "herbivore_growth",
+          "relation": "enables",
+          "effect": "browsing_pressure"
+        },
+        {
+          "cause": "browsing_pressure",
+          "relation": "enables",
+          "effect": "riparian_overbrowse"
+        },
+        {
+          "cause": "predator_return",
+          "relation": "enables",
+          "effect": "fear_avoidance_behaviour"
+        },
+        {
+          "cause": "browsing_pressure",
+          "relation": "enables",
+          "effect": "fear_avoidance_behaviour"
+        },
+        {
+          "cause": "fear_avoidance_behaviour",
+          "relation": "prevents",
+          "effect": "riparian_overbrowse"
+        },
+        {
+          "cause": "fear_avoidance_behaviour",
+          "relation": "enables",
+          "effect": "seedling_escape"
+        },
+        {
+          "cause": "seedling_escape",
+          "relation": "enables",
+          "effect": "riparian_recovery"
+        },
+        {
+          "cause": "predator_return",
+          "relation": "enables",
+          "effect": "riparian_recovery"
+        }
+      ],
+      "motifs": [
+        "asymmetry",
+        "bottleneck"
+      ],
+      "curated_by": "Minerva Lead 2026-10-23 (Negative-Space Engine H-20261023, AR-2 earned-inhibition)",
+      "source_ref": "Ripple & Beschta 2004, Wolves and the ecology of fear, BioScience 54(8):755-766; Paine 1966, Food web complexity and species diversity, American Naturalist 100:65-75",
+      "domain_vocabulary": [
+        "wolf",
+        "elk",
+        "yellowstone",
+        "predator",
+        "prey",
+        "willow",
+        "trophic",
+        "cascade",
+        "herbivore"
+      ],
+      "meta": {
+        "hypothesis": "H-20261023 Negative-Space Engine",
+        "adapter_rule": "AR-2 earned-inhibition",
+        "lint": "R1-R4 pass"
+      }
+    }
+  ]
+}

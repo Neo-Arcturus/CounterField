@@ -1,0 +1,2821 @@
+[Minerva Backend] Dispatching task to OpenAI Codex CLI...
+[Minerva Backend] Model: cx/gpt-6-sol (Reasoning: high) via 9Router
+[Minerva Backend] Target Directory: /home/arcturus/hermesWorkspace/projects/CounterField
+[Minerva Backend] Task: # TASK (Backend / TDD): structural novelty audit module (pure, deterministic, zero-LLM, zero-network)
+
+Project root: /home/arcturus/hermesWorkspace/projects/CounterField  (test runner: `.venv/bin/pytest`, baseline 105 passed)
+
+## Why
+Yesterday's `novelty` score is a hash-embedding proxy that clusters ~0.68 regardless of structure, so "high novelty"
+could not be evidenced. We need an INDEPENDENT, deterministic structural novelty measure used only for REPORTING
+(it must never gate or alter archive admission).
+
+## Files you may create (and nothing else; do NOT edit any existing file)
+1. creative_agent/creativity/novelty_audit.py
+2. tests/test_novelty_audit.py
+
+## Contract (exact names / signatures)
+```python
+from __future__ import annotations
+from collections import Counter
+from typing import Sequence
+from ..models import CausalLink          # fields: cause, relation, effect (relation in increases/decreases/enables/prevents/depends_on)
+
+def wl_feature_vector(links: Sequence[CausalLink], iterations: int = 3) -> Counter[str]: ...
+def wl_cosine(a: Counter[str], b: Counter[str]) -> float: ...                  # cosine in [0,1]; either empty -> 0.0
+def label_tokens(links: Sequence[CausalLink]) -> frozenset[str]: ...           # NFKC + casefold, split on non-alphanumeric (unicode-aware, keep Hangul), drop tokens of len<3
+def token_jaccard(a: frozenset[str], b: frozenset[str]) -> float: ...          # both empty -> 0.0
+def structural_novelty(links: Sequence[CausalLink], corpus: Sequence[Sequence[CausalLink]], iterations: int = 3) -> float: ...
+    # 1 - max_i wl_cosine(vec(links), vec(corpus[i])); empty corpus -> 1.0; result clamped to [0,1]
+def label_overlap(links: Sequence[CausalLink], corpus: Sequence[Sequence[CausalLink]]) -> float: ...
+    # max_i token_jaccard(...); empty corpus -> 0.0
+```
+### WL feature vector semantics
+* Node labels are ANONYMOUS (text of cause/effect is ignored; nodes identified by casefolded+whitespace-normalised text only to build the graph).
+* Duplicate (cause,relation,effect) links count once. Self-loops are allowed.
+* Iteration 0 colour of a node = ("in", n_in_edges_by_relation..., "out", n_out_edges_by_relation...) as a canonical string
+  (relation-aware, direction-aware). Iteration t+1 colour = hash/string of (own colour, sorted multiset of (relation, 'out', neighbour colour) for successors,
+  sorted multiset of (relation, 'in', neighbour colour) for predecessors). Feature vector = Counter of every colour string (prefixed with its iteration index) over iterations 0..`iterations`.
+* Use a stable digest (hashlib.sha256 -> hex[:16]) for colours; NEVER Python `hash()` (must be identical across processes).
+
+## Required tests (tests/test_novelty_audit.py) -- all must be zero-network
+1. identical link sets -> wl_cosine == 1.0 (approx).
+2. node-relabelled isomorphic graph (same topology+relations, different text) -> cosine 1.0.
+3. changing one relation (increases->prevents) lowers cosine below 1.0.
+4. direction sensitivity: out-star {a->b, a->c, a->d} vs in-star {b->a, c->a, d->a} (same relation) -> cosine < 0.8 .
+5. structural_novelty: empty corpus == 1.0; identical member in corpus == 0.0 (approx); strictly in [0,1].
+6. label_overlap: identical labels -> 1.0; disjoint -> 0.0; empty corpus -> 0.0; Hangul labels tokenise (len>=3 rule applies to characters, so `가나다` kept).
+7. determinism across processes: spawn `subprocess.run([sys.executable, "-c", ...])` computing a vector digest twice with different PYTHONHASHSEED values; results must be equal.
+8. duplicate links count once; self-loop does not crash.
+
+## Done criteria (Report-First)
+* `.venv/bin/pytest -q` exits 0 for the WHOLE suite (105 existing + yours). Print the final pytest tail.
+* `git diff --stat` must show NO modified tracked file besides what already was modified before you started (do not touch creative_agent/archive.py, evaluator.py, redteam.py, verifier.py, harness.py, models.py, providers.py, creativity/__init__.py).
+* No network, no background loops, no hyper-parameter tuning. If a test fails twice, STOP and report the failure evidence.
+----------------------------------------------------------------------
+Reading additional input from stdin...
+OpenAI Codex v0.161.0
+--------
+workdir: /home/arcturus/hermesWorkspace/projects/CounterField
+model: cx/gpt-6-sol
+provider: custom
+approval: never
+sandbox: danger-full-access
+reasoning effort: high
+reasoning summaries: none
+session id: 01a164ff-3615-79a3-957c-1b9a2368a020
+--------
+user
+You are Minerva Backend, core logic and backend API engineer of Team Minerva.
+You follow strict Contract-First and TDD principles.
+Target Directory: /home/arcturus/hermesWorkspace/projects/CounterField
+Task: # TASK (Backend / TDD): structural novelty audit module (pure, deterministic, zero-LLM, zero-network)
+
+Project root: /home/arcturus/hermesWorkspace/projects/CounterField  (test runner: `.venv/bin/pytest`, baseline 105 passed)
+
+## Why
+Yesterday's `novelty` score is a hash-embedding proxy that clusters ~0.68 regardless of structure, so "high novelty"
+could not be evidenced. We need an INDEPENDENT, deterministic structural novelty measure used only for REPORTING
+(it must never gate or alter archive admission).
+
+## Files you may create (and nothing else; do NOT edit any existing file)
+1. creative_agent/creativity/novelty_audit.py
+2. tests/test_novelty_audit.py
+
+## Contract (exact names / signatures)
+```python
+from __future__ import annotations
+from collections import Counter
+from typing import Sequence
+from ..models import CausalLink          # fields: cause, relation, effect (relation in increases/decreases/enables/prevents/depends_on)
+
+def wl_feature_vector(links: Sequence[CausalLink], iterations: int = 3) -> Counter[str]: ...
+def wl_cosine(a: Counter[str], b: Counter[str]) -> float: ...                  # cosine in [0,1]; either empty -> 0.0
+def label_tokens(links: Sequence[CausalLink]) -> frozenset[str]: ...           # NFKC + casefold, split on non-alphanumeric (unicode-aware, keep Hangul), drop tokens of len<3
+def token_jaccard(a: frozenset[str], b: frozenset[str]) -> float: ...          # both empty -> 0.0
+def structural_novelty(links: Sequence[CausalLink], corpus: Sequence[Sequence[CausalLink]], iterations: int = 3) -> float: ...
+    # 1 - max_i wl_cosine(vec(links), vec(corpus[i])); empty corpus -> 1.0; result clamped to [0,1]
+def label_overlap(links: Sequence[CausalLink], corpus: Sequence[Sequence[CausalLink]]) -> float: ...
+    # max_i token_jaccard(...); empty corpus -> 0.0
+```
+### WL feature vector semantics
+* Node labels are ANONYMOUS (text of cause/effect is ignored; nodes identified by casefolded+whitespace-normalised text only to build the graph).
+* Duplicate (cause,relation,effect) links count once. Self-loops are allowed.
+* Iteration 0 colour of a node = ("in", n_in_edges_by_relation..., "out", n_out_edges_by_relation...) as a canonical string
+  (relation-aware, direction-aware). Iteration t+1 colour = hash/string of (own colour, sorted multiset of (relation, 'out', neighbour colour) for successors,
+  sorted multiset of (relation, 'in', neighbour colour) for predecessors). Feature vector = Counter of every colour string (prefixed with its iteration index) over iterations 0..`iterations`.
+* Use a stable digest (hashlib.sha256 -> hex[:16]) for colours; NEVER Python `hash()` (must be identical across processes).
+
+## Required tests (tests/test_novelty_audit.py) -- all must be zero-network
+1. identical link sets -> wl_cosine == 1.0 (approx).
+2. node-relabelled isomorphic graph (same topology+relations, different text) -> cosine 1.0.
+3. changing one relation (increases->prevents) lowers cosine below 1.0.
+4. direction sensitivity: out-star {a->b, a->c, a->d} vs in-star {b->a, c->a, d->a} (same relation) -> cosine < 0.8 .
+5. structural_novelty: empty corpus == 1.0; identical member in corpus == 0.0 (approx); strictly in [0,1].
+6. label_overlap: identical labels -> 1.0; disjoint -> 0.0; empty corpus -> 0.0; Hangul labels tokenise (len>=3 rule applies to characters, so `가나다` kept).
+7. determinism across processes: spawn `subprocess.run([sys.executable, "-c", ...])` computing a vector digest twice with different PYTHONHASHSEED values; results must be equal.
+8. duplicate links count once; self-loop does not crash.
+
+## Done criteria (Report-First)
+* `.venv/bin/pytest -q` exits 0 for the WHOLE suite (105 existing + yours). Print the final pytest tail.
+* `git diff --stat` must show NO modified tracked file besides what already was modified before you started (do not touch creative_agent/archive.py, evaluator.py, redteam.py, verifier.py, harness.py, models.py, providers.py, creativity/__init__.py).
+* No network, no background loops, no hyper-parameter tuning. If a test fails twice, STOP and report the failure evidence.
+
+Implement the required backend logic, write/run tests, and verify exit code 0 before concluding.
+codex
+I’ll inspect the model and current worktree, write the contract tests first, then implement the audit module. I’ll run the full suite and check the file changes before reporting back.
+exec
+/bin/bash -lc 'rg --files creative_agent/creativity tests | head -80' in /home/arcturus/hermesWorkspace/projects/CounterField
+exec
+/bin/bash -lc "rg -n \"class CausalLink|CausalLink\\(\" creative_agent/models.py tests | head -80" in /home/arcturus/hermesWorkspace/projects/CounterField
+ succeeded in 0ms:
+creative_agent/creativity/structure.py
+creative_agent/creativity/niche_space.py
+creative_agent/creativity/metrics.py
+creative_agent/creativity/__init__.py
+creative_agent/creativity/template_lint.py
+creative_agent/creativity/inversion.py
+creative_agent/creativity/operators.py
+creative_agent/creativity/dialectic.py
+creative_agent/creativity/isomorphism.py
+creative_agent/creativity/lineage.py
+tests/test_template_lint.py
+tests/test_llm_provider_sse.py
+tests/test_verifier.py
+tests/test_creativity_phase2.py
+tests/test_modular_contracts.py
+tests/test_creative_agent.py
+tests/test_curated_templates.py
+tests/test_redteam.py
+tests/test_creativity_phase4.py
+tests/test_creativity_phase1.py
+tests/test_dsl.py
+tests/test_creativity_phase3.py
+tests/test_creativity_phase0.py
+tests/test_architecture_enhancements.py
+tests/test_p0_invariants.py
+
+ succeeded in 0ms:
+creative_agent/models.py:28:class CausalLink(StrictModel):
+tests/test_p0_invariants.py:133:    one = (CausalLink(cause="a|enables|b", relation="enables", effect="c"),)
+tests/test_p0_invariants.py:134:    two = (CausalLink(cause="a", relation="enables", effect="b|enables|c"),)
+tests/test_architecture_enhancements.py:41:            CausalLink(cause=cause, relation=relation, effect=effect)
+tests/test_creativity_phase3.py:13:    return tuple(CausalLink(cause=a, relation=r, effect=b) for a, r, b in specs)
+tests/test_dsl.py:159:            CausalLink(cause="player input", relation="enables", effect="system response"),
+tests/test_dsl.py:160:            CausalLink(cause="system response", relation="enables", effect="payoff"),
+tests/test_creativity_phase1.py:25:        causal_structure=tuple(CausalLink(cause=a, relation=r, effect=b) for a, r, b in links),
+tests/test_creativity_phase0.py:22:        causal_structure=tuple(CausalLink(cause=c, relation=r, effect=e) for c, r, e in links),
+tests/test_creativity_phase2.py:19:        causal_structure=tuple(CausalLink(cause=a, relation=r, effect=b) for a, r, b in links))
+tests/test_creativity_phase2.py:57:    flipped = CausalLink(cause="effort", relation=POLARITY_FLIP[rel], effect="skill")
+tests/test_creativity_phase2.py:58:    same = CausalLink(cause="effort", relation=rel, effect="skill")
+tests/test_creativity_phase2.py:63:    assert InversionVerifier.is_polarity_flip(dep, CausalLink(cause="skill", relation="depends_on", effect="effort"))
+tests/test_creativity_phase2.py:64:    assert not InversionVerifier.is_polarity_flip(dep, CausalLink(cause="effort", relation="depends_on", effect="skill"))
+tests/test_verifier.py:13:        causal_structure=tuple(CausalLink(cause=a, relation=r, effect=b) for a, r, b in links),
+tests/test_template_lint.py:17:        links=tuple(CausalLink(cause=a, relation=r, effect=b) for a, r, b in specs),
+tests/test_creative_agent.py:20:    link1 = CausalLink(cause="Player action", relation="increases", effect="boss resistance")
+tests/test_creative_agent.py:21:    link2 = CausalLink(cause="Environment pulse", relation="enables", effect="vulnerability window")
+
+exec
+/bin/bash -lc "rg --files -g 'AGENTS.md' -g 'pyproject.toml' -g 'pytest.ini' -g 'conftest.py'" in /home/arcturus/hermesWorkspace/projects/CounterField
+ succeeded in 0ms:
+pyproject.toml
+
+exec
+/bin/bash -lc 'git status --short' in /home/arcturus/hermesWorkspace/projects/CounterField
+ succeeded in 0ms:
+ M .gitignore
+ M creative_agent/__init__.py
+ M creative_agent/archive.py
+ M creative_agent/cli.py
+ M creative_agent/evaluator.py
+ M creative_agent/harness.py
+ M creative_agent/models.py
+ M creative_agent/providers.py
+ M pyproject.toml
+?? INSTRUCTION_MODULAR_CONTRACTS.md
+?? INSTRUCTION_P0_REPAIR.md
+?? INSTRUCTION_PHASE_0_FOUNDATION.md
+?? INSTRUCTION_PHASE_1_DIALECTIC.md
+?? INSTRUCTION_PHASE_2_INVERSION.md
+?? INSTRUCTION_PHASE_3_ISOMORPHISM.md
+?? INSTRUCTION_PHASE_4_OPEN_NICHES.md
+?? creative_agent/contracts.py
+?? creative_agent/creativity/
+?? daily_research/
+?? data/
+?? docs/
+?? run_daily_research.sh
+?? run_design_ideation_30.py
+?? tests/test_creativity_phase0.py
+?? tests/test_creativity_phase1.py
+?? tests/test_creativity_phase2.py
+?? tests/test_creativity_phase3.py
+?? tests/test_creativity_phase4.py
+?? tests/test_curated_templates.py
+?? tests/test_llm_provider_sse.py
+?? tests/test_modular_contracts.py
+?? tests/test_p0_invariants.py
+?? tests/test_template_lint.py
+
+exec
+/bin/bash -lc "sed -n '1,100p' creative_agent/models.py" in /home/arcturus/hermesWorkspace/projects/CounterField
+exec
+/bin/bash -lc "sed -n '1,110p' pyproject.toml" in /home/arcturus/hermesWorkspace/projects/CounterField
+ succeeded in 0ms:
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "creative-agent"
+version = "0.1.0"
+description = "Production-grade Quality-Diversity (QD) Ideation & Brainstorming Harness"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Northroom" }]
+dependencies = [
+    "networkx>=3.0",
+    "pydantic>=2.0.0",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+
+ succeeded in 0ms:
+from __future__ import annotations
+
+import hashlib
+import unicodedata
+import math
+import re
+from enum import Enum
+from typing import Any, Literal
+
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
+
+
+def clean(value: str) -> str:
+    value = " ".join(unicodedata.normalize("NFKC", value).split())
+    if not value:
+        raise ValueError("value must not be blank")
+    return value
+
+
+def stable_id(*values: str) -> str:
+    return hashlib.sha256("\x1f".join(" ".join(v.casefold().split()) for v in values).encode()).hexdigest()[:16]
+
+
+class StrictModel(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
+
+class CausalLink(StrictModel):
+    cause: str
+    relation: Literal["increases", "decreases", "enables", "prevents", "depends_on"]
+    effect: str
+
+    _cause = field_validator("cause", "effect")(clean)
+
+
+class CanonicalMechanism(StrictModel):
+    core_mechanism: str
+    causal_structure: tuple[CausalLink, ...]
+    affected_system: str
+    payoff: str
+
+    _text = field_validator("core_mechanism", "affected_system", "payoff")(clean)
+
+    @property
+    def fingerprint(self) -> str:
+        links = sorted(
+            f"{clean(x.cause).casefold().replace('|', chr(92) + '|')}|{x.relation}|{clean(x.effect).casefold().replace('|', chr(92) + '|')}"
+            for x in self.causal_structure
+        )
+        return stable_id(self.core_mechanism, self.affected_system, self.payoff, *links)
+
+
+class Provenance(StrictModel):
+    source_domain: str = "generic"
+    culture_language_lens: str = "none"
+    provider_mode: str = "mock"
+
+    _text = field_validator("source_domain", "culture_language_lens", "provider_mode")(clean)
+
+
+class InversionEvidence(StrictModel):
+    kind: Literal["inversion"] = "inversion"
+    claim_id: str
+    bound_link_indices: tuple[int, ...]
+    flipped_polarity: bool
+
+class IsomorphismEvidence(StrictModel):
+    kind: Literal["isomorphism"] = "isomorphism"
+    template_id: str
+    role_map: dict[str, str]
+
+class DialecticEvidence(StrictModel):
+    kind: Literal["dialectic"] = "dialectic"
+    counterexample_hash: str
+    parent_fingerprint: str
+    synthesis_ops: tuple[str, ...]
+
+class CreativeLineage(StrictModel):
+    operator: str
+    evidence: InversionEvidence | IsomorphismEvidence | DialecticEvidence | None = None
+    parent_ids: tuple[str, ...] = ()
+
+class IdeaCandidate(StrictModel):
+    id: str
+    problem_id: str
+    title: str
+    description: str
+    mechanism: CanonicalMechanism | None = None
+    operator: str = "baseline"
+    worker_id: str = "worker-0"
+    generation: int = 0
+    parent_id: str | None = None
+    assumptions: tuple[str, ...] = ()
+    provenance: Provenance = Provenance()
+    lineage: CreativeLineage | None = None
+
+    _text = field_validator("id", "problem_id", "title", "description")(clean)
+
+
+class NicheDescriptor(StrictModel):
+
+exec
+/bin/bash -lc "sed -n '1,130p' tests/test_creativity_phase3.py" in /home/arcturus/hermesWorkspace/projects/CounterField
+ succeeded in 0ms:
+from creative_agent import MockIdeaProvider
+from creative_agent.creativity import (
+    BlendOperator, CausalTemplate, IsomorphismContext, IsomorphismLineageVerifier, IsomorphismVerifier,
+    MotifExtractor, MotifProfile, TemplateLibrary,
+)
+from creative_agent.harness import IdeationHarness
+from creative_agent.models import (
+    CanonicalMechanism, CausalLink, CreativeLineage, HarnessConfig, IdeaCandidate, IsomorphismEvidence,
+    NegativeArchive,
+)
+
+def links(*specs):
+    return tuple(CausalLink(cause=a, relation=r, effect=b) for a, r, b in specs)
+
+def mech(specs, payoff="z"):
+    return CanonicalMechanism(core_mechanism="c", affected_system="s", payoff=payoff, causal_structure=links(*specs))
+
+def cand(m, ev):
+    return IdeaCandidate(id="c1", problem_id="p", title="t", description="d", mechanism=m,
+                         lineage=CreativeLineage(operator="isomorphism", evidence=ev))
+
+TEMPLATE = CausalTemplate(
+    id="t", domain="ecology", roles=("pred", "prey", "bal"),
+    links=links(("pred", "decreases", "prey"), ("prey", "increases", "pred"), ("pred", "enables", "bal")),
+    motifs=("feedback_loop",), curated_by="x", source_ref="Lotka 1925", domain_vocabulary=("wolf",))
+ROLE_MAP = {"pred": "audit team", "prey": "backlog", "bal": "release health"}
+GOOD = mech([("audit team", "decreases", "backlog"), ("backlog", "increases", "audit team"),
+             ("audit team", "enables", "release health")], payoff="release health")
+
+def verify(m, role_map, baselines=None):
+    return IsomorphismVerifier().verify(cand(m, IsomorphismEvidence(template_id="t", role_map=role_map)),
+                                        IsomorphismEvidence(template_id="t", role_map=role_map), TEMPLATE, baselines)
+
+def test_motif_extraction_feedback_bottleneck_asymmetry():
+    ex = MotifExtractor()
+    loop = links(("a", "increases", "b"), ("b", "increases", "a"))
+    assert ex.extract_links(loop) == MotifProfile(has_feedback_loop=True)
+    hub = links(("a", "enables", "h"), ("b", "enables", "h"), ("c", "enables", "h"), ("h", "enables", "d"))
+    assert ex.extract_links(hub) == MotifProfile(has_bottleneck=True, has_asymmetry=True)
+    chain = links(("a", "enables", "b"), ("c", "enables", "d"))
+    assert ex.extract_links(chain) == MotifProfile()
+
+def test_role_map_must_be_injective():
+    assert verify(GOOD, ROLE_MAP) == ()
+    reasons = verify(GOOD, {**ROLE_MAP, "bal": "backlog"})
+    assert "role map is not injective" in reasons
+    assert any("cover" in r for r in verify(GOOD, {"pred": "audit team"}))
+
+def test_relation_preserving_monomorphism_required():
+    bad = mech([("audit team", "increases", "backlog"), ("backlog", "increases", "audit team"),
+                ("audit team", "enables", "release health")], payoff="release health")
+    assert any("relation mismatch" in r for r in verify(bad, ROLE_MAP))
+    assert any("missing edge" in r for r in verify(mech([("audit team", "enables", "release health")], "release health"), ROLE_MAP))
+
+def test_template_vocabulary_copy_rejected():
+    wolf = mech([("audit team", "decreases", "wolf pack"), ("wolf pack", "increases", "audit team"),
+                 ("audit team", "enables", "release health")], payoff="release health")
+    assert any("surface copy" in r for r in verify(wolf, {**ROLE_MAP, "prey": "wolf pack"}))
+    copied = mech([("pred", "decreases", "backlog"), ("backlog", "increases", "pred"),
+                   ("pred", "enables", "release health")], payoff="release health")
+    assert any("surface copy" in r for r in verify(copied, {**ROLE_MAP, "pred": "pred"}))
+
+def test_isomorphic_to_baseline_is_not_credited():
+    big = mech([("a1", "decreases", "b1"), ("b1", "increases", "a1"), ("a1", "enables", "c1"),
+                ("c1", "enables", "d1")], payoff="d1")
+    twin = mech([("w", "decreases", "x"), ("x", "increases", "w"), ("w", "enables", "y"),
+                 ("y", "enables", "q")], payoff="q")
+    t = CausalTemplate(id="t", domain="ecology", roles=("r1", "r2"), links=links(("r1", "decreases", "r2")),
+                       motifs=(), curated_by="x", source_ref="ref")
+    ev = IsomorphismEvidence(template_id="t", role_map={"r1": "w", "r2": "x"})
+    base = IdeaCandidate(id="b", problem_id="p", title="b", description="b", mechanism=big)
+    archive = NegativeArchive(baselines=(base,), mechanisms=(big,))
+    v = IsomorphismVerifier()
+    assert v.verify(cand(twin, ev), ev, t, None) == ()
+    assert "structurally isomorphic to a baseline" in v.verify(cand(twin, ev), ev, t, archive)
+    verdict = IsomorphismLineageVerifier().verify(cand(twin, ev), IsomorphismContext(TemplateLibrary([t]), archive))
+    assert not verdict.verified and not verdict.credit_awarded
+    assert not IsomorphismLineageVerifier().verify(cand(twin, None), None).credit_awarded
+
+def test_template_without_source_ref_excluded():
+    lib = TemplateLibrary()
+    assert len(lib.templates) == 12 and {t.domain for t in lib.templates} == {
+        "ecology", "os_kernel", "thermodynamics", "auction"}
+    profile = MotifProfile(has_feedback_loop=True, has_bottleneck=True, has_asymmetry=True)
+    assert len(lib.match(profile, k=3)) == 3
+    stripped = [t.model_copy(update={"source_ref": "  "}) for t in lib.templates[:11]]
+    only = TemplateLibrary([*stripped, lib.templates[11]])
+    assert only.match(profile, k=5) == (lib.templates[11],)
+
+def test_blend_runs_zero_network_with_scripted_backend():
+    op = BlendOperator()
+    h = IdeationHarness(MockIdeaProvider(), operators=[op])
+    result = h.run("Reduce churn in a subscription app", HarnessConfig(generations=1, population_size=3, total_budget=3))
+    assert result.metrics["isomorphism_attempts"] >= 1
+    assert result.metrics["isomorphism_successes"] == result.metrics["isomorphism_attempts"] >= 1
+    assert op.successes == result.metrics["isomorphism_successes"]
+
+exec
+/bin/bash -lc 'rg -n "novelty_audit|wl_feature_vector|structural_novelty|label_overlap" creative_agent tests' in /home/arcturus/hermesWorkspace/projects/CounterField
+ succeeded in 0ms:
+creative_agent/creativity/metrics.py:33:    def structural_novelty(self) -> int:
+
+codex
+The worktree already has tracked changes, so I’ve recorded that state and will leave them untouched. `CausalLink` has the expected fields; I’m writing tests for graph structure, label tokenization, and cross process determinism now.
+apply patch
+patch: completed
+/home/arcturus/hermesWorkspace/projects/CounterField/tests/test_novelty_audit.py
+diff --git a/tests/test_novelty_audit.py b/tests/test_novelty_audit.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..96b56b17b68d2a097efe88a0a665e9738e36d101
+--- /dev/null
++++ b/tests/test_novelty_audit.py
+@@ -0,0 +1,123 @@
++"""Contract tests for deterministic, reporting-only novelty measures."""
++
++from __future__ import annotations
++
++import os
++import subprocess
++import sys
++from collections import Counter
++
++import pytest
++
++from creative_agent.creativity.novelty_audit import (
++    label_overlap,
++    label_tokens,
++    structural_novelty,
++    token_jaccard,
++    wl_cosine,
++    wl_feature_vector,
++)
++from creative_agent.models import CausalLink
++
++
++def links(*triples: tuple[str, str, str]) -> tuple[CausalLink, ...]:
++    return tuple(CausalLink(cause=cause, relation=relation, effect=effect)
++                 for cause, relation, effect in triples)
++
++
++STAR = links(
++    ("a", "increases", "b"),
++    ("a", "increases", "c"),
++    ("a", "increases", "d"),
++)
++
++
++def test_identical_link_sets_have_unit_cosine() -> None:
++    vector = wl_feature_vector(STAR)
++    assert wl_cosine(vector, wl_feature_vector(tuple(reversed(STAR)))) == pytest.approx(1.0)
++
++
++def test_node_relabeling_preserves_features() -> None:
++    renamed = links(
++        ("engine", "increases", "wheel"),
++        ("engine", "increases", "road"),
++        ("engine", "increases", "speed"),
++    )
++    assert wl_feature_vector(STAR) == wl_feature_vector(renamed)
++    assert wl_cosine(wl_feature_vector(STAR), wl_feature_vector(renamed)) == pytest.approx(1.0)
++
++
++def test_relation_change_lowers_cosine() -> None:
++    changed = links(
++        ("a", "prevents", "b"),
++        ("a", "increases", "c"),
++        ("a", "increases", "d"),
++    )
++    assert wl_cosine(wl_feature_vector(STAR), wl_feature_vector(changed)) < 1.0
++
++
++def test_edge_direction_changes_star_features() -> None:
++    incoming = links(
++        ("b", "increases", "a"),
++        ("c", "increases", "a"),
++        ("d", "increases", "a"),
++    )
++    assert wl_cosine(wl_feature_vector(STAR), wl_feature_vector(incoming)) < 0.8
++
++
++def test_structural_novelty_contract() -> None:
++    changed = links(("a", "prevents", "b"))
++    assert structural_novelty(STAR, ()) == 1.0
++    assert structural_novelty(STAR, (changed, STAR)) == pytest.approx(0.0)
++    assert 0.0 < structural_novelty(STAR, (changed,)) < 1.0
++    assert 0.0 <= structural_novelty((), (STAR,)) <= 1.0
++
++
++def test_label_overlap_and_unicode_tokens() -> None:
++    base = links(("Alpha engine", "enables", "Beta wheel"))
++    same_labels = links(("alpha  ENGINE", "prevents", "beta WHEEL"))
++    disjoint = links(("Gamma cloud", "enables", "Delta river"))
++    assert label_overlap(base, (same_labels,)) == 1.0
++    assert label_overlap(base, (disjoint,)) == 0.0
++    assert label_overlap(base, ()) == 0.0
++    assert label_tokens(links(("가나다", "enables", "가나"))) == frozenset({"가나다"})
++    assert label_tokens(links(("Ｆｏｏ_bar", "enables", "BAZ"))) == frozenset({"foo", "bar", "baz"})
++
++
++def test_token_jaccard_empty_and_partial() -> None:
++    assert token_jaccard(frozenset(), frozenset()) == 0.0
++    assert token_jaccard(frozenset({"one", "two"}), frozenset({"two", "three"})) == pytest.approx(1 / 3)
++
++
++def test_wl_cosine_empty_vector() -> None:
++    assert wl_cosine(Counter(), wl_feature_vector(STAR)) == 0.0
++    assert wl_cosine(Counter(), Counter()) == 0.0
++
++
++def test_duplicate_links_count_once_and_self_loop_is_supported() -> None:
++    original = links(("Node", "enables", "Node"))
++    duplicates = links(("Node", "enables", "Node"), (" node ", "enables", "NODE"))
++    assert wl_feature_vector(original) == wl_feature_vector(duplicates)
++    assert sum(wl_feature_vector(original).values()) == 4
++
++
++def test_feature_digest_is_independent_of_python_hash_seed() -> None:
++    code = (
++        "import hashlib, json; "
++        "from creative_agent.models import CausalLink; "
++        "from creative_agent.creativity.novelty_audit import wl_feature_vector; "
++        "links = [CausalLink(cause=a, relation=r, effect=b) for a,r,b in "
++        "[('a','increases','b'),('b','prevents','c'),('c','enables','a')]]; "
++        "payload = json.dumps(sorted(wl_feature_vector(links).items())); "
++        "print(hashlib.sha256(payload.encode()).hexdigest())"
++    )
++    digests = []
++    for seed in ("1", "977"):
++        env = os.environ.copy()
++        env["PYTHONHASHSEED"] = seed
++        result = subprocess.run(
++            [sys.executable, "-c", code], env=env, capture_output=True,
++            text=True, check=True,
++        )
++        digests.append(result.stdout.strip())
++    assert digests[0] == digests[1]
+
+diff --git a/tests/test_novelty_audit.py b/tests/test_novelty_audit.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..96b56b17b68d2a097efe88a0a665e9738e36d101
+--- /dev/null
++++ b/tests/test_novelty_audit.py
+@@ -0,0 +1,123 @@
++"""Contract tests for deterministic, reporting-only novelty measures."""
++
++from __future__ import annotations
++
++import os
++import subprocess
++import sys
++from collections import Counter
++
++import pytest
++
++from creative_agent.creativity.novelty_audit import (
++    label_overlap,
++    label_tokens,
++    structural_novelty,
++    token_jaccard,
++    wl_cosine,
++    wl_feature_vector,
++)
++from creative_agent.models import CausalLink
++
++
++def links(*triples: tuple[str, str, str]) -> tuple[CausalLink, ...]:
++    return tuple(CausalLink(cause=cause, relation=relation, effect=effect)
++                 for cause, relation, effect in triples)
++
++
++STAR = links(
++    ("a", "increases", "b"),
++    ("a", "increases", "c"),
++    ("a", "increases", "d"),
++)
++
++
++def test_identical_link_sets_have_unit_cosine() -> None:
++    vector = wl_feature_vector(STAR)
++    assert wl_cosine(vector, wl_feature_vector(tuple(reversed(STAR)))) == pytest.approx(1.0)
++
++
++def test_node_relabeling_preserves_features() -> None:
++    renamed = links(
++        ("engine", "increases", "wheel"),
++        ("engine", "increases", "road"),
++        ("engine", "increases", "speed"),
++    )
++    assert wl_feature_vector(STAR) == wl_feature_vector(renamed)
++    assert wl_cosine(wl_feature_vector(STAR), wl_feature_vector(renamed)) == pytest.approx(1.0)
++
++
++def test_relation_change_lowers_cosine() -> None:
++    changed = links(
++        ("a", "prevents", "b"),
++        ("a", "increases", "c"),
++        ("a", "increases", "d"),
++    )
++    assert wl_cosine(wl_feature_vector(STAR), wl_feature_vector(changed)) < 1.0
++
++
++def test_edge_direction_changes_star_features() -> None:
++    incoming = links(
++        ("b", "increases", "a"),
++        ("c", "increases", "a"),
++        ("d", "increases", "a"),
++    )
++    assert wl_cosine(wl_feature_vector(STAR), wl_feature_vector(incoming)) < 0.8
++
++
++def test_structural_novelty_contract() -> None:
++    changed = links(("a", "prevents", "b"))
++    assert structural_novelty(STAR, ()) == 1.0
++    assert structural_novelty(STAR, (changed, STAR)) == pytest.approx(0.0)
++    assert 0.0 < structural_novelty(STAR, (changed,)) < 1.0
++    assert 0.0 <= structural_novelty((), (STAR,)) <= 1.0
++
++
++def test_label_overlap_and_unicode_tokens() -> None:
++    base = links(("Alpha engine", "enables", "Beta wheel"))
++    same_labels = links(("alpha  ENGINE", "prevents", "beta WHEEL"))
++    disjoint = links(("Gamma cloud", "enables", "Delta river"))
++    assert label_overlap(base, (same_labels,)) == 1.0
++    assert label_overlap(base, (disjoint,)) == 0.0
++    assert label_overlap(base, ()) == 0.0
++    assert label_tokens(links(("가나다", "enables", "가나"))) == frozenset({"가나다"})
++    assert label_tokens(links(("Ｆｏｏ_bar", "enables", "BAZ"))) == frozenset({"foo", "bar", "baz"})
++
++
++def test_token_jaccard_empty_and_partial() -> None:
++    assert token_jaccard(frozenset(), frozenset()) == 0.0
++    assert token_jaccard(frozenset({"one", "two"}), frozenset({"two", "three"})) == pytest.approx(1 / 3)
++
++
++def test_wl_cosine_empty_vector() -> None:
++    assert wl_cosine(Counter(), wl_feature_vector(STAR)) == 0.0
++    assert wl_cosine(Counter(), Counter()) == 0.0
++
++
++def test_duplicate_links_count_once_and_self_loop_is_supported() -> None:
++    original = links(("Node", "enables", "Node"))
++    duplicates = links(("Node", "enables", "Node"), (" node ", "enables", "NODE"))
++    assert wl_feature_vector(original) == wl_feature_vector(duplicates)
++    assert sum(wl_feature_vector(original).values()) == 4
++
++
++def test_feature_digest_is_independent_of_python_hash_seed() -> None:
++    code = (
++        "import hashlib, json; "
++        "from creative_agent.models import CausalLink; "
++        "from creative_agent.creativity.novelty_audit import wl_feature_vector; "
++        "links = [CausalLink(cause=a, relation=r, effect=b) for a,r,b in "
++        "[('a','increases','b'),('b','prevents','c'),('c','enables','a')]]; "
++        "payload = json.dumps(sorted(wl_feature_vector(links).items())); "
++        "print(hashlib.sha256(payload.encode()).hexdigest())"
++    )
++    digests = []
++    for seed in ("1", "977"):
++        env = os.environ.copy()
++        env["PYTHONHASHSEED"] = seed
++        result = subprocess.run(
++            [sys.executable, "-c", code], env=env, capture_output=True,
++            text=True, check=True,
++        )
++        digests.append(result.stdout.strip())
++    assert digests[0] == digests[1]
+
+exec
+/bin/bash -lc '.venv/bin/pytest -q tests/test_novelty_audit.py' in /home/arcturus/hermesWorkspace/projects/CounterField
+ exited 2 in 254ms:
+
+==================================== ERRORS ====================================
+_________________ ERROR collecting tests/test_novelty_audit.py _________________
+ImportError while importing test module '/home/arcturus/hermesWorkspace/projects/CounterField/tests/test_novelty_audit.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+../../../.local/share/uv/python/cpython-3.12.15-linux-x86_64-gnu/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_novelty_audit.py:12: in <module>
+    from creative_agent.creativity.novelty_audit import (
+E   ModuleNotFoundError: No module named 'creative_agent.creativity.novelty_audit'
+=========================== short test summary info ============================
+ERROR tests/test_novelty_audit.py
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+1 error in 0.23s
+
+diff --git a/tests/test_novelty_audit.py b/tests/test_novelty_audit.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..96b56b17b68d2a097efe88a0a665e9738e36d101
+--- /dev/null
++++ b/tests/test_novelty_audit.py
+@@ -0,0 +1,123 @@
++"""Contract tests for deterministic, reporting-only novelty measures."""
++
++from __future__ import annotations
++
++import os
++import subprocess
++import sys
++from collections import Counter
++
++import pytest
++
++from creative_agent.creativity.novelty_audit import (
++    label_overlap,
++    label_tokens,
++    structural_novelty,
++    token_jaccard,
++    wl_cosine,
++    wl_feature_vector,
++)
++from creative_agent.models import CausalLink
++
++
++def links(*triples: tuple[str, str, str]) -> tuple[CausalLink, ...]:
++    return tuple(CausalLink(cause=cause, relation=relation, effect=effect)
++                 for cause, relation, effect in triples)
++
++
++STAR = links(
++    ("a", "increases", "b"),
++    ("a", "increases", "c"),
++    ("a", "increases", "d"),
++)
++
++
++def test_identical_link_sets_have_unit_cosine() -> None:
++    vector = wl_feature_vector(STAR)
++    assert wl_cosine(vector, wl_feature_vector(tuple(reversed(STAR)))) == pytest.approx(1.0)
++
++
++def test_node_relabeling_preserves_features() -> None:
++    renamed = links(
++        ("engine", "increases", "wheel"),
++        ("engine", "increases", "road"),
++        ("engine", "increases", "speed"),
++    )
++    assert wl_feature_vector(STAR) == wl_feature_vector(renamed)
++    assert wl_cosine(wl_feature_vector(STAR), wl_feature_vector(renamed)) == pytest.approx(1.0)
++
++
++def test_relation_change_lowers_cosine() -> None:
++    changed = links(
++        ("a", "prevents", "b"),
++        ("a", "increases", "c"),
++        ("a", "increases", "d"),
++    )
++    assert wl_cosine(wl_feature_vector(STAR), wl_feature_vector(changed)) < 1.0
++
++
++def test_edge_direction_changes_star_features() -> None:
++    incoming = links(
++        ("b", "increases", "a"),
++        ("c", "increases", "a"),
++        ("d", "increases", "a"),
++    )
++    assert wl_cosine(wl_feature_vector(STAR), wl_feature_vector(incoming)) < 0.8
++
++
++def test_structural_novelty_contract() -> None:
++    changed = links(("a", "prevents", "b"))
++    assert structural_novelty(STAR, ()) == 1.0
++    assert structural_novelty(STAR, (changed, STAR)) == pytest.approx(0.0)
++    assert 0.0 < structural_novelty(STAR, (changed,)) < 1.0
++    assert 0.0 <= structural_novelty((), (STAR,)) <= 1.0
++
++
++def test_label_overlap_and_unicode_tokens() -> None:
++    base = links(("Alpha engine", "enables", "Beta wheel"))
++    same_labels = links(("alpha  ENGINE", "prevents", "beta WHEEL"))
++    disjoint = links(("Gamma cloud", "enables", "Delta river"))
++    assert label_overlap(base, (same_labels,)) == 1.0
++    assert label_overlap(base, (disjoint,)) == 0.0
++    assert label_overlap(base, ()) == 0.0
++    assert label_tokens(links(("가나다", "enables", "가나"))) == frozenset({"가나다"})
++    assert label_tokens(links(("Ｆｏｏ_bar", "enables", "BAZ"))) == frozenset({"foo", "bar", "baz"})
++
++
++def test_token_jaccard_empty_and_partial() -> None:
++    assert token_jaccard(frozenset(), frozenset()) == 0.0
++    assert token_jaccard(frozenset({"one", "two"}), frozenset({"two", "three"})) == pytest.approx(1 / 3)
++
++
++def test_wl_cosine_empty_vector() -> None:
++    assert wl_cosine(Counter(), wl_feature_vector(STAR)) == 0.0
++    assert wl_cosine(Counter(), Counter()) == 0.0
++
++
++def test_duplicate_links_count_once_and_self_loop_is_supported() -> None:
++    original = links(("Node", "enables", "Node"))
++    duplicates = links(("Node", "enables", "Node"), (" node ", "enables", "NODE"))
++    assert wl_feature_vector(original) == wl_feature_vector(duplicates)
++    assert sum(wl_feature_vector(original).values()) == 4
++
++
++def test_feature_digest_is_independent_of_python_hash_seed() -> None:
++    code = (
++        "import hashlib, json; "
++        "from creative_agent.models import CausalLink; "
++        "from creative_agent.creativity.novelty_audit import wl_feature_vector; "
++        "links = [CausalLink(cause=a, relation=r, effect=b) for a,r,b in "
++        "[('a','increases','b'),('b','prevents','c'),('c','enables','a')]]; "
++        "payload = json.dumps(sorted(wl_feature_vector(links).items())); "
++        "print(hashlib.sha256(payload.encode()).hexdigest())"
++    )
++    digests = []
++    for seed in ("1", "977"):
++        env = os.environ.copy()
++        env["PYTHONHASHSEED"] = seed
++        result = subprocess.run(
++            [sys.executable, "-c", code], env=env, capture_output=True,
++            text=True, check=True,
++        )
++        digests.append(result.stdout.strip())
++    assert digests[0] == digests[1]
+
+apply patch
+patch: completed
+/home/arcturus/hermesWorkspace/projects/CounterField/tests/test_novelty_audit.py
+diff --git a/tests/test_novelty_audit.py b/tests/test_novelty_audit.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..4d408df2c56744f28f6741596e0bd351fa66f7ca
+--- /dev/null
++++ b/tests/test_novelty_audit.py
+@@ -0,0 +1,127 @@
++"""Contract tests for deterministic, reporting-only novelty measures."""
++
++from __future__ import annotations
++
++import os
++import subprocess
++import sys
++from collections import Counter
++
++import pytest
++
++from creative_agent.creativity.novelty_audit import (
++    label_overlap,
++    label_tokens,
++    structural_novelty,
++    token_jaccard,
++    wl_cosine,
++    wl_feature_vector,
++)
++from creative_agent.models import CausalLink
++
++
++def links(*triples: tuple[str, str, str]) -> tuple[CausalLink, ...]:
++    return tuple(CausalLink(cause=cause, relation=relation, effect=effect)
++                 for cause, relation, effect in triples)
++
++
++STAR = links(
++    ("a", "increases", "b"),
++    ("a", "increases", "c"),
++    ("a", "increases", "d"),
++)
++
++
++def test_identical_link_sets_have_unit_cosine() -> None:
++    vector = wl_feature_vector(STAR)
++    assert wl_cosine(vector, wl_feature_vector(tuple(reversed(STAR)))) == pytest.approx(1.0)
++
++
++def test_node_relabeling_preserves_features() -> None:
++    renamed = links(
++        ("engine", "increases", "wheel"),
++        ("engine", "increases", "road"),
++        ("engine", "increases", "speed"),
++    )
++    assert wl_feature_vector(STAR) == wl_feature_vector(renamed)
++    assert wl_cosine(wl_feature_vector(STAR), wl_feature_vector(renamed)) == pytest.approx(1.0)
++
++
++def test_relation_change_lowers_cosine() -> None:
++    changed = links(
++        ("a", "prevents", "b"),
++        ("a", "increases", "c"),
++        ("a", "increases", "d"),
++    )
++    assert wl_cosine(wl_feature_vector(STAR), wl_feature_vector(changed)) < 1.0
++
++
++def test_edge_direction_changes_star_features() -> None:
++    incoming = links(
++        ("b", "increases", "a"),
++        ("c", "increases", "a"),
++        ("d", "increases", "a"),
++    )
++    assert wl_cosine(wl_feature_vector(STAR), wl_feature_vector(incoming)) < 0.8
++
++
++def test_structural_novelty_contract() -> None:
++    changed = links(
++        ("a", "prevents", "b"),
++        ("a", "increases", "c"),
++        ("a", "increases", "d"),
++    )
++    assert structural_novelty(STAR, ()) == 1.0
++    assert structural_novelty(STAR, (changed, STAR)) == pytest.approx(0.0)
++    assert 0.0 < structural_novelty(STAR, (changed,)) < 1.0
++    assert 0.0 <= structural_novelty((), (STAR,)) <= 1.0
++
++
++def test_label_overlap_and_unicode_tokens() -> None:
++    base = links(("Alpha engine", "enables", "Beta wheel"))
++    same_labels = links(("alpha  ENGINE", "prevents", "beta WHEEL"))
++    disjoint = links(("Gamma cloud", "enables", "Delta river"))
++    assert label_overlap(base, (same_labels,)) == 1.0
++    assert label_overlap(base, (disjoint,)) == 0.0
++    assert label_overlap(base, ()) == 0.0
++    assert label_tokens(links(("가나다", "enables", "가나"))) == frozenset({"가나다"})
++    assert label_tokens(links(("Ｆｏｏ_bar", "enables", "BAZ"))) == frozenset({"foo", "bar", "baz"})
++
++
++def test_token_jaccard_empty_and_partial() -> None:
++    assert token_jaccard(frozenset(), frozenset()) == 0.0
++    assert token_jaccard(frozenset({"one", "two"}), frozenset({"two", "three"})) == pytest.approx(1 / 3)
++
++
++def test_wl_cosine_empty_vector() -> None:
++    assert wl_cosine(Counter(), wl_feature_vector(STAR)) == 0.0
++    assert wl_cosine(Counter(), Counter()) == 0.0
++
++
++def test_duplicate_links_count_once_and_self_loop_is_supported() -> None:
++    original = links(("Node", "enables", "Node"))
++    duplicates = links(("Node", "enables", "Node"), (" node ", "enables", "NODE"))
++    assert wl_feature_vector(original) == wl_feature_vector(duplicates)
++    assert sum(wl_feature_vector(original).values()) == 4
++
++
++def test_feature_digest_is_independent_of_python_hash_seed() -> None:
++    code = (
++        "import hashlib, json; "
++        "from creative_agent.models import CausalLink; "
++        "from creative_agent.creativity.novelty_audit import wl_feature_vector; "
++        "links = [CausalLink(cause=a, relation=r, effect=b) for a,r,b in "
++        "[('a','increases','b'),('b','prevents','c'),('c','enables','a')]]; "
++        "payload = json.dumps(sorted(wl_feature_vector(links).items())); "
++        "print(hashlib.sha256(payload.encode()).hexdigest())"
++    )
++    digests = []
++    for seed in ("1", "977"):
++        env = os.environ.copy()
++        env["PYTHONHASHSEED"] = seed
++        result = subprocess.run(
++            [sys.executable, "-c", code], env=env, capture_output=True,
++            text=True, check=True,
++        )
++        digests.append(result.stdout.strip())
++    assert digests[0] == digests[1]
+
+diff --git a/tests/test_novelty_audit.py b/tests/test_novelty_audit.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..4d408df2c56744f28f6741596e0bd351fa66f7ca
+--- /dev/null
++++ b/tests/test_novelty_audit.py
+@@ -0,0 +1,127 @@
++"""Contract tests for deterministic, reporting-only novelty measures."""
++
++from __future__ import annotations
++
++import os
++import subprocess
++import sys
++from collections import Counter
++
++import pytest
++
++from creative_agent.creativity.novelty_audit import (
++    label_overlap,
++    label_tokens,
++    structural_novelty,
++    token_jaccard,
++    wl_cosine,
++    wl_feature_vector,
++)
++from creative_agent.models import CausalLink
++
++
++def links(*triples: tuple[str, str, str]) -> tuple[CausalLink, ...]:
++    return tuple(CausalLink(cause=cause, relation=relation, effect=effect)
++                 for cause, relation, effect in triples)
++
++
++STAR = links(
++    ("a", "increases", "b"),
++    ("a", "increases", "c"),
++    ("a", "increases", "d"),
++)
++
++
++def test_identical_link_sets_have_unit_cosine() -> None:
++    vector = wl_feature_vector(STAR)
++    assert wl_cosine(vector, wl_feature_vector(tuple(reversed(STAR)))) == pytest.approx(1.0)
++
++
++def test_node_relabeling_preserves_features() -> None:
++    renamed = links(
++        ("engine", "increases", "wheel"),
++        ("engine", "increases", "road"),
++        ("engine", "increases", "speed"),
++    )
++    assert wl_feature_vector(STAR) == wl_feature_vector(renamed)
++    assert wl_cosine(wl_feature_vector(STAR), wl_feature_vector(renamed)) == pytest.approx(1.0)
++
++
++def test_relation_change_lowers_cosine() -> None:
++    changed = links(
++        ("a", "prevents", "b"),
++        ("a", "increases", "c"),
++        ("a", "increases", "d"),
++    )
++    assert wl_cosine(wl_feature_vector(STAR), wl_feature_vector(changed)) < 1.0
++
++
++def test_edge_direction_changes_star_features() -> None:
++    incoming = links(
++        ("b", "increases", "a"),
++        ("c", "increases", "a"),
++        ("d", "increases", "a"),
++    )
++    assert wl_cosine(wl_feature_vector(STAR), wl_feature_vector(incoming)) < 0.8
++
++
++def test_structural_novelty_contract() -> None:
++    changed = links(
++        ("a", "prevents", "b"),
++        ("a", "increases", "c"),
++        ("a", "increases", "d"),
++    )
++    assert structural_novelty(STAR, ()) == 1.0
++    assert structural_novelty(STAR, (changed, STAR)) == pytest.approx(0.0)
++    assert 0.0 < structural_novelty(STAR, (changed,)) < 1.0
++    assert 0.0 <= structural_novelty((), (STAR,)) <= 1.0
++
++
++def test_label_overlap_and_unicode_tokens() -> None:
++    base = links(("Alpha engine", "enables", "Beta wheel"))
++    same_labels = links(("alpha  ENGINE", "prevents", "beta WHEEL"))
++    disjoint = links(("Gamma cloud", "enables", "Delta river"))
++    assert label_overlap(base, (same_labels,)) == 1.0
++    assert label_overlap(base, (disjoint,)) == 0.0
++    assert label_overlap(base, ()) == 0.0
++    assert label_tokens(links(("가나다", "enables", "가나"))) == frozenset({"가나다"})
++    assert label_tokens(links(("Ｆｏｏ_bar", "enables", "BAZ"))) == frozenset({"foo", "bar", "baz"})
++
++
++def test_token_jaccard_empty_and_partial() -> None:
++    assert token_jaccard(frozenset(), frozenset()) == 0.0
++    assert token_jaccard(frozenset({"one", "two"}), frozenset({"two", "three"})) == pytest.approx(1 / 3)
++
++
++def test_wl_cosine_empty_vector() -> None:
++    assert wl_cosine(Counter(), wl_feature_vector(STAR)) == 0.0
++    assert wl_cosine(Counter(), Counter()) == 0.0
++
++
++def test_duplicate_links_count_once_and_self_loop_is_supported() -> None:
++    original = links(("Node", "enables", "Node"))
++    duplicates = links(("Node", "enables", "Node"), (" node ", "enables", "NODE"))
++    assert wl_feature_vector(original) == wl_feature_vector(duplicates)
++    assert sum(wl_feature_vector(original).values()) == 4
++
++
++def test_feature_digest_is_independent_of_python_hash_seed() -> None:
++    code = (
++        "import hashlib, json; "
++        "from creative_agent.models import CausalLink; "
++        "from creative_agent.creativity.novelty_audit import wl_feature_vector; "
++        "links = [CausalLink(cause=a, relation=r, effect=b) for a,r,b in "
++        "[('a','increases','b'),('b','prevents','c'),('c','enables','a')]]; "
++        "payload = json.dumps(sorted(wl_feature_vector(links).items())); "
++        "print(hashlib.sha256(payload.encode()).hexdigest())"
++    )
++    digests = []
++    for seed in ("1", "977"):
++        env = os.environ.copy()
++        env["PYTHONHASHSEED"] = seed
++        result = subprocess.run(
++            [sys.executable, "-c", code], env=env, capture_output=True,
++            text=True, check=True,
++        )
++        digests.append(result.stdout.strip())
++    assert digests[0] == digests[1]
+
+codex
+The tests fail at import as expected because the module does not exist yet. I also adjusted the partial novelty case to compare graphs with some shared structure; I’ll implement the directed WL colours next.
+apply patch
+patch: completed
+/home/arcturus/hermesWorkspace/projects/CounterField/creative_agent/creativity/novelty_audit.py
+diff --git a/creative_agent/creativity/novelty_audit.py b/creative_agent/creativity/novelty_audit.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..36a1f1b34b8f45eb415366db236e152ed0b4b87f
+--- /dev/null
++++ b/creative_agent/creativity/novelty_audit.py
+@@ -0,0 +1,122 @@
++"""Deterministic structural and label comparisons for reporting."""
++
++from __future__ import annotations
++
++import hashlib
++import json
++import math
++import unicodedata
++from collections import Counter
++from typing import Sequence
++
++from ..models import CausalLink
++
++
++def _digest(value: object) -> str:
++    encoded = json.dumps(value, ensure_ascii=False, separators=(",", ":"))
++    return hashlib.sha256(encoded.encode("utf-8")).hexdigest()[:16]
++
++
++def _node_id(label: str) -> str:
++    return " ".join(label.casefold().split())
++
++
++def wl_feature_vector(links: Sequence[CausalLink], iterations: int = 3) -> Counter[str]:
++    """Count anonymous node colours at every directed WL refinement step."""
++    if iterations < 0:
++        raise ValueError("iterations must be nonnegative")
++
++    edges = {
++        (_node_id(link.cause), link.relation, _node_id(link.effect))
++        for link in links
++    }
++    nodes = sorted({node for source, _, target in edges for node in (source, target)})
++    incoming: dict[str, list[tuple[str, str]]] = {node: [] for node in nodes}
++    outgoing: dict[str, list[tuple[str, str]]] = {node: [] for node in nodes}
++    for source, relation, target in edges:
++        outgoing[source].append((relation, target))
++        incoming[target].append((relation, source))
++
++    colours = {
++        node: _digest((
++            "in", sorted(Counter(relation for relation, _ in incoming[node]).items()),
++            "out", sorted(Counter(relation for relation, _ in outgoing[node]).items()),
++        ))
++        for node in nodes
++    }
++    features: Counter[str] = Counter()
++    for step in range(iterations + 1):
++        features.update(f"{step}:{colours[node]}" for node in nodes)
++        if step == iterations:
++            break
++        colours = {
++            node: _digest((
++                colours[node],
++                sorted(
++                    [(relation, "out", colours[neighbor]) for relation, neighbor in outgoing[node]]
++                    + [(relation, "in", colours[neighbor]) for relation, neighbor in incoming[node]]
++                ),
++            ))
++            for node in nodes
++        }
++    return features
++
++
++def wl_cosine(a: Counter[str], b: Counter[str]) -> float:
++    """Cosine similarity of nonnegative WL feature counts."""
++    if not a or not b:
++        return 0.0
++    dot = sum(count * b.get(feature, 0) for feature, count in a.items())
++    norm_a = math.sqrt(sum(count * count for count in a.values()))
++    norm_b = math.sqrt(sum(count * count for count in b.values()))
++    if norm_a == 0 or norm_b == 0:
++        return 0.0
++    return max(0.0, min(1.0, dot / (norm_a * norm_b)))
++
++
++def label_tokens(links: Sequence[CausalLink]) -> frozenset[str]:
++    """Extract Unicode alphanumeric words of at least three characters."""
++    tokens: set[str] = set()
++    for link in links:
++        for label in (link.cause, link.effect):
++            normalized = unicodedata.normalize("NFKC", label).casefold()
++            current: list[str] = []
++            for character in normalized:
++                if character.isalnum():
++                    current.append(character)
++                else:
++                    if len(current) >= 3:
++                        tokens.add("".join(current))
++                    current.clear()
++            if len(current) >= 3:
++                tokens.add("".join(current))
++    return frozenset(tokens)
++
++
++def token_jaccard(a: frozenset[str], b: frozenset[str]) -> float:
++    """Jaccard overlap, with zero for two empty token sets."""
++    union = a | b
++    if not union:
++        return 0.0
++    return len(a & b) / len(union)
++
++
++def structural_novelty(
++    links: Sequence[CausalLink],
++    corpus: Sequence[Sequence[CausalLink]],
++    iterations: int = 3,
++) -> float:
++    """Distance from the most structurally similar corpus member."""
++    if not corpus:
++        return 1.0
++    vector = wl_feature_vector(links, iterations)
++    similarity = max(wl_cosine(vector, wl_feature_vector(member, iterations)) for member in corpus)
++    return max(0.0, min(1.0, 1.0 - similarity))
++
++
++def label_overlap(links: Sequence[CausalLink], corpus: Sequence[Sequence[CausalLink]]) -> float:
++    """Largest surface label overlap with a corpus member."""
++    if not corpus:
++        return 0.0
++    tokens = label_tokens(links)
++    return max(token_jaccard(tokens, label_tokens(member)) for member in corpus)
+diff --git a/tests/test_novelty_audit.py b/tests/test_novelty_audit.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..4d408df2c56744f28f6741596e0bd351fa66f7ca
+--- /dev/null
++++ b/tests/test_novelty_audit.py
+@@ -0,0 +1,127 @@
++"""Contract tests for deterministic, reporting-only novelty measures."""
++
++from __future__ import annotations
++
++import os
++import subprocess
++import sys
++from collections import Counter
++
++import pytest
++
++from creative_agent.creativity.novelty_audit import (
++    label_overlap,
++    label_tokens,
++    structural_novelty,
++    token_jaccard,
++    wl_cosine,
++    wl_feature_vector,
++)
++from creative_agent.models import CausalLink
++
++
++def links(*triples: tuple[str, str, str]) -> tuple[CausalLink, ...]:
++    return tuple(CausalLink(cause=cause, relation=relation, effect=effect)
++                 for cause, relation, effect in triples)
++
++
++STAR = links(
++    ("a", "increases", "b"),
++    ("a", "increases", "c"),
++    ("a", "increases", "d"),
++)
++
++
++def test_identical_link_sets_have_unit_cosine() -> None:
++    vector = wl_feature_vector(STAR)
++    assert wl_cosine(vector, wl_feature_vector(tuple(reversed(STAR)))) == pytest.approx(1.0)
++
++
++def test_node_relabeling_preserves_features() -> None:
++    renamed = links(
++        ("engine", "increases", "wheel"),
++        ("engine", "increases", "road"),
++        ("engine", "increases", "speed"),
++    )
++    assert wl_feature_vector(STAR) == wl_feature_vector(renamed)
++    assert wl_cosine(wl_feature_vector(STAR), wl_feature_vector(renamed)) == pytest.approx(1.0)
++
++
++def test_relation_change_lowers_cosine() -> None:
++    changed = links(
++        ("a", "prevents", "b"),
++        ("a", "increases", "c"),
++        ("a", "increases", "d"),
++    )
++    assert wl_cosine(wl_feature_vector(STAR), wl_feature_vector(changed)) < 1.0
++
++
++def test_edge_direction_changes_star_features() -> None:
++    incoming = links(
++        ("b", "increases", "a"),
++        ("c", "increases", "a"),
++        ("d", "increases", "a"),
++    )
++    assert wl_cosine(wl_feature_vector(STAR), wl_feature_vector(incoming)) < 0.8
++
++
++def test_structural_novelty_contract() -> None:
++    changed = links(
++        ("a", "prevents", "b"),
++        ("a", "increases", "c"),
++        ("a", "increases", "d"),
++    )
++    assert structural_novelty(STAR, ()) == 1.0
++    assert structural_novelty(STAR, (changed, STAR)) == pytest.approx(0.0)
++    assert 0.0 < structural_novelty(STAR, (changed,)) < 1.0
++    assert 0.0 <= structural_novelty((), (STAR,)) <= 1.0
++
++
++def test_label_overlap_and_unicode_tokens() -> None:
++    base = links(("Alpha engine", "enables", "Beta wheel"))
++    same_labels = links(("alpha  ENGINE", "prevents", "beta WHEEL"))
++    disjoint = links(("Gamma cloud", "enables", "Delta river"))
++    assert label_overlap(base, (same_labels,)) == 1.0
++    assert label_overlap(base, (disjoint,)) == 0.0
++    assert label_overlap(base, ()) == 0.0
++    assert label_tokens(links(("가나다", "enables", "가나"))) == frozenset({"가나다"})
++    assert label_tokens(links(("Ｆｏｏ_bar", "enables", "BAZ"))) == frozenset({"foo", "bar", "baz"})
++
++
++def test_token_jaccard_empty_and_partial() -> None:
++    assert token_jaccard(frozenset(), frozenset()) == 0.0
++    assert token_jaccard(frozenset({"one", "two"}), frozenset({"two", "three"})) == pytest.approx(1 / 3)
++
++
++def test_wl_cosine_empty_vector() -> None:
++    assert wl_cosine(Counter(), wl_feature_vector(STAR)) == 0.0
++    assert wl_cosine(Counter(), Counter()) == 0.0
++
++
++def test_duplicate_links_count_once_and_self_loop_is_supported() -> None:
++    original = links(("Node", "enables", "Node"))
++    duplicates = links(("Node", "enables", "Node"), (" node ", "enables", "NODE"))
++    assert wl_feature_vector(original) == wl_feature_vector(duplicates)
++    assert sum(wl_feature_vector(original).values()) == 4
++
++
++def test_feature_digest_is_independent_of_python_hash_seed() -> None:
++    code = (
++        "import hashlib, json; "
++        "from creative_agent.models import CausalLink; "
++        "from creative_agent.creativity.novelty_audit import wl_feature_vector; "
++        "links = [CausalLink(cause=a, relation=r, effect=b) for a,r,b in "
++        "[('a','increases','b'),('b','prevents','c'),('c','enables','a')]]; "
++        "payload = json.dumps(sorted(wl_feature_vector(links).items())); "
++        "print(hashlib.sha256(payload.encode()).hexdigest())"
++    )
++    digests = []
++    for seed in ("1", "977"):
++        env = os.environ.copy()
++        env["PYTHONHASHSEED"] = seed
++        result = subprocess.run(
++            [sys.executable, "-c", code], env=env, capture_output=True,
++            text=True, check=True,
++        )
++        digests.append(result.stdout.strip())
++    assert digests[0] == digests[1]
+
+diff --git a/creative_agent/creativity/novelty_audit.py b/creative_agent/creativity/novelty_audit.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..36a1f1b34b8f45eb415366db236e152ed0b4b87f
+--- /dev/null
++++ b/creative_agent/creativity/novelty_audit.py
+@@ -0,0 +1,122 @@
++"""Deterministic structural and label comparisons for reporting."""
++
++from __future__ import annotations
++
++import hashlib
++import json
++import math
++import unicodedata
++from collections import Counter
++from typing import Sequence
++
++from ..models import CausalLink
++
++
++def _digest(value: object) -> str:
++    encoded = json.dumps(value, ensure_ascii=False, separators=(",", ":"))
++    return hashlib.sha256(encoded.encode("utf-8")).hexdigest()[:16]
++
++
++def _node_id(label: str) -> str:
++    return " ".join(label.casefold().split())
++
++
++def wl_feature_vector(links: Sequence[CausalLink], iterations: int = 3) -> Counter[str]:
++    """Count anonymous node colours at every directed WL refinement step."""
++    if iterations < 0:
++        raise ValueError("iterations must be nonnegative")
++
++    edges = {
++        (_node_id(link.cause), link.relation, _node_id(link.effect))
++        for link in links
++    }
++    nodes = sorted({node for source, _, target in edges for node in (source, target)})
++    incoming: dict[str, list[tuple[str, str]]] = {node: [] for node in nodes}
++    outgoing: dict[str, list[tuple[str, str]]] = {node: [] for node in nodes}
++    for source, relation, target in edges:
++        outgoing[source].append((relation, target))
++        incoming[target].append((relation, source))
++
++    colours = {
++        node: _digest((
++            "in", sorted(Counter(relation for relation, _ in incoming[node]).items()),
++            "out", sorted(Counter(relation for relation, _ in outgoing[node]).items()),
++        ))
++        for node in nodes
++    }
++    features: Counter[str] = Counter()
++    for step in range(iterations + 1):
++        features.update(f"{step}:{colours[node]}" for node in nodes)
++        if step == iterations:
++            break
++        colours = {
++            node: _digest((
++                colours[node],
++                sorted(
++                    [(relation, "out", colours[neighbor]) for relation, neighbor in outgoing[node]]
++                    + [(relation, "in", colours[neighbor]) for relation, neighbor in incoming[node]]
++                ),
++            ))
++            for node in nodes
++        }
++    return features
++
++
++def wl_cosine(a: Counter[str], b: Counter[str]) -> float:
++    """Cosine similarity of nonnegative WL feature counts."""
++    if not a or not b:
++        return 0.0
++    dot = sum(count * b.get(feature, 0) for feature, count in a.items())
++    norm_a = math.sqrt(sum(count * count for count in a.values()))
++    norm_b = math.sqrt(sum(count * count for count in b.values()))
++    if norm_a == 0 or norm_b == 0:
++        return 0.0
++    return max(0.0, min(1.0, dot / (norm_a * norm_b)))
++
++
++def label_tokens(links: Sequence[CausalLink]) -> frozenset[str]:
++    """Extract Unicode alphanumeric words of at least three characters."""
++    tokens: set[str] = set()
++    for link in links:
++        for label in (link.cause, link.effect):
++            normalized = unicodedata.normalize("NFKC", label).casefold()
++            current: list[str] = []
++            for character in normalized:
++                if character.isalnum():
++                    current.append(character)
++                else:
++                    if len(current) >= 3:
++                        tokens.add("".join(current))
++                    current.clear()
++            if len(current) >= 3:
++                tokens.add("".join(current))
++    return frozenset(tokens)
++
++
++def token_jaccard(a: frozenset[str], b: frozenset[str]) -> float:
++    """Jaccard overlap, with zero for two empty token sets."""
++    union = a | b
++    if not union:
++        return 0.0
++    return len(a & b) / len(union)
++
++
++def structural_novelty(
++    links: Sequence[CausalLink],
++    corpus: Sequence[Sequence[CausalLink]],
++    iterations: int = 3,
++) -> float:
++    """Distance from the most structurally similar corpus member."""
++    if not corpus:
++        return 1.0
++    vector = wl_feature_vector(links, iterations)
++    similarity = max(wl_cosine(vector, wl_feature_vector(member, iterations)) for member in corpus)
++    return max(0.0, min(1.0, 1.0 - similarity))
++
++
++def label_overlap(links: Sequence[CausalLink], corpus: Sequence[Sequence[CausalLink]]) -> float:
++    """Largest surface label overlap with a corpus member."""
++    if not corpus:
++        return 0.0
++    tokens = label_tokens(links)
++    return max(token_jaccard(tokens, label_tokens(member)) for member in corpus)
+diff --git a/tests/test_novelty_audit.py b/tests/test_novelty_audit.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..4d408df2c56744f28f6741596e0bd351fa66f7ca
+--- /dev/null
++++ b/tests/test_novelty_audit.py
+@@ -0,0 +1,127 @@
++"""Contract tests for deterministic, reporting-only novelty measures."""
++
++from __future__ import annotations
++
++import os
++import subprocess
++import sys
++from collections import Counter
++
++import pytest
++
++from creative_agent.creativity.novelty_audit import (
++    label_overlap,
++    label_tokens,
++    structural_novelty,
++    token_jaccard,
++    wl_cosine,
++    wl_feature_vector,
++)
++from creative_agent.models import CausalLink
++
++
++def links(*triples: tuple[str, str, str]) -> tuple[CausalLink, ...]:
++    return tuple(CausalLink(cause=cause, relation=relation, effect=effect)
++                 for cause, relation, effect in triples)
++
++
++STAR = links(
++    ("a", "increases", "b"),
++    ("a", "increases", "c"),
++    ("a", "increases", "d"),
++)
++
++
++def test_identical_link_sets_have_unit_cosine() -> None:
++    vector = wl_feature_vector(STAR)
++    assert wl_cosine(vector, wl_feature_vector(tuple(reversed(STAR)))) == pytest.approx(1.0)
++
++
++def test_node_relabeling_preserves_features() -> None:
++    renamed = links(
++        ("engine", "increases", "wheel"),
++        ("engine", "increases", "road"),
++        ("engine", "increases", "speed"),
++    )
++    assert wl_feature_vector(STAR) == wl_feature_vector(renamed)
++    assert wl_cosine(wl_feature_vector(STAR), wl_feature_vector(renamed)) == pytest.approx(1.0)
++
++
++def test_relation_change_lowers_cosine() -> None:
++    changed = links(
++        ("a", "prevents", "b"),
++        ("a", "increases", "c"),
++        ("a", "increases", "d"),
++    )
++    assert wl_cosine(wl_feature_vector(STAR), wl_feature_vector(changed)) < 1.0
++
++
++def test_edge_direction_changes_star_features() -> None:
++    incoming = links(
++        ("b", "increases", "a"),
++        ("c", "increases", "a"),
++        ("d", "increases", "a"),
++    )
++    assert wl_cosine(wl_feature_vector(STAR), wl_feature_vector(incoming)) < 0.8
++
++
++def test_structural_novelty_contract() -> None:
++    changed = links(
++        ("a", "prevents", "b"),
++        ("a", "increases", "c"),
++        ("a", "increases", "d"),
++    )
++    assert structural_novelty(STAR, ()) == 1.0
++    assert structural_novelty(STAR, (changed, STAR)) == pytest.approx(0.0)
++    assert 0.0 < structural_novelty(STAR, (changed,)) < 1.0
++    assert 0.0 <= structural_novelty((), (STAR,)) <= 1.0
++
++
++def test_label_overlap_and_unicode_tokens() -> None:
++    base = links(("Alpha engine", "enables", "Beta wheel"))
++    same_labels = links(("alpha  ENGINE", "prevents", "beta WHEEL"))
++    disjoint = links(("Gamma cloud", "enables", "Delta river"))
++    assert label_overlap(base, (same_labels,)) == 1.0
++    assert label_overlap(base, (disjoint,)) == 0.0
++    assert label_overlap(base, ()) == 0.0
++    assert label_tokens(links(("가나다", "enables", "가나"))) == frozenset({"가나다"})
++    assert label_tokens(links(("Ｆｏｏ_bar", "enables", "BAZ"))) == frozenset({"foo", "bar", "baz"})
++
++
++def test_token_jaccard_empty_and_partial() -> None:
++    assert token_jaccard(frozenset(), frozenset()) == 0.0
++    assert token_jaccard(frozenset({"one", "two"}), frozenset({"two", "three"})) == pytest.approx(1 / 3)
++
++
++def test_wl_cosine_empty_vector() -> None:
++    assert wl_cosine(Counter(), wl_feature_vector(STAR)) == 0.0
++    assert wl_cosine(Counter(), Counter()) == 0.0
++
++
++def test_duplicate_links_count_once_and_self_loop_is_supported() -> None:
++    original = links(("Node", "enables", "Node"))
++    duplicates = links(("Node", "enables", "Node"), (" node ", "enables", "NODE"))
++    assert wl_feature_vector(original) == wl_feature_vector(duplicates)
++    assert sum(wl_feature_vector(original).values()) == 4
++
++
++def test_feature_digest_is_independent_of_python_hash_seed() -> None:
++    code = (
++        "import hashlib, json; "
++        "from creative_agent.models import CausalLink; "
++        "from creative_agent.creativity.novelty_audit import wl_feature_vector; "
++        "links = [CausalLink(cause=a, relation=r, effect=b) for a,r,b in "
++        "[('a','increases','b'),('b','prevents','c'),('c','enables','a')]]; "
++        "payload = json.dumps(sorted(wl_feature_vector(links).items())); "
++        "print(hashlib.sha256(payload.encode()).hexdigest())"
++    )
++    digests = []
++    for seed in ("1", "977"):
++        env = os.environ.copy()
++        env["PYTHONHASHSEED"] = seed
++        result = subprocess.run(
++            [sys.executable, "-c", code], env=env, capture_output=True,
++            text=True, check=True,
++        )
++        digests.append(result.stdout.strip())
++    assert digests[0] == digests[1]
+
+exec
+/bin/bash -lc '.venv/bin/pytest -q tests/test_novelty_audit.py' in /home/arcturus/hermesWorkspace/projects/CounterField
+ succeeded in 616ms:
+..........                                                               [100%]
+10 passed in 0.59s
+
+diff --git a/creative_agent/creativity/novelty_audit.py b/creative_agent/creativity/novelty_audit.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..36a1f1b34b8f45eb415366db236e152ed0b4b87f
+--- /dev/null
++++ b/creative_agent/creativity/novelty_audit.py
+@@ -0,0 +1,122 @@
++"""Deterministic structural and label comparisons for reporting."""
++
++from __future__ import annotations
++
++import hashlib
++import json
++import math
++import unicodedata
++from collections import Counter
++from typing import Sequence
++
++from ..models import CausalLink
++
++
++def _digest(value: object) -> str:
++    encoded = json.dumps(value, ensure_ascii=False, separators=(",", ":"))
++    return hashlib.sha256(encoded.encode("utf-8")).hexdigest()[:16]
++
++
++def _node_id(label: str) -> str:
++    return " ".join(label.casefold().split())
++
++
++def wl_feature_vector(links: Sequence[CausalLink], iterations: int = 3) -> Counter[str]:
++    """Count anonymous node colours at every directed WL refinement step."""
++    if iterations < 0:
++        raise ValueError("iterations must be nonnegative")
++
++    edges = {
++        (_node_id(link.cause), link.relation, _node_id(link.effect))
++        for link in links
++    }
++    nodes = sorted({node for source, _, target in edges for node in (source, target)})
++    incoming: dict[str, list[tuple[str, str]]] = {node: [] for node in nodes}
++    outgoing: dict[str, list[tuple[str, str]]] = {node: [] for node in nodes}
++    for source, relation, target in edges:
++        outgoing[source].append((relation, target))
++        incoming[target].append((relation, source))
++
++    colours = {
++        node: _digest((
++            "in", sorted(Counter(relation for relation, _ in incoming[node]).items()),
++            "out", sorted(Counter(relation for relation, _ in outgoing[node]).items()),
++        ))
++        for node in nodes
++    }
++    features: Counter[str] = Counter()
++    for step in range(iterations + 1):
++        features.update(f"{step}:{colours[node]}" for node in nodes)
++        if step == iterations:
++            break
++        colours = {
++            node: _digest((
++                colours[node],
++                sorted(
++                    [(relation, "out", colours[neighbor]) for relation, neighbor in outgoing[node]]
++                    + [(relation, "in", colours[neighbor]) for relation, neighbor in incoming[node]]
++                ),
++            ))
++            for node in nodes
++        }
++    return features
++
++
++def wl_cosine(a: Counter[str], b: Counter[str]) -> float:
++    """Cosine similarity of nonnegative WL feature counts."""
++    if not a or not b:
++        return 0.0
++    dot = sum(count * b.get(feature, 0) for feature, count in a.items())
++    norm_a = math.sqrt(sum(count * count for count in a.values()))
++    norm_b = math.sqrt(sum(count * count for count in b.values()))
++    if norm_a == 0 or norm_b == 0:
++        return 0.0
++    return max(0.0, min(1.0, dot / (norm_a * norm_b)))
++
++
++def label_tokens(links: Sequence[CausalLink]) -> frozenset[str]:
++    """Extract Unicode alphanumeric words of at least three characters."""
++    tokens: set[str] = set()
++    for link in links:
++        for label in (link.cause, link.effect):
++            normalized = unicodedata.normalize("NFKC", label).casefold()
++            current: list[str] = []
++            for character in normalized:
++                if character.isalnum():
++                    current.append(character)
++                else:
++                    if len(current) >= 3:
++                        tokens.add("".join(current))
++                    current.clear()
++            if len(current) >= 3:
++                tokens.add("".join(current))
++    return frozenset(tokens)
++
++
++def token_jaccard(a: frozenset[str], b: frozenset[str]) -> float:
++    """Jaccard overlap, with zero for two empty token sets."""
++    union = a | b
++    if not union:
++        return 0.0
++    return len(a & b) / len(union)
++
++
++def structural_novelty(
++    links: Sequence[CausalLink],
++    corpus: Sequence[Sequence[CausalLink]],
++    iterations: int = 3,
++) -> float:
++    """Distance from the most structurally similar corpus member."""
++    if not corpus:
++        return 1.0
++    vector = wl_feature_vector(links, iterations)
++    similarity = max(wl_cosine(vector, wl_feature_vector(member, iterations)) for member in corpus)
++    return max(0.0, min(1.0, 1.0 - similarity))
++
++
++def label_overlap(links: Sequence[CausalLink], corpus: Sequence[Sequence[CausalLink]]) -> float:
++    """Largest surface label overlap with a corpus member."""
++    if not corpus:
++        return 0.0
++    tokens = label_tokens(links)
++    return max(token_jaccard(tokens, label_tokens(member)) for member in corpus)
+diff --git a/tests/test_novelty_audit.py b/tests/test_novelty_audit.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..4d408df2c56744f28f6741596e0bd351fa66f7ca
+--- /dev/null
++++ b/tests/test_novelty_audit.py
+@@ -0,0 +1,127 @@
++"""Contract tests for deterministic, reporting-only novelty measures."""
++
++from __future__ import annotations
++
++import os
++import subprocess
++import sys
++from collections import Counter
++
++import pytest
++
++from creative_agent.creativity.novelty_audit import (
++    label_overlap,
++    label_tokens,
++    structural_novelty,
++    token_jaccard,
++    wl_cosine,
++    wl_feature_vector,
++)
++from creative_agent.models import CausalLink
++
++
++def links(*triples: tuple[str, str, str]) -> tuple[CausalLink, ...]:
++    return tuple(CausalLink(cause=cause, relation=relation, effect=effect)
++                 for cause, relation, effect in triples)
++
++
++STAR = links(
++    ("a", "increases", "b"),
++    ("a", "increases", "c"),
++    ("a", "increases", "d"),
++)
++
++
++def test_identical_link_sets_have_unit_cosine() -> None:
++    vector = wl_feature_vector(STAR)
++    assert wl_cosine(vector, wl_feature_vector(tuple(reversed(STAR)))) == pytest.approx(1.0)
++
++
++def test_node_relabeling_preserves_features() -> None:
++    renamed = links(
++        ("engine", "increases", "wheel"),
++        ("engine", "increases", "road"),
++        ("engine", "increases", "speed"),
++    )
++    assert wl_feature_vector(STAR) == wl_feature_vector(renamed)
++    assert wl_cosine(wl_feature_vector(STAR), wl_feature_vector(renamed)) == pytest.approx(1.0)
++
++
++def test_relation_change_lowers_cosine() -> None:
++    changed = links(
++        ("a", "prevents", "b"),
++        ("a", "increases", "c"),
++        ("a", "increases", "d"),
++    )
++    assert wl_cosine(wl_feature_vector(STAR), wl_feature_vector(changed)) < 1.0
++
++
++def test_edge_direction_changes_star_features() -> None:
++    incoming = links(
++        ("b", "increases", "a"),
++        ("c", "increases", "a"),
++        ("d", "increases", "a"),
++    )
++    assert wl_cosine(wl_feature_vector(STAR), wl_feature_vector(incoming)) < 0.8
++
++
++def test_structural_novelty_contract() -> None:
++    changed = links(
++        ("a", "prevents", "b"),
++        ("a", "increases", "c"),
++        ("a", "increases", "d"),
++    )
++    assert structural_novelty(STAR, ()) == 1.0
++    assert structural_novelty(STAR, (changed, STAR)) == pytest.approx(0.0)
++    assert 0.0 < structural_novelty(STAR, (changed,)) < 1.0
++    assert 0.0 <= structural_novelty((), (STAR,)) <= 1.0
++
++
++def test_label_overlap_and_unicode_tokens() -> None:
++    base = links(("Alpha engine", "enables", "Beta wheel"))
++    same_labels = links(("alpha  ENGINE", "prevents", "beta WHEEL"))
++    disjoint = links(("Gamma cloud", "enables", "Delta river"))
++    assert label_overlap(base, (same_labels,)) == 1.0
++    assert label_overlap(base, (disjoint,)) == 0.0
++    assert label_overlap(base, ()) == 0.0
++    assert label_tokens(links(("가나다", "enables", "가나"))) == frozenset({"가나다"})
++    assert label_tokens(links(("Ｆｏｏ_bar", "enables", "BAZ"))) == frozenset({"foo", "bar", "baz"})
++
++
++def test_token_jaccard_empty_and_partial() -> None:
++    assert token_jaccard(frozenset(), frozenset()) == 0.0
++    assert token_jaccard(frozenset({"one", "two"}), frozenset({"two", "three"})) == pytest.approx(1 / 3)
++
++
++def test_wl_cosine_empty_vector() -> None:
++    assert wl_cosine(Counter(), wl_feature_vector(STAR)) == 0.0
++    assert wl_cosine(Counter(), Counter()) == 0.0
++
++
++def test_duplicate_links_count_once_and_self_loop_is_supported() -> None:
++    original = links(("Node", "enables", "Node"))
++    duplicates = links(("Node", "enables", "Node"), (" node ", "enables", "NODE"))
++    assert wl_feature_vector(original) == wl_feature_vector(duplicates)
++    assert sum(wl_feature_vector(original).values()) == 4
++
++
++def test_feature_digest_is_independent_of_python_hash_seed() -> None:
++    code = (
++        "import hashlib, json; "
++        "from creative_agent.models import CausalLink; "
++        "from creative_agent.creativity.novelty_audit import wl_feature_vector; "
++        "links = [CausalLink(cause=a, relation=r, effect=b) for a,r,b in "
++        "[('a','increases','b'),('b','prevents','c'),('c','enables','a')]]; "
++        "payload = json.dumps(sorted(wl_feature_vector(links).items())); "
++        "print(hashlib.sha256(payload.encode()).hexdigest())"
++    )
++    digests = []
++    for seed in ("1", "977"):
++        env = os.environ.copy()
++        env["PYTHONHASHSEED"] = seed
++        result = subprocess.run(
++            [sys.executable, "-c", code], env=env, capture_output=True,
++            text=True, check=True,
++        )
++        digests.append(result.stdout.strip())
++    assert digests[0] == digests[1]
+
+codex
+The focused audit tests pass. I’ll run the full suite now, then check the diff and status against the starting worktree.
+exec
+/bin/bash -lc '.venv/bin/pytest -q' in /home/arcturus/hermesWorkspace/projects/CounterField
+ succeeded in 1094ms:
+........................................................................ [ 62%]
+...........................................                              [100%]
+=============================== warnings summary ===============================
+tests/test_creative_agent.py: 1 warning
+tests/test_creativity_phase0.py: 5 warnings
+tests/test_creativity_phase1.py: 3 warnings
+tests/test_creativity_phase2.py: 1 warning
+tests/test_creativity_phase3.py: 2 warnings
+tests/test_creativity_phase4.py: 1 warning
+tests/test_modular_contracts.py: 3 warnings
+tests/test_p0_invariants.py: 1 warning
+  /home/arcturus/hermesWorkspace/projects/CounterField/.venv/lib/python3.12/site-packages/networkx/utils/backends.py:551: UserWarning: The hashes produced for directed graphs changed in version v3.5 due to a bugfix to track in and out edges separately (see documentation).
+    return self.orig_func(*args, **kwargs)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+115 passed, 17 warnings in 1.06s
+
+diff --git a/creative_agent/creativity/novelty_audit.py b/creative_agent/creativity/novelty_audit.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..36a1f1b34b8f45eb415366db236e152ed0b4b87f
+--- /dev/null
++++ b/creative_agent/creativity/novelty_audit.py
+@@ -0,0 +1,122 @@
++"""Deterministic structural and label comparisons for reporting."""
++
++from __future__ import annotations
++
++import hashlib
++import json
++import math
++import unicodedata
++from collections import Counter
++from typing import Sequence
++
++from ..models import CausalLink
++
++
++def _digest(value: object) -> str:
++    encoded = json.dumps(value, ensure_ascii=False, separators=(",", ":"))
++    return hashlib.sha256(encoded.encode("utf-8")).hexdigest()[:16]
++
++
++def _node_id(label: str) -> str:
++    return " ".join(label.casefold().split())
++
++
++def wl_feature_vector(links: Sequence[CausalLink], iterations: int = 3) -> Counter[str]:
++    """Count anonymous node colours at every directed WL refinement step."""
++    if iterations < 0:
++        raise ValueError("iterations must be nonnegative")
++
++    edges = {
++        (_node_id(link.cause), link.relation, _node_id(link.effect))
++        for link in links
++    }
++    nodes = sorted({node for source, _, target in edges for node in (source, target)})
++    incoming: dict[str, list[tuple[str, str]]] = {node: [] for node in nodes}
++    outgoing: dict[str, list[tuple[str, str]]] = {node: [] for node in nodes}
++    for source, relation, target in edges:
++        outgoing[source].append((relation, target))
++        incoming[target].append((relation, source))
++
++    colours = {
++        node: _digest((
++            "in", sorted(Counter(relation for relation, _ in incoming[node]).items()),
++            "out", sorted(Counter(relation for relation, _ in outgoing[node]).items()),
++        ))
++        for node in nodes
++    }
++    features: Counter[str] = Counter()
++    for step in range(iterations + 1):
++        features.update(f"{step}:{colours[node]}" for node in nodes)
++        if step == iterations:
++            break
++        colours = {
++            node: _digest((
++                colours[node],
++                sorted(
++                    [(relation, "out", colours[neighbor]) for relation, neighbor in outgoing[node]]
++                    + [(relation, "in", colours[neighbor]) for relation, neighbor in incoming[node]]
++                ),
++            ))
++            for node in nodes
++        }
++    return features
++
++
++def wl_cosine(a: Counter[str], b: Counter[str]) -> float:
++    """Cosine similarity of nonnegative WL feature counts."""
++    if not a or not b:
++        return 0.0
++    dot = sum(count * b.get(feature, 0) for feature, count in a.items())
++    norm_a = math.sqrt(sum(count * count for count in a.values()))
++    norm_b = math.sqrt(sum(count * count for count in b.values()))
++    if norm_a == 0 or norm_b == 0:
++        return 0.0
++    return max(0.0, min(1.0, dot / (norm_a * norm_b)))
++
++
++def label_tokens(links: Sequence[CausalLink]) -> frozenset[str]:
++    """Extract Unicode alphanumeric words of at least three characters."""
++    tokens: set[str] = set()
++    for link in links:
++        for label in (link.cause, link.effect):
++            normalized = unicodedata.normalize("NFKC", label).casefold()
++            current: list[str] = []
++            for character in normalized:
++                if character.isalnum():
++                    current.append(character)
++                else:
++                    if len(current) >= 3:
++                        tokens.add("".join(current))
++                    current.clear()
++            if len(current) >= 3:
++                tokens.add("".join(current))
++    return frozenset(tokens)
++
++
++def token_jaccard(a: frozenset[str], b: frozenset[str]) -> float:
++    """Jaccard overlap, with zero for two empty token sets."""
++    union = a | b
++    if not union:
++        return 0.0
++    return len(a & b) / len(union)
++
++
++def structural_novelty(
++    links: Sequence[CausalLink],
++    corpus: Sequence[Sequence[CausalLink]],
++    iterations: int = 3,
++) -> float:
++    """Distance from the most structurally similar corpus member."""
++    if not corpus:
++        return 1.0
++    vector = wl_feature_vector(links, iterations)
++    similarity = max(wl_cosine(vector, wl_feature_vector(member, iterations)) for member in corpus)
++    return max(0.0, min(1.0, 1.0 - similarity))
++
++
++def label_overlap(links: Sequence[CausalLink], corpus: Sequence[Sequence[CausalLink]]) -> float:
++    """Largest surface label overlap with a corpus member."""
++    if not corpus:
++        return 0.0
++    tokens = label_tokens(links)
++    return max(token_jaccard(tokens, label_tokens(member)) for member in corpus)
+diff --git a/tests/test_novelty_audit.py b/tests/test_novelty_audit.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..4d408df2c56744f28f6741596e0bd351fa66f7ca
+--- /dev/null
++++ b/tests/test_novelty_audit.py
+@@ -0,0 +1,127 @@
++"""Contract tests for deterministic, reporting-only novelty measures."""
++
++from __future__ import annotations
++
++import os
++import subprocess
++import sys
++from collections import Counter
++
++import pytest
++
++from creative_agent.creativity.novelty_audit import (
++    label_overlap,
++    label_tokens,
++    structural_novelty,
++    token_jaccard,
++    wl_cosine,
++    wl_feature_vector,
++)
++from creative_agent.models import CausalLink
++
++
++def links(*triples: tuple[str, str, str]) -> tuple[CausalLink, ...]:
++    return tuple(CausalLink(cause=cause, relation=relation, effect=effect)
++                 for cause, relation, effect in triples)
++
++
++STAR = links(
++    ("a", "increases", "b"),
++    ("a", "increases", "c"),
++    ("a", "increases", "d"),
++)
++
++
++def test_identical_link_sets_have_unit_cosine() -> None:
++    vector = wl_feature_vector(STAR)
++    assert wl_cosine(vector, wl_feature_vector(tuple(reversed(STAR)))) == pytest.approx(1.0)
++
++
++def test_node_relabeling_preserves_features() -> None:
++    renamed = links(
++        ("engine", "increases", "wheel"),
++        ("engine", "increases", "road"),
++        ("engine", "increases", "speed"),
++    )
++    assert wl_feature_vector(STAR) == wl_feature_vector(renamed)
++    assert wl_cosine(wl_feature_vector(STAR), wl_feature_vector(renamed)) == pytest.approx(1.0)
++
++
++def test_relation_change_lowers_cosine() -> None:
++    changed = links(
++        ("a", "prevents", "b"),
++        ("a", "increases", "c"),
++        ("a", "increases", "d"),
++    )
++    assert wl_cosine(wl_feature_vector(STAR), wl_feature_vector(changed)) < 1.0
++
++
++def test_edge_direction_changes_star_features() -> None:
++    incoming = links(
++        ("b", "increases", "a"),
++        ("c", "increases", "a"),
++        ("d", "increases", "a"),
++    )
++    assert wl_cosine(wl_feature_vector(STAR), wl_feature_vector(incoming)) < 0.8
++
++
++def test_structural_novelty_contract() -> None:
++    changed = links(
++        ("a", "prevents", "b"),
++        ("a", "increases", "c"),
++        ("a", "increases", "d"),
++    )
++    assert structural_novelty(STAR, ()) == 1.0
++    assert structural_novelty(STAR, (changed, STAR)) == pytest.approx(0.0)
++    assert 0.0 < structural_novelty(STAR, (changed,)) < 1.0
++    assert 0.0 <= structural_novelty((), (STAR,)) <= 1.0
++
++
++def test_label_overlap_and_unicode_tokens() -> None:
++    base = links(("Alpha engine", "enables", "Beta wheel"))
++    same_labels = links(("alpha  ENGINE", "prevents", "beta WHEEL"))
++    disjoint = links(("Gamma cloud", "enables", "Delta river"))
++    assert label_overlap(base, (same_labels,)) == 1.0
++    assert label_overlap(base, (disjoint,)) == 0.0
++    assert label_overlap(base, ()) == 0.0
++    assert label_tokens(links(("가나다", "enables", "가나"))) == frozenset({"가나다"})
++    assert label_tokens(links(("Ｆｏｏ_bar", "enables", "BAZ"))) == frozenset({"foo", "bar", "baz"})
++
++
++def test_token_jaccard_empty_and_partial() -> None:
++    assert token_jaccard(frozenset(), frozenset()) == 0.0
++    assert token_jaccard(frozenset({"one", "two"}), frozenset({"two", "three"})) == pytest.approx(1 / 3)
++
++
++def test_wl_cosine_empty_vector() -> None:
++    assert wl_cosine(Counter(), wl_feature_vector(STAR)) == 0.0
++    assert wl_cosine(Counter(), Counter()) == 0.0
++
++
++def test_duplicate_links_count_once_and_self_loop_is_supported() -> None:
++    original = links(("Node", "enables", "Node"))
++    duplicates = links(("Node", "enables", "Node"), (" node ", "enables", "NODE"))
++    assert wl_feature_vector(original) == wl_feature_vector(duplicates)
++    assert sum(wl_feature_vector(original).values()) == 4
++
++
++def test_feature_digest_is_independent_of_python_hash_seed() -> None:
++    code = (
++        "import hashlib, json; "
++        "from creative_agent.models import CausalLink; "
++        "from creative_agent.creativity.novelty_audit import wl_feature_vector; "
++        "links = [CausalLink(cause=a, relation=r, effect=b) for a,r,b in "
++        "[('a','increases','b'),('b','prevents','c'),('c','enables','a')]]; "
++        "payload = json.dumps(sorted(wl_feature_vector(links).items())); "
++        "print(hashlib.sha256(payload.encode()).hexdigest())"
++    )
++    digests = []
++    for seed in ("1", "977"):
++        env = os.environ.copy()
++        env["PYTHONHASHSEED"] = seed
++        result = subprocess.run(
++            [sys.executable, "-c", code], env=env, capture_output=True,
++            text=True, check=True,
++        )
++        digests.append(result.stdout.strip())
++    assert digests[0] == digests[1]
+
+exec
+/bin/bash -lc 'git status --short' in /home/arcturus/hermesWorkspace/projects/CounterField
+ succeeded in 0ms:
+ M .gitignore
+ M creative_agent/__init__.py
+ M creative_agent/archive.py
+ M creative_agent/cli.py
+ M creative_agent/evaluator.py
+ M creative_agent/harness.py
+ M creative_agent/models.py
+ M creative_agent/providers.py
+ M pyproject.toml
+?? INSTRUCTION_MODULAR_CONTRACTS.md
+?? INSTRUCTION_P0_REPAIR.md
+?? INSTRUCTION_PHASE_0_FOUNDATION.md
+?? INSTRUCTION_PHASE_1_DIALECTIC.md
+?? INSTRUCTION_PHASE_2_INVERSION.md
+?? INSTRUCTION_PHASE_3_ISOMORPHISM.md
+?? INSTRUCTION_PHASE_4_OPEN_NICHES.md
+?? creative_agent/contracts.py
+?? creative_agent/creativity/
+?? daily_research/
+?? data/
+?? docs/
+?? run_daily_research.sh
+?? run_design_ideation_30.py
+?? tests/test_creativity_phase0.py
+?? tests/test_creativity_phase1.py
+?? tests/test_creativity_phase2.py
+?? tests/test_creativity_phase3.py
+?? tests/test_creativity_phase4.py
+?? tests/test_curated_templates.py
+?? tests/test_llm_provider_sse.py
+?? tests/test_modular_contracts.py
+?? tests/test_novelty_audit.py
+?? tests/test_p0_invariants.py
+?? tests/test_template_lint.py
+
+exec
+/bin/bash -lc 'git ls-files -- creative_agent/creativity/novelty_audit.py tests/test_novelty_audit.py' in /home/arcturus/hermesWorkspace/projects/CounterField
+exec
+/bin/bash -lc 'git diff --stat' in /home/arcturus/hermesWorkspace/projects/CounterField
+ succeeded in 0ms:
+ succeeded in 0ms:
+ .gitignore                  |   2 +
+ creative_agent/__init__.py  |  14 +++
+ creative_agent/archive.py   |  88 ++++++++++++--
+ creative_agent/cli.py       |   3 +-
+ creative_agent/evaluator.py |   4 +
+ creative_agent/harness.py   | 283 ++++++++++++++++++++++++++++++++++++++------
+ creative_agent/models.py    |  39 +++++-
+ creative_agent/providers.py |  60 +++++++++-
+ pyproject.toml              |   2 +
+ 9 files changed, 440 insertions(+), 55 deletions(-)
+
+diff --git a/creative_agent/creativity/novelty_audit.py b/creative_agent/creativity/novelty_audit.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..36a1f1b34b8f45eb415366db236e152ed0b4b87f
+--- /dev/null
++++ b/creative_agent/creativity/novelty_audit.py
+@@ -0,0 +1,122 @@
++"""Deterministic structural and label comparisons for reporting."""
++
++from __future__ import annotations
++
++import hashlib
++import json
++import math
++import unicodedata
++from collections import Counter
++from typing import Sequence
++
++from ..models import CausalLink
++
++
++def _digest(value: object) -> str:
++    encoded = json.dumps(value, ensure_ascii=False, separators=(",", ":"))
++    return hashlib.sha256(encoded.encode("utf-8")).hexdigest()[:16]
++
++
++def _node_id(label: str) -> str:
++    return " ".join(label.casefold().split())
++
++
++def wl_feature_vector(links: Sequence[CausalLink], iterations: int = 3) -> Counter[str]:
++    """Count anonymous node colours at every directed WL refinement step."""
++    if iterations < 0:
++        raise ValueError("iterations must be nonnegative")
++
++    edges = {
++        (_node_id(link.cause), link.relation, _node_id(link.effect))
++        for link in links
++    }
++    nodes = sorted({node for source, _, target in edges for node in (source, target)})
++    incoming: dict[str, list[tuple[str, str]]] = {node: [] for node in nodes}
++    outgoing: dict[str, list[tuple[str, str]]] = {node: [] for node in nodes}
++    for source, relation, target in edges:
++        outgoing[source].append((relation, target))
++        incoming[target].append((relation, source))
++
++    colours = {
++        node: _digest((
++            "in", sorted(Counter(relation for relation, _ in incoming[node]).items()),
++            "out", sorted(Counter(relation for relation, _ in outgoing[node]).items()),
++        ))
++        for node in nodes
++    }
++    features: Counter[str] = Counter()
++    for step in range(iterations + 1):
++        features.update(f"{step}:{colours[node]}" for node in nodes)
++        if step == iterations:
++            break
++        colours = {
++            node: _digest((
++                colours[node],
++                sorted(
++                    [(relation, "out", colours[neighbor]) for relation, neighbor in outgoing[node]]
++                    + [(relation, "in", colours[neighbor]) for relation, neighbor in incoming[node]]
++                ),
++            ))
++            for node in nodes
++        }
++    return features
++
++
++def wl_cosine(a: Counter[str], b: Counter[str]) -> float:
++    """Cosine similarity of nonnegative WL feature counts."""
++    if not a or not b:
++        return 0.0
++    dot = sum(count * b.get(feature, 0) for feature, count in a.items())
++    norm_a = math.sqrt(sum(count * count for count in a.values()))
++    norm_b = math.sqrt(sum(count * count for count in b.values()))
++    if norm_a == 0 or norm_b == 0:
++        return 0.0
++    return max(0.0, min(1.0, dot / (norm_a * norm_b)))
++
++
++def label_tokens(links: Sequence[CausalLink]) -> frozenset[str]:
++    """Extract Unicode alphanumeric words of at least three characters."""
++    tokens: set[str] = set()
++    for link in links:
++        for label in (link.cause, link.effect):
++            normalized = unicodedata.normalize("NFKC", label).casefold()
++            current: list[str] = []
++            for character in normalized:
++                if character.isalnum():
++                    current.append(character)
++                else:
++                    if len(current) >= 3:
++                        tokens.add("".join(current))
++                    current.clear()
++            if len(current) >= 3:
++                tokens.add("".join(current))
++    return frozenset(tokens)
++
++
++def token_jaccard(a: frozenset[str], b: frozenset[str]) -> float:
++    """Jaccard overlap, with zero for two empty token sets."""
++    union = a | b
++    if not union:
++        return 0.0
++    return len(a & b) / len(union)
++
++
++def structural_novelty(
++    links: Sequence[CausalLink],
++    corpus: Sequence[Sequence[CausalLink]],
++    iterations: int = 3,
++) -> float:
++    """Distance from the most structurally similar corpus member."""
++    if not corpus:
++        return 1.0
++    vector = wl_feature_vector(links, iterations)
++    similarity = max(wl_cosine(vector, wl_feature_vector(member, iterations)) for member in corpus)
++    return max(0.0, min(1.0, 1.0 - similarity))
++
++
++def label_overlap(links: Sequence[CausalLink], corpus: Sequence[Sequence[CausalLink]]) -> float:
++    """Largest surface label overlap with a corpus member."""
++    if not corpus:
++        return 0.0
++    tokens = label_tokens(links)
++    return max(token_jaccard(tokens, label_tokens(member)) for member in corpus)
+diff --git a/tests/test_novelty_audit.py b/tests/test_novelty_audit.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..4d408df2c56744f28f6741596e0bd351fa66f7ca
+--- /dev/null
++++ b/tests/test_novelty_audit.py
+@@ -0,0 +1,127 @@
++"""Contract tests for deterministic, reporting-only novelty measures."""
++
++from __future__ import annotations
++
++import os
++import subprocess
++import sys
++from collections import Counter
++
++import pytest
++
++from creative_agent.creativity.novelty_audit import (
++    label_overlap,
++    label_tokens,
++    structural_novelty,
++    token_jaccard,
++    wl_cosine,
++    wl_feature_vector,
++)
++from creative_agent.models import CausalLink
++
++
++def links(*triples: tuple[str, str, str]) -> tuple[CausalLink, ...]:
++    return tuple(CausalLink(cause=cause, relation=relation, effect=effect)
++                 for cause, relation, effect in triples)
++
++
++STAR = links(
++    ("a", "increases", "b"),
++    ("a", "increases", "c"),
++    ("a", "increases", "d"),
++)
++
++
++def test_identical_link_sets_have_unit_cosine() -> None:
++    vector = wl_feature_vector(STAR)
++    assert wl_cosine(vector, wl_feature_vector(tuple(reversed(STAR)))) == pytest.approx(1.0)
++
++
++def test_node_relabeling_preserves_features() -> None:
++    renamed = links(
++        ("engine", "increases", "wheel"),
++        ("engine", "increases", "road"),
++        ("engine", "increases", "speed"),
++    )
++    assert wl_feature_vector(STAR) == wl_feature_vector(renamed)
++    assert wl_cosine(wl_feature_vector(STAR), wl_feature_vector(renamed)) == pytest.approx(1.0)
++
++
++def test_relation_change_lowers_cosine() -> None:
++    changed = links(
++        ("a", "prevents", "b"),
++        ("a", "increases", "c"),
++        ("a", "increases", "d"),
++    )
++    assert wl_cosine(wl_feature_vector(STAR), wl_feature_vector(changed)) < 1.0
++
++
++def test_edge_direction_changes_star_features() -> None:
++    incoming = links(
++        ("b", "increases", "a"),
++        ("c", "increases", "a"),
++        ("d", "increases", "a"),
++    )
++    assert wl_cosine(wl_feature_vector(STAR), wl_feature_vector(incoming)) < 0.8
++
++
++def test_structural_novelty_contract() -> None:
++    changed = links(
++        ("a", "prevents", "b"),
++        ("a", "increases", "c"),
++        ("a", "increases", "d"),
++    )
++    assert structural_novelty(STAR, ()) == 1.0
++    assert structural_novelty(STAR, (changed, STAR)) == pytest.approx(0.0)
++    assert 0.0 < structural_novelty(STAR, (changed,)) < 1.0
++    assert 0.0 <= structural_novelty((), (STAR,)) <= 1.0
++
++
++def test_label_overlap_and_unicode_tokens() -> None:
++    base = links(("Alpha engine", "enables", "Beta wheel"))
++    same_labels = links(("alpha  ENGINE", "prevents", "beta WHEEL"))
++    disjoint = links(("Gamma cloud", "enables", "Delta river"))
++    assert label_overlap(base, (same_labels,)) == 1.0
++    assert label_overlap(base, (disjoint,)) == 0.0
++    assert label_overlap(base, ()) == 0.0
++    assert label_tokens(links(("가나다", "enables", "가나"))) == frozenset({"가나다"})
++    assert label_tokens(links(("Ｆｏｏ_bar", "enables", "BAZ"))) == frozenset({"foo", "bar", "baz"})
++
++
++def test_token_jaccard_empty_and_partial() -> None:
++    assert token_jaccard(frozenset(), frozenset()) == 0.0
++    assert token_jaccard(frozenset({"one", "two"}), frozenset({"two", "three"})) == pytest.approx(1 / 3)
++
++
++def test_wl_cosine_empty_vector() -> None:
++    assert wl_cosine(Counter(), wl_feature_vector(STAR)) == 0.0
++    assert wl_cosine(Counter(), Counter()) == 0.0
++
++
++def test_duplicate_links_count_once_and_self_loop_is_supported() -> None:
++    original = links(("Node", "enables", "Node"))
++    duplicates = links(("Node", "enables", "Node"), (" node ", "enables", "NODE"))
++    assert wl_feature_vector(original) == wl_feature_vector(duplicates)
++    assert sum(wl_feature_vector(original).values()) == 4
++
++
++def test_feature_digest_is_independent_of_python_hash_seed() -> None:
++    code = (
++        "import hashlib, json; "
++        "from creative_agent.models import CausalLink; "
++        "from creative_agent.creativity.novelty_audit import wl_feature_vector; "
++        "links = [CausalLink(cause=a, relation=r, effect=b) for a,r,b in "
++        "[('a','increases','b'),('b','prevents','c'),('c','enables','a')]]; "
++        "payload = json.dumps(sorted(wl_feature_vector(links).items())); "
++        "print(hashlib.sha256(payload.encode()).hexdigest())"
++    )
++    digests = []
++    for seed in ("1", "977"):
++        env = os.environ.copy()
++        env["PYTHONHASHSEED"] = seed
++        result = subprocess.run(
++            [sys.executable, "-c", code], env=env, capture_output=True,
++            text=True, check=True,
++        )
++        digests.append(result.stdout.strip())
++    assert digests[0] == digests[1]
+
+codex
+**The structural novelty audit is complete.** I added the deterministic WL and label overlap functions in [novelty_audit.py](/home/arcturus/hermesWorkspace/projects/CounterField/creative_agent/creativity/novelty_audit.py) and the contract tests in [test_novelty_audit.py](/home/arcturus/hermesWorkspace/projects/CounterField/tests/test_novelty_audit.py). The module is for reporting only; no archive admission code was changed.
+
+`.venv/bin/pytest -q` exited 0:
+
+```text
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+115 passed, 17 warnings in 1.06s
+```
+
+`git diff --stat` shows only the tracked changes that were present before I started. No existing file was edited for this task.
+diff --git a/creative_agent/creativity/novelty_audit.py b/creative_agent/creativity/novelty_audit.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..36a1f1b34b8f45eb415366db236e152ed0b4b87f
+--- /dev/null
++++ b/creative_agent/creativity/novelty_audit.py
+@@ -0,0 +1,122 @@
++"""Deterministic structural and label comparisons for reporting."""
++
++from __future__ import annotations
++
++import hashlib
++import json
++import math
++import unicodedata
++from collections import Counter
++from typing import Sequence
++
++from ..models import CausalLink
++
++
++def _digest(value: object) -> str:
++    encoded = json.dumps(value, ensure_ascii=False, separators=(",", ":"))
++    return hashlib.sha256(encoded.encode("utf-8")).hexdigest()[:16]
++
++
++def _node_id(label: str) -> str:
++    return " ".join(label.casefold().split())
++
++
++def wl_feature_vector(links: Sequence[CausalLink], iterations: int = 3) -> Counter[str]:
++    """Count anonymous node colours at every directed WL refinement step."""
++    if iterations < 0:
++        raise ValueError("iterations must be nonnegative")
++
++    edges = {
++        (_node_id(link.cause), link.relation, _node_id(link.effect))
++        for link in links
++    }
++    nodes = sorted({node for source, _, target in edges for node in (source, target)})
++    incoming: dict[str, list[tuple[str, str]]] = {node: [] for node in nodes}
++    outgoing: dict[str, list[tuple[str, str]]] = {node: [] for node in nodes}
++    for source, relation, target in edges:
++        outgoing[source].append((relation, target))
++        incoming[target].append((relation, source))
++
++    colours = {
++        node: _digest((
++            "in", sorted(Counter(relation for relation, _ in incoming[node]).items()),
++            "out", sorted(Counter(relation for relation, _ in outgoing[node]).items()),
++        ))
++        for node in nodes
++    }
++    features: Counter[str] = Counter()
++    for step in range(iterations + 1):
++        features.update(f"{step}:{colours[node]}" for node in nodes)
++        if step == iterations:
++            break
++        colours = {
++            node: _digest((
++                colours[node],
++                sorted(
++                    [(relation, "out", colours[neighbor]) for relation, neighbor in outgoing[node]]
++                    + [(relation, "in", colours[neighbor]) for relation, neighbor in incoming[node]]
++                ),
++            ))
++            for node in nodes
++        }
++    return features
++
++
++def wl_cosine(a: Counter[str], b: Counter[str]) -> float:
++    """Cosine similarity of nonnegative WL feature counts."""
++    if not a or not b:
++        return 0.0
++    dot = sum(count * b.get(feature, 0) for feature, count in a.items())
++    norm_a = math.sqrt(sum(count * count for count in a.values()))
++    norm_b = math.sqrt(sum(count * count for count in b.values()))
++    if norm_a == 0 or norm_b == 0:
++        return 0.0
++    return max(0.0, min(1.0, dot / (norm_a * norm_b)))
++
++
++def label_tokens(links: Sequence[CausalLink]) -> frozenset[str]:
++    """Extract Unicode alphanumeric words of at least three characters."""
++    tokens: set[str] = set()
++    for link in links:
++        for label in (link.cause, link.effect):
++            normalized = unicodedata.normalize("NFKC", label).casefold()
++            current: list[str] = []
++            for character in normalized:
++                if character.isalnum():
++                    current.append(character)
++                else:
++                    if len(current) >= 3:
++                        tokens.add("".join(current))
++                    current.clear()
++            if len(current) >= 3:
++                tokens.add("".join(current))
++    return frozenset(tokens)
++
++
++def token_jaccard(a: frozenset[str], b: frozenset[str]) -> float:
++    """Jaccard overlap, with zero for two empty token sets."""
++    union = a | b
++    if not union:
++        return 0.0
++    return len(a & b) / len(union)
++
++
++def structural_novelty(
++    links: Sequence[CausalLink],
++    corpus: Sequence[Sequence[CausalLink]],
++    iterations: int = 3,
++) -> float:
++    """Distance from the most structurally similar corpus member."""
++    if not corpus:
++        return 1.0
++    vector = wl_feature_vector(links, iterations)
++    similarity = max(wl_cosine(vector, wl_feature_vector(member, iterations)) for member in corpus)
++    return max(0.0, min(1.0, 1.0 - similarity))
++
++
++def label_overlap(links: Sequence[CausalLink], corpus: Sequence[Sequence[CausalLink]]) -> float:
++    """Largest surface label overlap with a corpus member."""
++    if not corpus:
++        return 0.0
++    tokens = label_tokens(links)
++    return max(token_jaccard(tokens, label_tokens(member)) for member in corpus)
+diff --git a/tests/test_novelty_audit.py b/tests/test_novelty_audit.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..4d408df2c56744f28f6741596e0bd351fa66f7ca
+--- /dev/null
++++ b/tests/test_novelty_audit.py
+@@ -0,0 +1,127 @@
++"""Contract tests for deterministic, reporting-only novelty measures."""
++
++from __future__ import annotations
++
++import os
++import subprocess
++import sys
++from collections import Counter
++
++import pytest
++
++from creative_agent.creativity.novelty_audit import (
++    label_overlap,
++    label_tokens,
++    structural_novelty,
++    token_jaccard,
++    wl_cosine,
++    wl_feature_vector,
++)
++from creative_agent.models import CausalLink
++
++
++def links(*triples: tuple[str, str, str]) -> tuple[CausalLink, ...]:
++    return tuple(CausalLink(cause=cause, relation=relation, effect=effect)
++                 for cause, relation, effect in triples)
++
++
++STAR = links(
++    ("a", "increases", "b"),
++    ("a", "increases", "c"),
++    ("a", "increases", "d"),
++)
++
++
++def test_identical_link_sets_have_unit_cosine() -> None:
++    vector = wl_feature_vector(STAR)
++    assert wl_cosine(vector, wl_feature_vector(tuple(reversed(STAR)))) == pytest.approx(1.0)
++
++
++def test_node_relabeling_preserves_features() -> None:
++    renamed = links(
++        ("engine", "increases", "wheel"),
++        ("engine", "increases", "road"),
++        ("engine", "increases", "speed"),
++    )
++    assert wl_feature_vector(STAR) == wl_feature_vector(renamed)
++    assert wl_cosine(wl_feature_vector(STAR), wl_feature_vector(renamed)) == pytest.approx(1.0)
++
++
++def test_relation_change_lowers_cosine() -> None:
++    changed = links(
++        ("a", "prevents", "b"),
++        ("a", "increases", "c"),
++        ("a", "increases", "d"),
++    )
++    assert wl_cosine(wl_feature_vector(STAR), wl_feature_vector(changed)) < 1.0
++
++
++def test_edge_direction_changes_star_features() -> None:
++    incoming = links(
++        ("b", "increases", "a"),
++        ("c", "increases", "a"),
++        ("d", "increases", "a"),
++    )
++    assert wl_cosine(wl_feature_vector(STAR), wl_feature_vector(incoming)) < 0.8
++
++
++def test_structural_novelty_contract() -> None:
++    changed = links(
++        ("a", "prevents", "b"),
++        ("a", "increases", "c"),
++        ("a", "increases", "d"),
++    )
++    assert structural_novelty(STAR, ()) == 1.0
++    assert structural_novelty(STAR, (changed, STAR)) == pytest.approx(0.0)
++    assert 0.0 < structural_novelty(STAR, (changed,)) < 1.0
++    assert 0.0 <= structural_novelty((), (STAR,)) <= 1.0
++
++
++def test_label_overlap_and_unicode_tokens() -> None:
++    base = links(("Alpha engine", "enables", "Beta wheel"))
++    same_labels = links(("alpha  ENGINE", "prevents", "beta WHEEL"))
++    disjoint = links(("Gamma cloud", "enables", "Delta river"))
++    assert label_overlap(base, (same_labels,)) == 1.0
++    assert label_overlap(base, (disjoint,)) == 0.0
++    assert label_overlap(base, ()) == 0.0
++    assert label_tokens(links(("가나다", "enables", "가나"))) == frozenset({"가나다"})
++    assert label_tokens(links(("Ｆｏｏ_bar", "enables", "BAZ"))) == frozenset({"foo", "bar", "baz"})
++
++
++def test_token_jaccard_empty_and_partial() -> None:
++    assert token_jaccard(frozenset(), frozenset()) == 0.0
++    assert token_jaccard(frozenset({"one", "two"}), frozenset({"two", "three"})) == pytest.approx(1 / 3)
++
++
++def test_wl_cosine_empty_vector() -> None:
++    assert wl_cosine(Counter(), wl_feature_vector(STAR)) == 0.0
++    assert wl_cosine(Counter(), Counter()) == 0.0
++
++
++def test_duplicate_links_count_once_and_self_loop_is_supported() -> None:
++    original = links(("Node", "enables", "Node"))
++    duplicates = links(("Node", "enables", "Node"), (" node ", "enables", "NODE"))
++    assert wl_feature_vector(original) == wl_feature_vector(duplicates)
++    assert sum(wl_feature_vector(original).values()) == 4
++
++
++def test_feature_digest_is_independent_of_python_hash_seed() -> None:
++    code = (
++        "import hashlib, json; "
++        "from creative_agent.models import CausalLink; "
++        "from creative_agent.creativity.novelty_audit import wl_feature_vector; "
++        "links = [CausalLink(cause=a, relation=r, effect=b) for a,r,b in "
++        "[('a','increases','b'),('b','prevents','c'),('c','enables','a')]]; "
++        "payload = json.dumps(sorted(wl_feature_vector(links).items())); "
++        "print(hashlib.sha256(payload.encode()).hexdigest())"
++    )
++    digests = []
++    for seed in ("1", "977"):
++        env = os.environ.copy()
++        env["PYTHONHASHSEED"] = seed
++        result = subprocess.run(
++            [sys.executable, "-c", code], env=env, capture_output=True,
++            text=True, check=True,
++        )
++        digests.append(result.stdout.strip())
++    assert digests[0] == digests[1]
+
+tokens used
+28,566
+**The structural novelty audit is complete.** I added the deterministic WL and label overlap functions in [novelty_audit.py](/home/arcturus/hermesWorkspace/projects/CounterField/creative_agent/creativity/novelty_audit.py) and the contract tests in [test_novelty_audit.py](/home/arcturus/hermesWorkspace/projects/CounterField/tests/test_novelty_audit.py). The module is for reporting only; no archive admission code was changed.
+
+`.venv/bin/pytest -q` exited 0:
+
+```text
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+115 passed, 17 warnings in 1.06s
+```
+
+`git diff --stat` shows only the tracked changes that were present before I started. No existing file was edited for this task.
+[Minerva Backend] Completed successfully.

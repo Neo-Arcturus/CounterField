@@ -1,0 +1,2335 @@
+{
+  "meta": {
+    "mode": "llm",
+    "date": "2026-10-22",
+    "seed": 20261022,
+    "budget": 48,
+    "problem": "Design a self-improving hypothesis-evolution engine for one person. Failure increases wasted effort. Forgetting decreases accuracy. Disagreement prevents convergence. Noise decreases signal quality.",
+    "provider": "LLMIdeaProvider",
+    "model": "cc/claude-sonnet-5-5",
+    "provider_fallbacks": 0,
+    "backend_stats": {
+      "backend_ok": 36
+    },
+    "template_library": "/home/arcturus/hermesWorkspace/projects/CounterField/data/templates/defect_harvest_v2_20261022.json",
+    "wall_seconds": 974.1
+  },
+  "metrics": {
+    "coverage": null,
+    "duplicate_rate": 0.0,
+    "attempts": 48,
+    "structural_failures": 1,
+    "occupied_niches": 6,
+    "repair_incubator": 71,
+    "failure_archive": 0,
+    "generation_errors": 0,
+    "canonicalize_errors": 0,
+    "validation_errors": 0,
+    "evaluation_errors": 0,
+    "evidence_errors": 0,
+    "provider_fallbacks": 0,
+    "inversion_attempts": 0,
+    "inversion_successes": 0,
+    "isomorphism_attempts": 14,
+    "isomorphism_successes": 14,
+    "synthesis_attempts": 38,
+    "synthesis_successes": 0,
+    "rules_promoted": 0,
+    "niche_count": 6,
+    "qd_score": 7.0402338170455625
+  },
+  "admission_log": [
+    {
+      "operator": "dialectic",
+      "status": "REPAIRABLE",
+      "stage": "red_team",
+      "n": 38
+    },
+    {
+      "operator": "inversion",
+      "status": "REPAIRABLE",
+      "stage": "red_team",
+      "n": 12
+    },
+    {
+      "operator": "isomorphism",
+      "status": "ACCEPTED",
+      "stage": "complete",
+      "n": 14
+    },
+    {
+      "operator": "isomorphism",
+      "status": "REPAIRABLE",
+      "stage": "quality_constraints",
+      "n": 5
+    },
+    {
+      "operator": "isomorphism",
+      "status": "REPAIRABLE",
+      "stage": "red_team",
+      "n": 16
+    }
+  ],
+  "centroids": [
+    [
+      0.0,
+      0.5,
+      0.5,
+      0.5,
+      0.18181819999999999,
+      0.0,
+      0.2
+    ],
+    [
+      0.33,
+      0.5,
+      0.5,
+      0.5,
+      0.25,
+      0.0,
+      0.2
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      0.4,
+      0.22000000000000003,
+      0.0,
+      0.2
+    ],
+    [
+      0.0,
+      0.5,
+      1.0,
+      0.7,
+      0.21818179999999998,
+      0.0,
+      0.3
+    ],
+    [
+      0.0,
+      0.5,
+      1.0,
+      0.4,
+      0.3,
+      0.0,
+      0.2
+    ],
+    [
+      0.0,
+      0.0,
+      0.5,
+      0.4,
+      0.1636364,
+      0.0,
+      0.1
+    ]
+  ],
+  "elites": [
+    {
+      "niche_key": "centroid_0",
+      "id": "65efe1d2c55b6c89",
+      "title": "Notebook Fork-and-Reconcile Ledger",
+      "description": "You deliberately let rival hypothesis drafts grow in separate notebooks during the week, so contradictions pile up instead of being suppressed. In a fixed Friday review you put the conflicting notebooks side by side and apply a written evidence-strength ordering policy, which tells you which claim wins on which evidence. The surviving claims are written into a single trusted belief ledger, so each disagreement becomes input for a better belief and not a stalled debate.",
+      "operator": "isomorphism",
+      "source_domain": "distributed_systems",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Contradictions between independently developed notebook drafts are fed into a scheduled side-by-side comparison, and a fixed evidence-strength ordering policy deterministically synthesizes them into one trusted belief ledger.",
+        "causal_structure": [
+          {
+            "cause": "Same-week rival hypothesis drafts written in separate notebooks",
+            "relation": "increases",
+            "effect": "Contradictory conclusions between notebook copies"
+          },
+          {
+            "cause": "Contradictory conclusions between notebook copies",
+            "relation": "enables",
+            "effect": "Side-by-side claim comparison session"
+          },
+          {
+            "cause": "Friday review ritual",
+            "relation": "enables",
+            "effect": "Side-by-side claim comparison session"
+          },
+          {
+            "cause": "Side-by-side claim comparison session",
+            "relation": "enables",
+            "effect": "Strongest-supported belief synthesis"
+          },
+          {
+            "cause": "Evidence-strength ordering policy",
+            "relation": "enables",
+            "effect": "Strongest-supported belief synthesis"
+          },
+          {
+            "cause": "Strongest-supported belief synthesis",
+            "relation": "enables",
+            "effect": "Single trusted belief ledger"
+          },
+          {
+            "cause": "Single trusted belief ledger",
+            "relation": "decreases",
+            "effect": "Wasted re-testing effort"
+          },
+          {
+            "cause": "Evidence-strength ordering policy",
+            "relation": "depends_on",
+            "effect": "Timestamped evidence log"
+          },
+          {
+            "cause": "Friday review ritual",
+            "relation": "prevents",
+            "effect": "Forgotten old findings"
+          },
+          {
+            "cause": "Evidence-strength ordering policy",
+            "relation": "decreases",
+            "effect": "Noisy anecdote influence"
+          }
+        ],
+        "affected_system": "Personal hypothesis-evolution engine (hypothesis lifecycle, evidence memory, conflict resolution, and signal-filtering pipeline)",
+        "payoff": "Single trusted belief ledger"
+      },
+      "mechanism_fingerprint": "cd3578e82477bf50",
+      "wl_hash": "6f8438514f3951948a4ebeb63c9c7b7d",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "crdt_divergence_join_convergence",
+        "role_map": {
+          "concurrent_updates": "Same-week rival hypothesis drafts written in separate notebooks",
+          "replica_divergence": "Contradictory conclusions between notebook copies",
+          "gossip_round": "Friday review ritual",
+          "anti_entropy_exchange": "Side-by-side claim comparison session",
+          "semilattice_rule": "Evidence-strength ordering policy",
+          "join_merge": "Strongest-supported belief synthesis",
+          "converged_state": "Single trusted belief ledger"
+        }
+      },
+      "scores": {
+        "novelty": 0.68666241069248,
+        "appropriateness": 0.55,
+        "utility": 0.45,
+        "surprise": 0.35,
+        "coherence": 0.78,
+        "mechanism_uniqueness": 0.9436363636363636
+      },
+      "niche": {
+        "intervention_level": "individual",
+        "resource_intensity": "medium",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 0.909091,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": []
+    },
+    {
+      "niche_key": "centroid_1",
+      "id": "d3fcbec1678a9035",
+      "title": "Productive Mess: Fueling Hypotheses with Noise, Forgetting, and Disagreement",
+      "description": "On a fixed weekly rhythm, you spend wild-guess days producing many sloppy conjectures from noisy inputs, then audit days. Before each audit, a deliberately lossy memory reshuffle resurfaces half-forgotten notes next to unrelated new guesses. The contradictory-evidence review then fights over these odd pairings and kills most of them, but the few that survive both the noise and the dispute go into a growing bank of battle-tested hypotheses.",
+      "operator": "isomorphism",
+      "source_domain": "nonlinear_stat_physics",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A fixed weekly toggle forces noisy conjecture bursts and a contradictory-evidence review to run in turn, with a lossy memory reshuffle between them, so noise, forgetting, and disagreement together yield a bank of surviving hypotheses that neither mode could produce alone.",
+        "causal_structure": [
+          {
+            "cause": "Fixed weekly toggle between wild-guess days and audit days",
+            "relation": "enables",
+            "effect": "Sloppy high-volume conjecture bursts"
+          },
+          {
+            "cause": "Sloppy high-volume conjecture bursts",
+            "relation": "enables",
+            "effect": "Lossy memory reshuffle that surfaces forgotten notes in new contexts"
+          },
+          {
+            "cause": "Lossy memory reshuffle that surfaces forgotten notes in new contexts",
+            "relation": "enables",
+            "effect": "Contradictory-evidence review that stalls on rival camps"
+          },
+          {
+            "cause": "Fixed weekly toggle between wild-guess days and audit days",
+            "relation": "enables",
+            "effect": "Contradictory-evidence review that stalls on rival camps"
+          },
+          {
+            "cause": "Contradictory-evidence review that stalls on rival camps",
+            "relation": "increases",
+            "effect": "Accumulating bank of battle-tested hypotheses"
+          },
+          {
+            "cause": "Lossy memory reshuffle that surfaces forgotten notes in new contexts",
+            "relation": "increases",
+            "effect": "Accumulating bank of battle-tested hypotheses"
+          },
+          {
+            "cause": "Sloppy high-volume conjecture bursts",
+            "relation": "increases",
+            "effect": "Wasted effort on duplicate dead ends"
+          },
+          {
+            "cause": "Accumulating bank of battle-tested hypotheses",
+            "relation": "decreases",
+            "effect": "Wasted effort on duplicate dead ends"
+          },
+          {
+            "cause": "Lossy memory reshuffle that surfaces forgotten notes in new contexts",
+            "relation": "decreases",
+            "effect": "Anchoring on stale favorites"
+          },
+          {
+            "cause": "Accumulating bank of battle-tested hypotheses",
+            "relation": "enables",
+            "effect": "Sharper intake filter for incoming signals"
+          }
+        ],
+        "affected_system": "Personal hypothesis-evolution engine (hypothesis lifecycle, evidence memory, conflict resolution, and signal-filtering pipeline)",
+        "payoff": "Accumulating bank of battle-tested hypotheses"
+      },
+      "mechanism_fingerprint": "e5b0513aa747bd43",
+      "wl_hash": "0a3f97680236fe0668e0d86746a5b4fd",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "parrondo_losing_pair_ratchet",
+        "role_map": {
+          "alternation_clock": "Fixed weekly toggle between wild-guess days and audit days",
+          "losing_game_a": "Sloppy high-volume conjecture bursts",
+          "state_remap": "Lossy memory reshuffle that surfaces forgotten notes in new contexts",
+          "losing_game_b": "Contradictory-evidence review that stalls on rival camps",
+          "ratchet_gain": "Accumulating bank of battle-tested hypotheses"
+        }
+      },
+      "scores": {
+        "novelty": 0.6832629785679949,
+        "appropriateness": 0.55,
+        "utility": 0.5,
+        "surprise": 0.6,
+        "coherence": 0.58,
+        "mechanism_uniqueness": 0.9362146892655367
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "medium",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.25,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": []
+    },
+    {
+      "niche_key": "centroid_2",
+      "id": "a4fde5e1a9cf49eb",
+      "title": "Scar-Tissue Hypothesis Forge",
+      "description": "Each week the person runs a deliberately cheap, small attempt to break a favorite hypothesis and logs every place where predictions missed. Each miss triggers a narrow patch to the belief and is filed in a personal library of patched failures. When a larger test on fresh data comes later, the hypothesis has absorbed past failures and often ends up broader and sturdier than the original claim.",
+      "operator": "isomorphism",
+      "source_domain": "toxicology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Small, deliberate falsification attempts produce logged prediction misses that drive targeted belief patches, which build a failure library that lets the hypothesis survive a later harsher test in stronger, more general form.",
+        "causal_structure": [
+          {
+            "cause": "Cheap deliberate falsification probe",
+            "relation": "increases",
+            "effect": "Logged prediction miss"
+          },
+          {
+            "cause": "Logged prediction miss",
+            "relation": "enables",
+            "effect": "Targeted belief patch"
+          },
+          {
+            "cause": "Targeted belief patch",
+            "relation": "increases",
+            "effect": "Scar-tissue library of patched failures"
+          },
+          {
+            "cause": "Harsher follow-up test on fresh data",
+            "relation": "enables",
+            "effect": "Generalized hypothesis stronger than original claim"
+          },
+          {
+            "cause": "Scar-tissue library of patched failures",
+            "relation": "enables",
+            "effect": "Generalized hypothesis stronger than original claim"
+          },
+          {
+            "cause": "Scar-tissue library of patched failures",
+            "relation": "decreases",
+            "effect": "Wasted effort on repeated dead ends"
+          },
+          {
+            "cause": "Cheap deliberate falsification probe",
+            "relation": "depends_on",
+            "effect": "Time-boxed weekly review slot"
+          },
+          {
+            "cause": "Logged prediction miss",
+            "relation": "depends_on",
+            "effect": "Noise filter on incoming evidence"
+          },
+          {
+            "cause": "Targeted belief patch",
+            "relation": "prevents",
+            "effect": "Unresolved conflict between rival beliefs"
+          }
+        ],
+        "affected_system": "Personal hypothesis-evolution engine (hypothesis lifecycle, evidence memory, conflict resolution, and signal-filtering pipeline)",
+        "payoff": "Generalized hypothesis stronger than original claim"
+      },
+      "mechanism_fingerprint": "bd458d7630dad07a",
+      "wl_hash": "afa2b303e7b210e8de588086b9c453bd",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "hormetic_dose_overcompensation",
+        "role_map": {
+          "sublethal_stressor": "Cheap deliberate falsification probe",
+          "damage_signal": "Logged prediction miss",
+          "repair_response": "Targeted belief patch",
+          "adaptive_capacity": "Scar-tissue library of patched failures",
+          "second_exposure": "Harsher follow-up test on fresh data",
+          "overcompensated_resilience": "Generalized hypothesis stronger than original claim"
+        }
+      },
+      "scores": {
+        "novelty": 0.6907655219569165,
+        "appropriateness": 0.55,
+        "utility": 0.45,
+        "surprise": 0.4,
+        "coherence": 0.72,
+        "mechanism_uniqueness": 0.9402941176470588
+      },
+      "niche": {
+        "intervention_level": "individual",
+        "resource_intensity": "low",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 4,
+        "branching_factor": 0.9,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": []
+    },
+    {
+      "niche_key": "centroid_3",
+      "id": "0f4d74d6711d9a57",
+      "title": "Contradiction Forge",
+      "description": "Each time you draft a rival explanation against your favorite claim, the clash with your existing evidence stings, and that sting pushes you to fork a revised hypothesis. At your weekly review you pick the fork and design a targeted stress-test. When its prediction fails, the sting is logged in an evidence ledger and drives a hardened version of the hypothesis, and the surviving beliefs go into a durable archive.",
+      "operator": "isomorphism",
+      "source_domain": "coevolution",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Disagreement and failure are deliberately provoked and recorded, so each contradiction forces a revision, each revision gets stress-tested on a review schedule, and the failures harden the beliefs that survive.",
+        "causal_structure": [
+          {
+            "cause": "Rival Explanation Drafted Against Favorite Claim",
+            "relation": "increases",
+            "effect": "Contradiction Pain Signal"
+          },
+          {
+            "cause": "Contradiction Pain Signal",
+            "relation": "increases",
+            "effect": "Forked Hypothesis Revision"
+          },
+          {
+            "cause": "Forked Hypothesis Revision",
+            "relation": "enables",
+            "effect": "Targeted Stress-Test Experiment"
+          },
+          {
+            "cause": "Weekly Review Ritual",
+            "relation": "enables",
+            "effect": "Targeted Stress-Test Experiment"
+          },
+          {
+            "cause": "Targeted Stress-Test Experiment",
+            "relation": "increases",
+            "effect": "Failed Prediction Sting"
+          },
+          {
+            "cause": "Failed Prediction Sting",
+            "relation": "increases",
+            "effect": "Hardened Hypothesis Version"
+          },
+          {
+            "cause": "Hardened Hypothesis Version",
+            "relation": "enables",
+            "effect": "Durable Surviving Belief Archive"
+          },
+          {
+            "cause": "Forked Hypothesis Revision",
+            "relation": "enables",
+            "effect": "Durable Surviving Belief Archive"
+          },
+          {
+            "cause": "Failed Prediction Sting",
+            "relation": "increases",
+            "effect": "Evidence Ledger Entry"
+          },
+          {
+            "cause": "Evidence Ledger Entry",
+            "relation": "prevents",
+            "effect": "Forgotten Lessons"
+          },
+          {
+            "cause": "Forgotten Lessons",
+            "relation": "decreases",
+            "effect": "Durable Surviving Belief Archive"
+          },
+          {
+            "cause": "Noise Filter Gate",
+            "relation": "enables",
+            "effect": "Contradiction Pain Signal"
+          }
+        ],
+        "affected_system": "Personal hypothesis-evolution engine (hypothesis lifecycle, evidence memory, conflict resolution, and signal-filtering pipeline)",
+        "payoff": "Durable Surviving Belief Archive"
+      },
+      "mechanism_fingerprint": "0b34bd02d2e8def2",
+      "wl_hash": "60597a357095c510e04a54617ec5b8ab",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "red_queen_two_round_arms_race",
+        "role_map": {
+          "parasite_adaptation_one": "Rival Explanation Drafted Against Favorite Claim",
+          "selection_pressure_one": "Contradiction Pain Signal",
+          "host_variant_one": "Forked Hypothesis Revision",
+          "arms_clock": "Weekly Review Ritual",
+          "parasite_adaptation_two": "Targeted Stress-Test Experiment",
+          "selection_pressure_two": "Failed Prediction Sting",
+          "host_variant_two": "Hardened Hypothesis Version",
+          "lineage_persistence": "Durable Surviving Belief Archive"
+        }
+      },
+      "scores": {
+        "novelty": 0.6832228233418599,
+        "appropriateness": 0.55,
+        "utility": 0.45,
+        "surprise": 0.38,
+        "coherence": 0.62,
+        "mechanism_uniqueness": 0.9391269841269841
+      },
+      "niche": {
+        "intervention_level": "individual",
+        "resource_intensity": "medium",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 7,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 3
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "62 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_forgotten_lessons",
+            "satisfy_contradiction_pain_signal",
+            "satisfy_forked_hypothesis_revision",
+            "satisfy_targeted_stress_test_experiment",
+            "satisfy_failed_prediction_sting",
+            "satisfy_evidence_ledger_entry",
+            "satisfy_hardened_hypothesis_version"
+          ]
+        }
+      ]
+    },
+    {
+      "niche_key": "centroid_4",
+      "id": "5da5548739dde8cb",
+      "title": "Forgetful Forge: Noise-Fed Belief Hardening",
+      "description": "Twice a week you switch on a fixed schedule between a sloppy, high-volume hypothesis brainstorm that mostly produces duds, and an adversarial self-rebuttal session. Between them, failed hypotheses are not kept in full. You compress each one into a short stub holding only its core claim and the reason it died. Rebuttal sessions then run on these stubs, where contradictions are easy to see, so only beliefs that survive repeated cross-examination enter a durable library. Your wasted effort, forgetting and internal disagreement become the raw material that builds it.",
+      "operator": "isomorphism",
+      "source_domain": "nonlinear_stat_physics",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A fixed schedule switches between a noisy, mostly failing idea-generation sprint and a conflict-heavy rebuttal session, with forgetting-style compression of failures in between, so that two individually unproductive activities combine to accumulate a durable set of robust beliefs.",
+        "causal_structure": [
+          {
+            "cause": "Weekly mode-switch schedule",
+            "relation": "enables",
+            "effect": "Unfiltered hypothesis brainstorm sprint"
+          },
+          {
+            "cause": "Unfiltered hypothesis brainstorm sprint",
+            "relation": "enables",
+            "effect": "Lossy compression of failed hypotheses into stubs"
+          },
+          {
+            "cause": "Lossy compression of failed hypotheses into stubs",
+            "relation": "enables",
+            "effect": "Adversarial self-rebuttal session"
+          },
+          {
+            "cause": "Weekly mode-switch schedule",
+            "relation": "enables",
+            "effect": "Adversarial self-rebuttal session"
+          },
+          {
+            "cause": "Adversarial self-rebuttal session",
+            "relation": "increases",
+            "effect": "Durable surviving-belief library"
+          },
+          {
+            "cause": "Lossy compression of failed hypotheses into stubs",
+            "relation": "increases",
+            "effect": "Durable surviving-belief library"
+          },
+          {
+            "cause": "Unfiltered hypothesis brainstorm sprint",
+            "relation": "increases",
+            "effect": "Stale evidence clutter"
+          },
+          {
+            "cause": "Lossy compression of failed hypotheses into stubs",
+            "relation": "decreases",
+            "effect": "Stale evidence clutter"
+          },
+          {
+            "cause": "Stale evidence clutter",
+            "relation": "prevents",
+            "effect": "Durable surviving-belief library"
+          }
+        ],
+        "affected_system": "Personal hypothesis-evolution engine (hypothesis lifecycle, evidence memory, conflict resolution, and signal-filtering pipeline)",
+        "payoff": "Durable surviving-belief library"
+      },
+      "mechanism_fingerprint": "a4512bd7c1109827",
+      "wl_hash": "bbbe391c55aedebbd55c6de56a1e79bc",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "parrondo_losing_pair_ratchet",
+        "role_map": {
+          "alternation_clock": "Weekly mode-switch schedule",
+          "losing_game_a": "Unfiltered hypothesis brainstorm sprint",
+          "state_remap": "Lossy compression of failed hypotheses into stubs",
+          "losing_game_b": "Adversarial self-rebuttal session",
+          "ratchet_gain": "Durable surviving-belief library"
+        }
+      },
+      "scores": {
+        "novelty": 0.6865214094237995,
+        "appropriateness": 0.55,
+        "utility": 0.48,
+        "surprise": 0.58,
+        "coherence": 0.7,
+        "mechanism_uniqueness": 0.9414864864864865
+      },
+      "niche": {
+        "intervention_level": "individual",
+        "resource_intensity": "medium",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 4,
+        "branching_factor": 1.5,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "28 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_unfiltered_hypothesis_brainstorm_sprint",
+            "satisfy_stale_evidence_clutter",
+            "satisfy_lossy_compression_of_failed_hypotheses_into_stubs",
+            "satisfy_adversarial_self_rebuttal_session"
+          ]
+        }
+      ]
+    },
+    {
+      "niche_key": "centroid_5",
+      "id": "caaf0c00d2282a64",
+      "title": "Small Breaks, Stronger Beliefs: The Pre-Mortem Ratchet",
+      "description": "Each new hypothesis gets a deliberately cheap, bounded attempt to break it, and every miss is written into a short log. The log feeds a narrow rewrite of the hypothesis, and the lesson is filed in a personal library of failure patterns. Later, a tougher follow-up test is run using that library, so the hypothesis family comes out stronger than the original. The person experiences their small failures as the raw material of the next, sturdier version.",
+      "operator": "isomorphism",
+      "source_domain": "toxicology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Cheap, capped falsification attempts produce logged prediction misses that trigger scoped rewrites, which accumulate into a failure-pattern library that makes a later, tougher test yield a hypothesis family stronger than the original.",
+        "causal_structure": [
+          {
+            "cause": "Cheap Falsification Probe",
+            "relation": "increases",
+            "effect": "Logged Prediction Miss"
+          },
+          {
+            "cause": "Logged Prediction Miss",
+            "relation": "enables",
+            "effect": "Scoped Hypothesis Rewrite"
+          },
+          {
+            "cause": "Scoped Hypothesis Rewrite",
+            "relation": "increases",
+            "effect": "Failure-Pattern Library"
+          },
+          {
+            "cause": "Tougher Follow-up Test",
+            "relation": "enables",
+            "effect": "Stronger-Than-Original Hypothesis Family"
+          },
+          {
+            "cause": "Failure-Pattern Library",
+            "relation": "enables",
+            "effect": "Stronger-Than-Original Hypothesis Family"
+          },
+          {
+            "cause": "Logged Prediction Miss",
+            "relation": "decreases",
+            "effect": "Forgotten Failure Lessons"
+          },
+          {
+            "cause": "Noise-Filtered Evidence Intake",
+            "relation": "enables",
+            "effect": "Logged Prediction Miss"
+          },
+          {
+            "cause": "Failure-Pattern Library",
+            "relation": "decreases",
+            "effect": "Unresolved Rival-Hypothesis Disagreement"
+          },
+          {
+            "cause": "Probe Effort Cap",
+            "relation": "prevents",
+            "effect": "Wasted Effort on Doomed Ideas"
+          }
+        ],
+        "affected_system": "Personal hypothesis-evolution engine (hypothesis lifecycle, evidence memory, conflict resolution, and signal-filtering pipeline)",
+        "payoff": "Stronger-Than-Original Hypothesis Family"
+      },
+      "mechanism_fingerprint": "3da193591f41b643",
+      "wl_hash": "8e6f9b2521ff72d9c75870f453cda64e",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "hormetic_dose_overcompensation",
+        "role_map": {
+          "sublethal_stressor": "Cheap Falsification Probe",
+          "damage_signal": "Logged Prediction Miss",
+          "repair_response": "Scoped Hypothesis Rewrite",
+          "adaptive_capacity": "Failure-Pattern Library",
+          "second_exposure": "Tougher Follow-up Test",
+          "overcompensated_resilience": "Stronger-Than-Original Hypothesis Family"
+        }
+      },
+      "scores": {
+        "novelty": 0.6797986730625116,
+        "appropriateness": 0.78,
+        "utility": 0.6,
+        "surprise": 0.38,
+        "coherence": 0.85,
+        "mechanism_uniqueness": 0.9402941176470588
+      },
+      "niche": {
+        "intervention_level": "individual",
+        "resource_intensity": "low",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 4,
+        "branching_factor": 0.818182,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": []
+    }
+  ],
+  "admitted": [
+    {
+      "niche_key": "centroid_0",
+      "id": "65efe1d2c55b6c89",
+      "title": "Notebook Fork-and-Reconcile Ledger",
+      "description": "You deliberately let rival hypothesis drafts grow in separate notebooks during the week, so contradictions pile up instead of being suppressed. In a fixed Friday review you put the conflicting notebooks side by side and apply a written evidence-strength ordering policy, which tells you which claim wins on which evidence. The surviving claims are written into a single trusted belief ledger, so each disagreement becomes input for a better belief and not a stalled debate.",
+      "operator": "isomorphism",
+      "source_domain": "distributed_systems",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Contradictions between independently developed notebook drafts are fed into a scheduled side-by-side comparison, and a fixed evidence-strength ordering policy deterministically synthesizes them into one trusted belief ledger.",
+        "causal_structure": [
+          {
+            "cause": "Same-week rival hypothesis drafts written in separate notebooks",
+            "relation": "increases",
+            "effect": "Contradictory conclusions between notebook copies"
+          },
+          {
+            "cause": "Contradictory conclusions between notebook copies",
+            "relation": "enables",
+            "effect": "Side-by-side claim comparison session"
+          },
+          {
+            "cause": "Friday review ritual",
+            "relation": "enables",
+            "effect": "Side-by-side claim comparison session"
+          },
+          {
+            "cause": "Side-by-side claim comparison session",
+            "relation": "enables",
+            "effect": "Strongest-supported belief synthesis"
+          },
+          {
+            "cause": "Evidence-strength ordering policy",
+            "relation": "enables",
+            "effect": "Strongest-supported belief synthesis"
+          },
+          {
+            "cause": "Strongest-supported belief synthesis",
+            "relation": "enables",
+            "effect": "Single trusted belief ledger"
+          },
+          {
+            "cause": "Single trusted belief ledger",
+            "relation": "decreases",
+            "effect": "Wasted re-testing effort"
+          },
+          {
+            "cause": "Evidence-strength ordering policy",
+            "relation": "depends_on",
+            "effect": "Timestamped evidence log"
+          },
+          {
+            "cause": "Friday review ritual",
+            "relation": "prevents",
+            "effect": "Forgotten old findings"
+          },
+          {
+            "cause": "Evidence-strength ordering policy",
+            "relation": "decreases",
+            "effect": "Noisy anecdote influence"
+          }
+        ],
+        "affected_system": "Personal hypothesis-evolution engine (hypothesis lifecycle, evidence memory, conflict resolution, and signal-filtering pipeline)",
+        "payoff": "Single trusted belief ledger"
+      },
+      "mechanism_fingerprint": "cd3578e82477bf50",
+      "wl_hash": "6f8438514f3951948a4ebeb63c9c7b7d",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "crdt_divergence_join_convergence",
+        "role_map": {
+          "concurrent_updates": "Same-week rival hypothesis drafts written in separate notebooks",
+          "replica_divergence": "Contradictory conclusions between notebook copies",
+          "gossip_round": "Friday review ritual",
+          "anti_entropy_exchange": "Side-by-side claim comparison session",
+          "semilattice_rule": "Evidence-strength ordering policy",
+          "join_merge": "Strongest-supported belief synthesis",
+          "converged_state": "Single trusted belief ledger"
+        }
+      },
+      "scores": {
+        "novelty": 0.68666241069248,
+        "appropriateness": 0.55,
+        "utility": 0.45,
+        "surprise": 0.35,
+        "coherence": 0.78,
+        "mechanism_uniqueness": 0.9436363636363636
+      },
+      "niche": {
+        "intervention_level": "individual",
+        "resource_intensity": "medium",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 0.909091,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": true
+    },
+    {
+      "niche_key": "centroid_1",
+      "id": "d3fcbec1678a9035",
+      "title": "Productive Mess: Fueling Hypotheses with Noise, Forgetting, and Disagreement",
+      "description": "On a fixed weekly rhythm, you spend wild-guess days producing many sloppy conjectures from noisy inputs, then audit days. Before each audit, a deliberately lossy memory reshuffle resurfaces half-forgotten notes next to unrelated new guesses. The contradictory-evidence review then fights over these odd pairings and kills most of them, but the few that survive both the noise and the dispute go into a growing bank of battle-tested hypotheses.",
+      "operator": "isomorphism",
+      "source_domain": "nonlinear_stat_physics",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A fixed weekly toggle forces noisy conjecture bursts and a contradictory-evidence review to run in turn, with a lossy memory reshuffle between them, so noise, forgetting, and disagreement together yield a bank of surviving hypotheses that neither mode could produce alone.",
+        "causal_structure": [
+          {
+            "cause": "Fixed weekly toggle between wild-guess days and audit days",
+            "relation": "enables",
+            "effect": "Sloppy high-volume conjecture bursts"
+          },
+          {
+            "cause": "Sloppy high-volume conjecture bursts",
+            "relation": "enables",
+            "effect": "Lossy memory reshuffle that surfaces forgotten notes in new contexts"
+          },
+          {
+            "cause": "Lossy memory reshuffle that surfaces forgotten notes in new contexts",
+            "relation": "enables",
+            "effect": "Contradictory-evidence review that stalls on rival camps"
+          },
+          {
+            "cause": "Fixed weekly toggle between wild-guess days and audit days",
+            "relation": "enables",
+            "effect": "Contradictory-evidence review that stalls on rival camps"
+          },
+          {
+            "cause": "Contradictory-evidence review that stalls on rival camps",
+            "relation": "increases",
+            "effect": "Accumulating bank of battle-tested hypotheses"
+          },
+          {
+            "cause": "Lossy memory reshuffle that surfaces forgotten notes in new contexts",
+            "relation": "increases",
+            "effect": "Accumulating bank of battle-tested hypotheses"
+          },
+          {
+            "cause": "Sloppy high-volume conjecture bursts",
+            "relation": "increases",
+            "effect": "Wasted effort on duplicate dead ends"
+          },
+          {
+            "cause": "Accumulating bank of battle-tested hypotheses",
+            "relation": "decreases",
+            "effect": "Wasted effort on duplicate dead ends"
+          },
+          {
+            "cause": "Lossy memory reshuffle that surfaces forgotten notes in new contexts",
+            "relation": "decreases",
+            "effect": "Anchoring on stale favorites"
+          },
+          {
+            "cause": "Accumulating bank of battle-tested hypotheses",
+            "relation": "enables",
+            "effect": "Sharper intake filter for incoming signals"
+          }
+        ],
+        "affected_system": "Personal hypothesis-evolution engine (hypothesis lifecycle, evidence memory, conflict resolution, and signal-filtering pipeline)",
+        "payoff": "Accumulating bank of battle-tested hypotheses"
+      },
+      "mechanism_fingerprint": "e5b0513aa747bd43",
+      "wl_hash": "0a3f97680236fe0668e0d86746a5b4fd",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "parrondo_losing_pair_ratchet",
+        "role_map": {
+          "alternation_clock": "Fixed weekly toggle between wild-guess days and audit days",
+          "losing_game_a": "Sloppy high-volume conjecture bursts",
+          "state_remap": "Lossy memory reshuffle that surfaces forgotten notes in new contexts",
+          "losing_game_b": "Contradictory-evidence review that stalls on rival camps",
+          "ratchet_gain": "Accumulating bank of battle-tested hypotheses"
+        }
+      },
+      "scores": {
+        "novelty": 0.6832629785679949,
+        "appropriateness": 0.55,
+        "utility": 0.5,
+        "surprise": 0.6,
+        "coherence": 0.58,
+        "mechanism_uniqueness": 0.9362146892655367
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "medium",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.25,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": true
+    },
+    {
+      "niche_key": "centroid_2",
+      "id": "c9b96fa3a5fb0bb1",
+      "title": "Forgetting-Fueled Belief Forge",
+      "description": "Each time you pair a hypothesis with a real observation, you log it as an entry, and the evidence that flows in early on gives the hypothesis a provisional credence weight. A weekly forgetting sweep fades every note unless it was reinforced. Hypotheses whose weight never outgrew the fading are retired, and the survivors consolidate into firm confidence ratings. You end up with a small, sharp belief set that cost little wasted effort.",
+      "operator": "isomorphism",
+      "source_domain": "biological_network_design",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Deliberate scheduled forgetting, combined with early evidence-driven credence, retires weak hypotheses and consolidates the strong ones into a lean, accurate belief set.",
+        "causal_structure": [
+          {
+            "cause": "Hypothesis-Observation Coupling Entry",
+            "relation": "increases",
+            "effect": "Initial Evidence Traffic"
+          },
+          {
+            "cause": "Initial Evidence Traffic",
+            "relation": "increases",
+            "effect": "Provisional Credence Weight"
+          },
+          {
+            "cause": "Weekly Forgetting Sweep",
+            "relation": "enables",
+            "effect": "Weak Hypothesis Retirement"
+          },
+          {
+            "cause": "Provisional Credence Weight",
+            "relation": "enables",
+            "effect": "Weak Hypothesis Retirement"
+          },
+          {
+            "cause": "Provisional Credence Weight",
+            "relation": "increases",
+            "effect": "Consolidated Confidence Rating"
+          },
+          {
+            "cause": "Weak Hypothesis Retirement",
+            "relation": "enables",
+            "effect": "Sharp Low-Waste Belief Set"
+          },
+          {
+            "cause": "Consolidated Confidence Rating",
+            "relation": "enables",
+            "effect": "Sharp Low-Waste Belief Set"
+          },
+          {
+            "cause": "Weekly Forgetting Sweep",
+            "relation": "decreases",
+            "effect": "Stale Noise Clutter"
+          },
+          {
+            "cause": "Stale Noise Clutter",
+            "relation": "decreases",
+            "effect": "Sharp Low-Waste Belief Set"
+          },
+          {
+            "cause": "Contradictory Evidence Clash",
+            "relation": "enables",
+            "effect": "Weak Hypothesis Retirement"
+          },
+          {
+            "cause": "Weak Hypothesis Retirement",
+            "relation": "decreases",
+            "effect": "Wasted Effort Load"
+          }
+        ],
+        "affected_system": "Personal hypothesis-evolution engine (hypothesis lifecycle, evidence memory, conflict resolution, and signal-filtering pipeline)",
+        "payoff": "Sharp Low-Waste Belief Set"
+      },
+      "mechanism_fingerprint": "49d1bb53007e1597",
+      "wl_hash": "d9c4ec943289d1b7a41ba5345b063b65",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "physarum_flux_pruning_network",
+        "role_map": {
+          "food_source_pair": "Hypothesis-Observation Coupling Entry",
+          "flux_early": "Initial Evidence Traffic",
+          "conductivity_early": "Provisional Credence Weight",
+          "decay_pressure": "Weekly Forgetting Sweep",
+          "branch_pruning": "Weak Hypothesis Retirement",
+          "conductivity_late": "Consolidated Confidence Rating",
+          "network_efficiency": "Sharp Low-Waste Belief Set"
+        }
+      },
+      "scores": {
+        "novelty": 0.6782777952961263,
+        "appropriateness": 0.55,
+        "utility": 0.4,
+        "surprise": 0.45,
+        "coherence": 0.62,
+        "mechanism_uniqueness": 0.9341666666666667
+      },
+      "niche": {
+        "intervention_level": "individual",
+        "resource_intensity": "low",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 4,
+        "branching_factor": 1.1,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_3",
+      "id": "0f4d74d6711d9a57",
+      "title": "Contradiction Forge",
+      "description": "Each time you draft a rival explanation against your favorite claim, the clash with your existing evidence stings, and that sting pushes you to fork a revised hypothesis. At your weekly review you pick the fork and design a targeted stress-test. When its prediction fails, the sting is logged in an evidence ledger and drives a hardened version of the hypothesis, and the surviving beliefs go into a durable archive.",
+      "operator": "isomorphism",
+      "source_domain": "coevolution",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Disagreement and failure are deliberately provoked and recorded, so each contradiction forces a revision, each revision gets stress-tested on a review schedule, and the failures harden the beliefs that survive.",
+        "causal_structure": [
+          {
+            "cause": "Rival Explanation Drafted Against Favorite Claim",
+            "relation": "increases",
+            "effect": "Contradiction Pain Signal"
+          },
+          {
+            "cause": "Contradiction Pain Signal",
+            "relation": "increases",
+            "effect": "Forked Hypothesis Revision"
+          },
+          {
+            "cause": "Forked Hypothesis Revision",
+            "relation": "enables",
+            "effect": "Targeted Stress-Test Experiment"
+          },
+          {
+            "cause": "Weekly Review Ritual",
+            "relation": "enables",
+            "effect": "Targeted Stress-Test Experiment"
+          },
+          {
+            "cause": "Targeted Stress-Test Experiment",
+            "relation": "increases",
+            "effect": "Failed Prediction Sting"
+          },
+          {
+            "cause": "Failed Prediction Sting",
+            "relation": "increases",
+            "effect": "Hardened Hypothesis Version"
+          },
+          {
+            "cause": "Hardened Hypothesis Version",
+            "relation": "enables",
+            "effect": "Durable Surviving Belief Archive"
+          },
+          {
+            "cause": "Forked Hypothesis Revision",
+            "relation": "enables",
+            "effect": "Durable Surviving Belief Archive"
+          },
+          {
+            "cause": "Failed Prediction Sting",
+            "relation": "increases",
+            "effect": "Evidence Ledger Entry"
+          },
+          {
+            "cause": "Evidence Ledger Entry",
+            "relation": "prevents",
+            "effect": "Forgotten Lessons"
+          },
+          {
+            "cause": "Forgotten Lessons",
+            "relation": "decreases",
+            "effect": "Durable Surviving Belief Archive"
+          },
+          {
+            "cause": "Noise Filter Gate",
+            "relation": "enables",
+            "effect": "Contradiction Pain Signal"
+          }
+        ],
+        "affected_system": "Personal hypothesis-evolution engine (hypothesis lifecycle, evidence memory, conflict resolution, and signal-filtering pipeline)",
+        "payoff": "Durable Surviving Belief Archive"
+      },
+      "mechanism_fingerprint": "0b34bd02d2e8def2",
+      "wl_hash": "60597a357095c510e04a54617ec5b8ab",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "red_queen_two_round_arms_race",
+        "role_map": {
+          "parasite_adaptation_one": "Rival Explanation Drafted Against Favorite Claim",
+          "selection_pressure_one": "Contradiction Pain Signal",
+          "host_variant_one": "Forked Hypothesis Revision",
+          "arms_clock": "Weekly Review Ritual",
+          "parasite_adaptation_two": "Targeted Stress-Test Experiment",
+          "selection_pressure_two": "Failed Prediction Sting",
+          "host_variant_two": "Hardened Hypothesis Version",
+          "lineage_persistence": "Durable Surviving Belief Archive"
+        }
+      },
+      "scores": {
+        "novelty": 0.6832228233418599,
+        "appropriateness": 0.55,
+        "utility": 0.45,
+        "surprise": 0.38,
+        "coherence": 0.62,
+        "mechanism_uniqueness": 0.9391269841269841
+      },
+      "niche": {
+        "intervention_level": "individual",
+        "resource_intensity": "medium",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 7,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 3
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "62 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_forgotten_lessons",
+            "satisfy_contradiction_pain_signal",
+            "satisfy_forked_hypothesis_revision",
+            "satisfy_targeted_stress_test_experiment",
+            "satisfy_failed_prediction_sting",
+            "satisfy_evidence_ledger_entry",
+            "satisfy_hardened_hypothesis_version"
+          ]
+        }
+      ],
+      "is_niche_elite": true
+    },
+    {
+      "niche_key": "centroid_2",
+      "id": "a4fde5e1a9cf49eb",
+      "title": "Scar-Tissue Hypothesis Forge",
+      "description": "Each week the person runs a deliberately cheap, small attempt to break a favorite hypothesis and logs every place where predictions missed. Each miss triggers a narrow patch to the belief and is filed in a personal library of patched failures. When a larger test on fresh data comes later, the hypothesis has absorbed past failures and often ends up broader and sturdier than the original claim.",
+      "operator": "isomorphism",
+      "source_domain": "toxicology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Small, deliberate falsification attempts produce logged prediction misses that drive targeted belief patches, which build a failure library that lets the hypothesis survive a later harsher test in stronger, more general form.",
+        "causal_structure": [
+          {
+            "cause": "Cheap deliberate falsification probe",
+            "relation": "increases",
+            "effect": "Logged prediction miss"
+          },
+          {
+            "cause": "Logged prediction miss",
+            "relation": "enables",
+            "effect": "Targeted belief patch"
+          },
+          {
+            "cause": "Targeted belief patch",
+            "relation": "increases",
+            "effect": "Scar-tissue library of patched failures"
+          },
+          {
+            "cause": "Harsher follow-up test on fresh data",
+            "relation": "enables",
+            "effect": "Generalized hypothesis stronger than original claim"
+          },
+          {
+            "cause": "Scar-tissue library of patched failures",
+            "relation": "enables",
+            "effect": "Generalized hypothesis stronger than original claim"
+          },
+          {
+            "cause": "Scar-tissue library of patched failures",
+            "relation": "decreases",
+            "effect": "Wasted effort on repeated dead ends"
+          },
+          {
+            "cause": "Cheap deliberate falsification probe",
+            "relation": "depends_on",
+            "effect": "Time-boxed weekly review slot"
+          },
+          {
+            "cause": "Logged prediction miss",
+            "relation": "depends_on",
+            "effect": "Noise filter on incoming evidence"
+          },
+          {
+            "cause": "Targeted belief patch",
+            "relation": "prevents",
+            "effect": "Unresolved conflict between rival beliefs"
+          }
+        ],
+        "affected_system": "Personal hypothesis-evolution engine (hypothesis lifecycle, evidence memory, conflict resolution, and signal-filtering pipeline)",
+        "payoff": "Generalized hypothesis stronger than original claim"
+      },
+      "mechanism_fingerprint": "bd458d7630dad07a",
+      "wl_hash": "afa2b303e7b210e8de588086b9c453bd",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "hormetic_dose_overcompensation",
+        "role_map": {
+          "sublethal_stressor": "Cheap deliberate falsification probe",
+          "damage_signal": "Logged prediction miss",
+          "repair_response": "Targeted belief patch",
+          "adaptive_capacity": "Scar-tissue library of patched failures",
+          "second_exposure": "Harsher follow-up test on fresh data",
+          "overcompensated_resilience": "Generalized hypothesis stronger than original claim"
+        }
+      },
+      "scores": {
+        "novelty": 0.6907655219569165,
+        "appropriateness": 0.55,
+        "utility": 0.45,
+        "surprise": 0.4,
+        "coherence": 0.72,
+        "mechanism_uniqueness": 0.9402941176470588
+      },
+      "niche": {
+        "intervention_level": "individual",
+        "resource_intensity": "low",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 4,
+        "branching_factor": 0.9,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": true
+    },
+    {
+      "niche_key": "centroid_4",
+      "id": "5da5548739dde8cb",
+      "title": "Forgetful Forge: Noise-Fed Belief Hardening",
+      "description": "Twice a week you switch on a fixed schedule between a sloppy, high-volume hypothesis brainstorm that mostly produces duds, and an adversarial self-rebuttal session. Between them, failed hypotheses are not kept in full. You compress each one into a short stub holding only its core claim and the reason it died. Rebuttal sessions then run on these stubs, where contradictions are easy to see, so only beliefs that survive repeated cross-examination enter a durable library. Your wasted effort, forgetting and internal disagreement become the raw material that builds it.",
+      "operator": "isomorphism",
+      "source_domain": "nonlinear_stat_physics",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A fixed schedule switches between a noisy, mostly failing idea-generation sprint and a conflict-heavy rebuttal session, with forgetting-style compression of failures in between, so that two individually unproductive activities combine to accumulate a durable set of robust beliefs.",
+        "causal_structure": [
+          {
+            "cause": "Weekly mode-switch schedule",
+            "relation": "enables",
+            "effect": "Unfiltered hypothesis brainstorm sprint"
+          },
+          {
+            "cause": "Unfiltered hypothesis brainstorm sprint",
+            "relation": "enables",
+            "effect": "Lossy compression of failed hypotheses into stubs"
+          },
+          {
+            "cause": "Lossy compression of failed hypotheses into stubs",
+            "relation": "enables",
+            "effect": "Adversarial self-rebuttal session"
+          },
+          {
+            "cause": "Weekly mode-switch schedule",
+            "relation": "enables",
+            "effect": "Adversarial self-rebuttal session"
+          },
+          {
+            "cause": "Adversarial self-rebuttal session",
+            "relation": "increases",
+            "effect": "Durable surviving-belief library"
+          },
+          {
+            "cause": "Lossy compression of failed hypotheses into stubs",
+            "relation": "increases",
+            "effect": "Durable surviving-belief library"
+          },
+          {
+            "cause": "Unfiltered hypothesis brainstorm sprint",
+            "relation": "increases",
+            "effect": "Stale evidence clutter"
+          },
+          {
+            "cause": "Lossy compression of failed hypotheses into stubs",
+            "relation": "decreases",
+            "effect": "Stale evidence clutter"
+          },
+          {
+            "cause": "Stale evidence clutter",
+            "relation": "prevents",
+            "effect": "Durable surviving-belief library"
+          }
+        ],
+        "affected_system": "Personal hypothesis-evolution engine (hypothesis lifecycle, evidence memory, conflict resolution, and signal-filtering pipeline)",
+        "payoff": "Durable surviving-belief library"
+      },
+      "mechanism_fingerprint": "a4512bd7c1109827",
+      "wl_hash": "bbbe391c55aedebbd55c6de56a1e79bc",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "parrondo_losing_pair_ratchet",
+        "role_map": {
+          "alternation_clock": "Weekly mode-switch schedule",
+          "losing_game_a": "Unfiltered hypothesis brainstorm sprint",
+          "state_remap": "Lossy compression of failed hypotheses into stubs",
+          "losing_game_b": "Adversarial self-rebuttal session",
+          "ratchet_gain": "Durable surviving-belief library"
+        }
+      },
+      "scores": {
+        "novelty": 0.6865214094237995,
+        "appropriateness": 0.55,
+        "utility": 0.48,
+        "surprise": 0.58,
+        "coherence": 0.7,
+        "mechanism_uniqueness": 0.9414864864864865
+      },
+      "niche": {
+        "intervention_level": "individual",
+        "resource_intensity": "medium",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 4,
+        "branching_factor": 1.5,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "28 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_unfiltered_hypothesis_brainstorm_sprint",
+            "satisfy_stale_evidence_clutter",
+            "satisfy_lossy_compression_of_failed_hypotheses_into_stubs",
+            "satisfy_adversarial_self_rebuttal_session"
+          ]
+        }
+      ],
+      "is_niche_elite": true
+    },
+    {
+      "niche_key": "centroid_2",
+      "id": "58b1cec37ed83a76",
+      "title": "Forget-to-Focus Hypothesis Ledger",
+      "description": "You pair each new claim with one concrete, cheap probe. Evidence from early probes raises the claim's provisional trust weight, and a weekly forgetting sweep drops any note that hasn't been refreshed. Claims whose trust stays low while their notes fade are retired, and the claims that survive consolidate into durable convictions, leaving a lean, high-yield research portfolio.",
+      "operator": "isomorphism",
+      "source_domain": "biological_network_design",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Evidence from claim-linked probes raises provisional trust, while scheduled forgetting of unrefreshed notes combines with that trust to retire starved hypotheses, so only well-supported convictions remain to form a high-yield portfolio.",
+        "causal_structure": [
+          {
+            "cause": "Claim Coupled to a Concrete Probe",
+            "relation": "increases",
+            "effect": "Initial Evidence Inflow"
+          },
+          {
+            "cause": "Initial Evidence Inflow",
+            "relation": "increases",
+            "effect": "Provisional Trust Weight"
+          },
+          {
+            "cause": "Scheduled Forgetting of Unrefreshed Notes",
+            "relation": "enables",
+            "effect": "Retirement of Starved Hypotheses"
+          },
+          {
+            "cause": "Provisional Trust Weight",
+            "relation": "enables",
+            "effect": "Retirement of Starved Hypotheses"
+          },
+          {
+            "cause": "Provisional Trust Weight",
+            "relation": "increases",
+            "effect": "Consolidated Conviction"
+          },
+          {
+            "cause": "Retirement of Starved Hypotheses",
+            "relation": "enables",
+            "effect": "High-Yield Research Portfolio"
+          },
+          {
+            "cause": "Consolidated Conviction",
+            "relation": "enables",
+            "effect": "High-Yield Research Portfolio"
+          },
+          {
+            "cause": "Retirement of Starved Hypotheses",
+            "relation": "decreases",
+            "effect": "Wasted Effort Backlog"
+          },
+          {
+            "cause": "Scheduled Forgetting of Unrefreshed Notes",
+            "relation": "decreases",
+            "effect": "Low-Value Noise Clutter"
+          },
+          {
+            "cause": "Weekly Contradiction Review",
+            "relation": "enables",
+            "effect": "Consolidated Conviction"
+          },
+          {
+            "cause": "Initial Evidence Inflow",
+            "relation": "depends_on",
+            "effect": "Noise Triage Filter"
+          }
+        ],
+        "affected_system": "Personal hypothesis-evolution engine (hypothesis lifecycle, evidence memory, conflict resolution, and signal-filtering pipeline)",
+        "payoff": "High-Yield Research Portfolio"
+      },
+      "mechanism_fingerprint": "0b5e49ee6904fb20",
+      "wl_hash": "23d60e85697dbb7248679e423d2e786a",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "physarum_flux_pruning_network",
+        "role_map": {
+          "food_source_pair": "Claim Coupled to a Concrete Probe",
+          "flux_early": "Initial Evidence Inflow",
+          "conductivity_early": "Provisional Trust Weight",
+          "decay_pressure": "Scheduled Forgetting of Unrefreshed Notes",
+          "branch_pruning": "Retirement of Starved Hypotheses",
+          "conductivity_late": "Consolidated Conviction",
+          "network_efficiency": "High-Yield Research Portfolio"
+        }
+      },
+      "scores": {
+        "novelty": 0.6816272477122144,
+        "appropriateness": 0.55,
+        "utility": 0.38,
+        "surprise": 0.35,
+        "coherence": 0.6,
+        "mechanism_uniqueness": 0.9368840579710145
+      },
+      "niche": {
+        "intervention_level": "individual",
+        "resource_intensity": "low",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 4,
+        "branching_factor": 1.0,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_3",
+      "id": "1d6f5b9384c17117",
+      "title": "Anomaly-Driven Hypothesis Forge",
+      "description": "You notice a surprising anomaly in your work and quickly sketch many rival explanations, then deliberately distort them into wild variants. A cheap quick-test pass culls the ones that fit poorly. If the anomaly keeps recurring after your first fixes, the survivors branch again and get rewritten around their weak assumptions. A rigorous preregistered test on held-out evidence then decides what enters your ledger of proven hypotheses and graveyard of failures.",
+      "operator": "isomorphism",
+      "source_domain": "immunology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A recurring anomaly fuels two rounds of branching, deliberate distortion and testing of rival hypotheses, and the survivors and failures are stored in a durable ledger that guides future work.",
+        "causal_structure": [
+          {
+            "cause": "Surprising anomaly noticed in daily work",
+            "relation": "enables",
+            "effect": "Rapid sketching of many rival guesses"
+          },
+          {
+            "cause": "Rapid sketching of many rival guesses",
+            "relation": "increases",
+            "effect": "Deliberate wild variations of rival guesses"
+          },
+          {
+            "cause": "Deliberate wild variations of rival guesses",
+            "relation": "increases",
+            "effect": "Cheap quick-test culling by fit to the anomaly"
+          },
+          {
+            "cause": "Cheap quick-test culling by fit to the anomaly",
+            "relation": "enables",
+            "effect": "Second-round branching of surviving guesses"
+          },
+          {
+            "cause": "Anomaly keeps recurring despite first fixes",
+            "relation": "enables",
+            "effect": "Second-round branching of surviving guesses"
+          },
+          {
+            "cause": "Second-round branching of surviving guesses",
+            "relation": "increases",
+            "effect": "Targeted rewrites of branch assumptions"
+          },
+          {
+            "cause": "Targeted rewrites of branch assumptions",
+            "relation": "increases",
+            "effect": "Rigorous preregistered test against held-out evidence"
+          },
+          {
+            "cause": "Rigorous preregistered test against held-out evidence",
+            "relation": "enables",
+            "effect": "Curated evidence ledger of proven hypotheses and graveyard of failures"
+          },
+          {
+            "cause": "Curated evidence ledger of proven hypotheses and graveyard of failures",
+            "relation": "prevents",
+            "effect": "Re-testing already refuted ideas"
+          },
+          {
+            "cause": "Cheap quick-test culling by fit to the anomaly",
+            "relation": "decreases",
+            "effect": "Wasted effort on weak branches"
+          },
+          {
+            "cause": "Deliberate wild variations of rival guesses",
+            "relation": "increases",
+            "effect": "Noisy low-quality candidates"
+          },
+          {
+            "cause": "Rigorous preregistered test against held-out evidence",
+            "relation": "enables",
+            "effect": "Resolved disagreement between rival guesses"
+          }
+        ],
+        "affected_system": "Personal hypothesis-evolution engine (hypothesis lifecycle, evidence memory, conflict resolution, and signal-filtering pipeline)",
+        "payoff": "Curated evidence ledger of proven hypotheses and graveyard of failures"
+      },
+      "mechanism_fingerprint": "46b94d17bc8d052b",
+      "wl_hash": "6a94e85380a80bb3b7207060fc4bd473",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "clonal_two_round_affinity_maturation",
+        "role_map": {
+          "antigen_encounter": "Surprising anomaly noticed in daily work",
+          "clonal_expansion_one": "Rapid sketching of many rival guesses",
+          "mutation_burst_one": "Deliberate wild variations of rival guesses",
+          "affinity_selection_one": "Cheap quick-test culling by fit to the anomaly",
+          "antigen_persistence": "Anomaly keeps recurring despite first fixes",
+          "clonal_expansion_two": "Second-round branching of surviving guesses",
+          "mutation_burst_two": "Targeted rewrites of branch assumptions",
+          "affinity_selection_two": "Rigorous preregistered test against held-out evidence",
+          "memory_repertoire": "Curated evidence ledger of proven hypotheses and graveyard of failures"
+        }
+      },
+      "scores": {
+        "novelty": 0.6761523692035905,
+        "appropriateness": 0.62,
+        "utility": 0.58,
+        "surprise": 0.45,
+        "coherence": 0.7,
+        "mechanism_uniqueness": 0.9222131147540984
+      },
+      "niche": {
+        "intervention_level": "individual",
+        "resource_intensity": "medium",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 8,
+        "branching_factor": 0.923077,
+        "loop_density": 0.0,
+        "payoff_path_length": 4
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_5",
+      "id": "caaf0c00d2282a64",
+      "title": "Small Breaks, Stronger Beliefs: The Pre-Mortem Ratchet",
+      "description": "Each new hypothesis gets a deliberately cheap, bounded attempt to break it, and every miss is written into a short log. The log feeds a narrow rewrite of the hypothesis, and the lesson is filed in a personal library of failure patterns. Later, a tougher follow-up test is run using that library, so the hypothesis family comes out stronger than the original. The person experiences their small failures as the raw material of the next, sturdier version.",
+      "operator": "isomorphism",
+      "source_domain": "toxicology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Cheap, capped falsification attempts produce logged prediction misses that trigger scoped rewrites, which accumulate into a failure-pattern library that makes a later, tougher test yield a hypothesis family stronger than the original.",
+        "causal_structure": [
+          {
+            "cause": "Cheap Falsification Probe",
+            "relation": "increases",
+            "effect": "Logged Prediction Miss"
+          },
+          {
+            "cause": "Logged Prediction Miss",
+            "relation": "enables",
+            "effect": "Scoped Hypothesis Rewrite"
+          },
+          {
+            "cause": "Scoped Hypothesis Rewrite",
+            "relation": "increases",
+            "effect": "Failure-Pattern Library"
+          },
+          {
+            "cause": "Tougher Follow-up Test",
+            "relation": "enables",
+            "effect": "Stronger-Than-Original Hypothesis Family"
+          },
+          {
+            "cause": "Failure-Pattern Library",
+            "relation": "enables",
+            "effect": "Stronger-Than-Original Hypothesis Family"
+          },
+          {
+            "cause": "Logged Prediction Miss",
+            "relation": "decreases",
+            "effect": "Forgotten Failure Lessons"
+          },
+          {
+            "cause": "Noise-Filtered Evidence Intake",
+            "relation": "enables",
+            "effect": "Logged Prediction Miss"
+          },
+          {
+            "cause": "Failure-Pattern Library",
+            "relation": "decreases",
+            "effect": "Unresolved Rival-Hypothesis Disagreement"
+          },
+          {
+            "cause": "Probe Effort Cap",
+            "relation": "prevents",
+            "effect": "Wasted Effort on Doomed Ideas"
+          }
+        ],
+        "affected_system": "Personal hypothesis-evolution engine (hypothesis lifecycle, evidence memory, conflict resolution, and signal-filtering pipeline)",
+        "payoff": "Stronger-Than-Original Hypothesis Family"
+      },
+      "mechanism_fingerprint": "3da193591f41b643",
+      "wl_hash": "8e6f9b2521ff72d9c75870f453cda64e",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "hormetic_dose_overcompensation",
+        "role_map": {
+          "sublethal_stressor": "Cheap Falsification Probe",
+          "damage_signal": "Logged Prediction Miss",
+          "repair_response": "Scoped Hypothesis Rewrite",
+          "adaptive_capacity": "Failure-Pattern Library",
+          "second_exposure": "Tougher Follow-up Test",
+          "overcompensated_resilience": "Stronger-Than-Original Hypothesis Family"
+        }
+      },
+      "scores": {
+        "novelty": 0.6797986730625116,
+        "appropriateness": 0.78,
+        "utility": 0.6,
+        "surprise": 0.38,
+        "coherence": 0.85,
+        "mechanism_uniqueness": 0.9402941176470588
+      },
+      "niche": {
+        "intervention_level": "individual",
+        "resource_intensity": "low",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 4,
+        "branching_factor": 0.818182,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": true
+    },
+    {
+      "niche_key": "centroid_0",
+      "id": "ecc5166f8c1184b2",
+      "title": "Disagreement-Fueled Consensus Core Engine",
+      "description": "The person deliberately keeps a wide variety of contradictory hunches alive and runs small tests, which produce a spread of divergent results. A weekly review links evidence across hypotheses, so the ideas that keep getting mutual support condense into a stable core. The core raises a pooled corroboration weight, which sets a steady cadence of validated insights, and the person stops re-testing the same things.",
+      "operator": "isomorphism",
+      "source_domain": "nonlinear_dynamics",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Contradictory hunches produce divergent test results that, combined with a habit of linking shared evidence, let mutually supported hypotheses condense into a core that raises pooled corroboration and sustains a steady cadence of validated insights.",
+        "causal_structure": [
+          {
+            "cause": "Contradictory hunch variety",
+            "relation": "increases",
+            "effect": "Spread of divergent test results"
+          },
+          {
+            "cause": "Spread of divergent test results",
+            "relation": "enables",
+            "effect": "Mutually-supported hypothesis core"
+          },
+          {
+            "cause": "Shared-evidence linking habit",
+            "relation": "enables",
+            "effect": "Mutually-supported hypothesis core"
+          },
+          {
+            "cause": "Mutually-supported hypothesis core",
+            "relation": "increases",
+            "effect": "Pooled corroboration weight"
+          },
+          {
+            "cause": "Pooled corroboration weight",
+            "relation": "enables",
+            "effect": "Steady cadence of validated insights"
+          },
+          {
+            "cause": "Shared-evidence linking habit",
+            "relation": "enables",
+            "effect": "Steady cadence of validated insights"
+          },
+          {
+            "cause": "Noisy low-grade signals",
+            "relation": "decreases",
+            "effect": "Pooled corroboration weight"
+          },
+          {
+            "cause": "Shared-evidence linking habit",
+            "relation": "decreases",
+            "effect": "Noisy low-grade signals"
+          },
+          {
+            "cause": "Mutually-supported hypothesis core",
+            "relation": "enables",
+            "effect": "Evidence archive retention"
+          },
+          {
+            "cause": "Evidence archive retention",
+            "relation": "decreases",
+            "effect": "Wasted repeat experiments"
+          }
+        ],
+        "affected_system": "Personal hypothesis-evolution engine (hypothesis lifecycle, evidence memory, conflict resolution, and signal-filtering pipeline)",
+        "payoff": "Steady cadence of validated insights"
+      },
+      "mechanism_fingerprint": "58f067b6c08b5ced",
+      "wl_hash": "476a2dd1821764a632830744154dea2f",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "kuramoto_heterogeneity_cluster_lock",
+        "role_map": {
+          "frequency_heterogeneity": "Contradictory hunch variety",
+          "coupling_strength": "Shared-evidence linking habit",
+          "drift_dispersion": "Spread of divergent test results",
+          "cluster_lock": "Mutually-supported hypothesis core",
+          "mean_field_amplitude": "Pooled corroboration weight",
+          "collective_rhythm": "Steady cadence of validated insights"
+        }
+      },
+      "scores": {
+        "novelty": 0.6895240017848064,
+        "appropriateness": 0.6,
+        "utility": 0.45,
+        "surprise": 0.35,
+        "coherence": 0.55,
+        "mechanism_uniqueness": 0.9421305418719211
+      },
+      "niche": {
+        "intervention_level": "individual",
+        "resource_intensity": "medium",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 4,
+        "branching_factor": 1.111111,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_3",
+      "id": "a67a6d8d9c2a2b2b",
+      "title": "Rebuttal-Fueled Hypothesis Forge",
+      "description": "Each week the person drafts the strongest counterarguments against their current favorite hypothesis, which surfaces a pile of contradictions. Those contradictions force the hypothesis to fork into rivals, and the weekly review picks a discriminating test between them. Failed tests and surprises go into a backlog that drives pruning and merging, and what survives is written into a durable evidence-backed belief archive.",
+      "operator": "isomorphism",
+      "source_domain": "coevolution",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Deliberately generated disagreement piles up as contradictions, which fork hypotheses into rivals, and a recurring review turns that forking into discriminating tests whose failures sharpen the surviving beliefs and feed a durable archive.",
+        "causal_structure": [
+          {
+            "cause": "Adversarial rebuttal drafting",
+            "relation": "increases",
+            "effect": "Contradiction pile-up"
+          },
+          {
+            "cause": "Contradiction pile-up",
+            "relation": "increases",
+            "effect": "Forked rival hypotheses"
+          },
+          {
+            "cause": "Forked rival hypotheses",
+            "relation": "enables",
+            "effect": "Targeted discriminating test"
+          },
+          {
+            "cause": "Weekly review cadence",
+            "relation": "enables",
+            "effect": "Targeted discriminating test"
+          },
+          {
+            "cause": "Targeted discriminating test",
+            "relation": "increases",
+            "effect": "Failed-test surprise backlog"
+          },
+          {
+            "cause": "Failed-test surprise backlog",
+            "relation": "increases",
+            "effect": "Pruned, merged hypothesis set"
+          },
+          {
+            "cause": "Pruned, merged hypothesis set",
+            "relation": "enables",
+            "effect": "Durable evidence-backed belief archive"
+          },
+          {
+            "cause": "Forked rival hypotheses",
+            "relation": "enables",
+            "effect": "Durable evidence-backed belief archive"
+          },
+          {
+            "cause": "Contradiction pile-up",
+            "relation": "depends_on",
+            "effect": "Noisy incoming claims"
+          },
+          {
+            "cause": "Signal triage filter",
+            "relation": "decreases",
+            "effect": "Noisy incoming claims"
+          },
+          {
+            "cause": "Durable evidence-backed belief archive",
+            "relation": "decreases",
+            "effect": "Repeated wasted effort"
+          },
+          {
+            "cause": "Failed-test surprise backlog",
+            "relation": "enables",
+            "effect": "Signal triage filter"
+          }
+        ],
+        "affected_system": "Personal hypothesis-evolution engine (hypothesis lifecycle, evidence memory, conflict resolution, and signal-filtering pipeline)",
+        "payoff": "Durable evidence-backed belief archive"
+      },
+      "mechanism_fingerprint": "2d0de7c165a90309",
+      "wl_hash": "e40e42ac66b23adfc990d858737e2695",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "red_queen_two_round_arms_race",
+        "role_map": {
+          "parasite_adaptation_one": "Adversarial rebuttal drafting",
+          "selection_pressure_one": "Contradiction pile-up",
+          "host_variant_one": "Forked rival hypotheses",
+          "arms_clock": "Weekly review cadence",
+          "parasite_adaptation_two": "Targeted discriminating test",
+          "selection_pressure_two": "Failed-test surprise backlog",
+          "host_variant_two": "Pruned, merged hypothesis set",
+          "lineage_persistence": "Durable evidence-backed belief archive"
+        }
+      },
+      "scores": {
+        "novelty": 0.6782068605400813,
+        "appropriateness": 0.68,
+        "utility": 0.55,
+        "surprise": 0.38,
+        "coherence": 0.78,
+        "mechanism_uniqueness": 0.9363432835820895
+      },
+      "niche": {
+        "intervention_level": "individual",
+        "resource_intensity": "medium",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 7,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 3
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_5",
+      "id": "e3eccfd114af197f",
+      "title": "Provocation-Assisted Hunch Promotion",
+      "description": "You keep faint, half-formed hunches on a low-confidence seed shelf, too thin to justify a real test. Each week a provocation deck of contradicting notes, resurfaced old failures, and a rival's objections is shuffled against them. This random friction nudges a few hunches over the promotion bar into cheap tracked experiments, and their results start to line up into a consistent story. At the weekly review you can clearly see which hunch has become a validated finding, a pattern that would stay invisible if you never disturbed the shelf.",
+      "operator": "isomorphism",
+      "source_domain": "signal_processing",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Random contradictory input pushes faint but real hunches past the promotion bar into tracked experiments, whose results line up into a consistent story that the review can recognize as a validated finding.",
+        "causal_structure": [
+          {
+            "cause": "Faint half-formed hunch on the seed shelf",
+            "relation": "enables",
+            "effect": "Promotion of a hunch into a tracked experiment"
+          },
+          {
+            "cause": "Intensity of random contradictory provocations",
+            "relation": "increases",
+            "effect": "Promotion of a hunch into a tracked experiment"
+          },
+          {
+            "cause": "Promotion of a hunch into a tracked experiment",
+            "relation": "increases",
+            "effect": "Experiment results lining up into one consistent story"
+          },
+          {
+            "cause": "Experiment results lining up into one consistent story",
+            "relation": "increases",
+            "effect": "Hunch recognized as a validated finding in weekly review"
+          },
+          {
+            "cause": "Faint half-formed hunch on the seed shelf",
+            "relation": "enables",
+            "effect": "Hunch recognized as a validated finding in weekly review"
+          },
+          {
+            "cause": "Promotion of a hunch into a tracked experiment",
+            "relation": "increases",
+            "effect": "Failed-experiment log"
+          },
+          {
+            "cause": "Failed-experiment log",
+            "relation": "decreases",
+            "effect": "Wasted effort on repeated dead ends"
+          },
+          {
+            "cause": "Intensity of random contradictory provocations",
+            "relation": "decreases",
+            "effect": "Overconfident attachment to a pet idea"
+          },
+          {
+            "cause": "Experiment results lining up into one consistent story",
+            "relation": "depends_on",
+            "effect": "Evidence ledger that resurfaces old entries"
+          }
+        ],
+        "affected_system": "Personal hypothesis-evolution engine (hypothesis lifecycle, evidence memory, conflict resolution, and signal-filtering pipeline)",
+        "payoff": "Hunch recognized as a validated finding in weekly review"
+      },
+      "mechanism_fingerprint": "bb26821a1fa84998",
+      "wl_hash": "c88a3b77b1eddf2b2b26f3f86f9a1f6e",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "stochastic_resonance_chain",
+        "role_map": {
+          "weak_signal": "Faint half-formed hunch on the seed shelf",
+          "noise_amplitude": "Intensity of random contradictory provocations",
+          "threshold_crossing": "Promotion of a hunch into a tracked experiment",
+          "spike_coherence": "Experiment results lining up into one consistent story",
+          "signal_detectability": "Hunch recognized as a validated finding in weekly review"
+        }
+      },
+      "scores": {
+        "novelty": 0.6846885449739081,
+        "appropriateness": 0.5,
+        "utility": 0.45,
+        "surprise": 0.5,
+        "coherence": 0.6,
+        "mechanism_uniqueness": 0.9457374941561477
+      },
+      "niche": {
+        "intervention_level": "individual",
+        "resource_intensity": "low",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 3,
+        "branching_factor": 1.0,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_2",
+      "id": "bf20841f3f4a3eb8",
+      "title": "Cheap Break Tests: Failure Ledger Forging Hardened Hypotheses",
+      "description": "Each week the person deliberately runs a tiny, low-stakes attempt to break a favorite hypothesis, such as a 20-minute check against a contrary case. Any surprise is written into a mismatch note, which triggers a scoped rewrite of the claim. The rewrites accumulate into a personal revision playbook. When a harsher independent retest arrives later, the playbook lets the person absorb it and come out with a more general, sturdier theory than if they had never been challenged.",
+      "operator": "isomorphism",
+      "source_domain": "toxicology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Small deliberate refutation attempts turn failures into logged mismatches that drive claim rewrites and build a revision playbook, so that a later harsher retest produces a stronger, more general hypothesis.",
+        "causal_structure": [
+          {
+            "cause": "Miniature refutation probe",
+            "relation": "increases",
+            "effect": "Surprise mismatch note"
+          },
+          {
+            "cause": "Surprise mismatch note",
+            "relation": "enables",
+            "effect": "Scoped claim rewrite"
+          },
+          {
+            "cause": "Scoped claim rewrite",
+            "relation": "increases",
+            "effect": "Accumulated revision playbook"
+          },
+          {
+            "cause": "Harsher independent retest",
+            "relation": "enables",
+            "effect": "Stress-proofed generalized theory"
+          },
+          {
+            "cause": "Accumulated revision playbook",
+            "relation": "enables",
+            "effect": "Stress-proofed generalized theory"
+          },
+          {
+            "cause": "Surprise mismatch note",
+            "relation": "increases",
+            "effect": "Archived failure ledger"
+          },
+          {
+            "cause": "Archived failure ledger",
+            "relation": "decreases",
+            "effect": "Repeated forgotten mistakes"
+          },
+          {
+            "cause": "Accumulated revision playbook",
+            "relation": "decreases",
+            "effect": "Wasted effort on dead-end ideas"
+          },
+          {
+            "cause": "Miniature refutation probe",
+            "relation": "depends_on",
+            "effect": "Protected weekly review slot"
+          }
+        ],
+        "affected_system": "Personal hypothesis-evolution engine (hypothesis lifecycle, evidence memory, conflict resolution, and signal-filtering pipeline)",
+        "payoff": "Stress-proofed generalized theory"
+      },
+      "mechanism_fingerprint": "401f34b5bf16a6a1",
+      "wl_hash": "a8e22ef68dcbfa12e5a6fa260374a981",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "hormetic_dose_overcompensation",
+        "role_map": {
+          "sublethal_stressor": "Miniature refutation probe",
+          "damage_signal": "Surprise mismatch note",
+          "repair_response": "Scoped claim rewrite",
+          "adaptive_capacity": "Accumulated revision playbook",
+          "second_exposure": "Harsher independent retest",
+          "overcompensated_resilience": "Stress-proofed generalized theory"
+        }
+      },
+      "scores": {
+        "novelty": 0.689741117379759,
+        "appropriateness": 0.62,
+        "utility": 0.55,
+        "surprise": 0.4,
+        "coherence": 0.82,
+        "mechanism_uniqueness": 0.9475373134328359
+      },
+      "niche": {
+        "intervention_level": "individual",
+        "resource_intensity": "low",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 4,
+        "branching_factor": 0.9,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_2",
+      "id": "aa49fe0efafeaa4d",
+      "title": "Tidal Notebook: Junk and Dispute as Fuel",
+      "description": "On alternating weeks the person flips between a loose brainstorming mode that spews mostly junk hypotheses and a harsh self-rebuttal mode that on its own just stalls in endless dispute. Between modes, an automatic decay process buries old notes and resurfaces a random subset, so forgotten ideas return in a new context and meet a fresh round of rebuttal. Over months, only claims that survive both noise and contradiction pile up in a durable ledger that cannot be erased, so the person feels progress emerge from what looked like wasted effort.",
+      "operator": "isomorphism",
+      "source_domain": "nonlinear_stat_physics",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Two individually unproductive habits, noisy idea generation and contradictory self-rebuttal, are toggled on a fixed rhythm with decay-driven resurfacing in between, so forgetting and disagreement are converted into a one-way accumulation of validated claims.",
+        "causal_structure": [
+          {
+            "cause": "Weekly mode-switch ritual",
+            "relation": "enables",
+            "effect": "Noisy free-association brainstorming"
+          },
+          {
+            "cause": "Noisy free-association brainstorming",
+            "relation": "enables",
+            "effect": "Decay-shuffled resurfacing queue"
+          },
+          {
+            "cause": "Decay-shuffled resurfacing queue",
+            "relation": "enables",
+            "effect": "Adversarial self-rebuttal pass"
+          },
+          {
+            "cause": "Weekly mode-switch ritual",
+            "relation": "enables",
+            "effect": "Adversarial self-rebuttal pass"
+          },
+          {
+            "cause": "Adversarial self-rebuttal pass",
+            "relation": "increases",
+            "effect": "Ledger of durable validated claims"
+          },
+          {
+            "cause": "Decay-shuffled resurfacing queue",
+            "relation": "increases",
+            "effect": "Ledger of durable validated claims"
+          },
+          {
+            "cause": "Noisy free-association brainstorming",
+            "relation": "increases",
+            "effect": "Contradiction backlog"
+          },
+          {
+            "cause": "Adversarial self-rebuttal pass",
+            "relation": "decreases",
+            "effect": "Contradiction backlog"
+          },
+          {
+            "cause": "Decay-shuffled resurfacing queue",
+            "relation": "decreases",
+            "effect": "Sunk-cost attachment"
+          },
+          {
+            "cause": "Sunk-cost attachment",
+            "relation": "prevents",
+            "effect": "Ledger of durable validated claims"
+          }
+        ],
+        "affected_system": "Personal hypothesis-evolution engine (hypothesis lifecycle, evidence memory, conflict resolution, and signal-filtering pipeline)",
+        "payoff": "Ledger of durable validated claims"
+      },
+      "mechanism_fingerprint": "28c514437af25c0e",
+      "wl_hash": "b224fd0a3b5b759e5c00a3c44aced945",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "parrondo_losing_pair_ratchet",
+        "role_map": {
+          "alternation_clock": "Weekly mode-switch ritual",
+          "losing_game_a": "Noisy free-association brainstorming",
+          "state_remap": "Decay-shuffled resurfacing queue",
+          "losing_game_b": "Adversarial self-rebuttal pass",
+          "ratchet_gain": "Ledger of durable validated claims"
+        }
+      },
+      "scores": {
+        "novelty": 0.6819784631663338,
+        "appropriateness": 0.55,
+        "utility": 0.45,
+        "surprise": 0.6,
+        "coherence": 0.6,
+        "mechanism_uniqueness": 0.9352391937833899
+      },
+      "niche": {
+        "intervention_level": "individual",
+        "resource_intensity": "low",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 4,
+        "branching_factor": 1.428571,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "47 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_noisy_free_association_brainstorming",
+            "satisfy_sunk_cost_attachment",
+            "satisfy_decay_shuffled_resurfacing_queue",
+            "satisfy_adversarial_self_rebuttal_pass"
+          ]
+        }
+      ],
+      "is_niche_elite": false
+    }
+  ]
+}

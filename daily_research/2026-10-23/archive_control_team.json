@@ -1,0 +1,996 @@
+{
+  "meta": {
+    "mode": "control",
+    "context": "team",
+    "date": "2026-10-23",
+    "seed": 20261023,
+    "budget": 24,
+    "problem": "Design a hypothesis-triage practice for a small research team of 4-8 people. Premature consensus increases wasted effort. Unfalsifiable claims decrease trust in results. Over-polished ideas prevent honest critique. Every added idea increases review load.",
+    "provider": "MockIdeaProvider",
+    "model": null,
+    "provider_fallbacks": 0,
+    "backend_stats": {},
+    "template_library": "default_templates()",
+    "wall_seconds": 0.2
+  },
+  "metrics": {
+    "coverage": null,
+    "duplicate_rate": 0.6666666666666666,
+    "attempts": 24,
+    "structural_failures": 6,
+    "occupied_niches": 4,
+    "repair_incubator": 0,
+    "failure_archive": 0,
+    "generation_errors": 0,
+    "canonicalize_errors": 0,
+    "validation_errors": 0,
+    "evaluation_errors": 0,
+    "evidence_errors": 0,
+    "provider_fallbacks": 0,
+    "inversion_attempts": 3,
+    "inversion_successes": 3,
+    "isomorphism_attempts": 3,
+    "isomorphism_successes": 3,
+    "synthesis_attempts": 0,
+    "synthesis_successes": 0,
+    "rules_promoted": 0,
+    "niche_count": 4,
+    "qd_score": 5.781166889750223
+  },
+  "admission_log": [
+    {
+      "operator": "inversion",
+      "status": "ACCEPTED",
+      "stage": "complete",
+      "n": 12
+    },
+    {
+      "operator": "isomorphism",
+      "status": "ACCEPTED",
+      "stage": "complete",
+      "n": 6
+    }
+  ],
+  "centroids": [
+    [
+      0.66,
+      1.0,
+      1.0,
+      0.3,
+      0.2,
+      0.0,
+      0.2
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.3,
+      0.24,
+      0.333333,
+      0.2
+    ],
+    [
+      0.33,
+      0.5,
+      0.5,
+      0.3,
+      0.26666660000000003,
+      0.333333,
+      0.2
+    ],
+    [
+      0.33,
+      0.5,
+      0.5,
+      0.2,
+      0.2,
+      0.0,
+      0.1
+    ]
+  ],
+  "elites": [
+    {
+      "niche_key": "centroid_0",
+      "id": "cf8f45453014ae14",
+      "title": "Blend: clearinghouse_settlement structure for Design a hypothesis-triage practice for a small research team of 4-8 people. Premature consensus increases wasted effort. Unfalsifiable claims decrease trust in results. Over-polished ideas prevent honest critique. Every added idea increases review load.",
+      "description": "Project the auction mechanism clearinghouse_settlement onto the problem.",
+      "operator": "isomorphism",
+      "source_domain": "generic",
+      "provider_mode": "scripted",
+      "mechanism": {
+        "core_mechanism": "Reuse the causal structure of clearinghouse_settlement within people and their workflow",
+        "causal_structure": [
+          {
+            "cause": "people and their workflow component A",
+            "relation": "enables",
+            "effect": "people and their workflow component B"
+          },
+          {
+            "cause": "people and their workflow component C",
+            "relation": "enables",
+            "effect": "people and their workflow component B"
+          },
+          {
+            "cause": "people and their workflow component B",
+            "relation": "enables",
+            "effect": "people and their workflow component D"
+          }
+        ],
+        "affected_system": "people and their workflow",
+        "payoff": "people and their workflow component D"
+      },
+      "mechanism_fingerprint": "8102269f1eecf9d6",
+      "wl_hash": "d6a7a199dc5be966f3e767ead22b3efd",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "clearinghouse_settlement",
+        "role_map": {
+          "order_flow": "people and their workflow component A",
+          "clearinghouse": "people and their workflow component B",
+          "counterparty": "people and their workflow component C",
+          "settled_state": "people and their workflow component D"
+        }
+      },
+      "scores": {
+        "novelty": 0.7422049608803667,
+        "appropriateness": 0.75,
+        "utility": 0.7,
+        "surprise": 0.7,
+        "coherence": 0.85,
+        "mechanism_uniqueness": 0.8611111111111112
+      },
+      "niche": {
+        "intervention_level": "organization",
+        "resource_intensity": "high",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 2,
+        "branching_factor": 0.75,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": []
+    },
+    {
+      "niche_key": "centroid_1",
+      "id": "5d163566b6a2182d",
+      "title": "Inverted: Every added idea increases review load; Premature consensus increases wasted effort",
+      "description": "Deliberately invert the invariant(s) Inverted: Every added idea increases review load; Premature consensus increases wasted effort with a buffer path.",
+      "operator": "inversion",
+      "source_domain": "generic",
+      "provider_mode": "scripted",
+      "mechanism": {
+        "core_mechanism": "Invert Inverted: Every added idea increases review load; Premature consensus increases wasted effort while a buffer preserves the payoff",
+        "causal_structure": [
+          {
+            "cause": "Every added idea",
+            "relation": "decreases",
+            "effect": "review load"
+          },
+          {
+            "cause": "review load",
+            "relation": "enables",
+            "effect": "resilient outcome"
+          },
+          {
+            "cause": "review load",
+            "relation": "enables",
+            "effect": "Every added idea"
+          },
+          {
+            "cause": "Every added idea",
+            "relation": "enables",
+            "effect": "buffer for review load"
+          },
+          {
+            "cause": "buffer for review load",
+            "relation": "enables",
+            "effect": "resilient outcome"
+          },
+          {
+            "cause": "intervention on review load",
+            "relation": "enables",
+            "effect": "review load"
+          },
+          {
+            "cause": "Premature consensus",
+            "relation": "decreases",
+            "effect": "wasted effort"
+          },
+          {
+            "cause": "wasted effort",
+            "relation": "enables",
+            "effect": "resilient outcome"
+          },
+          {
+            "cause": "wasted effort",
+            "relation": "enables",
+            "effect": "Premature consensus"
+          },
+          {
+            "cause": "Premature consensus",
+            "relation": "enables",
+            "effect": "buffer for wasted effort"
+          },
+          {
+            "cause": "buffer for wasted effort",
+            "relation": "enables",
+            "effect": "resilient outcome"
+          },
+          {
+            "cause": "intervention on wasted effort",
+            "relation": "enables",
+            "effect": "wasted effort"
+          }
+        ],
+        "affected_system": "people and their workflow",
+        "payoff": "resilient outcome"
+      },
+      "mechanism_fingerprint": "4571aa5e9bdaac7d",
+      "wl_hash": "f8fa7682878fea969c821ecfda19dbdd",
+      "lineage_evidence": {
+        "kind": "inversion",
+        "claim_id": "278f56d7c0a63c7d+aaad98e4c10acb6b",
+        "bound_link_indices": [
+          0,
+          6
+        ],
+        "flipped_polarity": true
+      },
+      "scores": {
+        "novelty": 0.7504885560826571,
+        "appropriateness": 0.75,
+        "utility": 0.7,
+        "surprise": 0.7,
+        "coherence": 0.85,
+        "mechanism_uniqueness": 0.865
+      },
+      "niche": {
+        "intervention_level": "individual",
+        "resource_intensity": "low",
+        "feedback_horizon": "immediate"
+      },
+      "dynamics": {
+        "causal_depth": 3,
+        "branching_factor": 1.333333,
+        "loop_density": 0.333333,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": []
+    },
+    {
+      "niche_key": "centroid_2",
+      "id": "f2b03f53937f0d61",
+      "title": "Inverted: Premature consensus increases wasted effort; Every added idea increases review load",
+      "description": "Deliberately invert the invariant(s) Inverted: Premature consensus increases wasted effort; Every added idea increases review load with a buffer path.",
+      "operator": "inversion",
+      "source_domain": "generic",
+      "provider_mode": "scripted",
+      "mechanism": {
+        "core_mechanism": "Invert Inverted: Premature consensus increases wasted effort; Every added idea increases review load while a buffer preserves the payoff",
+        "causal_structure": [
+          {
+            "cause": "Premature consensus",
+            "relation": "decreases",
+            "effect": "wasted effort"
+          },
+          {
+            "cause": "wasted effort",
+            "relation": "enables",
+            "effect": "resilient outcome"
+          },
+          {
+            "cause": "wasted effort",
+            "relation": "enables",
+            "effect": "Premature consensus"
+          },
+          {
+            "cause": "Premature consensus",
+            "relation": "enables",
+            "effect": "buffer for wasted effort"
+          },
+          {
+            "cause": "buffer for wasted effort",
+            "relation": "enables",
+            "effect": "resilient outcome"
+          },
+          {
+            "cause": "intervention on wasted effort",
+            "relation": "enables",
+            "effect": "wasted effort"
+          },
+          {
+            "cause": "Every added idea",
+            "relation": "decreases",
+            "effect": "review load"
+          },
+          {
+            "cause": "review load",
+            "relation": "enables",
+            "effect": "resilient outcome"
+          },
+          {
+            "cause": "review load",
+            "relation": "enables",
+            "effect": "Every added idea"
+          },
+          {
+            "cause": "Every added idea",
+            "relation": "enables",
+            "effect": "buffer for review load"
+          },
+          {
+            "cause": "buffer for review load",
+            "relation": "enables",
+            "effect": "resilient outcome"
+          },
+          {
+            "cause": "intervention on review load",
+            "relation": "enables",
+            "effect": "review load"
+          }
+        ],
+        "affected_system": "people and their workflow",
+        "payoff": "resilient outcome"
+      },
+      "mechanism_fingerprint": "97c61ca227b6d149",
+      "wl_hash": "f8fa7682878fea969c821ecfda19dbdd",
+      "lineage_evidence": {
+        "kind": "inversion",
+        "claim_id": "aaad98e4c10acb6b+278f56d7c0a63c7d",
+        "bound_link_indices": [
+          0,
+          6
+        ],
+        "flipped_polarity": true
+      },
+      "scores": {
+        "novelty": 0.7502035914354032,
+        "appropriateness": 0.75,
+        "utility": 0.7,
+        "surprise": 0.7,
+        "coherence": 0.85,
+        "mechanism_uniqueness": 0.865
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "medium",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 3,
+        "branching_factor": 1.333333,
+        "loop_density": 0.333333,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": []
+    },
+    {
+      "niche_key": "centroid_3",
+      "id": "c9b172fb66669764",
+      "title": "Blend: copy_on_write structure for Design a hypothesis-triage practice for a small research team of 4-8 people. Premature consensus increases wasted effort. Unfalsifiable claims decrease trust in results. Over-polished ideas prevent honest critique. Every added idea increases review load.",
+      "description": "Project the os_kernel mechanism copy_on_write onto the problem.",
+      "operator": "isomorphism",
+      "source_domain": "generic",
+      "provider_mode": "scripted",
+      "mechanism": {
+        "core_mechanism": "Reuse the causal structure of copy_on_write within people and their workflow",
+        "causal_structure": [
+          {
+            "cause": "people and their workflow component B",
+            "relation": "enables",
+            "effect": "people and their workflow component C"
+          },
+          {
+            "cause": "people and their workflow component A",
+            "relation": "enables",
+            "effect": "people and their workflow component C"
+          },
+          {
+            "cause": "people and their workflow component C",
+            "relation": "enables",
+            "effect": "people and their workflow component D"
+          },
+          {
+            "cause": "people and their workflow component A",
+            "relation": "enables",
+            "effect": "people and their workflow component D"
+          }
+        ],
+        "affected_system": "people and their workflow",
+        "payoff": "people and their workflow component D"
+      },
+      "mechanism_fingerprint": "c8e3511b06476c4e",
+      "wl_hash": "1a9704cd3694d67d1a7053044c29ce9d",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "copy_on_write",
+        "role_map": {
+          "shared_page": "people and their workflow component A",
+          "writer": "people and their workflow component B",
+          "private_copy": "people and their workflow component C",
+          "isolation": "people and their workflow component D"
+        }
+      },
+      "scores": {
+        "novelty": 0.7382697813517957,
+        "appropriateness": 0.75,
+        "utility": 0.7,
+        "surprise": 0.7,
+        "coherence": 0.85,
+        "mechanism_uniqueness": 0.8611111111111112
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "medium",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 2,
+        "branching_factor": 1.0,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": []
+    }
+  ],
+  "admitted": [
+    {
+      "niche_key": "centroid_0",
+      "id": "eeed6645c1077a59",
+      "title": "Blend: entropy_barrier structure for Design a hypothesis-triage practice for a small research team of 4-8 people. Premature consensus increases wasted effort. Unfalsifiable claims decrease trust in results. Over-polished ideas prevent honest critique. Every added idea increases review load.",
+      "description": "Project the thermodynamics mechanism entropy_barrier onto the problem.",
+      "operator": "isomorphism",
+      "source_domain": "generic",
+      "provider_mode": "scripted",
+      "mechanism": {
+        "core_mechanism": "Reuse the causal structure of entropy_barrier within people and their workflow",
+        "causal_structure": [
+          {
+            "cause": "people and their workflow component A",
+            "relation": "increases",
+            "effect": "people and their workflow component B"
+          },
+          {
+            "cause": "people and their workflow component B",
+            "relation": "prevents",
+            "effect": "people and their workflow component C"
+          },
+          {
+            "cause": "people and their workflow component B",
+            "relation": "enables",
+            "effect": "people and their workflow component D"
+          },
+          {
+            "cause": "people and their workflow component C",
+            "relation": "enables",
+            "effect": "people and their workflow component D"
+          }
+        ],
+        "affected_system": "people and their workflow",
+        "payoff": "people and their workflow component D"
+      },
+      "mechanism_fingerprint": "98355c62aac1a5a9",
+      "wl_hash": "f0a635b876ce7e1819e4b8fc29fcbb01",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "entropy_barrier",
+        "role_map": {
+          "disorder_source": "people and their workflow component A",
+          "barrier": "people and their workflow component B",
+          "protected_order": "people and their workflow component C",
+          "persistence": "people and their workflow component D"
+        }
+      },
+      "scores": {
+        "novelty": 0.7101874115070791,
+        "appropriateness": 0.75,
+        "utility": 0.7,
+        "surprise": 0.7,
+        "coherence": 0.85,
+        "mechanism_uniqueness": 0.8611111111111112
+      },
+      "niche": {
+        "intervention_level": "organization",
+        "resource_intensity": "high",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 3,
+        "branching_factor": 1.0,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "38 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_people_and_their_workflow_component_b"
+          ]
+        }
+      ],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_1",
+      "id": "c275735fb957e4c6",
+      "title": "Inverted: Premature consensus increases wasted effort",
+      "description": "Deliberately invert the invariant(s) Inverted: Premature consensus increases wasted effort with a buffer path.",
+      "operator": "inversion",
+      "source_domain": "generic",
+      "provider_mode": "scripted",
+      "mechanism": {
+        "core_mechanism": "Invert Inverted: Premature consensus increases wasted effort while a buffer preserves the payoff",
+        "causal_structure": [
+          {
+            "cause": "Premature consensus",
+            "relation": "decreases",
+            "effect": "wasted effort"
+          },
+          {
+            "cause": "wasted effort",
+            "relation": "enables",
+            "effect": "resilient outcome"
+          },
+          {
+            "cause": "wasted effort",
+            "relation": "enables",
+            "effect": "Premature consensus"
+          },
+          {
+            "cause": "Premature consensus",
+            "relation": "enables",
+            "effect": "buffer for wasted effort"
+          },
+          {
+            "cause": "buffer for wasted effort",
+            "relation": "enables",
+            "effect": "resilient outcome"
+          },
+          {
+            "cause": "intervention on wasted effort",
+            "relation": "enables",
+            "effect": "wasted effort"
+          }
+        ],
+        "affected_system": "people and their workflow",
+        "payoff": "resilient outcome"
+      },
+      "mechanism_fingerprint": "904a39ca431f4d1f",
+      "wl_hash": "e31733dd293340fdaa4be4bdfa7e2431",
+      "lineage_evidence": {
+        "kind": "inversion",
+        "claim_id": "aaad98e4c10acb6b",
+        "bound_link_indices": [
+          0
+        ],
+        "flipped_polarity": true
+      },
+      "scores": {
+        "novelty": 0.7503284069690234,
+        "appropriateness": 0.75,
+        "utility": 0.7,
+        "surprise": 0.7,
+        "coherence": 0.85,
+        "mechanism_uniqueness": 0.8625
+      },
+      "niche": {
+        "intervention_level": "individual",
+        "resource_intensity": "low",
+        "feedback_horizon": "immediate"
+      },
+      "dynamics": {
+        "causal_depth": 3,
+        "branching_factor": 1.2,
+        "loop_density": 0.333333,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_1",
+      "id": "5d163566b6a2182d",
+      "title": "Inverted: Every added idea increases review load; Premature consensus increases wasted effort",
+      "description": "Deliberately invert the invariant(s) Inverted: Every added idea increases review load; Premature consensus increases wasted effort with a buffer path.",
+      "operator": "inversion",
+      "source_domain": "generic",
+      "provider_mode": "scripted",
+      "mechanism": {
+        "core_mechanism": "Invert Inverted: Every added idea increases review load; Premature consensus increases wasted effort while a buffer preserves the payoff",
+        "causal_structure": [
+          {
+            "cause": "Every added idea",
+            "relation": "decreases",
+            "effect": "review load"
+          },
+          {
+            "cause": "review load",
+            "relation": "enables",
+            "effect": "resilient outcome"
+          },
+          {
+            "cause": "review load",
+            "relation": "enables",
+            "effect": "Every added idea"
+          },
+          {
+            "cause": "Every added idea",
+            "relation": "enables",
+            "effect": "buffer for review load"
+          },
+          {
+            "cause": "buffer for review load",
+            "relation": "enables",
+            "effect": "resilient outcome"
+          },
+          {
+            "cause": "intervention on review load",
+            "relation": "enables",
+            "effect": "review load"
+          },
+          {
+            "cause": "Premature consensus",
+            "relation": "decreases",
+            "effect": "wasted effort"
+          },
+          {
+            "cause": "wasted effort",
+            "relation": "enables",
+            "effect": "resilient outcome"
+          },
+          {
+            "cause": "wasted effort",
+            "relation": "enables",
+            "effect": "Premature consensus"
+          },
+          {
+            "cause": "Premature consensus",
+            "relation": "enables",
+            "effect": "buffer for wasted effort"
+          },
+          {
+            "cause": "buffer for wasted effort",
+            "relation": "enables",
+            "effect": "resilient outcome"
+          },
+          {
+            "cause": "intervention on wasted effort",
+            "relation": "enables",
+            "effect": "wasted effort"
+          }
+        ],
+        "affected_system": "people and their workflow",
+        "payoff": "resilient outcome"
+      },
+      "mechanism_fingerprint": "4571aa5e9bdaac7d",
+      "wl_hash": "f8fa7682878fea969c821ecfda19dbdd",
+      "lineage_evidence": {
+        "kind": "inversion",
+        "claim_id": "278f56d7c0a63c7d+aaad98e4c10acb6b",
+        "bound_link_indices": [
+          0,
+          6
+        ],
+        "flipped_polarity": true
+      },
+      "scores": {
+        "novelty": 0.7504885560826571,
+        "appropriateness": 0.75,
+        "utility": 0.7,
+        "surprise": 0.7,
+        "coherence": 0.85,
+        "mechanism_uniqueness": 0.865
+      },
+      "niche": {
+        "intervention_level": "individual",
+        "resource_intensity": "low",
+        "feedback_horizon": "immediate"
+      },
+      "dynamics": {
+        "causal_depth": 3,
+        "branching_factor": 1.333333,
+        "loop_density": 0.333333,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": true
+    },
+    {
+      "niche_key": "centroid_0",
+      "id": "cf8f45453014ae14",
+      "title": "Blend: clearinghouse_settlement structure for Design a hypothesis-triage practice for a small research team of 4-8 people. Premature consensus increases wasted effort. Unfalsifiable claims decrease trust in results. Over-polished ideas prevent honest critique. Every added idea increases review load.",
+      "description": "Project the auction mechanism clearinghouse_settlement onto the problem.",
+      "operator": "isomorphism",
+      "source_domain": "generic",
+      "provider_mode": "scripted",
+      "mechanism": {
+        "core_mechanism": "Reuse the causal structure of clearinghouse_settlement within people and their workflow",
+        "causal_structure": [
+          {
+            "cause": "people and their workflow component A",
+            "relation": "enables",
+            "effect": "people and their workflow component B"
+          },
+          {
+            "cause": "people and their workflow component C",
+            "relation": "enables",
+            "effect": "people and their workflow component B"
+          },
+          {
+            "cause": "people and their workflow component B",
+            "relation": "enables",
+            "effect": "people and their workflow component D"
+          }
+        ],
+        "affected_system": "people and their workflow",
+        "payoff": "people and their workflow component D"
+      },
+      "mechanism_fingerprint": "8102269f1eecf9d6",
+      "wl_hash": "d6a7a199dc5be966f3e767ead22b3efd",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "clearinghouse_settlement",
+        "role_map": {
+          "order_flow": "people and their workflow component A",
+          "clearinghouse": "people and their workflow component B",
+          "counterparty": "people and their workflow component C",
+          "settled_state": "people and their workflow component D"
+        }
+      },
+      "scores": {
+        "novelty": 0.7422049608803667,
+        "appropriateness": 0.75,
+        "utility": 0.7,
+        "surprise": 0.7,
+        "coherence": 0.85,
+        "mechanism_uniqueness": 0.8611111111111112
+      },
+      "niche": {
+        "intervention_level": "organization",
+        "resource_intensity": "high",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 2,
+        "branching_factor": 0.75,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": true
+    },
+    {
+      "niche_key": "centroid_2",
+      "id": "f2b03f53937f0d61",
+      "title": "Inverted: Premature consensus increases wasted effort; Every added idea increases review load",
+      "description": "Deliberately invert the invariant(s) Inverted: Premature consensus increases wasted effort; Every added idea increases review load with a buffer path.",
+      "operator": "inversion",
+      "source_domain": "generic",
+      "provider_mode": "scripted",
+      "mechanism": {
+        "core_mechanism": "Invert Inverted: Premature consensus increases wasted effort; Every added idea increases review load while a buffer preserves the payoff",
+        "causal_structure": [
+          {
+            "cause": "Premature consensus",
+            "relation": "decreases",
+            "effect": "wasted effort"
+          },
+          {
+            "cause": "wasted effort",
+            "relation": "enables",
+            "effect": "resilient outcome"
+          },
+          {
+            "cause": "wasted effort",
+            "relation": "enables",
+            "effect": "Premature consensus"
+          },
+          {
+            "cause": "Premature consensus",
+            "relation": "enables",
+            "effect": "buffer for wasted effort"
+          },
+          {
+            "cause": "buffer for wasted effort",
+            "relation": "enables",
+            "effect": "resilient outcome"
+          },
+          {
+            "cause": "intervention on wasted effort",
+            "relation": "enables",
+            "effect": "wasted effort"
+          },
+          {
+            "cause": "Every added idea",
+            "relation": "decreases",
+            "effect": "review load"
+          },
+          {
+            "cause": "review load",
+            "relation": "enables",
+            "effect": "resilient outcome"
+          },
+          {
+            "cause": "review load",
+            "relation": "enables",
+            "effect": "Every added idea"
+          },
+          {
+            "cause": "Every added idea",
+            "relation": "enables",
+            "effect": "buffer for review load"
+          },
+          {
+            "cause": "buffer for review load",
+            "relation": "enables",
+            "effect": "resilient outcome"
+          },
+          {
+            "cause": "intervention on review load",
+            "relation": "enables",
+            "effect": "review load"
+          }
+        ],
+        "affected_system": "people and their workflow",
+        "payoff": "resilient outcome"
+      },
+      "mechanism_fingerprint": "97c61ca227b6d149",
+      "wl_hash": "f8fa7682878fea969c821ecfda19dbdd",
+      "lineage_evidence": {
+        "kind": "inversion",
+        "claim_id": "aaad98e4c10acb6b+278f56d7c0a63c7d",
+        "bound_link_indices": [
+          0,
+          6
+        ],
+        "flipped_polarity": true
+      },
+      "scores": {
+        "novelty": 0.7502035914354032,
+        "appropriateness": 0.75,
+        "utility": 0.7,
+        "surprise": 0.7,
+        "coherence": 0.85,
+        "mechanism_uniqueness": 0.865
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "medium",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 3,
+        "branching_factor": 1.333333,
+        "loop_density": 0.333333,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": true
+    },
+    {
+      "niche_key": "centroid_3",
+      "id": "c9b172fb66669764",
+      "title": "Blend: copy_on_write structure for Design a hypothesis-triage practice for a small research team of 4-8 people. Premature consensus increases wasted effort. Unfalsifiable claims decrease trust in results. Over-polished ideas prevent honest critique. Every added idea increases review load.",
+      "description": "Project the os_kernel mechanism copy_on_write onto the problem.",
+      "operator": "isomorphism",
+      "source_domain": "generic",
+      "provider_mode": "scripted",
+      "mechanism": {
+        "core_mechanism": "Reuse the causal structure of copy_on_write within people and their workflow",
+        "causal_structure": [
+          {
+            "cause": "people and their workflow component B",
+            "relation": "enables",
+            "effect": "people and their workflow component C"
+          },
+          {
+            "cause": "people and their workflow component A",
+            "relation": "enables",
+            "effect": "people and their workflow component C"
+          },
+          {
+            "cause": "people and their workflow component C",
+            "relation": "enables",
+            "effect": "people and their workflow component D"
+          },
+          {
+            "cause": "people and their workflow component A",
+            "relation": "enables",
+            "effect": "people and their workflow component D"
+          }
+        ],
+        "affected_system": "people and their workflow",
+        "payoff": "people and their workflow component D"
+      },
+      "mechanism_fingerprint": "c8e3511b06476c4e",
+      "wl_hash": "1a9704cd3694d67d1a7053044c29ce9d",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "copy_on_write",
+        "role_map": {
+          "shared_page": "people and their workflow component A",
+          "writer": "people and their workflow component B",
+          "private_copy": "people and their workflow component C",
+          "isolation": "people and their workflow component D"
+        }
+      },
+      "scores": {
+        "novelty": 0.7382697813517957,
+        "appropriateness": 0.75,
+        "utility": 0.7,
+        "surprise": 0.7,
+        "coherence": 0.85,
+        "mechanism_uniqueness": 0.8611111111111112
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "medium",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 2,
+        "branching_factor": 1.0,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": true
+    }
+  ]
+}

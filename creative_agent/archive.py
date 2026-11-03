@@ -1,4 +1,8 @@
 from .models import *
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from .creativity.niche_space import NicheSpace
 
 
 def dominates(a, b, tolerance=1e-9):
@@ -8,7 +12,12 @@ def dominates(a, b, tolerance=1e-9):
 
 
 class QDArchive:
-    def __init__(self):
+    def __init__(self, niche_space: "NicheSpace | None" = None):
+        if niche_space is None:
+            # deferred: creativity/__init__ imports modules that import this one
+            from .creativity.niche_space import FixedGridSpace
+            niche_space = FixedGridSpace()
+        self.niche_space = niche_space
         self.elites = {}
         self.reservoir = []
         self.repair_incubator = []
@@ -17,12 +26,28 @@ class QDArchive:
         self.seen_ids, self.seen_mechanisms = set(), set()
         self.attempts = self.valid = self.duplicates = 0
         self.niche_attempts = {}
+        self.rule_library = None
 
-    @staticmethod
-    def _niche_key(entry: QDArchiveEntry):
-        if entry.dynamics is None:
-            return entry.niche.key
-        return f"{entry.niche.key}|{entry.dynamics.key}"
+    def _niche_key(self, entry: QDArchiveEntry):
+        return self.niche_space.locate(entry)
+
+    def _snapshot(self):
+        return (
+            list(self.reservoir), dict(self.elites), list(self.repair_incubator),
+            list(self.failure_archive), list(self.admission_log),
+            set(self.seen_ids), set(self.seen_mechanisms),
+            self.attempts, self.valid, self.duplicates, dict(self.niche_attempts),
+            self.rule_library.snapshot() if self.rule_library is not None else None,
+            self.niche_space.snapshot(),
+        )
+
+    def _restore(self, snap):
+        (self.reservoir, self.elites, self.repair_incubator, self.failure_archive,
+         self.admission_log, self.seen_ids, self.seen_mechanisms, self.attempts,
+         self.valid, self.duplicates, self.niche_attempts, rules, niche_state) = snap
+        self.niche_space.restore(niche_state)
+        if self.rule_library is not None:
+            self.rule_library.restore(rules)
 
     def insert(
         self,
@@ -31,22 +56,54 @@ class QDArchive:
         *,
         feasible: bool | None = None,
         blacklisted: bool = False,
+        on_admit=None,
+        rng_seed: int = 0,
     ):
+        snap = self._snapshot()
+        try:
+            admitted = self._insert(entry, admission, feasible, blacklisted, rng_seed)
+            if admitted and on_admit is not None:
+                on_admit()  # runs inside the transaction so side effects roll back with the insert
+            return admitted
+        except BaseException:
+            self._restore(snap)
+            raise
+
+    def _insert(self, entry, admission, feasible, blacklisted, rng_seed=0):
         self.attempts += 1
         niche_key = self._niche_key(entry)
         self.niche_attempts[niche_key] = self.niche_attempts.get(niche_key, 0) + 1
 
+        bundle = admission if isinstance(admission, EvaluationBundle) else entry.evaluation
+        mismatch = bundle is not None and (
+            (bundle.candidate_id is not None and bundle.candidate_id != entry.candidate.id)
+            or (bundle.candidate_fingerprint is not None
+                and bundle.candidate_fingerprint != entry.candidate.mechanism.fingerprint)
+        )
         if isinstance(admission, EvaluationBundle):
             admission = admission.admission
         elif admission is None and entry.evaluation is not None:
             admission = entry.evaluation.admission
-        if admission is None:
-            admitted = True if feasible is None else feasible
+        if mismatch:
             admission = AdmissionResult(
-                status=AdmissionStatus.ACCEPTED if admitted else AdmissionStatus.REPAIRABLE,
-                stage=AdmissionStage.COMPLETE if admitted else AdmissionStage.QUALITY_CONSTRAINTS,
-                reasons=() if admitted else ("legacy feasibility gate failed",),
+                status=AdmissionStatus.REJECTED,
+                stage=AdmissionStage.EVALUATION_INTEGRITY,
+                reasons=("evaluation evidence belongs to a different candidate",),
             )
+        elif admission is None:
+            if feasible is None:
+                admission = AdmissionResult(
+                    status=AdmissionStatus.REJECTED,
+                    stage=AdmissionStage.COMPLETE,
+                    reasons=("missing evaluation evidence",),
+                )
+            else:
+                # explicit legacy feasibility flag from callers predating EvaluationBundle
+                admission = AdmissionResult(
+                    status=AdmissionStatus.ACCEPTED if feasible else AdmissionStatus.REPAIRABLE,
+                    stage=AdmissionStage.COMPLETE if feasible else AdmissionStage.QUALITY_CONSTRAINTS,
+                    reasons=() if feasible else ("legacy feasibility gate failed",),
+                )
 
         fatal_playtest = (
             entry.diagnostics.playtest_report is not None
@@ -81,6 +138,8 @@ class QDArchive:
             self.duplicates += 1
             return False
         self.seen_ids.add(entry.candidate.id); self.seen_mechanisms.add(fp)
+        self.niche_space.maybe_expand((entry,), rng_seed)
+        niche_key = self._niche_key(entry)
         self.reservoir = [x for x in self.reservoir if not dominates(entry.scores, x.scores)]
         if not any(dominates(x.scores, entry.scores) for x in self.reservoir):
             self.reservoir.append(entry)
@@ -90,7 +149,12 @@ class QDArchive:
         return True
 
     @property
-    def coverage(self): return len(self.elites) / 36
+    def coverage(self):
+        capacity = self.niche_space.capacity
+        return None if capacity is None else len(self.elites) / capacity
+
+    @property
+    def qd_score(self): return sum(e.scores.novelty + e.scores.utility for e in self.elites.values())
 
     @property
     def duplicate_rate(self): return self.duplicates / self.valid if self.valid else 0

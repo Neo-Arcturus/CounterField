@@ -1,0 +1,1217 @@
+[
+  {
+    "index": 1,
+    "title": "플럭스스트림(FluxStream) OS: 인지 응력장 기반 유선(Streamline) 레이아웃",
+    "domain": "적응형 OS 윈도우 매니저 및 지능형 내비게이션",
+    "primitive": "X026 MapGenerator",
+    "inverted_invariant": {
+      "standard_axiom": "인터페이스의 내비게이션 경로는 정적인 그리드나 트리 구조로 사전에 고정되어 있으며 컴포넌트는 고정된 좌표에 위치해야 한다.",
+      "inverted_axiom": "인터페이스에는 고정된 메뉴 트리가 없으며, 사용자의 시선과 커서 가속도가 형성하는 장애물 응력장을 실시간 우회하는 유선 적분 궤적으로만 정보가 흐른다.",
+      "buffer_path": "텐서장 주응력(Principal Stress) 계산기를 통해 사용자가 급격히 시선을 돌리거나 커서를 격렬히 움직여도 정보 흐름선이 꼬이지 않고 위상수학적으로 매끄럽게 우회 경로를 수렴시킴."
+    },
+    "causal_graph": [
+      {
+        "cause": "커서 이동 가속도 및 체류 시간",
+        "relation": "increases",
+        "effect": "화면 내 로컬 텐서 응력장 왜곡"
+      },
+      {
+        "cause": "로컬 텐서 응력장 왜곡",
+        "relation": "enables",
+        "effect": "주응력 벡터 기반 유선 적분 궤적 재계산"
+      },
+      {
+        "cause": "주응력 벡터 기반 유선 적분 궤적 재계산",
+        "relation": "decreases",
+        "effect": "사용자의 인지적 시각 장애물 충돌 빈도"
+      }
+    ],
+    "dialectical_exploit": "사용자가 당황하여 커서를 마구 휘두를 때 발생하는 '혼란 노이즈'를 고강도 척력 텐서로 승화시켜, 화면 내 잡다한 위젯을 외곽으로 일제히 밀어내고 즉각 비상 탈출/홈 상태로 진입하는 정화 제스처로 역이용.",
+    "concrete_ux_scenario": "초고밀도 금융 데이터 터미널에서 트레이더가 긴급 매도 상황을 맞닥뜨려 마우스를 거칠게 꺾으면, 차트와 부가 패널들이 텐서 유선을 타고 부드러운 물결처럼 양옆으로 비켜서며 현재 가장 시급한 확인 버튼과 핵심 지표만 물방울처럼 주응력의 수렴점에 직관적으로 정렬된다.",
+    "niche": {
+      "intervention_level": "team",
+      "resource_intensity": "high",
+      "feedback_horizon": "immediate"
+    },
+    "fingerprint": "06cab347195c38db57f9814e0f4065cb",
+    "is_dag": true,
+    "archive_admitted": true
+  },
+  {
+    "index": 2,
+    "title": "보로노이 그립(Voronoi Grip): 공백 제로 무경계 반응형 터치 인터페이스",
+    "domain": "접근성 모바일 인터랙션 및 극한 환경 핸드헬드 UI",
+    "primitive": "X033 d3-delaunay",
+    "inverted_invariant": {
+      "standard_axiom": "버튼과 링크는 유한한 경계(Hitbox)를 지니며, 버튼 사이의 빈 공간을 터치하면 아무런 반응이 일어나지 않아야 한다.",
+      "inverted_axiom": "화면상에 비활성 공백은 존재하지 않는다. 모든 픽셀은 최근접 후보 액션에 100% 귀속되며, 헛손질 터치는 수학적으로 불가능하다.",
+      "buffer_path": "들로네 삼각분할의 쌍대인 보로노이 셀 다이어그램을 동적으로 연산하여 화면 전체를 액션 영역으로 테셀레이션하되, 오입력을 막기 위해 손가락 접근 속도 벡터를 가중치로 부여하는 Power Diagram 보정 적용."
+    },
+    "causal_graph": [
+      {
+        "cause": "화면상 인터랙션 요소 밀도",
+        "relation": "depends_on",
+        "effect": "실시간 보로노이 셀 경계 분할"
+      },
+      {
+        "cause": "실시간 보로노이 셀 경계 분할",
+        "relation": "enables",
+        "effect": "화면 전역의 100% 타깃팅 면적화"
+      },
+      {
+        "cause": "화면 전역의 100% 타깃팅 면적화",
+        "relation": "decreases",
+        "effect": "터치 미스 인터랙션 실패율"
+      }
+    ],
+    "dialectical_exploit": "수전증 환자나 격렬한 진동 환경(오프로드 주행)에서 발생하는 부정확한 타점 이탈을, 최근접 보로노이 셀 간의 경계 완충 탄성 피드백으로 전환하여 연속적인 터치 미끄러짐을 유기적인 인접 모드 스위칭으로 치환.",
+    "concrete_ux_scenario": "두꺼운 방한 장갑을 낀 응급 구조요원이 흔들리는 구급차 안에서 태블릿의 미세한 '환자 심박수 기록' 버튼을 빗겨 터치하더라도, 터치 지점을 둘러싼 보로노이 셀이 손가락을 즉시 감지하여 목표 액션을 트리거하고 화면에 은은한 기하학적 파동으로 정확히 보정되었음을 알린다.",
+    "niche": {
+      "intervention_level": "individual",
+      "resource_intensity": "low",
+      "feedback_horizon": "short"
+    },
+    "fingerprint": "d42865f53984370fe8764f5c33b95f77",
+    "is_dag": true,
+    "archive_admitted": true
+  },
+  {
+    "index": 3,
+    "title": "블루리펠 HUD(BlueRepel HUD): 인지 과부하 차단 블루 노이즈 알림 장",
+    "domain": "헤드업 디스플레이(HUD) 및 앰비언트 알림 시스템",
+    "primitive": "X035 poisson-disk-sampling",
+    "inverted_invariant": {
+      "standard_axiom": "알림과 메시지는 시간 순서(Chronological)대로 수직 리스트에 차곡차곡 누적 적재되어야 한다.",
+      "inverted_axiom": "알림은 결코 일렬로 쌓일 수 없으며, 시각 인지 한계 내에서 최소 배제 반경을 유지하는 무작위 균일 점(Blue Noise) 형태로만 부유해야 한다.",
+      "buffer_path": "포아송 디스크 샘플링의 최소 배제 반경(r) 파라미터를 사용자의 현재 시선 집중도 및 심박수와 역비례 연동하여, 스트레스가 극에 달할수록 알림 사이의 최소 거리를 폭발적으로 확장시킴."
+    },
+    "causal_graph": [
+      {
+        "cause": "사용자 생체 스트레스 지표 상승",
+        "relation": "increases",
+        "effect": "포아송 디스크 배제 반경(r)"
+      },
+      {
+        "cause": "포아송 디스크 배제 반경(r)",
+        "relation": "prevents",
+        "effect": "알림 컴포넌트 간 시각적 응집 및 중첩"
+      },
+      {
+        "cause": "알림 컴포넌트 간 시각적 응집 및 중첩 방지",
+        "relation": "decreases",
+        "effect": "사용자의 정보 과부하 피로도"
+      }
+    ],
+    "dialectical_exploit": "알림 폭풍(Notification Storm) 상황 시, 화면에 진입하지 못하고 배제 반경에 밀려난 수백 개의 대기 알림들을 화면 외곽의 은은한 별자리 패턴(Dither Pattern)으로 시각화하여, 압박감 대신 거대한 유기적 배경 텍스처로 탈바꿈.",
+    "concrete_ux_scenario": "스마트 안경을 착용한 채 복잡한 수술을 진행하는 외과의에게 응급 호출, 바이탈 경고, 스케줄 메시지가 쏟아지지만, 화면은 문자열 스택 대신 블루 노이즈 장을 유지하며 서로 간격을 벌려 시야 정중앙을 완벽히 비워두고 주변 시야에만 균일한 밀도로 알림을 배치한다.",
+    "niche": {
+      "intervention_level": "individual",
+      "resource_intensity": "high",
+      "feedback_horizon": "immediate"
+    },
+    "fingerprint": "a23388f046496b1313674d207a2566f0",
+    "is_dag": true,
+    "archive_admitted": true
+  },
+  {
+    "index": 4,
+    "title": "힐베르트 드리프트(Hilbert Drift): 1D 스크롤 기반 다차원 지식 캔버스 사상기",
+    "domain": "초저전력 스마트링 제스처 및 무한 화이트보드 네비게이션",
+    "primitive": "X036 hilbertcurve",
+    "inverted_invariant": {
+      "standard_axiom": "2차원 이상의 거대한 캔버스를 탐색하려면 상하/좌우 2개 축(X, Y) 이동과 줌(Zoom) 제스처가 필수적이다.",
+      "inverted_axiom": "다차원 지식 캔버스는 오직 단 하나의 1차원 스크롤 축만으로 탐색되며, 1차원의 전진/후진만으로 2차원 공간의 지역성(Locality)을 완벽히 순회한다.",
+      "buffer_path": "힐베르트 공간 채움 곡선의 프랙털 차수를 줌 레벨과 매핑하고 곡선의 1D 연속 사상 특성을 활용하여, 1차원 회전 다이얼 입력만으로 인접 노드 간의 공간적 맥락을 끊지 않고 100% 스캔 가능하게 제어."
+    },
+    "causal_graph": [
+      {
+        "cause": "스마트링의 1차원 회전 다이얼 조작",
+        "relation": "increases",
+        "effect": "힐베르트 곡선 상의 1D 이동 거리 매핑"
+      },
+      {
+        "cause": "힐베르트 곡선 상의 1D 이동 거리 매핑",
+        "relation": "enables",
+        "effect": "2차원 평면 내 공간 근접성(Locality) 보존 탐색"
+      },
+      {
+        "cause": "2차원 평면 내 공간 근접성 보존 탐색",
+        "relation": "prevents",
+        "effect": "팬/줌 조작으로 인한 인지적 방향 상실(Disorientation)"
+      }
+    ],
+    "dialectical_exploit": "사용자가 조작 휠을 과도하게 빠르게 굴리는 '스크롤 패닉' 상태가 되면, 힐베르트 곡선의 재귀 차수가 즉각 한 단계 축소(LOD 강등)되어 방대한 다이어그램이 프랙털 클러스터 요약본으로 자동 접히며 초고속 줌아웃 메타 뷰를 제공.",
+    "concrete_ux_scenario": "발표자가 스마트링의 측면을 엄지손가락으로 가볍게 한 방향으로 긁기만 해도, 초대형 Miro 보드의 수천 개 포스트잇이 힐베르트 곡선을 따라 마치 비단실을 꿰듯 완벽한 인접 순서로 줌인/이동하며 청중에게 단절 없는 서사적 시각 여행을 선사한다.",
+    "niche": {
+      "intervention_level": "organization",
+      "resource_intensity": "high",
+      "feedback_horizon": "immediate"
+    },
+    "fingerprint": "69d8b30aaad9d7a7efac20ba3c9e6a89",
+    "is_dag": true,
+    "archive_admitted": true
+  },
+  {
+    "index": 5,
+    "title": "불리언 코프레즌스(Boolean Co-Presence): 다자간 실시간 기하 결합 워크스페이스",
+    "domain": "원격 협업 화이트보드 및 인터랙티브 그래픽스 에디터",
+    "primitive": "C015 Clipper2",
+    "inverted_invariant": {
+      "standard_axiom": "협업 툴에서 여러 사용자의 선택 영역과 커서는 독립된 레이어로 겹치며, 겹친 영역은 Z-인덱스에 따라 서로를 가릴 뿐이다.",
+      "inverted_axiom": "선택 영역은 레이어가 아니라 기하학적 연산이다. 협업자들의 의도 영역이 교차하면 즉시 불리언 연산(합집합, 교집합, 차집합)이 발동하여 새로운 공유 실행 영역을 생성한다.",
+      "buffer_path": "Clipper2의 고속 Vatti 클리핑 알고리즘을 60fps 인터랙션 루프에 통합하여, 다각형의 비정형 드래그 궤적 간의 교차점과 극값을 실시간 추적하고 위상적 결함을 실시간 자동 복구(Auto-Healing)."
+    },
+    "causal_graph": [
+      {
+        "cause": "다수 사용자의 선택 영역 중첩",
+        "relation": "enables",
+        "effect": "실시간 다각형 클리핑 및 불리언 결합 연산"
+      },
+      {
+        "cause": "실시간 다각형 클리핑 및 불리언 결합 연산",
+        "relation": "increases",
+        "effect": "교집합 구역 기반의 임시 공유 권한 및 공동 조작체 생성"
+      },
+      {
+        "cause": "임시 공유 권한 및 공동 조작체 생성",
+        "relation": "decreases",
+        "effect": "작업 영역 충돌로 인한 락(Lock) 대기 시간"
+      }
+    ],
+    "dialectical_exploit": "서로 다른 두 작업자가 같은 요소를 두고 반대 방향으로 선택 영역을 잡아당겨 기하학적 충돌이 발생하는 분쟁 상황을, 차집합(Difference) 연산으로 유도하여 오브젝트를 즉시 비파괴 듀얼 브랜치(A/B 대안)로 자동 분기 복제.",
+    "concrete_ux_scenario": "디자이너와 기획자가 Figma 캔버스에서 동시에 마우스를 드래그하여 두 다각형 영역이 겹치는 순간, 교집합 부위가 찰흙처럼 합쳐져 보라색 '공동 승인 워크벤치'로 변환되며, 둘 중 한 명이 영역을 빼내면 차집합 경계를 따라 인터페이스 컴포넌트가 칼로 자른 듯 우아하게 소유권별로 양분된다.",
+    "niche": {
+      "intervention_level": "organization",
+      "resource_intensity": "low",
+      "feedback_horizon": "immediate"
+    },
+    "fingerprint": "b595ca636735ac4344c74638200c2cb9",
+    "is_dag": true,
+    "archive_admitted": true
+  },
+  {
+    "index": 6,
+    "title": "IsoCognitive Canvas (등인지 등고선 캔버스)",
+    "domain": "지능형 UI/UX 인터랙션",
+    "primitive": "C024 - d3-contour",
+    "inverted_invariant": {
+      "standard_axiom": "인터페이스의 경계선과 정보 그룹핑은 디자이너가 미리 사각형 그리드로 고정해 두어야 한다.",
+      "inverted_axiom": "UI의 모든 시각적 경계선은 사용자의 인지적 시선 체류와 포인터 궤적이 실시간으로 방출하는 스칼라 장의 연속 등위선으로만 융합·격리된다.",
+      "buffer_path": "마칭 스퀘어(Marching Squares)의 16가지 이진 코너 토폴로지 인덱싱을 통해 비정형 시선 스칼라 필드를 위상학적으로 닫힌 매끄러운 곡선 컨투어로 즉각 재구성하여 시각적 파편화를 방지."
+    },
+    "causal_graph": [
+      {
+        "cause": "pointer_dwell_time",
+        "relation": "increases",
+        "effect": "local_scalar_density"
+      },
+      {
+        "cause": "local_scalar_density",
+        "relation": "enables",
+        "effect": "marching_squares_isoline_closure"
+      },
+      {
+        "cause": "marching_squares_isoline_closure",
+        "relation": "prevents",
+        "effect": "visual_clutter_overflow"
+      },
+      {
+        "cause": "visual_clutter_overflow",
+        "relation": "decreases",
+        "effect": "user_attentional_focus"
+      }
+    ],
+    "dialectical_exploit": "사용자가 무엇을 클릭할지 몰라 마우스를 화면 위에서 배회·망설일 때 발생하는 노이즈 궤적을 '산만함'으로 폐기하지 않고, 등위선의 미세 진동으로 간주해 서로 다른 데이터 군집을 부드럽게 잇는 '탐색적 포위선'을 형성하여 잠재적 관련 도큐먼트들을 한 영역으로 자동 묶어내는 기능으로 승화.",
+    "concrete_ux_scenario": "리서처가 수백 개의 복잡한 노드가 얽힌 지식 그래프를 탐색할 때, 고정된 창이나 패널이 전혀 없다. 마우스가 특정 단락 위에 2초간 머물면 그 주변의 관련 참조 문헌들이 마칭 스퀘어 등고선 안쪽으로 유기적으로 말려 들어가며 하나의 '인지 섬(Isle)'을 생성하고, 마우스를 떼면 등고선이 자연스럽게 수축하여 배경으로 흡수된다.",
+    "niche": {
+      "intervention_level": "individual",
+      "resource_intensity": "low",
+      "feedback_horizon": "immediate"
+    },
+    "fingerprint": "e45b93f013d56985131daa28a7a7d3c9",
+    "is_dag": true,
+    "archive_admitted": true
+  },
+  {
+    "index": 7,
+    "title": "Entropy-Collapse Spatial Studio (엔트로피 붕괴형 스튜디오)",
+    "domain": "협업 도구 시각화",
+    "primitive": "C066 - NDWFC",
+    "inverted_invariant": {
+      "standard_axiom": "협업 캔버스에서 레이아웃은 사용자가 개별 위젯을 일일이 선택하고 크기를 조절하여 배치해야 완성된다.",
+      "inverted_axiom": "사용자는 단 하나의 핵심 목적 노드만 캔버스에 투척하며, 주변 빈 공간은 인접 수학적 제약조건 전파에 의해 스스로 가장 조화로운 상태로 붕괴하여 채워진다.",
+      "buffer_path": "슬롯별 배치 가능 모듈들의 섀넌 엔트로피를 연산하여 최소 엔트로피를 지닌 공간부터 순차적으로 파동함수를 붕괴시키며, 데드락 발생 시 국소 롤백(Local Backtracking)으로 구조적 정합성을 유지."
+    },
+    "causal_graph": [
+      {
+        "cause": "seed_widget_instantiation",
+        "relation": "decreases",
+        "effect": "adjacent_slot_shannon_entropy"
+      },
+      {
+        "cause": "adjacent_slot_shannon_entropy",
+        "relation": "enables",
+        "effect": "deterministic_wave_collapse"
+      },
+      {
+        "cause": "deterministic_wave_collapse",
+        "relation": "prevents",
+        "effect": "layout_cohesion_failure"
+      },
+      {
+        "cause": "layout_cohesion_failure",
+        "relation": "decreases",
+        "effect": "collaborative_design_velocity"
+      }
+    ],
+    "dialectical_exploit": "두 명의 기획자가 동시에 서로 양립할 수 없는 컴포넌트를 이웃 슬롯에 강제 투입하여 WFC 상태 모순(Contradiction/엔트로피 0의 불능 상태)이 발생하면 충돌 에러 창을 띄우는 대신, 모순이 발생한 교차면을 '다중 분기 포털(Parallel Canvas Fork)'로 즉각 전환하여 두 가지 레이아웃 안을 나란히 평행 검토할 수 있는 A/B 테스트 환경으로 변환.",
+    "concrete_ux_scenario": "제품 기획자가 빈 보드에 '결제 모듈' 타일 하나를 끌어다 놓는 순간, 타일의 가장자리 소켓 규칙에 의해 상단에는 '장바구니 요약표', 우측에는 '보안 인증 배지', 하단에는 '배송지 선택 패널'이 자율적으로 인접 엔트로피를 해소하며 도미노처럼 조립되어 0.3초 만에 완결된 대시보드를 생성한다.",
+    "niche": {
+      "intervention_level": "organization",
+      "resource_intensity": "high",
+      "feedback_horizon": "short"
+    },
+    "fingerprint": "a0b9aa75be2a8f0889e43696be6f83a1",
+    "is_dag": true,
+    "archive_admitted": true
+  },
+  {
+    "index": 8,
+    "title": "Cellular Membrane Notification (세포막 알림 유기체)",
+    "domain": "인지 부하 절감형 모바일 알림 시스템",
+    "primitive": "X070 - cellular-automata",
+    "inverted_invariant": {
+      "standard_axiom": "모바일 알림은 도착한 시간 순서대로 쌓이는 독립된 직사각형 카드 목록이어야 하며, 사용자가 일일이 스와이프해 지워야 한다.",
+      "inverted_axiom": "알림은 정적 텍스트 박스가 아니라 살아 숨 쉬는 격자 세포들이며, 이웃한 알림의 성격과 사용자의 무반응 시간에 반응하여 자율적으로 증식하거나 사멸한다.",
+      "buffer_path": "셀룰러 오토마타의 상태 전이 전이표(저밀도 고사 및 과밀 사멸 규칙)를 시간 가중치와 연동하여, 무의미한 알림의 범람을 자체적인 생태계적 절멸 메커니즘으로 흡수."
+    },
+    "causal_graph": [
+      {
+        "cause": "notification_retention_latency",
+        "relation": "increases",
+        "effect": "neighbor_inhibition_pressure"
+      },
+      {
+        "cause": "neighbor_inhibition_pressure",
+        "relation": "enables",
+        "effect": "cellular_underpopulation_extinction"
+      },
+      {
+        "cause": "cellular_underpopulation_extinction",
+        "relation": "prevents",
+        "effect": "notification_screen_saturation"
+      },
+      {
+        "cause": "notification_screen_saturation",
+        "relation": "increases",
+        "effect": "user_cognitive_exhaustion"
+      }
+    ],
+    "dialectical_exploit": "사용자가 며칠 동안 알림을 전혀 확인하지 않아 세포 과밀(Overpopulation)로 인한 대규모 연쇄 사멸이 발생하는 최악의 방치 상황을, 중요한 정보의 손실로 두지 않고 고사한 세포들의 잔해 유전자를 추출해 '한 줄 요약 유전자 세포(Digest Core)' 하나로 자동 돌연변이 응축시켜 화면 중앙에 부유시키는 것으로 승화.",
+    "concrete_ux_scenario": "스마트폰 잠금화면에서 스팸성 프로모션 알림 4개가 도착하면, 고립된 채 서로 상호작용하지 못해 10초 만에 픽셀 단위로 쪼개지며 고사해 사라진다. 반면 긴급 금융 결제 알림이 도착하면 주변의 일상 메시지 세포들이 결제 알림 세포를 둘러싸며 거대한 박동형 유기체 막을 형성해 사용자의 즉각적인 햅틱 및 시각 인지를 유도한다.",
+    "niche": {
+      "intervention_level": "individual",
+      "resource_intensity": "low",
+      "feedback_horizon": "short"
+    },
+    "fingerprint": "df678ff2aa6f32fcb4917a134eb89326",
+    "is_dag": true,
+    "archive_admitted": true
+  },
+  {
+    "index": 9,
+    "title": "Dendritic Trace Navigator (수목형 분기 히스토리 네비게이터)",
+    "domain": "복합 의사결정 추적 UI/UX",
+    "primitive": "C075 - L-System",
+    "inverted_invariant": {
+      "standard_axiom": "작업 히스토리와 '실행 취소(Undo)'는 1차원의 일직선 스택으로만 앞뒤 이동이 가능해야 한다.",
+      "inverted_axiom": "사용자의 모든 소프트웨어 조작은 선형 스택에 덮어써지지 않고, 문법 재작성 규칙에 따라 기하급수적으로 싹을 틔우며 공간을 점유하는 프랙탈 수목 구조로 성장한다.",
+      "buffer_path": "L-System의 문자열 재작성 규칙(Axiom Production)에 회전 각도 수렴 계수와 기하학적 바운딩 박스 제약을 결합하여, 무한에 가까운 다중 분기 히스토리가 뷰포트를 벗어나지 않고 콤팩트하게 프랙탈 수렴하도록 완충."
+    },
+    "causal_graph": [
+      {
+        "cause": "exploratory_undo_redo_iterations",
+        "relation": "increases",
+        "effect": "lsystem_grammar_derivation_depth"
+      },
+      {
+        "cause": "lsystem_grammar_derivation_depth",
+        "relation": "enables",
+        "effect": "multi_branch_visual_fractalization"
+      },
+      {
+        "cause": "multi_branch_visual_fractalization",
+        "relation": "prevents",
+        "effect": "context_loss_during_linear_rollback"
+      },
+      {
+        "cause": "context_loss_during_linear_rollback",
+        "relation": "increases",
+        "effect": "decision_repetition_waste"
+      }
+    ],
+    "dialectical_exploit": "사용자가 극도의 혼란을 겪으며 수정과 취소를 무한 반복해 히스토리 트리가 지나치게 복잡하고 빽빽한 덤불(Entangled Bush)로 변할 때, 이를 렌더링 랙이나 사용성 실패로 규정하지 않고 '고민의 임계점(Dilemma Vertex)'으로 자동 진단하여 그 정점에 형광색 '프랙탈 꽃(Decision Bloom)'을 피워 가장 유력했던 3가지 대안을 한눈에 대조하는 프리뷰 패널로 변환.",
+    "concrete_ux_scenario": "3D 모델링 작업 중 사용자가 30분 전의 형태 실험으로 돌아가기 위해 Ctrl+Z를 연타하는 대신 화면 구석의 L-System 나뭇가지를 바라본다. 현재 작업 줄기에서 살짝 갈라져 나온 작은 가지를 터치하자 과거의 변형 작업들이 잎사귀 형태로 펼쳐져 있으며, 원래 줄기를 끊지 않고 새로운 가지를 옆으로 자라나게 만들어 이전 시도와 현재 시도를 단일 화면에서 동시에 비교·병합한다.",
+    "niche": {
+      "intervention_level": "organization",
+      "resource_intensity": "high",
+      "feedback_horizon": "immediate"
+    },
+    "fingerprint": "df678ff2aa6f32fcb4917a134eb89326",
+    "is_dag": true,
+    "archive_admitted": true
+  },
+  {
+    "index": 10,
+    "title": "Resonant Bitmask Persona (공명 비트마스크 페르소나)",
+    "domain": "접근성 인터페이스 및 신원 시각화",
+    "primitive": "X160 - pixel-sprite-generator",
+    "inverted_invariant": {
+      "standard_axiom": "사용자의 디지털 아바타와 상태 아이콘은 사용자가 직접 정적인 사진을 고르거나 파츠를 수동으로 조합해야 한다.",
+      "inverted_axiom": "아바타는 정형화된 이미지가 아니며, 사용자의 터치 압력 편차와 생체 리듬의 무작위 엔트로피가 2D 대칭 2진 마스크를 통과하며 매 순간 자율 발생되는 실시간 절차적 외골격이다.",
+      "buffer_path": "5x5 반사 대칭 바이너리 마스크와 엣지 외곽선 보존 필터를 거치도록 강제함으로써, 아무리 파괴적인 엔트로피 노이즈가 유입되어도 인간의 뇌가 무조건 생명체(크리처)로 인식할 수 있는 게슈탈트 시각적 형태성을 수학적으로 담보."
+    },
+    "causal_graph": [
+      {
+        "cause": "biometric_entropy_fluctuation",
+        "relation": "increases",
+        "effect": "sprite_seed_unpredictability"
+      },
+      {
+        "cause": "sprite_seed_unpredictability",
+        "relation": "enables",
+        "effect": "bilateral_mask_symmetry_crystallization"
+      },
+      {
+        "cause": "bilateral_mask_symmetry_crystallization",
+        "relation": "prevents",
+        "effect": "avatar_visual_alienation"
+      },
+      {
+        "cause": "avatar_visual_alienation",
+        "relation": "decreases",
+        "effect": "user_psychological_ownership"
+      }
+    ],
+    "dialectical_exploit": "사용자가 분노, 불안, 수전증 등으로 인해 터치 센서에 비정상적인 초고속 연타나 불규칙한 압력 폭주(오작동 노이즈)를 가할 때, 시스템이 오입력 에러를 뱉는 대신 대칭 마스크의 외곽 픽셀 두께를 두껍게 팽창시켜 '방어형 아머 스프라이트'로 외형을 진화시키고, 사용자에게 깊고 차분한 햅틱 맥박을 역피드백하여 심신 안정을 유도하는 인터랙션으로 승화.",
+    "concrete_ux_scenario": "언어 장애를 가진 사용자가 음성 대신 촉각 디바이스 패드를 쥐고 대화에 참여한다. 패드를 쥔 손의 미세한 긴장도와 체온 변화에 맞춰 화면 상단의 픽셀 스프라이트가 투구벌레 모양에서 온화한 나비 모양으로 매초 대칭적 픽셀을 재구성하며 변태(Metamorphosis)한다. 상대방은 텍스트 없이도 상대의 감정 상태를 직관적인 스프라이트의 형상과 색상 진동만으로 읽어내고 깊은 정서적 교감을 이룬다.",
+    "niche": {
+      "intervention_level": "team",
+      "resource_intensity": "low",
+      "feedback_horizon": "immediate"
+    },
+    "fingerprint": "e45b93f013d56985131daa28a7a7d3c9",
+    "is_dag": true,
+    "archive_admitted": true
+  },
+  {
+    "index": 11,
+    "title": "Topochron: 시선 감응형 등고선 텍스트 뷰어",
+    "domain": "초몰입형 인지 적응형 e-리더",
+    "primitive": "C044 simplex-noise",
+    "inverted_invariant": {
+      "standard_axiom": "가독성을 보장하기 위해 텍스트 레이아웃은 직교 격자(Cartesian Grid)에 고정되어 엄격한 수평/수직 정렬을 유지해야 한다.",
+      "inverted_axiom": "텍스트의 기저선(Baseline)과 커닝은 심플렉스 노이즈 벡터 장을 따라 끊임없이 유기적으로 파동치며, 응시하는 시선 국소부위에서만 정렬선이 평탄화된다.",
+      "buffer_path": "n차원 심플렉스 노이즈의 연속 구배 계산식을 통해 시선 추적 좌표의 거리에 비례한 연속 감쇠 함수를 적용, 급격한 글자 튐 현상을 억제하고 인지적 피로도를 제로로 수렴시킴."
+    },
+    "causal_graph": [
+      {
+        "cause": "사용자의 응시 지속 시간",
+        "relation": "decreases",
+        "effect": "심플렉스 노이즈 진폭(Noise Amplitude)"
+      },
+      {
+        "cause": "심플렉스 노이즈 진폭의 감소",
+        "relation": "increases",
+        "effect": "국소 텍스트 직교 정렬도"
+      },
+      {
+        "cause": "국소 텍스트 직교 정렬도",
+        "relation": "enables",
+        "effect": "미세 집중 읽기 모드 활성화"
+      },
+      {
+        "cause": "주변부 텍스트의 유기적 파동",
+        "relation": "prevents",
+        "effect": "터널 시야 현상 및 안구 고정 피로"
+      }
+    ],
+    "dialectical_exploit": "사용자의 시선 분산 및 주의력 결핍(ADHD적 훑어보기) 발생 시, 노이즈 장의 교란 속도가 가속되어 단락 전체가 의미적 밀도에 따른 지형도(Topography)로 재구성됨으로써 오히려 직관적인 키워드 공간 탐색 도구로 전환됨.",
+    "concrete_ux_scenario": "학술 논문을 읽는 연구자가 시선을 텍스트 중앙에 두면, 읽고 있는 문맥 반경 5cm만 완벽한 타이포그래피로 평평해지고 나머지 텍스트는 심플렉스 노이즈 곡면을 따라 마치 바람에 흔들리는 수풀처럼 부드럽게 흐른다. 사용자가 읽기를 멈추고 멍하니 바라보면 문서 전체가 정보 중요도에 따른 유기적 등고선 지형으로 변하여 핵심 논거가 산봉우리처럼 솟아오른다.",
+    "niche": {
+      "intervention_level": "individual",
+      "resource_intensity": "low",
+      "feedback_horizon": "immediate"
+    },
+    "fingerprint": "a0da5cb25fc1d7df7d23352aefcb9e94",
+    "is_dag": true,
+    "archive_admitted": true
+  },
+  {
+    "index": 12,
+    "title": "FluidaStream: 비압축 점성 알림 에코시스템",
+    "domain": "OS 레벨 컨텍스트 알림 UI/UX",
+    "primitive": "C220 SPlisHSPlasH",
+    "inverted_invariant": {
+      "standard_axiom": "알림은 개별적인 사각형 카드로 격리되어 시간 순서나 중요도 목록으로 단절된 상태로 적층(Stacking)되어야 한다.",
+      "inverted_axiom": "모든 알림은 단일 캔버스 내에서 서로 밀어내고 융합하는 비압축성 점성 유체 입자군으로 존재하며, 정보의 긴급도에 따라 유체 밀도와 점성이 가변한다.",
+      "buffer_path": "SPH 평활화 커널 기반 비압축 체적 보존 방정식을 통해 수백 개의 알림이 폭주해도 화면 영역 밖으로 튕겨 나가지 않고 모서리 저장소로 응축 평형을 이룸."
+    },
+    "causal_graph": [
+      {
+        "cause": "알림 발생 빈도 급증",
+        "relation": "increases",
+        "effect": "시스템 유체 압력(SPH Pressure)"
+      },
+      {
+        "cause": "시스템 유체 압력",
+        "relation": "enables",
+        "effect": "저우선순위 알림 입자의 표면장력 병합"
+      },
+      {
+        "cause": "저우선순위 알림의 거대 물방울화",
+        "relation": "decreases",
+        "effect": "화면 시각적 노이즈 및 인지 간섭"
+      },
+      {
+        "cause": "고긴급 알림의 낮은 점성 분출",
+        "relation": "prevents",
+        "effect": "임계 알림의 배경 흡수 및 누락"
+      }
+    ],
+    "dialectical_exploit": "알림이 폭발하여 시스템이 포화 상태에 이르는 '알림 피로(Notification Fatigue)' 순간, 유체 역학적 임계 압력이 발동하여 모든 잡다한 알림들이 하나의 단단한 고점성 젤 형태로 응집되어 사용자가 손가락 한 번의 슬라이스로 깔끔하게 '물방울 터뜨리기'하여 일괄 정리 가능.",
+    "concrete_ux_scenario": "주식 거래 중 시장 폭락 경보가 발생하면, 해당 알림은 물처럼 가벼운 액체 제트가 되어 화면 중앙을 가르고 튀어 오른다. 반면 슬랙 메시지와 이메일 알림들은 높은 점성의 꿀처럼 반응하여 화면 하단 모서리로 밀려나 서로 합쳐지며 거대한 단일 방울로 뭉쳐 있다가, 거래가 끝난 뒤 방울을 톡 건드리면 개별 알림들이 세포 분열하듯 자연스럽게 쪼개져 펼쳐진다.",
+    "niche": {
+      "intervention_level": "team",
+      "resource_intensity": "high",
+      "feedback_horizon": "immediate"
+    },
+    "fingerprint": "051657c25e66eb225b401e1b51439b62",
+    "is_dag": true,
+    "archive_admitted": true
+  },
+  {
+    "index": 13,
+    "title": "Synapse-Hut: 자가 조직화 N-body 지식 성단",
+    "domain": "초거대 비동기 협업 지식 시각화",
+    "primitive": "C118 ngraph.forcelayout",
+    "inverted_invariant": {
+      "standard_axiom": "협업 캔버스의 오브젝트는 사용자가 수동으로 드래그하여 폴더나 섹션 프레임 안에 물리적으로 분류·고정해야 한다.",
+      "inverted_axiom": "모든 아이디어 노드는 질량을 가진 천체이며, 사용자의 직접적인 배치 없이 시맨틱 유사도와 팀원 간의 시선/편집 빈도에 따른 중력-척력만으로 스스로 계층화된다.",
+      "buffer_path": "반스-헛(Barnes-Hut) 사분트리 근사 알고리즘을 통해 10만 개 이상의 아이디어 노드가 생성되어도 O(N log N)의 복잡도로 원거리 노드군을 단일 질량 중심으로 묶어 시각적 떨림 없이 매끄럽게 수렴."
+    },
+    "causal_graph": [
+      {
+        "cause": "노드 간 의미적 유사성 및 태그 공유",
+        "relation": "increases",
+        "effect": "국소 인력(Attraction Force)"
+      },
+      {
+        "cause": "비활성 노드의 시간 경과",
+        "relation": "increases",
+        "effect": "반스-헛 원거리 척력(Repulsion)"
+      },
+      {
+        "cause": "반스-헛 사분트리 클러스터링",
+        "relation": "enables",
+        "effect": "원거리 노드군의 매크로 은하화(Macro-Galaxy)"
+      },
+      {
+        "cause": "거대 은하 간 원거리 평형",
+        "relation": "prevents",
+        "effect": "캔버스 공간의 무질서한 노드 중첩 충돌"
+      }
+    ],
+    "dialectical_exploit": "팀원들이 서로 다른 방향으로 무작위 낙서나 분산된 아이디어를 마구 쏟아내는 '협업 카오스' 상태에서, 사분트리 척력이 극대화되어 서로 다른 주제의 성단들이 우주 팽창처럼 거리를 벌려 자연스럽게 부서별/기능별 독립 작업 구역이 자동 분할 생성됨.",
+    "concrete_ux_scenario": "디자이너와 개발자 50명이 브레인스토밍을 시작한다. 포스트잇을 아무 위치에나 던져 넣으면, '결제 시스템' 관련 메모들은 서로 자석처럼 끌어당겨 조밀한 구상 성단을 형성하고, '브랜딩 컬러' 메모들은 척력에 의해 결제 성단 저 멀리로 밀려나 별도의 은하를 만든다. 줌아웃하면 전체 프로젝트가 우주 거대 구조(Cosmic Web) 형태로 완벽히 자동 맵핑되어 있다.",
+    "niche": {
+      "intervention_level": "team",
+      "resource_intensity": "high",
+      "feedback_horizon": "immediate"
+    },
+    "fingerprint": "5884e4646589f7585fd1ee660ffb64b5",
+    "is_dag": true,
+    "archive_admitted": true
+  },
+  {
+    "index": 14,
+    "title": "ImpulseForm: 질량 보존형 고위험 금융 콘솔",
+    "domain": "고위험 핀테크 입력 인터페이스",
+    "primitive": "C104 matter-js",
+    "inverted_invariant": {
+      "standard_axiom": "웹 폼과 버튼은 마찰과 충돌이 배제된 무마찰(Frictionless) 상태여야 하며, 사용자의 클릭은 지체 없이 즉각 반응해야 한다.",
+      "inverted_axiom": "입력 폼과 전송 버튼은 2D 강체 물리 질량과 관성을 가지며, 송금액과 리스크가 커질수록 버튼의 중량과 바닥 마찰력이 기하급수적으로 증가한다.",
+      "buffer_path": "순차 임펄스 제약 해소기(Sequential Impulse Constraint Solver)를 적용하여 사용자의 입력 충격량이 물리 엔진 내에서 엄격히 보존 및 분산되어 요소가 뷰포트를 뚫고 나가는 이상 현상을 차단."
+    },
+    "causal_graph": [
+      {
+        "cause": "송금 입력 액수(Transaction Value)",
+        "relation": "increases",
+        "effect": "전송 버튼의 강체 질량 및 마찰 계수"
+      },
+      {
+        "cause": "버튼 질량 및 마찰 계수 증가",
+        "relation": "increases",
+        "effect": "슬라이드 드래그에 필요한 물리적 임펄스 요구량"
+      },
+      {
+        "cause": "고의적 물리 저항력 요구",
+        "relation": "prevents",
+        "effect": "우발적 원클릭 오송금 및 팻핑거(Fat-finger) 오류"
+      },
+      {
+        "cause": "임계 속도 초과 충돌 시",
+        "relation": "enables",
+        "effect": "탄성 반발을 통한 입력값 강제 리셋"
+      }
+    ],
+    "dialectical_exploit": "사용자가 당황하여 거칠고 빠르게 마우스를 휘두르는 '패닉 인터랙션(Rage Clicking/Dragging)' 시, 임펄스 해소기가 급격한 운동 에너지를 탄성 충돌로 변환하여 확인 슬라이더를 반대편 벽으로 튕겨내 안전 잠금 위치로 강제 복귀시킴.",
+    "concrete_ux_scenario": "트레이더가 100억 원 상당의 레버리지 베팅 버튼을 누르려 한다. 화면 상의 '전송' 블록은 무게 5톤의 바위처럼 묵직해져 단순 클릭으로는 꿈쩍도 하지 않는다. 트레이더는 마우스나 트랙패드로 엄청난 가속도를 주어 물리적으로 블록을 끝까지 밀어붙여 충돌 슬롯에 '쾅' 소리와 함께 물리적 햅틱 결착을 이루어야만 주문이 체결된다.",
+    "niche": {
+      "intervention_level": "organization",
+      "resource_intensity": "low",
+      "feedback_horizon": "short"
+    },
+    "fingerprint": "5884e4646589f7585fd1ee660ffb64b5",
+    "is_dag": true,
+    "archive_admitted": true
+  },
+  {
+    "index": 15,
+    "title": "Origami-OS: 위상 기하학적 패브릭 윈도우 매니저",
+    "domain": "차세대 공간 컴퓨팅 윈도우 인터랙션",
+    "primitive": "X105 verlet-js",
+    "inverted_invariant": {
+      "standard_axiom": "애플리케이션 창(Window)은 기하학적으로 완벽한 직사각형 평면 고정체여야 하며, 크기 조절은 네 모서리의 좌표 변경으로만 수행된다.",
+      "inverted_axiom": "모든 윈도우 창은 질량 없는 격자 입자와 거리 제약 조건으로 직조된 무한 유연 연체 직물(Cloth Mesh)이며, 접고 구기고 비틀어 다차원 작업 공간을 구성한다.",
+      "buffer_path": "베를레 적분(Verlet Integration)의 속도 독립적 위치 기반 완화 알고리즘을 활용하여, 손가락으로 창을 극단적으로 찢거나 꼬아도 수치적 발산(Explosion) 없이 무조건적 안정 상태를 유지."
+    },
+    "causal_graph": [
+      {
+        "cause": "다중 포인터의 비틀림 제스처",
+        "relation": "increases",
+        "effect": "베를레 입자 네트워크 인장 변형률"
+      },
+      {
+        "cause": "위치 기반 거리 제약 이완",
+        "relation": "enables",
+        "effect": "창 표면의 자연스러운 주름 접힘(Folding)"
+      },
+      {
+        "cause": "입체적 주름 뒤편으로의 영역 격리",
+        "relation": "decreases",
+        "effect": "배경 앱의 전면 시야 가림 간섭"
+      },
+      {
+        "cause": "무조건적 수치 안정성",
+        "relation": "prevents",
+        "effect": "초고속 터치 제스처 시 윈도우 렌더링 충돌 크래시"
+      }
+    ],
+    "dialectical_exploit": "사용자가 여러 창을 정리하지 않고 난잡하게 겹쳐놓아 발생하는 '창 난개발 및 시야 질식' 상태에서, 창 모서리를 잡고 흔들면(Shake) 베를레 직물 시뮬레이션이 빨래를 터는 것처럼 작용하여 모든 창의 먼지(불필요한 서브 패널)를 털어내고 납작하게 다려진 상태로 정렬됨.",
+    "concrete_ux_scenario": "코딩 중 레퍼런스 문서를 참조해야 할 때, 개발자는 에디터 창의 오른쪽 절반을 손가락으로 쥐어짜듯 접어 주름을 만든다. 그 주름의 골짜기 사이로 뒷 배경에 있던 웹 브라우저가 자연스럽게 드러난다. 작업을 마치고 주름진 천의 끝을 살짝 당기면, 탄성 복원력에 의해 창이 부드럽게 펄럭이며 다시 원래의 널찍한 작업 화면으로 복원된다.",
+    "niche": {
+      "intervention_level": "organization",
+      "resource_intensity": "low",
+      "feedback_horizon": "immediate"
+    },
+    "fingerprint": "051657c25e66eb225b401e1b51439b62",
+    "is_dag": true,
+    "archive_admitted": true
+  },
+  {
+    "index": 16,
+    "title": "FlockLayout: 포식자-회피 역학 기반 적응형 공간 워크스페이스",
+    "domain": "지능형 UI/UX 인터랙션",
+    "primitive": "X112 boids-flocking",
+    "inverted_invariant": {
+      "standard_axiom": "UI 요소는 디자이너가 사전에 배치한 정적 그리드 좌표에 고정되어 머물러야 한다.",
+      "inverted_axiom": "UI 컴포넌트는 고정 좌표가 없으며, 활성 입력 장치를 포식자로 인식해 능동적으로 도망치고 상호 정렬하며 군집 공간을 자율 형성한다.",
+      "buffer_path": "Boids의 3대 벡터 가중치를 조절하여 마우스 커서가 근접할 때 분리(Separation) 가중치가 급증해 작업 공간을 즉시 비우고, 주변부 유휴 영역에서는 정렬(Alignment)과 응집(Cohesion)으로 자연스럽게 툴바 형태의 군집을 자동 결성하도록 감쇠 제어."
+    },
+    "causal_graph": [
+      {
+        "cause": "커서 이동 속도 및 밀근접도",
+        "relation": "increases",
+        "effect": "주변 UI 노드의 분리(Separation) 반발력"
+      },
+      {
+        "cause": "주변 UI 노드의 분리(Separation) 반발력",
+        "relation": "enables",
+        "effect": "중앙 작업 캔버스의 무방해 가시 영역 확보"
+      },
+      {
+        "cause": "무방해 가시 영역 확보",
+        "relation": "decreases",
+        "effect": "도구 패널 수동 개폐에 소모되는 인터랙션 비용"
+      },
+      {
+        "cause": "외곽 영역 도달 UI의 정렬·응집 합성 벡터",
+        "relation": "depends_on",
+        "effect": "주변부 여백의 기하학적 경계 조건"
+      }
+    ],
+    "dialectical_exploit": "사용자가 당황하여 마우스를 격렬히 휘두르는 조작 오작동 발생 시, 전체 UI 노드가 패닉 상태로 사방 벽면으로 흩어지며 일시적인 '클린 포커스 모드(Clean Focus Canvas)'로 전환되어 오히려 불필요한 모든 시각적 노이즈를 일거에 소거함.",
+    "concrete_ux_scenario": "3D 모델러가 정밀 메시를 조작하려 스타일러스 펜을 캔버스 중앙으로 가져가면, 그 자리에 있던 24개의 브러시 아이콘들이 한 마리 새 떼처럼 양옆으로 우아하게 갈라지며 작업 반경을 열어준다. 펜이 멈추면 아이콘들은 화면 좌우 가장자리에 완만한 호를 그리며 스스로 정렬된 서브 도구 모음 형태로 안착한다.",
+    "niche": {
+      "intervention_level": "individual",
+      "resource_intensity": "high",
+      "feedback_horizon": "immediate"
+    },
+    "fingerprint": "a65c3aae0494c0928dce972a4e14ab9b",
+    "is_dag": true,
+    "archive_admitted": true
+  },
+  {
+    "index": 17,
+    "title": "ErrorSpill: 인지 부하 오차 확산형 협업 대시보드",
+    "domain": "협업 도구 시각화",
+    "primitive": "X082 dither",
+    "inverted_invariant": {
+      "standard_axiom": "업무 티켓과 알림은 개별 카드 컨테이너 내부에 고립되어 누적되며, 초과 시 모달이나 스크롤로 처리된다.",
+      "inverted_axiom": "단일 작업 카드의 마감 압박과 인지 부하는 경계를 넘어 주변 이웃 카드와 동료의 타임라인으로 실시간 누출·확산되어야 한다.",
+      "buffer_path": "플로이드-스타인버그(Floyd-Steinberg) 오차 확산 매트릭스 계수를 차용하여, 특정 노드의 스트레스 양자화 오차 임계치 초과분을 인접 캘린더 블록(오른쪽 7/16, 좌하단 3/16, 하단 5/16, 우하단 1/16)으로 마이크로 도트 형태로 점진 전파."
+    },
+    "causal_graph": [
+      {
+        "cause": "개별 카드의 미완료 태스크 누적",
+        "relation": "increases",
+        "effect": "해당 작업 셀의 양자화 임계 오차"
+      },
+      {
+        "cause": "해당 작업 셀의 양자화 임계 오차",
+        "relation": "enables",
+        "effect": "주변 협업 셀로의 가중 오차 도트 방출"
+      },
+      {
+        "cause": "가중 오차 도트 방출",
+        "relation": "decreases",
+        "effect": "특정 담당자 1인의 병목 인지 파열 위험"
+      },
+      {
+        "cause": "팀 전체의 업무 밀도 평형 유지",
+        "relation": "depends_on",
+        "effect": "확산 행렬 기반의 전체 오차 보존성"
+      }
+    ],
+    "dialectical_exploit": "한 프로젝트에 기한 초과 및 병목 오류가 대폭주할 때, 시스템이 경고 팝업으로 멈추는 대신 보드 전체가 레트로 디더링 질감의 시각적 텍스처로 전환되며 직관적으로 팀 전체의 구조적 과부하 상태를 한눈에 파악하는 히트맵 캔버스가 됨.",
+    "concrete_ux_scenario": "스프린트 마감 2시간 전, 프론트엔드 엔지니어 A의 '결제 모듈 QA' 카드가 한계 용량을 초과하자, 카드의 테두리가 지글거리는 디더링 입자로 부서지며 우측의 '코드 리뷰' 카드와 하단의 주니어 엔지니어 B의 유휴 캘린더 블록으로 작고 세분화된 체크박스 도트들로 스며든다. 팀원들은 별도 회의 없이 침투한 점들을 클릭해 작업을 자연스럽게 분담한다.",
+    "niche": {
+      "intervention_level": "team",
+      "resource_intensity": "high",
+      "feedback_horizon": "short"
+    },
+    "fingerprint": "a65c3aae0494c0928dce972a4e14ab9b",
+    "is_dag": true,
+    "archive_admitted": true
+  },
+  {
+    "index": 18,
+    "title": "HarmonicFeed: 시간축 스크롤의 직교 주파수 분해 인터페이스",
+    "domain": "생성형 디자인 에디터",
+    "primitive": "C180 dsp.js",
+    "inverted_invariant": {
+      "standard_axiom": "로그와 피드 데이터는 선형적 시간 축(Time-domain)을 따라 위아래로 연속 스크롤되어야 한다.",
+      "inverted_axiom": "정보 피드는 시간축에서 해체되어야 하며, 데이터의 갱신 주기와 감정 진폭에 따른 직교 주파수 스펙트럼(Frequency-domain) 상에서 이퀄라이저 형태로 소비된다.",
+      "buffer_path": "고속 푸리에 변환(FFT) 알고리즘을 실시간 스트림에 적용하여 단발성 고빈도 노이즈(고주파 성분)와 장기적이고 거시적인 기조 변화(저주파 성분)를 기하학적 주파수 대역 슬라이더로 직교 매핑."
+    },
+    "causal_graph": [
+      {
+        "cause": "시간 영역 데이터 스트림의 푸리에 직교 분해",
+        "relation": "enables",
+        "effect": "주기별 독립 주파수 밴드 생성"
+      },
+      {
+        "cause": "주파수 밴드별 게인(Gain) 튜닝 인터랙션",
+        "relation": "decreases",
+        "effect": "불필요한 고주파 스팸성 피드의 노출 빈도"
+      },
+      {
+        "cause": "고주파 필터링을 거친 역푸리에(iFFT) 재합성 뷰",
+        "relation": "increases",
+        "effect": "핵심 거시 트렌드에 대한 인지 몰입도"
+      },
+      {
+        "cause": "합성 피드의 정보 충실도",
+        "relation": "depends_on",
+        "effect": "FFT 윈도우 크기와 샘플링 레이트의 동적 보정"
+      }
+    ],
+    "dialectical_exploit": "소셜 피드나 로그에서 트래픽 폭주 및 악플성 스팸이 분출할 때, 타임라인이 마비되는 대신 고주파 스펙트럼 피크가 선명한 앰비언트 사운드와 입체 파형 그래픽으로 시각화되어 사용자가 휠 조작 한 번으로 해당 대역의 노이즈만을 완벽히 뮤트(Notch Filter)할 수 있음.",
+    "concrete_ux_scenario": "금융 시장 분석가가 수천 건의 뉴스 피드를 읽을 때 스크롤바 대신 10밴드 그래픽 이퀄라이저 UI를 마주한다. 1분 단위의 찌라시와 단발성 시세 변동(10kHz 영역)의 페이더를 아래로 내리고 분기별 통화정책 및 공급망 리포트(60Hz 저주파 대역)를 부스트하자, 화면에는 잡음이 사라지고 시장의 거대한 펀더멘털 요약문만 깊은 공명과 함께 잔잔하게 렌더링된다.",
+    "niche": {
+      "intervention_level": "organization",
+      "resource_intensity": "low",
+      "feedback_horizon": "immediate"
+    },
+    "fingerprint": "bbab4f4b9a042c0fe4aba7de5eab61b3",
+    "is_dag": true,
+    "archive_admitted": true
+  },
+  {
+    "index": 19,
+    "title": "CentroidTouch: 오타 가중치 수렴형 로이드 적응 키패드",
+    "domain": "접근성 인터페이스",
+    "primitive": "X091 voronoi-stippling",
+    "inverted_invariant": {
+      "standard_axiom": "가상 키패드의 모든 키 버튼 면적과 중심점은 사각 격자 그리드 위에 불변으로 고정되어야 한다.",
+      "inverted_axiom": "키 버튼의 중심과 경계는 고정되지 않으며, 사용자의 타격 실패 지점과 시선 가중치에 반응하여 보로노이 완화 셀로 유기적 수렴을 반복한다.",
+      "buffer_path": "가중 보로노이 완화(Weighted Voronoi Stippling / Lloyd Relaxation)를 실행하여 터치 오차 밀도가 높은 키 주변 셀의 면적을 동적으로 부풀리고 중심점(Centroid)을 손가락 착지 무게중심으로 점진 슬라이딩."
+    },
+    "causal_graph": [
+      {
+        "cause": "특정 자음/모음 키 경계부의 오타 타격 빈도",
+        "relation": "increases",
+        "effect": "해당 영역의 밀도 함수(Density Weight)"
+      },
+      {
+        "cause": "해당 영역의 밀도 함수(Density Weight)",
+        "relation": "enables",
+        "effect": "로이드 알고리즘 기반 키 중심점의 타격 무게중심 이동"
+      },
+      {
+        "cause": "목표 키의 보로노이 셀 면적 동적 팽창",
+        "relation": "decreases",
+        "effect": "후속 타이핑 입력 시의 오타 발생률"
+      },
+      {
+        "cause": "전체 키패드 레이아웃의 기하학적 균형",
+        "relation": "depends_on",
+        "effect": "인접 보로노이 셀 간의 면적 보존 완화 제약"
+      }
+    ],
+    "dialectical_exploit": "손떨림이 심한 파킨슨병 환자나 보행 중 격렬한 흔들림으로 인해 오타가 쏟아질 때, 키보드가 엉망이 되는 것이 아니라 사용자가 반복 실패하는 버튼의 셀이 거대한 물방울처럼 부풀어 오르며 맞춤형 비대칭 인터페이스로 즉석 진화함.",
+    "concrete_ux_scenario": "한 손으로 버스 손잡이를 잡고 스마트폰으로 메시지를 치는 사용자가 자꾸 'ㅂ' 대신 'ㅈ'을 누르자, 키패드가 육안으로는 거의 눈치채지 못할 속도로 미세하게 꿈틀거린다. 수 초 만에 'ㅂ' 키의 보로노이 셀이 사용자의 엄지 궤적 방향으로 18% 넓어지고 중심축이 오른쪽 아래로 당겨지며, 이후 엉성하게 뻗은 엄지손가락의 터치는 모두 정확한 'ㅂ' 입력으로 판정된다.",
+    "niche": {
+      "intervention_level": "individual",
+      "resource_intensity": "low",
+      "feedback_horizon": "immediate"
+    },
+    "fingerprint": "a65c3aae0494c0928dce972a4e14ab9b",
+    "is_dag": true,
+    "archive_admitted": true
+  },
+  {
+    "index": 20,
+    "title": "VectorScribble: 래스터 결함 위상 최적화 공간 제스처 엔진",
+    "domain": "공간 경험 미디어아트",
+    "primitive": "X085 potrace",
+    "inverted_invariant": {
+      "standard_axiom": "제스처 인식 시스템은 사전 학습된 정형 제스처 템플릿과 정합하거나 비트맵 궤적을 있는 그대로 기록해야 한다.",
+      "inverted_axiom": "모든 불완전하고 떨리는 인간의 공간 제스처는 래스터 오류 덩어리로 취급되며, 실시간 다각형 경계 추적을 거쳐 완벽한 무결점 베지에 제어점 곡선으로 승화되어 시스템 상태를 구동한다.",
+      "buffer_path": "Potrace의 래스터 경계 추적 및 동적 계획법(Dynamic Programming) 기반 3차 베지에 최적화 루프를 통해, 거친 픽셀 노이즈를 매끄러운 최소 제어점 벡터 패스로 즉시 치환하여 모션 연산 비용과 떨림을 제거."
+    },
+    "causal_graph": [
+      {
+        "cause": "공간 상에서의 거칠고 미숙한 손짓 래스터 궤적",
+        "relation": "increases",
+        "effect": "포트레이스(Potrace) 다각형 윤곽 분할 노드 수"
+      },
+      {
+        "cause": "포트레이스(Potrace) 다각형 윤곽 분할 노드 수",
+        "relation": "enables",
+        "effect": "곡률 페널티 최적화를 통한 3차 베지에 매끄러운 곡선 피팅"
+      },
+      {
+        "cause": "베지에 매끄러운 곡선 피팅 완료",
+        "relation": "decreases",
+        "effect": "공간 제스처 신호의 지터(Jitter) 노이즈 및 시스템 오작동"
+      },
+      {
+        "cause": "3D 파라메트릭 오브젝트 생성의 형태적 완성도",
+        "relation": "depends_on",
+        "effect": "최적화된 베지에 제어점의 위상학적 연결성"
+      }
+    ],
+    "dialectical_exploit": "어린이나 초보자가 공중에 의미 없는 낙서나 불안정한 지그재그를 그릴 때, 시스템이 '인식 실패' 에러를 내뿜는 대신 그 무작위적이고 거친 떨림의 임계 픽셀 윤곽을 조각가가 깎아낸 듯한 유려하고 극단적으로 세련된 건축학적 벡터 볼륨 조각으로 승화시켜 즉시 공간에 투사함.",
+    "concrete_ux_scenario": "XR 헤드셋을 착용한 전시 관람객이 허공에 허우적거리며 손가락으로 거친 원형을 그린다. 관람객의 손떨림과 어색한 픽셀 지터는 Potrace 엔진을 통과하는 순간 0.01초 만에 단 4개의 매끄러운 제어점을 가진 완벽한 곡률의 인피니티 베지에 루프로 변환되며, 공간 속에 거대한 부유형 인터랙티브 가구 오브젝트로 구체화된다.",
+    "niche": {
+      "intervention_level": "organization",
+      "resource_intensity": "high",
+      "feedback_horizon": "short"
+    },
+    "fingerprint": "a65c3aae0494c0928dce972a4e14ab9b",
+    "is_dag": true,
+    "archive_admitted": true
+  },
+  {
+    "index": 21,
+    "title": "Kinetic Ledger (가변 질량 감쇠 기반 재무 통제 UI)",
+    "domain": "지능형 UI/UX 인터랙션",
+    "primitive": "C235: popmotion-spring",
+    "inverted_invariant": {
+      "standard_axiom": "결제 및 송금 UI는 사용자의 입력 즉시 최소한의 지연과 일정한 애니메이션으로 마찰 없이 완료되어야 한다.",
+      "inverted_axiom": "자산 유출의 위험도와 미결 채무의 규모가 커질수록 UI의 가상 질량(mass)과 감쇠비(damping)가 기하급수적으로 폭증하여 사용자의 스와이프 인터랙션에 물리적 관성 저항을 가해야 한다.",
+      "buffer_path": "2차 미분방정식 기반 감쇠비(ζ) 조절 알고리즘을 통해 송금액이 임계치를 넘으면 언더댐핑(진동)에서 오버댐핑(점성 저항)으로 부드럽게 전이시켜 UI 멈춤 현상(Freezing)으로 오인되지 않는 점성 피드백을 제공."
+    },
+    "causal_graph": [
+      {
+        "cause": "결제 위험도 평가 수치",
+        "relation": "increases",
+        "effect": "스프링 가상 질량 및 감쇠 계수"
+      },
+      {
+        "cause": "스프링 가상 질량 및 감쇠 계수",
+        "relation": "decreases",
+        "effect": "슬라이더 조작 변위 가속도"
+      },
+      {
+        "cause": "슬라이더 조작 변위 가속도",
+        "relation": "enables",
+        "effect": "충동구매 방지를 위한 인지적 숙고 시간"
+      }
+    ],
+    "dialectical_exploit": "사용자가 버튼을 강제로 밀어붙이려다 손가락을 놓쳤을 때 발생하는 역방향 반동(Overshoot bounce) 에너지를 햅틱 모터의 충격 펄스로 변환하여, 사용자의 조작 실패를 강력한 신체적 경고 알림으로 승화.",
+    "concrete_ux_scenario": "사용자가 300만 원 상당의 고위험 투기성 자산을 결제하기 위해 '밀어서 결제' 슬라이더를 잡는 순간, 평소 가볍게 미끄러지던 UI가 마치 30kg의 젖은 모래주머니를 끄는 것처럼 무겁게 저항한다. 사용자가 전력을 다해 화면 끝까지 밀지 못하고 80% 지점에서 힘을 빼면 슬라이더가 용수철처럼 튕겨 나가며 '결제 보류: 쿨다운 10초' 상태로 복귀한다.",
+    "niche": {
+      "intervention_level": "organization",
+      "resource_intensity": "low",
+      "feedback_horizon": "immediate"
+    },
+    "fingerprint": "0cf544ebc0a2f4d53486b8e8eec545ca",
+    "is_dag": true,
+    "archive_admitted": true
+  },
+  {
+    "index": 22,
+    "title": "FABRIK-Spine (도달형 노드 케이블링 워크스페이스)",
+    "domain": "생성형 디자인 에디터",
+    "primitive": "X240: fabrik-ik",
+    "inverted_invariant": {
+      "standard_axiom": "노드 에디터의 배선 연결은 사용자가 소스 핀을 클릭하고 타깃 핀까지 드래그하여 명시적으로 경로를 수동 조작해야 한다.",
+      "inverted_axiom": "사용자는 최종 렌더링 노드의 위치와 각도만 이동시키며, 선행 입력 노드와 중간 연결 파이프라인은 다관절 IK 체인으로 취급되어 캔버스 위 장애물을 스스로 회피하며 역방향으로 뻗어나와 손끝에 스냅된다.",
+      "buffer_path": "FABRIK의 순방향/역방향 반복 도달 공식을 캔버스 링크 세그먼트에 적용하여, 고정 앵커 지점과 마우스 커서 사이의 관절 각도 제약(Constraint)을 반복 계산함으로써 배선 꼬임 없는 최단 곡선 경로를 보장."
+    },
+    "causal_graph": [
+      {
+        "cause": "최종 출력 노드의 드래그 변위",
+        "relation": "increases",
+        "effect": "FABRIK 역방향 반복 연산 부하"
+      },
+      {
+        "cause": "FABRIK 역방향 반복 연산 부하",
+        "relation": "enables",
+        "effect": "중간 처리 노드 체인의 자동 회피 재배치"
+      },
+      {
+        "cause": "중간 처리 노드 체인의 자동 회피 재배치",
+        "relation": "prevents",
+        "effect": "노드 캔버스 내 와이어 중첩 및 가독성 저하"
+      }
+    ],
+    "dialectical_exploit": "캔버스 공간이 협소하여 다관절 체인이 한계 길이 이상으로 늘어나는 도달 불능(Unreachable) 상태가 되면, 체인이 붕괴하는 대신 탄성 한계 초과 텐션 효과를 트리거하여 중간 노드들을 자동으로 군집화(Sub-graph 컴포넌트화)하는 자동 정리 기제로 활용.",
+    "concrete_ux_scenario": "신디사이저 패치 작업자가 15개의 필터 노드를 일일이 드래그하여 연결할 필요 없이, 최종 '마스터 스피커' 노드를 잡고 왼쪽 하단으로 뻗으면, 수십 개의 오디오 이펙터 배선이 척추뼈처럼 유기적으로 관절을 접으며 화면의 다른 UI 패널을 우회해 마스터 스피커의 소켓에 찰칵 결착된다.",
+    "niche": {
+      "intervention_level": "team",
+      "resource_intensity": "high",
+      "feedback_horizon": "immediate"
+    },
+    "fingerprint": "bae3224ee6de84c3d1043aaef98e403e",
+    "is_dag": true,
+    "archive_admitted": true
+  },
+  {
+    "index": 23,
+    "title": "Chrono-Slit Trace (시공간 왜곡 기반 브랜치 드리프트 리뷰어)",
+    "domain": "협업 도구 시각화",
+    "primitive": "X250: slit-scan",
+    "inverted_invariant": {
+      "standard_axiom": "버전 관리 시스템(VCS)의 변경 내역은 정적인 2D 타임라인 그래프나 텍스트 기반 Diff 패널을 통해 분리된 시점으로 열람해야 한다.",
+      "inverted_axiom": "코드 및 디자인 문서의 Y축 공간 좌표와 과거 100회 커밋의 T축 시간 버퍼를 전치하여, 하나의 뷰포트 안에 시간의 지연과 충돌을 파형의 전단(Shearing) 왜곡 형태로 압축 표현해야 한다.",
+      "buffer_path": "시간 버퍼 큐에서 라인별 변경 빈도를 픽셀 행(Row)으로 슬릿 스캔 맵에 누적 투영하여, 불연속적인 깃 커밋 로그를 연속적인 시공간 지형도(Topography) 텍스처로 선형 보간."
+    },
+    "causal_graph": [
+      {
+        "cause": "협업자 간 동시 편집 빈도",
+        "relation": "increases",
+        "effect": "슬릿 스캔 시공간 전치 왜곡 진폭"
+      },
+      {
+        "cause": "슬릿 스캔 시공간 전치 왜곡 진폭",
+        "relation": "enables",
+        "effect": "잠재적 머지 충돌 영역의 시각적 식별"
+      },
+      {
+        "cause": "잠재적 머지 충돌 영역의 시각적 식별",
+        "relation": "prevents",
+        "effect": "사후 브랜치 병합 실패 및 롤백 비용"
+      }
+    ],
+    "dialectical_exploit": "수백 개의 동시 커밋으로 인해 화면이 심하게 일그러지는 아티팩트 왜곡 현상을 결함이 아닌 '코드 베이스의 심각한 엔트로피 과열 경고'로 해석하여, 왜곡이 가장 격렬한 라인에 자동으로 동기화 락(Lock)을 걸어주는 안전밸브로 전환.",
+    "concrete_ux_scenario": "대규모 프로젝트 리드 개발자가 에디터를 켜면 일반적인 텍스트 대신 시간 축이 뒤틀린 캔버스가 나타난다. 지난 3일간 평온했던 모듈은 반듯한 수직선으로 보이지만, 프론트엔드와 백엔드가 동시에 수정한 데이터 페칭 모듈은 고무줄처럼 휘어지고 찢어진 슬릿 스캔 무늬를 띠고 있어 클릭 한 번으로 숨겨진 논리 충돌 지점을 즉각 발견한다.",
+    "niche": {
+      "intervention_level": "individual",
+      "resource_intensity": "high",
+      "feedback_horizon": "immediate"
+    },
+    "fingerprint": "bae3224ee6de84c3d1043aaef98e403e",
+    "is_dag": true,
+    "archive_admitted": true
+  },
+  {
+    "index": 24,
+    "title": "Topology-Cognition Reader (미세 표정 곡률 연동형 가독성 렌즈)",
+    "domain": "접근성 인터페이스",
+    "primitive": "C280: facemesh-tfjs",
+    "inverted_invariant": {
+      "standard_axiom": "전자 문서의 폰트 크기, 행간, 정보 요약도는 사용자가 명시적인 설정 메뉴나 단축키로 제어해야 한다.",
+      "inverted_axiom": "독자의 명시적 조작을 배제하고, 안면 468개 랜드마uk 메쉬의 국소 표면 곡률과 미간 변위 텐서를 타이포그래피 격자망의 비유클리드 기하 변형 인자로 직접 바인딩해야 한다.",
+      "buffer_path": "표정 추적의 노이즈와 떨림을 방지하기 위해 468개 포인트 중 미간(Glabella)과 구륜근 주위 랜드마크의 가우시안 곡률 변화량을 이동 평균 필터로 평활화하여 폰트 가변 축(Variable Font Axis)에 완충 매핑."
+    },
+    "causal_graph": [
+      {
+        "cause": "텍스트 난이도에 따른 독자의 미간 찌푸림 변위",
+        "relation": "increases",
+        "effect": "안면 메쉬 표면 기하 곡률"
+      },
+      {
+        "cause": "안면 메쉬 표면 기하 곡률",
+        "relation": "enables",
+        "effect": "텍스트의 문맥적 자동 볼록 확대 및 주석 레이어 전개"
+      },
+      {
+        "cause": "텍스트의 문맥적 자동 볼록 확대 및 주석 레이어 전개",
+        "relation": "decreases",
+        "effect": "독자의 인지 피로도 및 안구 피로"
+      }
+    ],
+    "dialectical_exploit": "독자가 극심한 피로로 눈을 자주 깜빡이거나 하품을 하여 안면 메쉬가 극단적으로 일그러지는 입력 붕괴 상황을 문맥 단절로 보지 않고, '강제 엠비언트 다크 모드 및 마이크로 휴식 가이드' 화면으로 매끄럽게 페이드 아웃시키는 휴식 트리거로 전용.",
+    "concrete_ux_scenario": "의학 전문 서적을 읽는 의대생이 복잡한 신경계 약리학 문단에서 이해가 막혀 무의식중에 미간을 모으고 눈을 가늘게 뜨자, 마우스나 키보드를 건드리지 않았음에도 독서 중이던 화면의 해당 문단이 볼록 렌즈처럼 융기하며 용어의 상관관계도가 텍스트 행간 사이로 부드럽게 펼쳐진다.",
+    "niche": {
+      "intervention_level": "individual",
+      "resource_intensity": "low",
+      "feedback_horizon": "immediate"
+    },
+    "fingerprint": "f0829b7a5ff3b1266a4d87879ec4311c",
+    "is_dag": true,
+    "archive_admitted": true
+  },
+  {
+    "index": 25,
+    "title": "Affinity Gatekeeper (군집 위상 친화도 기반 공용 키오스크)",
+    "domain": "공간 경험 미디어아트",
+    "primitive": "C295: posenet-onnx",
+    "inverted_invariant": {
+      "standard_axiom": "공공 공간의 인터랙티브 디스플레이는 1인의 주 사용자를 우선 식별하거나 각 사용자의 커서를 개별 분리하여 상호 간섭을 차단해야 한다.",
+      "inverted_axiom": "단독 개인은 시스템의 핵심 승인 상태를 절대 트리거할 수 없으며, 공간 내 다수 인원의 관절 히트맵과 친화도 필드(PAFs) 벡터가 특정 결합 위상(예: 대칭성, 협동 간격)을 만족할 때만 반응하는 합성 벡터 인터페이스여야 한다.",
+      "buffer_path": "관절 간 친화도 필드(PAFs)의 내적(Dot product) 합을 시스템의 유효 결합 에너지로 정의하고, 이 에너지가 문턱값을 넘을 때만 분산된 관절 점들을 하나의 가상 메가-커서(Mega-cursor)로 응축시키는 에너지 보전 장벽 알고리즘 구축."
+    },
+    "causal_graph": [
+      {
+        "cause": "공간 내 다수 사용자의 관절 일치도(PAFs)",
+        "relation": "increases",
+        "effect": "시스템 합성 친화도 필드 에너지"
+      },
+      {
+        "cause": "시스템 합성 친화도 필드 에너지",
+        "relation": "enables",
+        "effect": "집단 공통 조작 인터페이스의 잠금 해제"
+      },
+      {
+        "cause": "집단 공통 조작 인터페이스의 잠금 해제",
+        "relation": "prevents",
+        "effect": "특정 개인의 독점적 스크린 장악 및 공공 기기 훼손"
+      }
+    ],
+    "dialectical_exploit": "공간 내 군중이 무질서하게 흩어져 PAFs 벡터가 무작위로 교차하는 노이즈 상태(포즈 추정 신뢰도 급감)를 시스템 오류로 버리지 않고, 화면 전체에 분산형 입자 플럭스(Flux)를 생성하여 관람객들로 하여금 신체 간격을 좁히고 대형을 맞추도록 유도하는 게이미피케이션 인센티브로 승화.",
+    "concrete_ux_scenario": "스마트 시티 시민 광장의 대형 기후 정책 투표 키오스크 앞에 한 시민이 서서 손을 뻗어도 투표 레버는 꼼짝하지 않는다. 다른 낯선 시민이 다가와 두 사람의 어깨와 팔꿈치 벡터가 화면을 향해 완벽한 대칭 삼각형(친화도 필드 동기화)을 이루는 순간, 두 사람의 신체 중심선 사이에 거대한 황금빛 인터랙션 링이 생성되며 공동 조작 권한이 활성화된다.",
+    "niche": {
+      "intervention_level": "organization",
+      "resource_intensity": "high",
+      "feedback_horizon": "short"
+    },
+    "fingerprint": "bae3224ee6de84c3d1043aaef98e403e",
+    "is_dag": true,
+    "archive_admitted": true
+  },
+  {
+    "index": 26,
+    "title": "Synaptic Semantic Canvas: 확률적 정보 클러스터링 기반 비정형 북마크 OS",
+    "domain": "지능형 UI/UX 인터랙션",
+    "primitive": "X310 tsne-js",
+    "inverted_invariant": {
+      "standard_axiom": "사용자는 북마크와 노트를 폴더 계층 구조로 직접 분류하고 정렬해야 한다.",
+      "inverted_axiom": "정보의 위치는 분류 규칙이 아닌 사용자 열람 문맥의 고차원 의미 거리에 의해 스스로 침전하고 응집한다.",
+      "buffer_path": "고차원 가우시안 텍스트 임베딩을 브라우저 런타임에서 t-SNE로 저차원 매핑하되, Student-t 분포의 긴 꼬리(Heavy-tail) 특성을 활용해 무관한 정보 간의 반발력을 조절하여 화면 밖 이탈을 방지하고 유기적 군집을 형성함."
+    },
+    "causal_graph": [
+      {
+        "cause": "사용자의 비정형 문서 열람 및 체류 시간 분산",
+        "relation": "increases",
+        "effect": "문서 간 고차원 결합 확률 가우시안 분산"
+      },
+      {
+        "cause": "문서 간 고차원 결합 확률 가우시안 분산",
+        "relation": "enables",
+        "effect": "2D 화면 내 KL-Divergence 최소화 기반 자가 레이아웃 재배치"
+      },
+      {
+        "cause": "2D 화면 내 KL-Divergence 최소화 기반 자가 레이아웃 재배치",
+        "relation": "decreases",
+        "effect": "사용자의 인위적 디렉터리 정리 인지 부하"
+      }
+    ],
+    "dialectical_exploit": "사용자가 전혀 상관없는 주제의 웹페이지들을 마구잡이로 탐색할 때 발생하는 '차원 축소 수렴 실패(KLD 요동)' 현상을 단순 에러로 두지 않고, 화면상에서 카드들이 서로 척력을 발휘하며 진동하는 '인지적 혼돈 경고(Cognitive Dissonance Shimmer)' 시각 피드백으로 승화시켜 사용자가 현재 산만해졌음을 즉각 인지하게 함.",
+    "concrete_ux_scenario": "연구자가 웹 서핑 중 탭을 30개 열어두면, 탭 바 대신 캔버스 위에 썸네일 노드들이 서서히 움직인다. AI 논문 노드들은 한쪽으로 빽빽하게 뭉치고, 여행 예약 페이지는 반대편으로 밀려난다. 사용자가 두 군집 사이에 새로운 메모를 띄우자 두 군집의 인력이 계산되며 중간 지대로 빨려 들어가 교차 아이디어 클러스터가 자연스럽게 생성된다.",
+    "niche": {
+      "intervention_level": "individual",
+      "resource_intensity": "high",
+      "feedback_horizon": "immediate"
+    },
+    "fingerprint": "f0829b7a5ff3b1266a4d87879ec4311c",
+    "is_dag": true,
+    "archive_admitted": true
+  },
+  {
+    "index": 27,
+    "title": "Chronos-Lens: O(log N) 시야각 기반 적응형 공간 시냅틱 UI",
+    "domain": "공간 경험 미디어아트",
+    "primitive": "C320 rbush-rtree",
+    "inverted_invariant": {
+      "standard_axiom": "공간 인터페이스(XR)의 UI 엘리먼트는 사용자의 3D 물리적 거리와 정면 시선 벡터에만 비례해 가시화되어야 한다.",
+      "inverted_axiom": "시야 내 객체 밀도가 임계치를 초과하면 개별 오브젝트는 즉시 증발하고 거시적 바운딩 영역의 추상 메타데이터로 즉각 붕괴한다.",
+      "buffer_path": "R-Tree의 최소 면적 확장 휴리스틱(Minimum Bounding Box Area Heuristic)을 3D 시선 원뿔 교차 질의에 직접 매핑하여, O(log N) 탐색 한도 내에서 가용 렌더링 폴리곤 수에 맞게 공간 노드들을 동적으로 그룹화/분해함."
+    },
+    "causal_graph": [
+      {
+        "cause": "사용자 헤드셋의 빠른 시선 전환 및 시야각 내 엔티티 수 폭증",
+        "relation": "increases",
+        "effect": "R-Tree 색인의 계층 분할 및 바운딩 박스 결합 빈도"
+      },
+      {
+        "cause": "R-Tree 색인의 계층 분할 및 바운딩 박스 결합 빈도",
+        "relation": "enables",
+        "effect": "개별 UI의 메타 볼륨 단일화 및 렌더링 드로우콜 억제"
+      },
+      {
+        "cause": "개별 UI의 메타 볼륨 단일화 및 렌더링 드로우콜 억제",
+        "relation": "prevents",
+        "effect": "XR 환경 프레임 드랍 및 시각적 과밀로 인한 사용자 멀미"
+      }
+    ],
+    "dialectical_exploit": "사용자가 너무 많은 공간 앵커를 생성해 시스템 한계를 초과하는 과밀(Density Spikes) 상태를, R-Tree의 리프 노드 병합을 통해 하나의 반투명한 거대 '지식 성운(Nebula Box)'으로 자동 축약하고 이를 터치하면 서브트리가 단계별로 폭발하듯 언패킹되는 심미적 인터랙션으로 전환함.",
+    "concrete_ux_scenario": "XR 글래스를 낀 건축가가 대형 빌딩의 센서 수만 개가 흩뿌려진 복도에 들어선다. 처음에는 수만 개의 핀 대신 층별 바운딩 큐브 3개만 반투명하게 떠 있다. 특정 배관 쪽으로 걸어가 고개를 돌려 시야각을 좁히는 순간, 해당 구역의 바운딩 박스만 순간적으로 O(log N) 속도로 쪼개지며 개별 파이프 압력 밸브 UI 10개가 선명하게 튀어나온다.",
+    "niche": {
+      "intervention_level": "team",
+      "resource_intensity": "low",
+      "feedback_horizon": "short"
+    },
+    "fingerprint": "bae3224ee6de84c3d1043aaef98e403e",
+    "is_dag": true,
+    "archive_admitted": true
+  },
+  {
+    "index": 28,
+    "title": "Topological Mind-Fold: 인지 왜곡 사상 기반 비선형 대시보드",
+    "domain": "협업 도구 시각화",
+    "primitive": "X335 d3-geo-projection",
+    "inverted_invariant": {
+      "standard_axiom": "데이터 대시보드는 데카르트 직교 좌표계 위에서 비율과 축의 왜곡 없이 평면적으로 배치되어야 한다.",
+      "inverted_axiom": "데이터 간의 우선순위는 위상 등각 투영의 왜곡율로 정의되며, 관찰자의 관심사에 따라 공간 곡률이 비유클리드적으로 팽창한다.",
+      "buffer_path": "구면/쌍곡 투영 공식을 UI 그리드에 적용하여, 초점(Focal Point) 영역의 미분 기하학적 면적을 확대하면서도 인접한 다른 데이터 간의 각도 보존(Conformal property)을 만족시켜 국소적 맥락의 단절을 수학적으로 완충함."
+    },
+    "causal_graph": [
+      {
+        "cause": "협업 프로젝트 내 특정 KPI 이상치 발생",
+        "relation": "increases",
+        "effect": "해당 위젯 좌표계의 미분 기하학적 곡률 텐서"
+      },
+      {
+        "cause": "해당 위젯 좌표계의 미분 기하학적 곡률 텐서",
+        "relation": "enables",
+        "effect": "주변 UI를 짓누르지 않는 등각 국소 팽창 투영"
+      },
+      {
+        "cause": "주변 UI를 짓누르지 않는 등각 국소 팽창 투영",
+        "relation": "depends_on",
+        "effect": "전체 화면 프레임 레이아웃의 고정 경계 조건"
+      }
+    ],
+    "dialectical_exploit": "집중 영역 외곽에서 필연적으로 발생하는 '주변부 극단 왜곡 및 압축' 현상을 정보 누락이 아니라, 마치 지도 가장자리의 방위각처럼 찌그러진 위젯의 테두리 궤적으로 전체 시스템 헬스체크의 이상 유무를 한눈에 감지하는 '주변시 요약(Peripheral Gist)' 채널로 활용함.",
+    "concrete_ux_scenario": "서버 모니터링 팀이 100개 마이크로서비스 대시보드를 본다. 평소에는 구형 지구본처럼 고르게 말려있던 뷰가, 결제 모듈에 트래픽 스파이크가 치솟자 피어스 쿼드러플(Peirce Quincuncial) 투영식에 의해 결제 위젯만 중앙 평면으로 거대하게 펼쳐지고, 나머지 안전한 서비스들은 가장자리 원호로 매끄럽게 굴절되어 배경 컨텍스트만 남긴 채 중앙을 방해하지 않는다.",
+    "niche": {
+      "intervention_level": "team",
+      "resource_intensity": "high",
+      "feedback_horizon": "immediate"
+    },
+    "fingerprint": "38e8148d6823a7d8c94096f4845a490c",
+    "is_dag": true,
+    "archive_admitted": true
+  },
+  {
+    "index": 29,
+    "title": "Friction-Scribe: 멘탈 스트레스 감응형 불완전 디자인 시스템",
+    "domain": "모바일 햅틱 피드백",
+    "primitive": "X390 rough.js",
+    "inverted_invariant": {
+      "standard_axiom": "디지털 디자인 시스템은 항상 오차 없는 픽셀 퍼펙트 직선과 매끄러운 벡터 곡면을 렌더링해야 신뢰성을 얻는다.",
+      "inverted_axiom": "인터페이스는 사용자의 감정적 급박성과 시스템 확신도에 비례해 기하학적 결함을 고의로 노출하고 거칠어져야 한다.",
+      "buffer_path": "프랙탈 노이즈 오프셋 알고리즘의 노이즈 시드와 반복 횟수(bowing, roughness)를 인터랙션 신호에 바인딩하되, 텍스트 가독성과 터치 타겟 바운딩은 원본 기하학 앵커를 엄격히 보존하여 조작 기능성을 유지함."
+    },
+    "causal_graph": [
+      {
+        "cause": "사용자의 급격한 터치 압력 및 터치 궤적의 가속도 분산",
+        "relation": "increases",
+        "effect": "렌더링 커널의 프랙탈 노이즈 진폭(Roughness Offset)"
+      },
+      {
+        "cause": "렌더링 커널의 프랙탈 노이즈 진폭(Roughness Offset)",
+        "relation": "enables",
+        "effect": "UI 컴포넌트의 손그림풍 크로키 형태 붕괴 및 지터 햅틱 동기화"
+      },
+      {
+        "cause": "UI 컴포넌트의 손그림풍 크로키 형태 붕괴 및 지터 햅틱 동기화",
+        "relation": "decreases",
+        "effect": "기계적 차가움으로 인한 사용자의 충동적 실수율"
+      }
+    ],
+    "dialectical_exploit": "급박하거나 화가 난 사용자가 버튼을 난타할 때 발생하는 렌더링 글리치와 선 삐침(Overdraw)을 오류가 아닌 'UI의 물질적 마모(Interface Wear)'로 간주하여, 획이 거칠어질수록 누적된 획들이 마찰 저항을 일으켜 터치 반응 주기를 의도적으로 지연시키는 안전장치로 전이시킴.",
+    "concrete_ux_scenario": "금융 앱에서 거액을 송금하려는 사용자가 긴장하여 손을 떨며 '송금하기' 버튼을 누른다. 완벽했던 플랫 UI 버튼이 거친 크레파스로 덧칠한 듯 여러 갈래로 떨리며 진동한다. 이 흔들림을 본 사용자는 본능적으로 멈칫하며 송금 계좌를 다시 확인한다. 심박수가 안정되고 부드럽게 화면을 쓸어넘기자 버튼의 선들이 다시 매끄러운 단일 직선으로 정렬된다.",
+    "niche": {
+      "intervention_level": "organization",
+      "resource_intensity": "low",
+      "feedback_horizon": "immediate"
+    },
+    "fingerprint": "f0829b7a5ff3b1266a4d87879ec4311c",
+    "is_dag": true,
+    "archive_admitted": true
+  },
+  {
+    "index": 30,
+    "title": "Visco-Node: 베지에 다항식 기반 점탄성 데이터 케이블 에디터",
+    "domain": "생성형 디자인 에디터",
+    "primitive": "C405 paper.js",
+    "inverted_invariant": {
+      "standard_axiom": "노드 기반 프로그래밍에서 연결선은 단순히 두 포트를 잇는 정적 3차 베지에 곡선 그래픽이어야 한다.",
+      "inverted_axiom": "노드 간의 연결선은 장력과 점성을 지닌 물리적 유체 도관이며, 경로 간 충돌 시 병합되고 절단되며 데이터를 라우팅한다.",
+      "buffer_path": "베른슈타인 다항식 기반의 곡선 곡률 적분 및 베지에 세그먼트 간의 실시간 불리언 교차점(Curve Intersections) 연산을 통해, 임계 장력을 초과하기 전까지 유체 방울(Metaball) 형태로 부드럽게 합쳐지는 기하 커널을 제공함."
+    },
+    "causal_graph": [
+      {
+        "cause": "데이터 처리 파이프라인의 전송 대역폭 급증",
+        "relation": "increases",
+        "effect": "베지에 제어점 간의 곡률 반경 및 곡선 볼륨 적분치"
+      },
+      {
+        "cause": "베지에 제어점 간의 곡률 반경 및 곡선 볼륨 적분치",
+        "relation": "enables",
+        "effect": "인접한 다른 데이터 선과의 세그먼트 충돌 및 자동 불리언 병합"
+      },
+      {
+        "cause": "인접한 다른 데이터 선과의 세그먼트 충돌 및 자동 불리언 병합",
+        "relation": "prevents",
+        "effect": "복잡한 비주얼 스크립팅 환경에서의 시각적 와이어 스파게티 얽힘"
+      }
+    ],
+    "dialectical_exploit": "선들이 너무 가깝게 겹쳐져 선 구분이 불가능해지는 '와이어 중첩(Wire Clutter)' 에러를, 물리적 세그먼트 병합(Boolean Union)을 통해 자동으로 두 데이터 스트림을 결합하는 '암묵적 멀티플렉서(Implicit MUX) 노드'로 자동 변환하여 에디터 캔버스를 스스로 최적화하도록 유도함.",
+    "concrete_ux_scenario": "3D 셰이더를 제작하는 디자이너가 텍스처 노드 선을 잡고 빛 노드로 드래그한다. 선을 세게 끌어당기자 베지에 곡면이 팽팽한 고무줄처럼 가늘어지며 튕기는 소리를 낸다. 디자이너가 그 선을 다른 오디오 신호 와이어 위로 스쳐 지나가게 하자, 두 선이 물방울처럼 '스륵' 합쳐지며 별도의 믹서 노드를 꺼낼 필요도 없이 단일 결합 도관으로 묶여 파이프라인이 정리된다.",
+    "niche": {
+      "intervention_level": "organization",
+      "resource_intensity": "low",
+      "feedback_horizon": "immediate"
+    },
+    "fingerprint": "bae3224ee6de84c3d1043aaef98e403e",
+    "is_dag": true,
+    "archive_admitted": true
+  }
+]

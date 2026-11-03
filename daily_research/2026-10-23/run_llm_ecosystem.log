@@ -1,0 +1,48 @@
+/home/arcturus/hermesWorkspace/projects/CounterField/.venv/lib/python3.12/site-packages/networkx/utils/backends.py:551: UserWarning: The hashes produced for directed graphs changed in version v3.5 due to a bugfix to track in and out edges separately (see documentation).
+  return self.orig_func(*args, **kwargs)
+{
+ "mode": "llm",
+ "elites": 8,
+ "admitted": 25,
+ "metrics": {
+  "coverage": null,
+  "duplicate_rate": 0.0,
+  "attempts": 48,
+  "structural_failures": 1,
+  "occupied_niches": 8,
+  "repair_incubator": 38,
+  "failure_archive": 0,
+  "generation_errors": 0,
+  "canonicalize_errors": 0,
+  "validation_errors": 0,
+  "evaluation_errors": 0,
+  "evidence_errors": 0,
+  "provider_fallbacks": 0,
+  "inversion_attempts": 0,
+  "inversion_successes": 0,
+  "isomorphism_attempts": 25,
+  "isomorphism_successes": 25,
+  "synthesis_attempts": 16,
+  "synthesis_successes": 0,
+  "rules_promoted": 0,
+  "niche_count": 8,
+  "qd_score": 10.27395358169166
+ },
+ "meta": {
+  "mode": "llm",
+  "context": "ecosystem",
+  "date": "2026-10-23",
+  "seed": 20261023,
+  "budget": 48,
+  "problem": "Design a norm and incentive layer for an open ecosystem of independent labs sharing hypotheses publicly. Herding increases monoculture. Duplicate effort decreases collective discovery rate. Unretracted errors prevent reliable reuse.",
+  "provider": "LLMIdeaProvider",
+  "model": "cc/claude-sonnet-5-5",
+  "provider_fallbacks": 0,
+  "backend_stats": {
+   "backend_ok": 36
+  },
+  "template_library": "/home/arcturus/hermesWorkspace/projects/CounterField/data/templates/negative_space_v3_20261023.json",
+  "wall_seconds": 772.8
+ }
+}
+wrote /home/arcturus/hermesWorkspace/projects/CounterField/daily_research/2026-10-23/archive_llm_ecosystem.json

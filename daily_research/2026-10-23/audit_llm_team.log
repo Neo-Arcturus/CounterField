@@ -1,0 +1,10 @@
+{
+ "mode": "llm",
+ "context": "team",
+ "admitted": 27,
+ "elites": 10,
+ "all_pass": true,
+ "failed": [],
+ "unique_wl_hashes": 27,
+ "unique_fingerprints": 27
+}

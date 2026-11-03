@@ -1,0 +1,525 @@
+{
+  "templates": [
+    {
+      "id": "tensor_field_streamlines",
+      "domain": "computational_geometry",
+      "roles": [
+        "obstacle_boundary",
+        "stress_tensor_field",
+        "orthogonal_streamlines",
+        "flow_equilibrium"
+      ],
+      "links": [
+        {
+          "cause": "obstacle_boundary",
+          "relation": "increases",
+          "effect": "stress_tensor_field"
+        },
+        {
+          "cause": "stress_tensor_field",
+          "relation": "enables",
+          "effect": "orthogonal_streamlines"
+        },
+        {
+          "cause": "orthogonal_streamlines",
+          "relation": "decreases",
+          "effect": "obstacle_boundary"
+        },
+        {
+          "cause": "orthogonal_streamlines",
+          "relation": "enables",
+          "effect": "flow_equilibrium"
+        }
+      ],
+      "motifs": [
+        "feedback_loop",
+        "bottleneck"
+      ],
+      "curated_by": "CounterField & index.opensource (X026 MapGenerator)",
+      "source_ref": "Chen et al. 2007, Interactive Procedural Street Modeling (ACM TOG)",
+      "domain_vocabulary": [
+        "tensor",
+        "streamline",
+        "hyperstreamline",
+        "eigenvector",
+        "singularity",
+        "curvature"
+      ],
+      "meta": {
+        "source_id": "X026",
+        "source_name": "MapGenerator",
+        "source_repo": "probabletrain/mapgenerator",
+        "core_concept": "텐서장·유선 적분 기반 장애물 우회 벡터장 추적"
+      }
+    },
+    {
+      "id": "delaunay_voronoi_partition",
+      "domain": "computational_geometry",
+      "roles": [
+        "seed_generators",
+        "proximity_frontier",
+        "voronoi_cells",
+        "tessellated_balance"
+      ],
+      "links": [
+        {
+          "cause": "seed_generators",
+          "relation": "increases",
+          "effect": "proximity_frontier"
+        },
+        {
+          "cause": "proximity_frontier",
+          "relation": "enables",
+          "effect": "voronoi_cells"
+        },
+        {
+          "cause": "voronoi_cells",
+          "relation": "prevents",
+          "effect": "proximity_frontier"
+        },
+        {
+          "cause": "voronoi_cells",
+          "relation": "enables",
+          "effect": "tessellated_balance"
+        }
+      ],
+      "motifs": [
+        "feedback_loop",
+        "asymmetry"
+      ],
+      "curated_by": "CounterField & index.opensource (X033 d3-delaunay)",
+      "source_ref": "Fortune 1987, A Sweepline Algorithm for Voronoi Diagrams (Algorithmica)",
+      "domain_vocabulary": [
+        "delaunay",
+        "voronoi",
+        "circumcircle",
+        "triangulation",
+        "tessellation",
+        "cell"
+      ],
+      "meta": {
+        "source_id": "X033",
+        "source_name": "d3-delaunay",
+        "source_repo": "d3/d3-delaunay",
+        "core_concept": "최근접 이웃 경계 분할 및 쌍대 삼각망 분할"
+      }
+    },
+    {
+      "id": "poisson_disk_blue_noise",
+      "domain": "computational_geometry",
+      "roles": [
+        "spatial_density_target",
+        "exclusion_radius",
+        "candidate_sampler",
+        "blue_noise_distribution"
+      ],
+      "links": [
+        {
+          "cause": "spatial_density_target",
+          "relation": "increases",
+          "effect": "exclusion_radius"
+        },
+        {
+          "cause": "exclusion_radius",
+          "relation": "prevents",
+          "effect": "candidate_sampler"
+        },
+        {
+          "cause": "candidate_sampler",
+          "relation": "enables",
+          "effect": "blue_noise_distribution"
+        },
+        {
+          "cause": "exclusion_radius",
+          "relation": "enables",
+          "effect": "blue_noise_distribution"
+        }
+      ],
+      "motifs": [
+        "bottleneck",
+        "asymmetry"
+      ],
+      "curated_by": "CounterField & index.opensource (X035 poisson-disk-sampling)",
+      "source_ref": "Bridson 2007, Fast Poisson Disk Sampling in Arbitrary Dimensions (ACM SIGGRAPH)",
+      "domain_vocabulary": [
+        "poisson",
+        "disk",
+        "sampling",
+        "blue_noise",
+        "radius",
+        "annulus"
+      ],
+      "meta": {
+        "source_id": "X035",
+        "source_name": "poisson-disk-sampling",
+        "source_repo": "kchapelier/poisson-disk-sampling",
+        "core_concept": "최소 간격 보장 고밀도 비군집 균일 표본화"
+      }
+    },
+    {
+      "id": "hilbert_space_filling",
+      "domain": "discrete_topology",
+      "roles": [
+        "multidimensional_metric",
+        "fractal_order_mapping",
+        "linear_index",
+        "locality_preservation"
+      ],
+      "links": [
+        {
+          "cause": "multidimensional_metric",
+          "relation": "enables",
+          "effect": "fractal_order_mapping"
+        },
+        {
+          "cause": "fractal_order_mapping",
+          "relation": "increases",
+          "effect": "linear_index"
+        },
+        {
+          "cause": "linear_index",
+          "relation": "enables",
+          "effect": "locality_preservation"
+        },
+        {
+          "cause": "fractal_order_mapping",
+          "relation": "enables",
+          "effect": "locality_preservation"
+        }
+      ],
+      "motifs": [
+        "bottleneck",
+        "asymmetry"
+      ],
+      "curated_by": "CounterField & index.opensource (X036 hilbertcurve)",
+      "source_ref": "Hilbert 1891, Ueber die stetige Abbildung einer Linie auf ein Flaechenstueck (Math. Ann.)",
+      "domain_vocabulary": [
+        "hilbert",
+        "space_filling",
+        "curve",
+        "quadrant",
+        "gray_code",
+        "locality"
+      ],
+      "meta": {
+        "source_id": "X036",
+        "source_name": "hilbertcurve",
+        "source_repo": "galtay/hilbertcurve",
+        "core_concept": "고차원 공간의 1차원 연속 사상 및 지역성(Locality) 보존"
+      }
+    },
+    {
+      "id": "wave_function_collapse",
+      "domain": "constraint_satisfaction",
+      "roles": [
+        "superposition_pool",
+        "local_adjacency_rules",
+        "entropy_observer",
+        "collapsed_state"
+      ],
+      "links": [
+        {
+          "cause": "superposition_pool",
+          "relation": "increases",
+          "effect": "entropy_observer"
+        },
+        {
+          "cause": "local_adjacency_rules",
+          "relation": "decreases",
+          "effect": "superposition_pool"
+        },
+        {
+          "cause": "entropy_observer",
+          "relation": "enables",
+          "effect": "collapsed_state"
+        },
+        {
+          "cause": "collapsed_state",
+          "relation": "enables",
+          "effect": "local_adjacency_rules"
+        }
+      ],
+      "motifs": [
+        "feedback_loop",
+        "bottleneck"
+      ],
+      "curated_by": "CounterField & index.opensource (C066 NDWFC / mxgmn)",
+      "source_ref": "Gumin 2016, Wave Function Collapse Algorithm",
+      "domain_vocabulary": [
+        "wfc",
+        "superposition",
+        "collapse",
+        "entropy",
+        "tile",
+        "adjacency",
+        "propagation"
+      ],
+      "meta": {
+        "source_id": "C066",
+        "source_name": "NDWFC",
+        "source_repo": "lingdong-/ndwfc",
+        "core_concept": "양자 중첩 모사 국소 제약 전파 및 엔트로피 최소화 상태 붕괴"
+      }
+    },
+    {
+      "id": "barnes_hut_nbody",
+      "domain": "numerical_physics",
+      "roles": [
+        "localized_bodies",
+        "multipole_quadtree",
+        "center_of_mass_approx",
+        "bounded_force_drift"
+      ],
+      "links": [
+        {
+          "cause": "localized_bodies",
+          "relation": "increases",
+          "effect": "multipole_quadtree"
+        },
+        {
+          "cause": "multipole_quadtree",
+          "relation": "enables",
+          "effect": "center_of_mass_approx"
+        },
+        {
+          "cause": "center_of_mass_approx",
+          "relation": "decreases",
+          "effect": "localized_bodies"
+        },
+        {
+          "cause": "center_of_mass_approx",
+          "relation": "enables",
+          "effect": "bounded_force_drift"
+        }
+      ],
+      "motifs": [
+        "feedback_loop",
+        "bottleneck"
+      ],
+      "curated_by": "CounterField & index.opensource (C118 ngraph.forcelayout)",
+      "source_ref": "Barnes & Hut 1986, A Hierarchical O(N log N) Force-Calculation Algorithm (Nature)",
+      "domain_vocabulary": [
+        "barnes_hut",
+        "quadtree",
+        "multipole",
+        "theta",
+        "nbody",
+        "gravitational"
+      ],
+      "meta": {
+        "source_id": "C118",
+        "source_name": "ngraph.forcelayout",
+        "source_repo": "anvaka/ngraph.forcelayout",
+        "core_concept": "계층적 공간 트리 기반 원거리 상호작용 O(N log N) 근사"
+      }
+    },
+    {
+      "id": "sph_pressure_viscosity",
+      "domain": "continuum_mechanics",
+      "roles": [
+        "particle_density_drift",
+        "kernel_smoothing",
+        "pressure_repulsion",
+        "incompressible_state"
+      ],
+      "links": [
+        {
+          "cause": "particle_density_drift",
+          "relation": "increases",
+          "effect": "kernel_smoothing"
+        },
+        {
+          "cause": "kernel_smoothing",
+          "relation": "enables",
+          "effect": "pressure_repulsion"
+        },
+        {
+          "cause": "pressure_repulsion",
+          "relation": "decreases",
+          "effect": "particle_density_drift"
+        },
+        {
+          "cause": "pressure_repulsion",
+          "relation": "enables",
+          "effect": "incompressible_state"
+        }
+      ],
+      "motifs": [
+        "feedback_loop",
+        "asymmetry"
+      ],
+      "curated_by": "CounterField & index.opensource (C220 SPlisHSPlasH)",
+      "source_ref": "Monaghan 1992, Smoothed Particle Hydrodynamics (Annu. Rev. Astron. Astrophys.)",
+      "domain_vocabulary": [
+        "sph",
+        "smoothing_kernel",
+        "viscosity",
+        "pressure",
+        "hydrodynamics",
+        "navier_stokes"
+      ],
+      "meta": {
+        "source_id": "C220",
+        "source_name": "SPlisHSPlasH",
+        "source_repo": "interactivecomputergraphics/splishsplash",
+        "core_concept": "평활화 커널 기반 비격자 연속체 압력 반발 및 비압축 평형"
+      }
+    },
+    {
+      "id": "marching_squares_isocontour",
+      "domain": "numerical_analysis",
+      "roles": [
+        "continuous_scalar_field",
+        "threshold_iso_level",
+        "cell_corner_topology",
+        "closed_isoline"
+      ],
+      "links": [
+        {
+          "cause": "continuous_scalar_field",
+          "relation": "enables",
+          "effect": "cell_corner_topology"
+        },
+        {
+          "cause": "threshold_iso_level",
+          "relation": "increases",
+          "effect": "cell_corner_topology"
+        },
+        {
+          "cause": "cell_corner_topology",
+          "relation": "enables",
+          "effect": "closed_isoline"
+        },
+        {
+          "cause": "threshold_iso_level",
+          "relation": "enables",
+          "effect": "closed_isoline"
+        }
+      ],
+      "motifs": [
+        "bottleneck",
+        "asymmetry"
+      ],
+      "curated_by": "CounterField & index.opensource (C024 d3-contour)",
+      "source_ref": "Lorensen & Cline 1987, Marching Cubes Algorithmic Formulation (ACM SIGGRAPH)",
+      "domain_vocabulary": [
+        "marching_squares",
+        "isocontour",
+        "isoline",
+        "scalar_field",
+        "threshold",
+        "topology"
+      ],
+      "meta": {
+        "source_id": "C024",
+        "source_name": "d3-contour",
+        "source_repo": "d3/d3-contour",
+        "core_concept": "국소 셀 코너 이진 토폴로지 인덱싱을 통한 연속 등위선 추출"
+      }
+    },
+    {
+      "id": "polygon_clipping_vatti",
+      "domain": "computational_geometry",
+      "roles": [
+        "subject_polygon",
+        "clip_boundary",
+        "intersection_local_minima",
+        "boolean_result_area"
+      ],
+      "links": [
+        {
+          "cause": "subject_polygon",
+          "relation": "enables",
+          "effect": "intersection_local_minima"
+        },
+        {
+          "cause": "clip_boundary",
+          "relation": "increases",
+          "effect": "intersection_local_minima"
+        },
+        {
+          "cause": "intersection_local_minima",
+          "relation": "prevents",
+          "effect": "subject_polygon"
+        },
+        {
+          "cause": "intersection_local_minima",
+          "relation": "enables",
+          "effect": "boolean_result_area"
+        }
+      ],
+      "motifs": [
+        "feedback_loop",
+        "bottleneck"
+      ],
+      "curated_by": "CounterField & index.opensource (C015 Clipper2)",
+      "source_ref": "Vatti 1992, A Generic Solution to Polygon Clipping (Commun. ACM)",
+      "domain_vocabulary": [
+        "clipping",
+        "polygon",
+        "boolean",
+        "offset",
+        "winding_rule",
+        "vatti"
+      ],
+      "meta": {
+        "source_id": "C015",
+        "source_name": "Clipper2",
+        "source_repo": "angusjohnson/clipper2",
+        "core_concept": "스윕라인 및 극값(Minima/Maxima) 추적 기반 임의 다각형 불리언 연산"
+      }
+    },
+    {
+      "id": "error_diffusion_dither",
+      "domain": "signal_processing",
+      "roles": [
+        "analog_signal_flux",
+        "finite_quantizer",
+        "truncation_residual",
+        "global_density_preservation"
+      ],
+      "links": [
+        {
+          "cause": "analog_signal_flux",
+          "relation": "increases",
+          "effect": "finite_quantizer"
+        },
+        {
+          "cause": "finite_quantizer",
+          "relation": "increases",
+          "effect": "truncation_residual"
+        },
+        {
+          "cause": "truncation_residual",
+          "relation": "decreases",
+          "effect": "analog_signal_flux"
+        },
+        {
+          "cause": "truncation_residual",
+          "relation": "enables",
+          "effect": "global_density_preservation"
+        }
+      ],
+      "motifs": [
+        "feedback_loop",
+        "asymmetry"
+      ],
+      "curated_by": "CounterField & index.opensource (X082 dither)",
+      "source_ref": "Floyd & Steinberg 1976, An Adaptive Algorithm for Spatial Gray Scale (Proc. SID)",
+      "domain_vocabulary": [
+        "dither",
+        "error_diffusion",
+        "quantization",
+        "residual",
+        "floyd_steinberg",
+        "threshold"
+      ],
+      "meta": {
+        "source_id": "X082",
+        "source_name": "dither",
+        "source_repo": "makeworld-the-better-one/dither",
+        "core_concept": "국소 양자화 오차의 시공간 이웃 확산 전파 및 거시적 밀도 보존"
+      }
+    }
+  ]
+}

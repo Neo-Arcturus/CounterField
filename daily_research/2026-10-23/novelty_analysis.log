@@ -1,0 +1,78 @@
+[llm] unique admitted=70 unique WL=70 high_novelty=70 negative_space=70 levels={'ecosystem': 30, 'organization': 13, 'team': 27} by_ctx={'ecosystem': 25, 'organization': 18, 'team': 27}
+[control] unique admitted=6 unique WL=5 high_novelty=3 negative_space=4 levels={'organization': 2, 'individual': 2, 'team': 2} by_ctx={'team': 6}
+con team isom nov=0.000 ovl=1.000 deriv=0.0 peer=0.9189 neg=1 HN=0 lvl=orga entropy_barrier | Blend: entropy_barrier structure for Design a hypo
+con team inve nov=0.814 ovl=0.056 deriv=None peer=0.6746 neg=1 HN=1 lvl=indi None | Inverted: Premature consensus increases wasted eff
+con team inve nov=0.817 ovl=0.077 deriv=None peer=0.0 neg=1 HN=1 lvl=indi None | Inverted: Every added idea increases review load; 
+con team isom nov=0.000 ovl=1.000 deriv=0.0 peer=0.7054 neg=0 HN=0 lvl=orga clearinghouse_settlement | Blend: clearinghouse_settlement structure for Desi
+con team inve nov=0.817 ovl=0.077 deriv=None peer=0.0 neg=1 HN=1 lvl=team None | Inverted: Premature consensus increases wasted eff
+con team isom nov=0.000 ovl=1.000 deriv=0.0 peer=0.7448 neg=0 HN=0 lvl=team copy_on_write | Blend: copy_on_write structure for Design a hypoth
+llm ecos isom nov=0.891 ovl=0.062 deriv=0.8467 peer=0.7993 neg=1 HN=1 lvl=ecos aimd_loss_backoff_fairness | Adoption Step-Down Ledger
+llm ecos isom nov=0.862 ovl=0.034 deriv=0.886 peer=0.8139 neg=1 HN=1 lvl=ecos generational_gc_reclaim_gate | Probation Board with Bounty-Paid Break-It Sweeps
+llm ecos isom nov=0.843 ovl=0.051 deriv=0.8425 peer=0.8232 neg=1 HN=1 lvl=ecos ostrom_graduated_sanction_commons | Escalating Ledger of Overlap and Error
+llm ecos isom nov=0.839 ovl=0.050 deriv=0.8526 peer=0.6957 neg=1 HN=1 lvl=ecos p53_damage_checkpoint_arrest | Cooling-Off Hold: An Earned Brake on Bandwagon Rep
+llm ecos isom nov=0.833 ovl=0.066 deriv=0.8479 peer=0.7778 neg=1 HN=1 lvl=ecos persister_bet_hedge_survival | Lottery Reserve Cohort with Audit-Triggered Re-exp
+llm ecos isom nov=0.821 ovl=0.056 deriv=0.8845 peer=0.8246 neg=1 HN=1 lvl=ecos sandpile_toppling_criticality | Bounty-Triggered Rival Retesting Commons
+llm ecos isom nov=0.722 ovl=0.087 deriv=0.7555 peer=0.7021 neg=1 HN=1 lvl=ecos serotiny_fire_gated_release | Escrowed Claims, Scheduled Audit Sweeps, and Herd-
+llm ecos isom nov=0.789 ovl=0.044 deriv=0.8607 peer=0.7893 neg=1 HN=1 lvl=ecos trophic_cascade_predator_gate | Crowd-Scaled Audit Bounties with Niche Credit
+llm ecos isom nov=0.848 ovl=0.045 deriv=0.8909 peer=0.6667 neg=1 HN=1 lvl=ecos generational_gc_reclaim_gate | Probation Board with Scheduled Refutation Sweeps
+llm ecos isom nov=0.878 ovl=0.043 deriv=0.8805 peer=0.8368 neg=1 HN=1 lvl=ecos ostrom_graduated_sanction_commons | Escalating Credit Ladder with Replicator Spot-Chec
+llm ecos isom nov=0.796 ovl=0.021 deriv=0.7943 peer=0.7646 neg=1 HN=1 lvl=ecos p53_damage_checkpoint_arrest | Earned Pause Flags with a Correction Grace Period
+llm ecos isom nov=0.791 ovl=0.036 deriv=0.8228 peer=0.786 neg=1 HN=1 lvl=ecos persister_bet_hedge_survival | Lottery-Seeded Reserve Cohorts with Audit-Triggere
+llm ecos isom nov=0.703 ovl=0.061 deriv=0.7389 peer=0.7021 neg=1 HN=1 lvl=ecos serotiny_fire_gated_release | Backlog-Triggered Audit Sweeps That Release Escrow
+llm ecos isom nov=0.868 ovl=0.068 deriv=0.8805 peer=0.8402 neg=1 HN=1 lvl=ecos trophic_cascade_predator_gate | Audit Shadow: Crowd-Triggered Adversarial Replicat
+llm ecos isom nov=0.822 ovl=0.043 deriv=0.8885 peer=0.8043 neg=1 HN=1 lvl=ecos vickrey_second_price_truth | Sealed Commitment Ledger with Runner-Up-Anchored C
+llm ecos isom nov=0.874 ovl=0.050 deriv=0.874 peer=0.7543 neg=1 HN=1 lvl=ecos ostrom_graduated_sanction_commons | Escalating Credit Discounts for Crowding and Stale
+llm ecos isom nov=0.853 ovl=0.046 deriv=0.8509 peer=0.7306 neg=1 HN=1 lvl=ecos sandpile_toppling_criticality | Reliance-Triggered Replication Audits
+llm ecos isom nov=0.759 ovl=0.070 deriv=0.7823 peer=0.729 neg=1 HN=1 lvl=ecos serotiny_fire_gated_release | Scheduled Audit Sweeps That Release Time-Locked Di
+llm ecos isom nov=0.735 ovl=0.045 deriv=0.8542 peer=0.818 neg=1 HN=1 lvl=ecos trophic_cascade_predator_gate | Audit Shadow: Crowd-Scaled Adversarial Review That
+llm ecos isom nov=0.777 ovl=0.062 deriv=0.7771 peer=0.7826 neg=1 HN=1 lvl=orga vickrey_second_price_truth | Runner-Up-Anchored Confidence Stakes
+llm ecos isom nov=0.840 ovl=0.047 deriv=0.8664 peer=0.7993 neg=1 HN=1 lvl=ecos aimd_loss_backoff_fairness | Additive Endorsement, Multiplicative Standing Cut
+llm ecos isom nov=0.762 ovl=0.069 deriv=0.8834 peer=0.7795 neg=1 HN=1 lvl=ecos generational_gc_reclaim_gate | Triage Sweeps with Crowding Locks
+llm ecos isom nov=0.843 ovl=0.049 deriv=0.8425 peer=0.799 neg=1 HN=1 lvl=ecos ostrom_graduated_sanction_commons | Escalating Credit Haircuts with a Public Claim Led
+llm ecos isom nov=0.833 ovl=0.031 deriv=0.828 peer=0.6729 neg=1 HN=1 lvl=ecos p53_damage_checkpoint_arrest | Quarantine-Before-Pile-On: Flag-Triggered Credit H
+llm ecos isom nov=0.843 ovl=0.025 deriv=0.7566 peer=0.7778 neg=1 HN=1 lvl=ecos persister_bet_hedge_survival | Lottery-Held Reserve Labs with Audit-Triggered Cre
+llm orga isom nov=0.905 ovl=0.064 deriv=0.9055 peer=0.5556 neg=1 HN=1 lvl=ecos generational_gc_reclaim_gate | Expiring Seed Grants with Rapid Sunset Sweeps
+llm orga isom nov=0.880 ovl=0.031 deriv=0.8506 peer=0.8174 neg=1 HN=1 lvl=ecos ostrom_graduated_sanction_commons | Tapering Tranche Ladder with Peer Replication Chec
+llm orga isom nov=0.833 ovl=0.033 deriv=0.8034 peer=0.8043 neg=1 HN=1 lvl=orga p53_damage_checkpoint_arrest | Tranche Freeze Gate: Earned Pause Before Escalatio
+llm orga isom nov=0.877 ovl=0.055 deriv=0.7846 peer=0.8085 neg=1 HN=1 lvl=orga sandpile_toppling_criticality | Pressure-Valve Portfolio Culls
+llm orga isom nov=0.843 ovl=0.062 deriv=0.8428 peer=0.7798 neg=1 HN=1 lvl=orga generational_gc_reclaim_gate | Cheap Tripwire Gates: Pruning Seed-Tier Proposals 
+llm orga isom nov=0.782 ovl=0.040 deriv=0.7545 peer=0.7083 neg=1 HN=1 lvl=orga ostrom_graduated_sanction_commons | Tranche Ladder with Downstream Audits
+llm orga isom nov=0.870 ovl=0.057 deriv=0.8385 peer=0.7609 neg=1 HN=1 lvl=ecos persister_bet_hedge_survival | Reserve Lottery Portfolio: Sealed Quiet Tier That 
+llm orga isom nov=0.836 ovl=0.049 deriv=0.7892 peer=0.7755 neg=1 HN=1 lvl=ecos sandpile_toppling_criticality | Tripwire Sunset Sweeps
+llm orga isom nov=0.819 ovl=0.060 deriv=0.8006 peer=0.7955 neg=1 HN=1 lvl=orga aimd_loss_backoff_fairness | Earned Step-Down Gates
+llm orga isom nov=0.868 ovl=0.055 deriv=0.8805 peer=0.7101 neg=1 HN=1 lvl=orga generational_gc_reclaim_gate | Blind Seed Sweep with Pre-Committed Kill Rules
+llm orga isom nov=0.775 ovl=0.044 deriv=0.7676 peer=0.7306 neg=1 HN=1 lvl=orga sandpile_toppling_criticality | Tripwire Sweeps for a Self-Pruning Research Portfo
+llm orga isom nov=0.717 ovl=0.064 deriv=0.6743 peer=0.7165 neg=1 HN=1 lvl=orga serotiny_fire_gated_release | Sunset Sweep Clears Room for Unconventional Pilots
+llm orga isom nov=0.837 ovl=0.053 deriv=0.8931 peer=0.7959 neg=1 HN=1 lvl=orga vickrey_second_price_truth | Displacement-Pegged Staged Grants with Sealed Conf
+llm orga isom nov=0.905 ovl=0.051 deriv=0.9055 peer=0.5556 neg=1 HN=1 lvl=orga generational_gc_reclaim_gate | Pre-Committed Cheap-Kill Sweeps That Keep Escalati
+llm orga isom nov=0.832 ovl=0.031 deriv=0.5908 peer=0.7083 neg=1 HN=1 lvl=orga notch_lateral_inhibition_pattern | Stand-Down Holds: Earned Escalation Inhibition Bet
+llm orga isom nov=0.840 ovl=0.060 deriv=0.869 peer=0.8199 neg=1 HN=1 lvl=ecos ostrom_graduated_sanction_commons | Tapering Ladder with an Open Ledger
+llm orga isom nov=0.836 ovl=0.065 deriv=0.7835 peer=0.7798 neg=1 HN=1 lvl=orga p53_damage_checkpoint_arrest | Tripwire Freeze: Earned Funding Pauses with a Revi
+llm orga isom nov=0.813 ovl=0.045 deriv=0.8758 peer=0.846 neg=1 HN=1 lvl=ecos persister_bet_hedge_survival | Lottery-Sheltered Reserve Slate
+llm team isom nov=0.767 ovl=0.053 deriv=0.7959 peer=0.7906 neg=1 HN=1 lvl=team aimd_loss_backoff_fairness | The Weekly Cull Court
+llm team isom nov=0.826 ovl=0.065 deriv=0.8636 peer=0.6667 neg=1 HN=1 lvl=team generational_gc_reclaim_gate | Rough-Sketch Refutation Sprint
+llm team isom nov=0.714 ovl=0.048 deriv=0.9198 peer=0.7289 neg=1 HN=1 lvl=team notch_lateral_inhibition_pattern | Critique Hold Before Polish
+llm team isom nov=0.861 ovl=0.081 deriv=0.9055 peer=0.8771 neg=1 HN=1 lvl=team ostrom_graduated_sanction_commons | Kill-Criterion Gate with Escalating Demotion
+llm team isom nov=0.777 ovl=0.075 deriv=0.7543 peer=0.8043 neg=1 HN=1 lvl=team p53_damage_checkpoint_arrest | Kill-Criterion Gate: Earned Pause Before Experimen
+llm team isom nov=0.858 ovl=0.059 deriv=0.8899 peer=0.7743 neg=1 HN=1 lvl=team sandpile_toppling_criticality | Rough Posts, Forced Challenge Rounds
+llm team isom nov=0.851 ovl=0.079 deriv=0.7777 peer=0.7233 neg=1 HN=1 lvl=team serotiny_fire_gated_release | Teardown Window Before Consensus
+llm team isom nov=0.801 ovl=0.091 deriv=0.7151 peer=0.7906 neg=1 HN=1 lvl=team aimd_loss_backoff_fairness | Half-Slate Falsifier Cull
+llm team isom nov=0.820 ovl=0.087 deriv=0.8542 peer=0.786 neg=1 HN=1 lvl=team generational_gc_reclaim_gate | Weekly Kill-Test Sweep
+llm team isom nov=0.826 ovl=0.070 deriv=0.8885 peer=0.7902 neg=1 HN=1 lvl=team notch_lateral_inhibition_pattern | Rival Kill-Test Cards with Polish Embargo
+llm team isom nov=0.874 ovl=0.072 deriv=0.874 peer=0.7643 neg=1 HN=1 lvl=team ostrom_graduated_sanction_commons | Kill-Criterion Gate with a Demotion Ladder
+llm team isom nov=0.808 ovl=0.067 deriv=0.8116 peer=0.7609 neg=1 HN=1 lvl=team persister_bet_hedge_survival | Parking Lottery for Rough Ideas
+llm team isom nov=0.917 ovl=0.059 deriv=0.9087 peer=0.7943 neg=1 HN=1 lvl=team sandpile_toppling_criticality | Rough Hunches, Rapid Kills
+llm team isom nov=0.768 ovl=0.062 deriv=0.731 peer=0.7497 neg=1 HN=1 lvl=team serotiny_fire_gated_release | Timed Teardown Before the Bandwagon
+llm team isom nov=0.833 ovl=0.077 deriv=0.8885 peer=0.7543 neg=1 HN=1 lvl=team vickrey_second_price_truth | Sealed Stakes, Runner-Up Charge
+llm team isom nov=0.761 ovl=0.048 deriv=0.8291 peer=0.7868 neg=1 HN=1 lvl=team generational_gc_reclaim_gate | Kill-Window Triage: The Timeboxed Falsifier Sweep
+llm team isom nov=0.837 ovl=0.062 deriv=0.8805 peer=0.7902 neg=1 HN=1 lvl=team notch_lateral_inhibition_pattern | Kill-Test Gate: Rough Sketches Open, Polish Held B
+llm team isom nov=0.866 ovl=0.077 deriv=0.8664 peer=0.7643 neg=1 HN=1 lvl=team ostrom_graduated_sanction_commons | Kill-Criterion Gate with Tiered Demotion
+llm team isom nov=0.800 ovl=0.056 deriv=0.7297 peer=0.7546 neg=1 HN=1 lvl=team p53_damage_checkpoint_arrest | Kill-Test Gate: Earned Hold Before Endorsement
+llm team isom nov=0.829 ovl=0.075 deriv=0.8349 peer=0.8182 neg=1 HN=1 lvl=team sandpile_toppling_criticality | Overflow-Triggered Kill-or-Sharpen Sprint
+llm team isom nov=0.856 ovl=0.097 deriv=0.7389 peer=0.7233 neg=1 HN=1 lvl=team serotiny_fire_gated_release | Parked Claims, Scheduled Stress-Test, Kept-Empty S
+llm team isom nov=0.880 ovl=0.070 deriv=0.8506 peer=0.8027 neg=1 HN=1 lvl=team trophic_cascade_predator_gate | Kill-Criteria Triage with a Rotating Red-Team Seat
+llm team isom nov=0.910 ovl=0.087 deriv=0.8506 peer=0.8402 neg=1 HN=1 lvl=team aimd_loss_backoff_fairness | Falsifier-Gated Intake Brake
+llm team isom nov=0.880 ovl=0.061 deriv=0.9164 peer=0.8194 neg=1 HN=1 lvl=team generational_gc_reclaim_gate | Rough-Sketch Intake with a Kill-or-Keep Critique W
+llm team isom nov=0.766 ovl=0.060 deriv=0.8607 peer=0.7289 neg=1 HN=1 lvl=team notch_lateral_inhibition_pattern | Kill-Test Gate: Earn Your Polish
+llm team isom nov=0.833 ovl=0.073 deriv=0.833 peer=0.7812 neg=1 HN=1 lvl=team ostrom_graduated_sanction_commons | Rough-Draft Ladder: Early Demotion of Untestable C
+llm team isom nov=0.607 ovl=0.067 deriv=0.6995 peer=0.6729 neg=1 HN=1 lvl=team p53_damage_checkpoint_arrest | Sharpen-or-Shelve Gate

@@ -1,0 +1,4688 @@
+{
+  "meta": {
+    "mode": "llm",
+    "context": "team",
+    "date": "2026-10-23",
+    "seed": 20261023,
+    "budget": 48,
+    "problem": "Design a hypothesis-triage practice for a small research team of 4-8 people. Premature consensus increases wasted effort. Unfalsifiable claims decrease trust in results. Over-polished ideas prevent honest critique. Every added idea increases review load.",
+    "provider": "LLMIdeaProvider",
+    "model": "cc/claude-sonnet-5-5",
+    "provider_fallbacks": 0,
+    "backend_stats": {
+      "backend_ok": 36
+    },
+    "template_library": "/home/arcturus/hermesWorkspace/projects/CounterField/data/templates/negative_space_v3_20261023.json",
+    "wall_seconds": 752.7
+  },
+  "metrics": {
+    "coverage": null,
+    "duplicate_rate": 0.0,
+    "attempts": 48,
+    "structural_failures": 0,
+    "occupied_niches": 10,
+    "repair_incubator": 27,
+    "failure_archive": 0,
+    "generation_errors": 0,
+    "canonicalize_errors": 0,
+    "validation_errors": 0,
+    "evaluation_errors": 0,
+    "evidence_errors": 0,
+    "provider_fallbacks": 0,
+    "inversion_attempts": 0,
+    "inversion_successes": 0,
+    "isomorphism_attempts": 27,
+    "isomorphism_successes": 27,
+    "synthesis_attempts": 6,
+    "synthesis_successes": 0,
+    "rules_promoted": 0,
+    "niche_count": 10,
+    "qd_score": 11.718597313942073
+  },
+  "admission_log": [
+    {
+      "operator": "dialectic",
+      "status": "REPAIRABLE",
+      "stage": "red_team",
+      "n": 6
+    },
+    {
+      "operator": "inversion",
+      "status": "REPAIRABLE",
+      "stage": "quality_constraints",
+      "n": 12
+    },
+    {
+      "operator": "isomorphism",
+      "status": "ACCEPTED",
+      "stage": "complete",
+      "n": 27
+    },
+    {
+      "operator": "isomorphism",
+      "status": "REPAIRABLE",
+      "stage": "quality_constraints",
+      "n": 6
+    },
+    {
+      "operator": "isomorphism",
+      "status": "REPAIRABLE",
+      "stage": "red_team",
+      "n": 3
+    }
+  ],
+  "centroids": [
+    [
+      0.33,
+      0.0,
+      0.5,
+      0.5,
+      0.22000000000000003,
+      0.0,
+      0.3
+    ],
+    [
+      0.33,
+      0.0,
+      0.5,
+      0.6,
+      0.24,
+      0.0,
+      0.1
+    ],
+    [
+      0.33,
+      0.0,
+      0.5,
+      0.3,
+      0.26666660000000003,
+      0.333333,
+      0.2
+    ],
+    [
+      0.33,
+      0.0,
+      1.0,
+      0.5,
+      0.21818179999999998,
+      0.0,
+      0.4
+    ],
+    [
+      0.33,
+      0.5,
+      0.5,
+      0.5,
+      0.21818179999999998,
+      0.0,
+      0.1
+    ],
+    [
+      0.33,
+      0.0,
+      0.5,
+      0.3,
+      0.21818179999999998,
+      0.0,
+      0.2
+    ],
+    [
+      0.33,
+      0.0,
+      0.0,
+      0.4,
+      0.21818179999999998,
+      0.0,
+      0.3
+    ],
+    [
+      0.33,
+      0.5,
+      0.5,
+      0.3,
+      0.2,
+      0.0,
+      0.2
+    ],
+    [
+      0.33,
+      0.0,
+      0.5,
+      0.3,
+      0.24444439999999998,
+      0.545455,
+      0.2
+    ],
+    [
+      0.33,
+      0.5,
+      0.5,
+      0.5,
+      0.21818179999999998,
+      0.0,
+      0.4
+    ]
+  ],
+  "elites": [
+    {
+      "niche_key": "centroid_0",
+      "id": "be3f14bf5a6b6c17",
+      "title": "Falsifier-Gated Intake Brake",
+      "description": "Each week the team meets for a falsifier review, and each member can add rough one-page hypotheses with a stated disproof test. Submissions climb as people see the review is quick and low-stakes. When a prediction fails in public, the intake quota is halved until the open critiques are cleared, so the reviewer pile-up never forms and attention is spread evenly across the surviving ideas. Members feel a brief slowdown after a failure, but they end up with a short list of trusted, falsifiable hypotheses.",
+      "operator": "isomorphism",
+      "source_domain": "network_congestion_control",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A failed prediction triggers a temporary halving of the intake quota, which keeps reviewer overload from happening and leaves critique attention evenly spread over a trusted, falsifiable portfolio.",
+        "causal_structure": [
+          {
+            "cause": "Weekly Falsifier Review Cadence",
+            "relation": "increases",
+            "effect": "Rising Count of Submitted Hypotheses"
+          },
+          {
+            "cause": "Rising Count of Submitted Hypotheses",
+            "relation": "enables",
+            "effect": "Reviewer Overload Pile-Up"
+          },
+          {
+            "cause": "Failed Prediction Result",
+            "relation": "enables",
+            "effect": "Halved Intake Quota Until Critiques Clear"
+          },
+          {
+            "cause": "Rising Count of Submitted Hypotheses",
+            "relation": "enables",
+            "effect": "Halved Intake Quota Until Critiques Clear"
+          },
+          {
+            "cause": "Halved Intake Quota Until Critiques Clear",
+            "relation": "prevents",
+            "effect": "Reviewer Overload Pile-Up"
+          },
+          {
+            "cause": "Halved Intake Quota Until Critiques Clear",
+            "relation": "enables",
+            "effect": "Even Spread of Critique Attention Across Ideas"
+          },
+          {
+            "cause": "Rising Count of Submitted Hypotheses",
+            "relation": "enables",
+            "effect": "Even Spread of Critique Attention Across Ideas"
+          },
+          {
+            "cause": "Even Spread of Critique Attention Across Ideas",
+            "relation": "enables",
+            "effect": "Trusted Falsifiable Portfolio"
+          },
+          {
+            "cause": "Rough One-Page Claim Format",
+            "relation": "prevents",
+            "effect": "Over-Polished Idea Attachment"
+          },
+          {
+            "cause": "Failed Prediction Result",
+            "relation": "decreases",
+            "effect": "Over-Polished Idea Attachment"
+          },
+          {
+            "cause": "Halved Intake Quota Until Critiques Clear",
+            "relation": "prevents",
+            "effect": "Unfalsifiable Claim Admission"
+          },
+          {
+            "cause": "Unfalsifiable Claim Admission",
+            "relation": "decreases",
+            "effect": "Trusted Falsifiable Portfolio"
+          }
+        ],
+        "affected_system": "Research team hypothesis intake, critique, and prioritization workflow (hypothesis triage pipeline)",
+        "payoff": "Trusted Falsifiable Portfolio"
+      },
+      "mechanism_fingerprint": "a9e7e5e7c55bf6ee",
+      "wl_hash": "20fc803ece3eccd5076e32a0d3f07ad2",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "aimd_loss_backoff_fairness",
+        "role_map": {
+          "ack_clock": "Weekly Falsifier Review Cadence",
+          "send_rate_growth": "Rising Count of Submitted Hypotheses",
+          "loss_event": "Failed Prediction Result",
+          "window_halving": "Halved Intake Quota Until Critiques Clear",
+          "queue_overflow_risk": "Reviewer Overload Pile-Up",
+          "flow_share_equalisation": "Even Spread of Critique Attention Across Ideas",
+          "fair_equilibrium": "Trusted Falsifiable Portfolio"
+        }
+      },
+      "scores": {
+        "novelty": 0.6749489928621173,
+        "appropriateness": 0.62,
+        "utility": 0.4,
+        "surprise": 0.35,
+        "coherence": 0.66,
+        "mechanism_uniqueness": 0.9283718330849479
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "low",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 4,
+        "branching_factor": 1.2,
+        "loop_density": 0.0,
+        "payoff_path_length": 3
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "49 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_unfalsifiable_claim_admission",
+            "satisfy_rising_count_of_submitted_hypotheses",
+            "satisfy_halved_intake_quota_until_critiques_clear",
+            "satisfy_even_spread_of_critique_attention_across_ideas"
+          ]
+        }
+      ]
+    },
+    {
+      "niche_key": "centroid_1",
+      "id": "328835f26302603a",
+      "title": "Rough-Sketch Refutation Sprint",
+      "description": "Team members drop half-formed idea sketches onto a shared intake board, and each week a time-boxed sprint forces every sketch to name a cheap test that could prove it wrong. Sketches with no refutation test are bounced without debate, and the rest get a quick kill-or-keep verdict from two rotating critics. Because the board is cleared on a fixed rhythm, nobody drowns in review, and only tested ideas reach the funded queue.",
+      "operator": "isomorphism",
+      "source_domain": "runtime_memory_management",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A fixed-rhythm refutation sprint keeps the intake board from overwhelming reviewers by refusing to carry untestable or untested ideas forward, so only battle-tested ideas become reusable results.",
+        "causal_structure": [
+          {
+            "cause": "daily influx of rough idea sketches from team members",
+            "relation": "enables",
+            "effect": "growing pile of unreviewed sketches on the intake board"
+          },
+          {
+            "cause": "growing pile of unreviewed sketches on the intake board",
+            "relation": "enables",
+            "effect": "reviewer overload and critique backlog"
+          },
+          {
+            "cause": "shared expectation that most fresh ideas fail at first contact with a cheap test",
+            "relation": "enables",
+            "effect": "weekly time-boxed refutation sprint with kill-or-keep verdicts"
+          },
+          {
+            "cause": "growing pile of unreviewed sketches on the intake board",
+            "relation": "enables",
+            "effect": "weekly time-boxed refutation sprint with kill-or-keep verdicts"
+          },
+          {
+            "cause": "weekly time-boxed refutation sprint with kill-or-keep verdicts",
+            "relation": "prevents",
+            "effect": "reviewer overload and critique backlog"
+          },
+          {
+            "cause": "weekly time-boxed refutation sprint with kill-or-keep verdicts",
+            "relation": "enables",
+            "effect": "advancement of tested ideas into the funded research queue"
+          },
+          {
+            "cause": "advancement of tested ideas into the funded research queue",
+            "relation": "enables",
+            "effect": "steady flow of trusted, reusable results"
+          },
+          {
+            "cause": "daily influx of rough idea sketches from team members",
+            "relation": "enables",
+            "effect": "steady flow of trusted, reusable results"
+          },
+          {
+            "cause": "rough sketch format",
+            "relation": "enables",
+            "effect": "weekly time-boxed refutation sprint with kill-or-keep verdicts"
+          },
+          {
+            "cause": "mandatory named refutation test",
+            "relation": "prevents",
+            "effect": "untestable claims entering the funded research queue"
+          },
+          {
+            "cause": "reviewer overload and critique backlog",
+            "relation": "decreases",
+            "effect": "steady flow of trusted, reusable results"
+          },
+          {
+            "cause": "steady flow of trusted, reusable results",
+            "relation": "depends_on",
+            "effect": "mandatory named refutation test"
+          }
+        ],
+        "affected_system": "Research team hypothesis intake, critique, and prioritization workflow (hypothesis triage pipeline)",
+        "payoff": "steady flow of trusted, reusable results"
+      },
+      "mechanism_fingerprint": "3f6a9801f0a4b784",
+      "wl_hash": "6a1dbcd2bb7c276c6ec9733daf7d8374",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "generational_gc_reclaim_gate",
+        "role_map": {
+          "allocation_stream": "daily influx of rough idea sketches from team members",
+          "weak_generational_hypothesis": "shared expectation that most fresh ideas fail at first contact with a cheap test",
+          "young_space_fill": "growing pile of unreviewed sketches on the intake board",
+          "minor_collection": "weekly time-boxed refutation sprint with kill-or-keep verdicts",
+          "heap_exhaustion_risk": "reviewer overload and critique backlog",
+          "survivor_promotion": "advancement of tested ideas into the funded research queue",
+          "stable_throughput": "steady flow of trusted, reusable results"
+        }
+      },
+      "scores": {
+        "novelty": 0.6823643278155221,
+        "appropriateness": 0.82,
+        "utility": 0.5,
+        "surprise": 0.28,
+        "coherence": 0.85,
+        "mechanism_uniqueness": 0.9223908338038773
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "low",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 6,
+        "branching_factor": 1.2,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "37 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_untestable_claims_entering_the_funded_research_queue",
+            "satisfy_growing_pile_of_unreviewed_sketches_on_the_intake_board",
+            "satisfy_reviewer_overload_and_critique_backlog",
+            "satisfy_weekly_time_boxed_refutation_sprint_with_kill_or_keep_verdicts",
+            "satisfy_advancement_of_tested_ideas_into_the_funded_research_queue"
+          ]
+        }
+      ]
+    },
+    {
+      "niche_key": "centroid_2",
+      "id": "05da643fd1b6e337",
+      "title": "Rough Hunches, Rapid Kills",
+      "description": "Anyone posts a raw, unpolished hunch with a one-line prediction to a shared pool, and unreviewed claims pile up in a backlog. When the backlog passes a reviewer's tolerance, a time-boxed round of quick disconfirming tests starts on the oldest or most agreed-upon claims. The round stops early consensus from hardening, and claims that fail are archived with a brief note. What remains is a short list of testable claims the team trusts.",
+      "operator": "isomorphism",
+      "source_domain": "statistical_physics",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Raw hunches accumulate until review overload triggers a burst of rapid disconfirming tests, which prevents early consensus lock-in and clears failed claims, leaving a lean list of trusted, testable claims.",
+        "causal_structure": [
+          {
+            "cause": "Raw hunch submitted to the shared pool",
+            "relation": "increases",
+            "effect": "Unreviewed backlog of claims"
+          },
+          {
+            "cause": "Unreviewed backlog of claims",
+            "relation": "enables",
+            "effect": "Early consensus lock-in"
+          },
+          {
+            "cause": "Unreviewed backlog of claims",
+            "relation": "enables",
+            "effect": "Review queue overflow signal"
+          },
+          {
+            "cause": "Review queue overflow signal",
+            "relation": "enables",
+            "effect": "Rapid-fire disconfirming tests"
+          },
+          {
+            "cause": "Rapid-fire disconfirming tests",
+            "relation": "prevents",
+            "effect": "Early consensus lock-in"
+          },
+          {
+            "cause": "Rapid-fire disconfirming tests",
+            "relation": "enables",
+            "effect": "Closed claims archived with a brief note"
+          },
+          {
+            "cause": "Closed claims archived with a brief note",
+            "relation": "enables",
+            "effect": "Lean shortlist of trusted, testable claims"
+          },
+          {
+            "cause": "Raw hunch submitted to the shared pool",
+            "relation": "enables",
+            "effect": "Lean shortlist of trusted, testable claims"
+          },
+          {
+            "cause": "Early consensus lock-in",
+            "relation": "decreases",
+            "effect": "Lean shortlist of trusted, testable claims"
+          },
+          {
+            "cause": "Closed claims archived with a brief note",
+            "relation": "enables",
+            "effect": "Reuse of recorded null results"
+          },
+          {
+            "cause": "Reuse of recorded null results",
+            "relation": "decreases",
+            "effect": "Unreviewed backlog of claims"
+          },
+          {
+            "cause": "Rapid-fire disconfirming tests",
+            "relation": "depends_on",
+            "effect": "Prediction written before testing"
+          }
+        ],
+        "affected_system": "Research team hypothesis intake, critique, and prioritization workflow (hypothesis triage pipeline)",
+        "payoff": "Lean shortlist of trusted, testable claims"
+      },
+      "mechanism_fingerprint": "d0d3c80fbd1190c8",
+      "wl_hash": "82ca16d35b041386f43be7753f9a2694",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "sandpile_toppling_criticality",
+        "role_map": {
+          "grain_drop": "Raw hunch submitted to the shared pool",
+          "slope_buildup": "Unreviewed backlog of claims",
+          "threshold_exceedance": "Review queue overflow signal",
+          "toppling_cascade": "Rapid-fire disconfirming tests",
+          "runaway_slope": "Early consensus lock-in",
+          "dissipation_at_boundary": "Closed claims archived with a brief note",
+          "critical_steady_state": "Lean shortlist of trusted, testable claims"
+        }
+      },
+      "scores": {
+        "novelty": 0.6768535573125873,
+        "appropriateness": 0.72,
+        "utility": 0.45,
+        "surprise": 0.33,
+        "coherence": 0.58,
+        "mechanism_uniqueness": 0.927210772319468
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "low",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 3,
+        "branching_factor": 1.333333,
+        "loop_density": 0.416667,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "53 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_unreviewed_backlog_of_claims",
+            "satisfy_review_queue_overflow_signal",
+            "satisfy_early_consensus_lock_in",
+            "satisfy_rapid_fire_disconfirming_tests",
+            "satisfy_prediction_written_before_testing",
+            "satisfy_closed_claims_archived_with_a_brief_note",
+            "satisfy_reuse_of_recorded_null_results"
+          ]
+        }
+      ]
+    },
+    {
+      "niche_key": "centroid_3",
+      "id": "f8dce9fd10521446",
+      "title": "Kill-Criterion Gate: Earned Pause Before Experiments",
+      "description": "When someone pitches an idea, a rotating reader asks what result would refute it, and a vague answer earns a hold stamp that keeps the idea out of the experiment queue. During the hold, the proposer has a protected period to sharpen the claim using rough sketches rather than polished decks, ending in a written kill criterion. Ideas that later meet their pre-agreed kill test are retired without blame, so the shared results ledger stays lean and trusted.",
+      "operator": "isomorphism",
+      "source_domain": "cell_biology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A hold stamp, earned by an unfalsifiable-sounding claim, blocks the rush to launch experiments and gives the idea a protected rough-sketch period in which a kill criterion is written, so only testable ideas reach the queue and failed ones are retired by prior agreement.",
+        "causal_structure": [
+          {
+            "cause": "Vague untestable claim raised at intake",
+            "relation": "enables",
+            "effect": "Rotating refutation-question reader"
+          },
+          {
+            "cause": "Rotating refutation-question reader",
+            "relation": "enables",
+            "effect": "Hold stamp pending written kill criterion"
+          },
+          {
+            "cause": "Champion excitement for a new idea",
+            "relation": "enables",
+            "effect": "Rush to launch experiments and fork variants"
+          },
+          {
+            "cause": "Hold stamp pending written kill criterion",
+            "relation": "prevents",
+            "effect": "Rush to launch experiments and fork variants"
+          },
+          {
+            "cause": "Hold stamp pending written kill criterion",
+            "relation": "enables",
+            "effect": "Protected rough-sketch revision period"
+          },
+          {
+            "cause": "Protected rough-sketch revision period",
+            "relation": "enables",
+            "effect": "Pre-agreed retirement of claims that fail their kill test"
+          },
+          {
+            "cause": "Pre-agreed retirement of claims that fail their kill test",
+            "relation": "enables",
+            "effect": "Trusted lean results ledger"
+          },
+          {
+            "cause": "Protected rough-sketch revision period",
+            "relation": "enables",
+            "effect": "Trusted lean results ledger"
+          },
+          {
+            "cause": "Hold stamp pending written kill criterion",
+            "relation": "decreases",
+            "effect": "Review queue load"
+          },
+          {
+            "cause": "Pre-agreed retirement of claims that fail their kill test",
+            "relation": "decreases",
+            "effect": "Review queue load"
+          },
+          {
+            "cause": "Protected rough-sketch revision period",
+            "relation": "prevents",
+            "effect": "Over-polished pitch decks"
+          },
+          {
+            "cause": "Protected rough-sketch revision period",
+            "relation": "enables",
+            "effect": "Honest critique"
+          }
+        ],
+        "affected_system": "Research team hypothesis intake, critique, and prioritization workflow (hypothesis triage pipeline)",
+        "payoff": "Trusted lean results ledger"
+      },
+      "mechanism_fingerprint": "2635adbc89010f57",
+      "wl_hash": "668cd121a4347e67ab3a9e1a67bac847",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "p53_damage_checkpoint_arrest",
+        "role_map": {
+          "genotoxic_lesion": "Vague untestable claim raised at intake",
+          "growth_mitogen": "Champion excitement for a new idea",
+          "sensor_kinase": "Rotating refutation-question reader",
+          "checkpoint_effector": "Hold stamp pending written kill criterion",
+          "division_drive": "Rush to launch experiments and fork variants",
+          "repair_window": "Protected rough-sketch revision period",
+          "apoptotic_commitment": "Pre-agreed retirement of claims that fail their kill test",
+          "tissue_integrity": "Trusted lean results ledger"
+        }
+      },
+      "scores": {
+        "novelty": 0.6729637856108721,
+        "appropriateness": 0.88,
+        "utility": 0.52,
+        "surprise": 0.38,
+        "coherence": 0.85,
+        "mechanism_uniqueness": 0.9248910336239103
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "low",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 4
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": []
+    },
+    {
+      "niche_key": "centroid_4",
+      "id": "5223a06d81ab2506",
+      "title": "Overflow-Triggered Kill-or-Sharpen Sprint",
+      "description": "Anyone can drop a rough, unpolished idea pitch into a shared queue. While the queue is small, nothing happens. Once untested claims pile past what reviewers can handle, the team stops adding and runs a short kill-or-sharpen sprint. Each claim must state a pre-registered kill criterion or be shelved in a public archive. Because the sprint is forced, nobody can polish a favorite claim into early consensus, and the portfolio that survives is small, falsifiable and trusted.",
+      "operator": "isomorphism",
+      "source_domain": "statistical_physics",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A reviewer-capacity limit forces a periodic kill-or-sharpen sprint, which prevents early consensus lock-in and moves weak claims to an archive, so the surviving portfolio stays small and falsifiable.",
+        "causal_structure": [
+          {
+            "cause": "Rough idea pitch",
+            "relation": "increases",
+            "effect": "Backlog of untested claims"
+          },
+          {
+            "cause": "Backlog of untested claims",
+            "relation": "enables",
+            "effect": "Over-polished consensus lock-in"
+          },
+          {
+            "cause": "Backlog of untested claims",
+            "relation": "enables",
+            "effect": "Reviewer limit reached"
+          },
+          {
+            "cause": "Reviewer limit reached",
+            "relation": "enables",
+            "effect": "Forced kill-or-sharpen sprint"
+          },
+          {
+            "cause": "Forced kill-or-sharpen sprint",
+            "relation": "prevents",
+            "effect": "Over-polished consensus lock-in"
+          },
+          {
+            "cause": "Forced kill-or-sharpen sprint",
+            "relation": "enables",
+            "effect": "Retired claims shelved in public archive"
+          },
+          {
+            "cause": "Retired claims shelved in public archive",
+            "relation": "enables",
+            "effect": "Trusted falsifiable portfolio"
+          },
+          {
+            "cause": "Rough idea pitch",
+            "relation": "enables",
+            "effect": "Trusted falsifiable portfolio"
+          },
+          {
+            "cause": "Pre-registered kill criterion",
+            "relation": "enables",
+            "effect": "Forced kill-or-sharpen sprint"
+          },
+          {
+            "cause": "Retired claims shelved in public archive",
+            "relation": "enables",
+            "effect": "Reuse of past dead-end results"
+          },
+          {
+            "cause": "Reuse of past dead-end results",
+            "relation": "decreases",
+            "effect": "Wasted effort"
+          },
+          {
+            "cause": "Anonymous early critique",
+            "relation": "prevents",
+            "effect": "Over-polished consensus lock-in"
+          }
+        ],
+        "affected_system": "Research team hypothesis intake, critique, and prioritization workflow (hypothesis triage pipeline)",
+        "payoff": "Trusted falsifiable portfolio"
+      },
+      "mechanism_fingerprint": "f8a7f1f341f89cb5",
+      "wl_hash": "5a2a0e687c4af41eca7057c736c5cad2",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "sandpile_toppling_criticality",
+        "role_map": {
+          "grain_drop": "Rough idea pitch",
+          "slope_buildup": "Backlog of untested claims",
+          "threshold_exceedance": "Reviewer limit reached",
+          "toppling_cascade": "Forced kill-or-sharpen sprint",
+          "runaway_slope": "Over-polished consensus lock-in",
+          "dissipation_at_boundary": "Retired claims shelved in public archive",
+          "critical_steady_state": "Trusted falsifiable portfolio"
+        }
+      },
+      "scores": {
+        "novelty": 0.6769491759156055,
+        "appropriateness": 0.82,
+        "utility": 0.5,
+        "surprise": 0.4,
+        "coherence": 0.8,
+        "mechanism_uniqueness": 0.9296328671328671
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "medium",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 6,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": []
+    },
+    {
+      "niche_key": "centroid_5",
+      "id": "5ff37287f7ffbc6c",
+      "title": "Kill-Criteria Triage with a Rotating Red-Team Seat",
+      "description": "Each week one team member holds the red-team seat and is tasked only with trying to break incoming hypotheses. Because everyone knows the seat exists and the review queue is crowded, authors submit rough one-page drafts with kill criteria already written (\"I'd drop this if X is observed\"). Early agreement on a shiny idea is blocked until its kill test has been run or scheduled, so fragile ideas get a real critique round before anyone invests effort, and the survivors form a short, trusted, falsifiable list.",
+      "operator": "isomorphism",
+      "source_domain": "community_ecology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A rotating red-team seat plus an overloaded review queue push authors to pre-state kill criteria, which keeps early consensus from locking in on untested ideas and gives rough hypotheses room to survive critique and become a trusted shortlist.",
+        "causal_structure": [
+          {
+            "cause": "Hypothesis submission surge",
+            "relation": "enables",
+            "effect": "Reviewer attention load"
+          },
+          {
+            "cause": "Reviewer attention load",
+            "relation": "enables",
+            "effect": "Premature consensus lock-in"
+          },
+          {
+            "cause": "Rotating red-team seat",
+            "relation": "enables",
+            "effect": "Pre-stated kill criteria on rough drafts"
+          },
+          {
+            "cause": "Reviewer attention load",
+            "relation": "enables",
+            "effect": "Pre-stated kill criteria on rough drafts"
+          },
+          {
+            "cause": "Pre-stated kill criteria on rough drafts",
+            "relation": "prevents",
+            "effect": "Premature consensus lock-in"
+          },
+          {
+            "cause": "Pre-stated kill criteria on rough drafts",
+            "relation": "enables",
+            "effect": "Rough ideas surviving first critique round"
+          },
+          {
+            "cause": "Rough ideas surviving first critique round",
+            "relation": "enables",
+            "effect": "Trusted falsifiable shortlist"
+          },
+          {
+            "cause": "Rotating red-team seat",
+            "relation": "enables",
+            "effect": "Trusted falsifiable shortlist"
+          },
+          {
+            "cause": "Premature consensus lock-in",
+            "relation": "increases",
+            "effect": "Wasted effort on untested claims"
+          },
+          {
+            "cause": "Pre-stated kill criteria on rough drafts",
+            "relation": "decreases",
+            "effect": "Over-polished drafts"
+          },
+          {
+            "cause": "Over-polished drafts",
+            "relation": "prevents",
+            "effect": "Honest critique"
+          },
+          {
+            "cause": "Rough ideas surviving first critique round",
+            "relation": "depends_on",
+            "effect": "Honest critique"
+          }
+        ],
+        "affected_system": "Research team hypothesis intake, critique, and prioritization workflow (hypothesis triage pipeline)",
+        "payoff": "Trusted falsifiable shortlist"
+      },
+      "mechanism_fingerprint": "4b6e5a07f7dff8af",
+      "wl_hash": "cafba32b0af532aec66d2653ca19874c",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "trophic_cascade_predator_gate",
+        "role_map": {
+          "herbivore_growth": "Hypothesis submission surge",
+          "predator_return": "Rotating red-team seat",
+          "browsing_pressure": "Reviewer attention load",
+          "fear_avoidance_behaviour": "Pre-stated kill criteria on rough drafts",
+          "riparian_overbrowse": "Premature consensus lock-in",
+          "seedling_escape": "Rough ideas surviving first critique round",
+          "riparian_recovery": "Trusted falsifiable shortlist"
+        }
+      },
+      "scores": {
+        "novelty": 0.6703473281297895,
+        "appropriateness": 0.88,
+        "utility": 0.55,
+        "surprise": 0.3,
+        "coherence": 0.85,
+        "mechanism_uniqueness": 0.9238636363636363
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "low",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 4,
+        "branching_factor": 1.2,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": []
+    },
+    {
+      "niche_key": "centroid_6",
+      "id": "bfcf4c73d2cedc67",
+      "title": "Half-Slate Falsifier Cull",
+      "description": "Each week the team adds new hypotheses as rough one-page sketches, each with a pre-registered kill criterion. When a prediction check fails, the active slate is immediately cut to half, so the weakest candidates are dropped instead of reviewed. The people who remain split critique attention evenly, which keeps reviewers from being overloaded and leaves a trusted, falsifiable shortlist.",
+      "operator": "isomorphism",
+      "source_domain": "network_congestion_control",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A failed prediction check triggers a forced halving of the active slate, which prevents reviewer overload while the weekly intake ramp-up continues, so critique attention is spread evenly over a small set of falsifiable survivors.",
+        "causal_structure": [
+          {
+            "cause": "Weekly critique cadence",
+            "relation": "increases",
+            "effect": "Hypothesis intake ramp-up"
+          },
+          {
+            "cause": "Hypothesis intake ramp-up",
+            "relation": "enables",
+            "effect": "Reviewer overload"
+          },
+          {
+            "cause": "Failed prediction check",
+            "relation": "enables",
+            "effect": "Slate cut to half"
+          },
+          {
+            "cause": "Hypothesis intake ramp-up",
+            "relation": "enables",
+            "effect": "Slate cut to half"
+          },
+          {
+            "cause": "Slate cut to half",
+            "relation": "prevents",
+            "effect": "Reviewer overload"
+          },
+          {
+            "cause": "Slate cut to half",
+            "relation": "enables",
+            "effect": "Even critique attention among surviving hypotheses"
+          },
+          {
+            "cause": "Hypothesis intake ramp-up",
+            "relation": "enables",
+            "effect": "Even critique attention among surviving hypotheses"
+          },
+          {
+            "cause": "Even critique attention among surviving hypotheses",
+            "relation": "enables",
+            "effect": "Trusted falsifiable shortlist"
+          },
+          {
+            "cause": "Pre-registered kill criterion",
+            "relation": "enables",
+            "effect": "Failed prediction check"
+          },
+          {
+            "cause": "Rough one-page sketch rule",
+            "relation": "decreases",
+            "effect": "Polish attachment"
+          },
+          {
+            "cause": "Polish attachment",
+            "relation": "decreases",
+            "effect": "Honest critique depth"
+          },
+          {
+            "cause": "Reviewer overload",
+            "relation": "decreases",
+            "effect": "Honest critique depth"
+          }
+        ],
+        "affected_system": "Research team hypothesis intake, critique, and prioritization workflow (hypothesis triage pipeline)",
+        "payoff": "Trusted falsifiable shortlist"
+      },
+      "mechanism_fingerprint": "bbf8943a8332b088",
+      "wl_hash": "90af924469e75b4ff3c0117e73769576",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "aimd_loss_backoff_fairness",
+        "role_map": {
+          "ack_clock": "Weekly critique cadence",
+          "send_rate_growth": "Hypothesis intake ramp-up",
+          "loss_event": "Failed prediction check",
+          "window_halving": "Slate cut to half",
+          "queue_overflow_risk": "Reviewer overload",
+          "flow_share_equalisation": "Even critique attention among surviving hypotheses",
+          "fair_equilibrium": "Trusted falsifiable shortlist"
+        }
+      },
+      "scores": {
+        "novelty": 0.6730595172806058,
+        "appropriateness": 0.55,
+        "utility": 0.4,
+        "surprise": 0.35,
+        "coherence": 0.5,
+        "mechanism_uniqueness": 0.9261363636363636
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "low",
+        "feedback_horizon": "immediate"
+      },
+      "dynamics": {
+        "causal_depth": 4,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 3
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": []
+    },
+    {
+      "niche_key": "centroid_7",
+      "id": "77df3ed89aaa9d10",
+      "title": "Parked Claims, Scheduled Stress-Test, Kept-Empty Slots",
+      "description": "Team members drop rough, unpolished claims into a shared parked-claim ledger, each with written refutation criteria, and nobody champions them yet. At a fixed timeboxed adversarial session, the team stress-tests the parked claims before any early favorite can attract agreement. This keeps consensus lock-in from forming in that window. Surviving claims are stripped of presentation polish and move into agenda slots that were deliberately kept vacant, so what reaches the work queue is a small batch of falsifiable, trusted hypotheses.",
+      "operator": "isomorphism",
+      "source_domain": "fire_ecology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A scheduled adversarial stress-test, fed by pre-written refutation criteria, suppresses early-favorite consensus lock-in during a short window, so surviving rough claims can be stripped of polish and fill vacant agenda slots.",
+        "causal_structure": [
+          {
+            "cause": "timeboxed adversarial critique session",
+            "relation": "enables",
+            "effect": "falsification stress-test round"
+          },
+          {
+            "cause": "written refutation criteria attached to each claim",
+            "relation": "enables",
+            "effect": "falsification stress-test round"
+          },
+          {
+            "cause": "falsification stress-test round",
+            "relation": "enables",
+            "effect": "polish-stripping of a surviving claim"
+          },
+          {
+            "cause": "parked rough-claim ledger",
+            "relation": "enables",
+            "effect": "polish-stripping of a surviving claim"
+          },
+          {
+            "cause": "falsification stress-test round",
+            "relation": "prevents",
+            "effect": "early-favorite consensus lock-in"
+          },
+          {
+            "cause": "falsification stress-test round",
+            "relation": "enables",
+            "effect": "vacant agenda slots with no incumbent idea"
+          },
+          {
+            "cause": "polish-stripping of a surviving claim",
+            "relation": "enables",
+            "effect": "batch of falsifiable, trusted hypotheses entering the work queue"
+          },
+          {
+            "cause": "vacant agenda slots with no incumbent idea",
+            "relation": "enables",
+            "effect": "batch of falsifiable, trusted hypotheses entering the work queue"
+          },
+          {
+            "cause": "early-favorite consensus lock-in",
+            "relation": "decreases",
+            "effect": "candid reviewer dissent"
+          },
+          {
+            "cause": "polish-stripping of a surviving claim",
+            "relation": "increases",
+            "effect": "candid reviewer dissent"
+          },
+          {
+            "cause": "parked rough-claim ledger",
+            "relation": "increases",
+            "effect": "review backlog"
+          },
+          {
+            "cause": "review backlog",
+            "relation": "decreases",
+            "effect": "vacant agenda slots with no incumbent idea"
+          }
+        ],
+        "affected_system": "Research team hypothesis intake, critique, and prioritization workflow (hypothesis triage pipeline)",
+        "payoff": "batch of falsifiable, trusted hypotheses entering the work queue"
+      },
+      "mechanism_fingerprint": "ed8e00049e94535f",
+      "wl_hash": "a8927281dc85220051149617e9018a5a",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "serotiny_fire_gated_release",
+        "role_map": {
+          "canopy_seed_store": "parked rough-claim ledger",
+          "heat_pulse": "timeboxed adversarial critique session",
+          "understory_fuel": "written refutation criteria attached to each claim",
+          "ground_combustion": "falsification stress-test round",
+          "resin_seal_melt": "polish-stripping of a surviving claim",
+          "shade_competitor_growth": "early-favorite consensus lock-in",
+          "open_seedbed": "vacant agenda slots with no incumbent idea",
+          "regeneration_flush": "batch of falsifiable, trusted hypotheses entering the work queue"
+        }
+      },
+      "scores": {
+        "novelty": 0.6720210573765191,
+        "appropriateness": 0.82,
+        "utility": 0.6,
+        "surprise": 0.42,
+        "coherence": 0.8,
+        "mechanism_uniqueness": 0.9214476699770817
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "medium",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 3,
+        "branching_factor": 1.2,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "57 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_early_favorite_consensus_lock_in",
+            "satisfy_review_backlog",
+            "satisfy_falsification_stress_test_round",
+            "satisfy_polish_stripping_of_a_surviving_claim"
+          ]
+        }
+      ]
+    },
+    {
+      "niche_key": "centroid_8",
+      "id": "54c6a028c5680eb7",
+      "title": "Rough-Draft Ladder: Early Demotion of Untestable Claims",
+      "description": "Every hypothesis enters as a rough one-paragraph draft with a stated refutation test. Teammates probe each draft for falsifiability during a short window before anyone has invested in polishing it. Claims that cannot name a failing observation are moved down a tiered ladder (flag, then pause, then archive), so the author never gets to build a polished deck around an untestable idea. Authors learn that posting rough, testable drafts is the safe and respected move.",
+      "operator": "isomorphism",
+      "source_domain": "institutional_economics",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A tiered demotion ladder, triggered by teammates' falsifiability probing, stops authors from polishing and championing untestable ideas during the early window, so rough testable drafts become the habit and the shortlist stays lean and trusted.",
+        "causal_structure": [
+          {
+            "cause": "Inflow of new hypotheses each week",
+            "relation": "enables",
+            "effect": "Peer teammates reading each claim for refutation tests"
+          },
+          {
+            "cause": "Inflow of new hypotheses each week",
+            "relation": "enables",
+            "effect": "Urge to polish and champion a pet idea before critique"
+          },
+          {
+            "cause": "Tiered escalation ladder for vague claims",
+            "relation": "enables",
+            "effect": "Stepwise demotion of untestable claims"
+          },
+          {
+            "cause": "Peer teammates reading each claim for refutation tests",
+            "relation": "enables",
+            "effect": "Stepwise demotion of untestable claims"
+          },
+          {
+            "cause": "Stepwise demotion of untestable claims",
+            "relation": "prevents",
+            "effect": "Urge to polish and champion a pet idea before critique"
+          },
+          {
+            "cause": "Stepwise demotion of untestable claims",
+            "relation": "enables",
+            "effect": "Habit of posting rough falsifiable drafts"
+          },
+          {
+            "cause": "Habit of posting rough falsifiable drafts",
+            "relation": "enables",
+            "effect": "Trusted, lean shortlist of tested hypotheses"
+          },
+          {
+            "cause": "Peer teammates reading each claim for refutation tests",
+            "relation": "enables",
+            "effect": "Trusted, lean shortlist of tested hypotheses"
+          },
+          {
+            "cause": "Urge to polish and champion a pet idea before critique",
+            "relation": "increases",
+            "effect": "Review queue length"
+          },
+          {
+            "cause": "Review queue length",
+            "relation": "decreases",
+            "effect": "Peer teammates reading each claim for refutation tests"
+          },
+          {
+            "cause": "Habit of posting rough falsifiable drafts",
+            "relation": "decreases",
+            "effect": "Urge to polish and champion a pet idea before critique"
+          }
+        ],
+        "affected_system": "Research team hypothesis intake, critique, and prioritization workflow (hypothesis triage pipeline)",
+        "payoff": "Trusted, lean shortlist of tested hypotheses"
+      },
+      "mechanism_fingerprint": "1e52cd04bed34ce1",
+      "wl_hash": "004573fc9add0a7bf911d68da6c5538f",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "ostrom_graduated_sanction_commons",
+        "role_map": {
+          "harvest_pressure": "Inflow of new hypotheses each week",
+          "monitoring_by_users": "Peer teammates reading each claim for refutation tests",
+          "graduated_sanction_rule": "Tiered escalation ladder for vague claims",
+          "sanction_application": "Stepwise demotion of untestable claims",
+          "defection_temptation": "Urge to polish and champion a pet idea before critique",
+          "compliance_norm": "Habit of posting rough falsifiable drafts",
+          "commons_persistence": "Trusted, lean shortlist of tested hypotheses"
+        }
+      },
+      "scores": {
+        "novelty": 0.6773444481768722,
+        "appropriateness": 0.82,
+        "utility": 0.5,
+        "surprise": 0.35,
+        "coherence": 0.84,
+        "mechanism_uniqueness": 0.9302617926410727
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "low",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 2,
+        "branching_factor": 1.375,
+        "loop_density": 0.545455,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "13 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_urge_to_polish_and_champion_a_pet_idea_before_critique",
+            "satisfy_review_queue_length"
+          ]
+        }
+      ]
+    },
+    {
+      "niche_key": "centroid_9",
+      "id": "34fb6830c57a6161",
+      "title": "Kill-Test Gate: Earned Hold Before Endorsement",
+      "description": "When someone pitches an idea, a reviewer asks 'what result would prove this wrong?'. If the answer is vague, the idea is automatically held back from the shared backlog, so excited teammates cannot rally around it yet. During the hold, the author gets a time-boxed rough-draft sandbox where peers help turn the claim into a concrete kill-test and a pre-registered drop rule. Ideas then either graduate as falsifiable or are retired cheaply, leaving a small, trusted portfolio.",
+      "operator": "isomorphism",
+      "source_domain": "cell_biology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A vague claim triggers a falsifiability question that earns a hold on team-wide endorsement, and that hold buys a rough-draft sandbox in which the idea is sharpened into a testable claim or retired.",
+        "causal_structure": [
+          {
+            "cause": "Vague or unfalsifiable claim surfaced in a pitch",
+            "relation": "enables",
+            "effect": "Kill-criterion question: 'what result would prove this wrong?'"
+          },
+          {
+            "cause": "Kill-criterion question: 'what result would prove this wrong?'",
+            "relation": "enables",
+            "effect": "Mandatory hold on promotion to the shared backlog"
+          },
+          {
+            "cause": "Advocacy momentum and enthusiasm for a shiny idea",
+            "relation": "enables",
+            "effect": "Rush to team-wide endorsement and project kickoff"
+          },
+          {
+            "cause": "Mandatory hold on promotion to the shared backlog",
+            "relation": "prevents",
+            "effect": "Rush to team-wide endorsement and project kickoff"
+          },
+          {
+            "cause": "Mandatory hold on promotion to the shared backlog",
+            "relation": "enables",
+            "effect": "Time-boxed rough-draft sandbox for sharpening the claim"
+          },
+          {
+            "cause": "Time-boxed rough-draft sandbox for sharpening the claim",
+            "relation": "enables",
+            "effect": "Pre-registered drop rule that retires failing ideas"
+          },
+          {
+            "cause": "Pre-registered drop rule that retires failing ideas",
+            "relation": "enables",
+            "effect": "Lean portfolio of trusted, falsifiable hypotheses"
+          },
+          {
+            "cause": "Time-boxed rough-draft sandbox for sharpening the claim",
+            "relation": "enables",
+            "effect": "Lean portfolio of trusted, falsifiable hypotheses"
+          },
+          {
+            "cause": "Time-boxed rough-draft sandbox for sharpening the claim",
+            "relation": "decreases",
+            "effect": "Polish pressure on authors"
+          },
+          {
+            "cause": "Polish pressure on authors",
+            "relation": "prevents",
+            "effect": "Honest peer critique"
+          },
+          {
+            "cause": "Rush to team-wide endorsement and project kickoff",
+            "relation": "increases",
+            "effect": "Review load"
+          },
+          {
+            "cause": "Pre-registered drop rule that retires failing ideas",
+            "relation": "decreases",
+            "effect": "Review load"
+          }
+        ],
+        "affected_system": "Research team hypothesis intake, critique, and prioritization workflow (hypothesis triage pipeline)",
+        "payoff": "Lean portfolio of trusted, falsifiable hypotheses"
+      },
+      "mechanism_fingerprint": "ffebccf988916ffc",
+      "wl_hash": "85a99414c319f419802285b63c35fc81",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "p53_damage_checkpoint_arrest",
+        "role_map": {
+          "genotoxic_lesion": "Vague or unfalsifiable claim surfaced in a pitch",
+          "growth_mitogen": "Advocacy momentum and enthusiasm for a shiny idea",
+          "sensor_kinase": "Kill-criterion question: 'what result would prove this wrong?'",
+          "checkpoint_effector": "Mandatory hold on promotion to the shared backlog",
+          "division_drive": "Rush to team-wide endorsement and project kickoff",
+          "repair_window": "Time-boxed rough-draft sandbox for sharpening the claim",
+          "apoptotic_commitment": "Pre-registered drop rule that retires failing ideas",
+          "tissue_integrity": "Lean portfolio of trusted, falsifiable hypotheses"
+        }
+      },
+      "scores": {
+        "novelty": 0.6717451234615814,
+        "appropriateness": 0.82,
+        "utility": 0.55,
+        "surprise": 0.4,
+        "coherence": 0.84,
+        "mechanism_uniqueness": 0.9209936173883043
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "medium",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 4
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": []
+    }
+  ],
+  "admitted": [
+    {
+      "niche_key": "centroid_0",
+      "id": "41524ba2e92e13dd",
+      "title": "The Weekly Cull Court",
+      "description": "Every week a fixed critique slot opens, and anyone can drop a rough one-paragraph hypothesis with a pre-registered prediction into the open pool. When the pool grows past its cap, or a prediction is refuted, the team must retire the weakest half of the open hypotheses on the spot. People experience this as a brisk, low-stakes sorting session. Ideas are cheap to submit and cheap to lose, so critique stays honest, and the survivors each get real scrutiny and end up as a short, falsifiable list the team trusts.",
+      "operator": "isomorphism",
+      "source_domain": "network_congestion_control",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A scheduled critique slot lets open hypotheses accumulate, and a forced retirement of the weakest half, triggered by refuted predictions or a full pool, blocks reviewer overload and over-polishing so the remaining hypotheses get balanced attention and end up as a trusted, falsifiable shortlist.",
+        "causal_structure": [
+          {
+            "cause": "Fixed weekly critique slot",
+            "relation": "increases",
+            "effect": "Rising count of open hypotheses"
+          },
+          {
+            "cause": "Rising count of open hypotheses",
+            "relation": "enables",
+            "effect": "Reviewer overload and over-polished pileup"
+          },
+          {
+            "cause": "Pre-registered prediction refuted",
+            "relation": "enables",
+            "effect": "Forced retirement of the weakest half of open hypotheses"
+          },
+          {
+            "cause": "Rising count of open hypotheses",
+            "relation": "enables",
+            "effect": "Forced retirement of the weakest half of open hypotheses"
+          },
+          {
+            "cause": "Forced retirement of the weakest half of open hypotheses",
+            "relation": "prevents",
+            "effect": "Reviewer overload and over-polished pileup"
+          },
+          {
+            "cause": "Forced retirement of the weakest half of open hypotheses",
+            "relation": "enables",
+            "effect": "Balanced critique attention across surviving hypotheses"
+          },
+          {
+            "cause": "Rising count of open hypotheses",
+            "relation": "enables",
+            "effect": "Balanced critique attention across surviving hypotheses"
+          },
+          {
+            "cause": "Balanced critique attention across surviving hypotheses",
+            "relation": "enables",
+            "effect": "Trusted, falsifiable shortlist"
+          },
+          {
+            "cause": "Rough sketch submission norm",
+            "relation": "decreases",
+            "effect": "Reviewer overload and over-polished pileup"
+          },
+          {
+            "cause": "Pre-registered prediction refuted",
+            "relation": "enables",
+            "effect": "Honest critique candor"
+          },
+          {
+            "cause": "Trusted, falsifiable shortlist",
+            "relation": "enables",
+            "effect": "Reuse of results in later projects"
+          }
+        ],
+        "affected_system": "Research team hypothesis intake, critique, and prioritization workflow (hypothesis triage pipeline)",
+        "payoff": "Trusted, falsifiable shortlist"
+      },
+      "mechanism_fingerprint": "608b221e03232739",
+      "wl_hash": "f19de82335e0c2965f76c50650510528",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "aimd_loss_backoff_fairness",
+        "role_map": {
+          "ack_clock": "Fixed weekly critique slot",
+          "send_rate_growth": "Rising count of open hypotheses",
+          "loss_event": "Pre-registered prediction refuted",
+          "window_halving": "Forced retirement of the weakest half of open hypotheses",
+          "queue_overflow_risk": "Reviewer overload and over-polished pileup",
+          "flow_share_equalisation": "Balanced critique attention across surviving hypotheses",
+          "fair_equilibrium": "Trusted, falsifiable shortlist"
+        }
+      },
+      "scores": {
+        "novelty": 0.6675111771958112,
+        "appropriateness": 0.74,
+        "utility": 0.5,
+        "surprise": 0.35,
+        "coherence": 0.68,
+        "mechanism_uniqueness": 0.9242157490396927
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "low",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.1,
+        "loop_density": 0.0,
+        "payoff_path_length": 3
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_1",
+      "id": "328835f26302603a",
+      "title": "Rough-Sketch Refutation Sprint",
+      "description": "Team members drop half-formed idea sketches onto a shared intake board, and each week a time-boxed sprint forces every sketch to name a cheap test that could prove it wrong. Sketches with no refutation test are bounced without debate, and the rest get a quick kill-or-keep verdict from two rotating critics. Because the board is cleared on a fixed rhythm, nobody drowns in review, and only tested ideas reach the funded queue.",
+      "operator": "isomorphism",
+      "source_domain": "runtime_memory_management",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A fixed-rhythm refutation sprint keeps the intake board from overwhelming reviewers by refusing to carry untestable or untested ideas forward, so only battle-tested ideas become reusable results.",
+        "causal_structure": [
+          {
+            "cause": "daily influx of rough idea sketches from team members",
+            "relation": "enables",
+            "effect": "growing pile of unreviewed sketches on the intake board"
+          },
+          {
+            "cause": "growing pile of unreviewed sketches on the intake board",
+            "relation": "enables",
+            "effect": "reviewer overload and critique backlog"
+          },
+          {
+            "cause": "shared expectation that most fresh ideas fail at first contact with a cheap test",
+            "relation": "enables",
+            "effect": "weekly time-boxed refutation sprint with kill-or-keep verdicts"
+          },
+          {
+            "cause": "growing pile of unreviewed sketches on the intake board",
+            "relation": "enables",
+            "effect": "weekly time-boxed refutation sprint with kill-or-keep verdicts"
+          },
+          {
+            "cause": "weekly time-boxed refutation sprint with kill-or-keep verdicts",
+            "relation": "prevents",
+            "effect": "reviewer overload and critique backlog"
+          },
+          {
+            "cause": "weekly time-boxed refutation sprint with kill-or-keep verdicts",
+            "relation": "enables",
+            "effect": "advancement of tested ideas into the funded research queue"
+          },
+          {
+            "cause": "advancement of tested ideas into the funded research queue",
+            "relation": "enables",
+            "effect": "steady flow of trusted, reusable results"
+          },
+          {
+            "cause": "daily influx of rough idea sketches from team members",
+            "relation": "enables",
+            "effect": "steady flow of trusted, reusable results"
+          },
+          {
+            "cause": "rough sketch format",
+            "relation": "enables",
+            "effect": "weekly time-boxed refutation sprint with kill-or-keep verdicts"
+          },
+          {
+            "cause": "mandatory named refutation test",
+            "relation": "prevents",
+            "effect": "untestable claims entering the funded research queue"
+          },
+          {
+            "cause": "reviewer overload and critique backlog",
+            "relation": "decreases",
+            "effect": "steady flow of trusted, reusable results"
+          },
+          {
+            "cause": "steady flow of trusted, reusable results",
+            "relation": "depends_on",
+            "effect": "mandatory named refutation test"
+          }
+        ],
+        "affected_system": "Research team hypothesis intake, critique, and prioritization workflow (hypothesis triage pipeline)",
+        "payoff": "steady flow of trusted, reusable results"
+      },
+      "mechanism_fingerprint": "3f6a9801f0a4b784",
+      "wl_hash": "6a1dbcd2bb7c276c6ec9733daf7d8374",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "generational_gc_reclaim_gate",
+        "role_map": {
+          "allocation_stream": "daily influx of rough idea sketches from team members",
+          "weak_generational_hypothesis": "shared expectation that most fresh ideas fail at first contact with a cheap test",
+          "young_space_fill": "growing pile of unreviewed sketches on the intake board",
+          "minor_collection": "weekly time-boxed refutation sprint with kill-or-keep verdicts",
+          "heap_exhaustion_risk": "reviewer overload and critique backlog",
+          "survivor_promotion": "advancement of tested ideas into the funded research queue",
+          "stable_throughput": "steady flow of trusted, reusable results"
+        }
+      },
+      "scores": {
+        "novelty": 0.6823643278155221,
+        "appropriateness": 0.82,
+        "utility": 0.5,
+        "surprise": 0.28,
+        "coherence": 0.85,
+        "mechanism_uniqueness": 0.9223908338038773
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "low",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 6,
+        "branching_factor": 1.2,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "37 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_untestable_claims_entering_the_funded_research_queue",
+            "satisfy_growing_pile_of_unreviewed_sketches_on_the_intake_board",
+            "satisfy_reviewer_overload_and_critique_backlog",
+            "satisfy_weekly_time_boxed_refutation_sprint_with_kill_or_keep_verdicts",
+            "satisfy_advancement_of_tested_ideas_into_the_funded_research_queue"
+          ]
+        }
+      ],
+      "is_niche_elite": true
+    },
+    {
+      "niche_key": "centroid_0",
+      "id": "52c689b983df72bf",
+      "title": "Critique Hold Before Polish",
+      "description": "When two rival ideas enter intake, the first owner posts only a rough kill-test sketch, and that sketch triggers a mandatory critique hold on the rival idea. During the hold, the second owner is not allowed to circulate a polished pitch, so the team critiques the raw idea honestly. After the hold, the queue splits into 'advance' and 'park', and the team ends up with a short ranked list of falsifiable bets, each with a sized test budget.",
+      "operator": "isomorphism",
+      "source_domain": "developmental_biology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A rough, falsifiable test posted for one idea triggers a critique hold that keeps the rival idea's polished pitch from circulating, which forces an advance-versus-park split and yields a small ranked set of falsifiable bets.",
+        "causal_structure": [
+          {
+            "cause": "Owner A's early enthusiasm",
+            "relation": "increases",
+            "effect": "Rough kill-test sketch for idea A"
+          },
+          {
+            "cause": "Rough kill-test sketch for idea A",
+            "relation": "enables",
+            "effect": "Mandatory critique hold on idea B"
+          },
+          {
+            "cause": "Owner B's early enthusiasm",
+            "relation": "enables",
+            "effect": "Polished pitch deck for idea B"
+          },
+          {
+            "cause": "Mandatory critique hold on idea B",
+            "relation": "prevents",
+            "effect": "Polished pitch deck for idea B"
+          },
+          {
+            "cause": "Rough kill-test sketch for idea A",
+            "relation": "enables",
+            "effect": "Advance-versus-park queue split"
+          },
+          {
+            "cause": "Mandatory critique hold on idea B",
+            "relation": "enables",
+            "effect": "Advance-versus-park queue split"
+          },
+          {
+            "cause": "Advance-versus-park queue split",
+            "relation": "enables",
+            "effect": "Ranked shortlist of falsifiable bets with sized test budgets"
+          },
+          {
+            "cause": "Polished pitch deck for idea B",
+            "relation": "prevents",
+            "effect": "Candid critique in review"
+          },
+          {
+            "cause": "Rough kill-test sketch for idea A",
+            "relation": "decreases",
+            "effect": "Unfalsifiable claims in circulation"
+          },
+          {
+            "cause": "Mandatory critique hold on idea B",
+            "relation": "decreases",
+            "effect": "Premature consensus"
+          },
+          {
+            "cause": "Ranked shortlist of falsifiable bets with sized test budgets",
+            "relation": "decreases",
+            "effect": "Review load per meeting"
+          }
+        ],
+        "affected_system": "Research team hypothesis intake, critique, and prioritization workflow (hypothesis triage pipeline)",
+        "payoff": "Ranked shortlist of falsifiable bets with sized test budgets"
+      },
+      "mechanism_fingerprint": "28294ffc424561fb",
+      "wl_hash": "d4ad6d1bc1508b8fcab3a93a18532f40",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "notch_lateral_inhibition_pattern",
+        "role_map": {
+          "proneural_bias_a": "Owner A's early enthusiasm",
+          "proneural_bias_b": "Owner B's early enthusiasm",
+          "delta_ligand_a": "Rough kill-test sketch for idea A",
+          "notch_signal_b": "Mandatory critique hold on idea B",
+          "delta_ligand_b": "Polished pitch deck for idea B",
+          "fate_divergence": "Advance-versus-park queue split",
+          "fine_grained_pattern": "Ranked shortlist of falsifiable bets with sized test budgets"
+        }
+      },
+      "scores": {
+        "novelty": 0.666096511557758,
+        "appropriateness": 0.68,
+        "utility": 0.5,
+        "surprise": 0.45,
+        "coherence": 0.55,
+        "mechanism_uniqueness": 0.9168244949494949
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "low",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.0,
+        "loop_density": 0.0,
+        "payoff_path_length": 3
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_2",
+      "id": "560da98f2c255e0d",
+      "title": "Kill-Criterion Gate with Escalating Demotion",
+      "description": "Every pitched hypothesis must arrive as a rough one-liner with a stated refutation test, and teammates run quick kill-test audits on it in the weekly session. A claim with no way to be proven wrong is first flagged, then paused, then archived, so the person pitching sees it drop out of the queue and stops padding pitches with polish. The surviving backlog stays short, and every item in it has survived a real attempt to break it.",
+      "operator": "isomorphism",
+      "source_domain": "institutional_economics",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A tiered demotion ladder, triggered when peer kill-test audits catch a claim with no refutation test, removes unfalsifiable and over-polished pitches from the queue during the weekly intake window, which suppresses the urge to pad pitches, builds a habit of stating refutation tests up front, and leaves a lean, trusted backlog.",
+        "causal_structure": [
+          {
+            "cause": "Weekly influx of new hypotheses",
+            "relation": "enables",
+            "effect": "Peer kill-test audits of each pitched hypothesis"
+          },
+          {
+            "cause": "Weekly influx of new hypotheses",
+            "relation": "enables",
+            "effect": "Urge to pad a pitch with unfalsifiable polish"
+          },
+          {
+            "cause": "Escalating demotion ladder: flag, pause, archive",
+            "relation": "enables",
+            "effect": "Actual demotion of a vague claim out of the queue"
+          },
+          {
+            "cause": "Peer kill-test audits of each pitched hypothesis",
+            "relation": "enables",
+            "effect": "Actual demotion of a vague claim out of the queue"
+          },
+          {
+            "cause": "Actual demotion of a vague claim out of the queue",
+            "relation": "prevents",
+            "effect": "Urge to pad a pitch with unfalsifiable polish"
+          },
+          {
+            "cause": "Actual demotion of a vague claim out of the queue",
+            "relation": "enables",
+            "effect": "Shared habit of stating a refutation test up front"
+          },
+          {
+            "cause": "Shared habit of stating a refutation test up front",
+            "relation": "enables",
+            "effect": "Trustworthy lean backlog of tested hypotheses"
+          },
+          {
+            "cause": "Peer kill-test audits of each pitched hypothesis",
+            "relation": "enables",
+            "effect": "Trustworthy lean backlog of tested hypotheses"
+          },
+          {
+            "cause": "Weekly influx of new hypotheses",
+            "relation": "increases",
+            "effect": "Reviewer load per week"
+          },
+          {
+            "cause": "Actual demotion of a vague claim out of the queue",
+            "relation": "decreases",
+            "effect": "Reviewer load per week"
+          },
+          {
+            "cause": "Urge to pad a pitch with unfalsifiable polish",
+            "relation": "decreases",
+            "effect": "Candid critique quality"
+          },
+          {
+            "cause": "Candid critique quality",
+            "relation": "enables",
+            "effect": "Peer kill-test audits of each pitched hypothesis"
+          }
+        ],
+        "affected_system": "Research team hypothesis intake, critique, and prioritization workflow (hypothesis triage pipeline)",
+        "payoff": "Trustworthy lean backlog of tested hypotheses"
+      },
+      "mechanism_fingerprint": "cc7695a9ec92254a",
+      "wl_hash": "311322caf7f0add9f27643a2bb5fa278",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "ostrom_graduated_sanction_commons",
+        "role_map": {
+          "harvest_pressure": "Weekly influx of new hypotheses",
+          "monitoring_by_users": "Peer kill-test audits of each pitched hypothesis",
+          "graduated_sanction_rule": "Escalating demotion ladder: flag, pause, archive",
+          "sanction_application": "Actual demotion of a vague claim out of the queue",
+          "defection_temptation": "Urge to pad a pitch with unfalsifiable polish",
+          "compliance_norm": "Shared habit of stating a refutation test up front",
+          "commons_persistence": "Trustworthy lean backlog of tested hypotheses"
+        }
+      },
+      "scores": {
+        "novelty": 0.66780718779303,
+        "appropriateness": 0.82,
+        "utility": 0.5,
+        "surprise": 0.3,
+        "coherence": 0.8,
+        "mechanism_uniqueness": 0.9205393487109905
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "low",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 3,
+        "branching_factor": 1.333333,
+        "loop_density": 0.333333,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "32 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_urge_to_pad_a_pitch_with_unfalsifiable_polish",
+            "satisfy_reviewer_load_per_week"
+          ]
+        }
+      ],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_3",
+      "id": "f8dce9fd10521446",
+      "title": "Kill-Criterion Gate: Earned Pause Before Experiments",
+      "description": "When someone pitches an idea, a rotating reader asks what result would refute it, and a vague answer earns a hold stamp that keeps the idea out of the experiment queue. During the hold, the proposer has a protected period to sharpen the claim using rough sketches rather than polished decks, ending in a written kill criterion. Ideas that later meet their pre-agreed kill test are retired without blame, so the shared results ledger stays lean and trusted.",
+      "operator": "isomorphism",
+      "source_domain": "cell_biology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A hold stamp, earned by an unfalsifiable-sounding claim, blocks the rush to launch experiments and gives the idea a protected rough-sketch period in which a kill criterion is written, so only testable ideas reach the queue and failed ones are retired by prior agreement.",
+        "causal_structure": [
+          {
+            "cause": "Vague untestable claim raised at intake",
+            "relation": "enables",
+            "effect": "Rotating refutation-question reader"
+          },
+          {
+            "cause": "Rotating refutation-question reader",
+            "relation": "enables",
+            "effect": "Hold stamp pending written kill criterion"
+          },
+          {
+            "cause": "Champion excitement for a new idea",
+            "relation": "enables",
+            "effect": "Rush to launch experiments and fork variants"
+          },
+          {
+            "cause": "Hold stamp pending written kill criterion",
+            "relation": "prevents",
+            "effect": "Rush to launch experiments and fork variants"
+          },
+          {
+            "cause": "Hold stamp pending written kill criterion",
+            "relation": "enables",
+            "effect": "Protected rough-sketch revision period"
+          },
+          {
+            "cause": "Protected rough-sketch revision period",
+            "relation": "enables",
+            "effect": "Pre-agreed retirement of claims that fail their kill test"
+          },
+          {
+            "cause": "Pre-agreed retirement of claims that fail their kill test",
+            "relation": "enables",
+            "effect": "Trusted lean results ledger"
+          },
+          {
+            "cause": "Protected rough-sketch revision period",
+            "relation": "enables",
+            "effect": "Trusted lean results ledger"
+          },
+          {
+            "cause": "Hold stamp pending written kill criterion",
+            "relation": "decreases",
+            "effect": "Review queue load"
+          },
+          {
+            "cause": "Pre-agreed retirement of claims that fail their kill test",
+            "relation": "decreases",
+            "effect": "Review queue load"
+          },
+          {
+            "cause": "Protected rough-sketch revision period",
+            "relation": "prevents",
+            "effect": "Over-polished pitch decks"
+          },
+          {
+            "cause": "Protected rough-sketch revision period",
+            "relation": "enables",
+            "effect": "Honest critique"
+          }
+        ],
+        "affected_system": "Research team hypothesis intake, critique, and prioritization workflow (hypothesis triage pipeline)",
+        "payoff": "Trusted lean results ledger"
+      },
+      "mechanism_fingerprint": "2635adbc89010f57",
+      "wl_hash": "668cd121a4347e67ab3a9e1a67bac847",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "p53_damage_checkpoint_arrest",
+        "role_map": {
+          "genotoxic_lesion": "Vague untestable claim raised at intake",
+          "growth_mitogen": "Champion excitement for a new idea",
+          "sensor_kinase": "Rotating refutation-question reader",
+          "checkpoint_effector": "Hold stamp pending written kill criterion",
+          "division_drive": "Rush to launch experiments and fork variants",
+          "repair_window": "Protected rough-sketch revision period",
+          "apoptotic_commitment": "Pre-agreed retirement of claims that fail their kill test",
+          "tissue_integrity": "Trusted lean results ledger"
+        }
+      },
+      "scores": {
+        "novelty": 0.6729637856108721,
+        "appropriateness": 0.88,
+        "utility": 0.52,
+        "surprise": 0.38,
+        "coherence": 0.85,
+        "mechanism_uniqueness": 0.9248910336239103
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "low",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 4
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": true
+    },
+    {
+      "niche_key": "centroid_4",
+      "id": "5c172fd2a117a998",
+      "title": "Rough Posts, Forced Challenge Rounds",
+      "description": "Anyone posts a rough, unpolished idea with a kill condition to a shared board, so unreviewed claims accumulate. When the backlog passes the review quota, the team runs a short kill-or-sharpen challenge round on the oldest claims. That round is deliberately scheduled to happen before any favored idea can harden into consensus. Falsified or retired claims go into an open archive instead of being quietly dropped, so the team keeps a flow of testable, reusable findings and review load stays bounded.",
+      "operator": "isomorphism",
+      "source_domain": "statistical_physics",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Each rough idea adds to the unreviewed backlog until a review quota forces a kill-or-sharpen challenge round, which prevents early consensus lock-in and sends falsified claims to an open archive, keeping findings testable and the load bounded.",
+        "causal_structure": [
+          {
+            "cause": "rough idea posted",
+            "relation": "increases",
+            "effect": "unreviewed claim backlog"
+          },
+          {
+            "cause": "unreviewed claim backlog",
+            "relation": "enables",
+            "effect": "early consensus lock-in"
+          },
+          {
+            "cause": "unreviewed claim backlog",
+            "relation": "enables",
+            "effect": "queue passes review quota"
+          },
+          {
+            "cause": "queue passes review quota",
+            "relation": "enables",
+            "effect": "rapid kill-or-sharpen challenge round"
+          },
+          {
+            "cause": "rapid kill-or-sharpen challenge round",
+            "relation": "prevents",
+            "effect": "early consensus lock-in"
+          },
+          {
+            "cause": "rapid kill-or-sharpen challenge round",
+            "relation": "enables",
+            "effect": "falsified claims filed in open archive"
+          },
+          {
+            "cause": "falsified claims filed in open archive",
+            "relation": "enables",
+            "effect": "healthy flow of testable findings"
+          },
+          {
+            "cause": "rough idea posted",
+            "relation": "enables",
+            "effect": "healthy flow of testable findings"
+          },
+          {
+            "cause": "kill condition written upfront",
+            "relation": "enables",
+            "effect": "rapid kill-or-sharpen challenge round"
+          },
+          {
+            "cause": "rough idea posted",
+            "relation": "prevents",
+            "effect": "over-polished write-up"
+          },
+          {
+            "cause": "falsified claims filed in open archive",
+            "relation": "increases",
+            "effect": "reuse of past results"
+          },
+          {
+            "cause": "early consensus lock-in",
+            "relation": "decreases",
+            "effect": "trust in results"
+          }
+        ],
+        "affected_system": "Research team hypothesis intake, critique, and prioritization workflow (hypothesis triage pipeline)",
+        "payoff": "healthy flow of testable findings"
+      },
+      "mechanism_fingerprint": "a1371bc44289500b",
+      "wl_hash": "5907ba9e7a38144bac2f59483fd036b1",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "sandpile_toppling_criticality",
+        "role_map": {
+          "grain_drop": "rough idea posted",
+          "slope_buildup": "unreviewed claim backlog",
+          "threshold_exceedance": "queue passes review quota",
+          "toppling_cascade": "rapid kill-or-sharpen challenge round",
+          "runaway_slope": "early consensus lock-in",
+          "dissipation_at_boundary": "falsified claims filed in open archive",
+          "critical_steady_state": "healthy flow of testable findings"
+        }
+      },
+      "scores": {
+        "novelty": 0.671829138736898,
+        "appropriateness": 0.8,
+        "utility": 0.55,
+        "surprise": 0.38,
+        "coherence": 0.72,
+        "mechanism_uniqueness": 0.9255968296409472
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "medium",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_5",
+      "id": "b6c14d556dba9322",
+      "title": "Teardown Window Before Consensus",
+      "description": "Team members drop rough one-paragraph idea notes into a shared pile, and a hypothesis backlog holds pre-registered entries, each with kill criteria written in advance. At a fixed, time-boxed adversarial session, the team tears down the rough notes. This stops any favored idea from hardening into consensus, clears the agenda slots, and releases backlog entries with their falsification tests attached. The person experiences a short, intense critique window after which only a small cohort of testable, ranked hypotheses moves on to experiments, so review load stays low.",
+      "operator": "isomorphism",
+      "source_domain": "fire_ecology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A deadline-bound adversarial teardown of rough ideas suppresses premature consensus around a favorite during the window before polish sets in, which clears the agenda and exposes backlog entries' falsification tests so that a small cohort of testable, ranked hypotheses advances.",
+        "causal_structure": [
+          {
+            "cause": "Time-boxed adversarial critique session",
+            "relation": "enables",
+            "effect": "Structured teardown round"
+          },
+          {
+            "cause": "Raw one-paragraph rough idea notes",
+            "relation": "enables",
+            "effect": "Structured teardown round"
+          },
+          {
+            "cause": "Structured teardown round",
+            "relation": "enables",
+            "effect": "Backlog entries released with falsification test attached"
+          },
+          {
+            "cause": "Dormant hypothesis backlog with pre-committed kill criteria",
+            "relation": "enables",
+            "effect": "Backlog entries released with falsification test attached"
+          },
+          {
+            "cause": "Structured teardown round",
+            "relation": "prevents",
+            "effect": "Premature consensus around a favored idea"
+          },
+          {
+            "cause": "Structured teardown round",
+            "relation": "enables",
+            "effect": "Cleared agenda slots"
+          },
+          {
+            "cause": "Backlog entries released with falsification test attached",
+            "relation": "enables",
+            "effect": "Cohort of testable ranked hypotheses entering experiments"
+          },
+          {
+            "cause": "Cleared agenda slots",
+            "relation": "enables",
+            "effect": "Cohort of testable ranked hypotheses entering experiments"
+          },
+          {
+            "cause": "Premature consensus around a favored idea",
+            "relation": "decreases",
+            "effect": "Candid dissent"
+          },
+          {
+            "cause": "Raw one-paragraph rough idea notes",
+            "relation": "increases",
+            "effect": "Candid dissent"
+          },
+          {
+            "cause": "Cleared agenda slots",
+            "relation": "decreases",
+            "effect": "Review queue load"
+          },
+          {
+            "cause": "Backlog entries released with falsification test attached",
+            "relation": "increases",
+            "effect": "Trust in results"
+          }
+        ],
+        "affected_system": "Research team hypothesis intake, critique, and prioritization workflow (hypothesis triage pipeline)",
+        "payoff": "Cohort of testable ranked hypotheses entering experiments"
+      },
+      "mechanism_fingerprint": "394cb2d742acca08",
+      "wl_hash": "a887e943db9204d15c19d059f1e2b8d5",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "serotiny_fire_gated_release",
+        "role_map": {
+          "canopy_seed_store": "Dormant hypothesis backlog with pre-committed kill criteria",
+          "heat_pulse": "Time-boxed adversarial critique session",
+          "understory_fuel": "Raw one-paragraph rough idea notes",
+          "ground_combustion": "Structured teardown round",
+          "resin_seal_melt": "Backlog entries released with falsification test attached",
+          "shade_competitor_growth": "Premature consensus around a favored idea",
+          "open_seedbed": "Cleared agenda slots",
+          "regeneration_flush": "Cohort of testable ranked hypotheses entering experiments"
+        }
+      },
+      "scores": {
+        "novelty": 0.6642779535121863,
+        "appropriateness": 0.72,
+        "utility": 0.45,
+        "surprise": 0.28,
+        "coherence": 0.6,
+        "mechanism_uniqueness": 0.9121522126637216
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "low",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 3,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_6",
+      "id": "bfcf4c73d2cedc67",
+      "title": "Half-Slate Falsifier Cull",
+      "description": "Each week the team adds new hypotheses as rough one-page sketches, each with a pre-registered kill criterion. When a prediction check fails, the active slate is immediately cut to half, so the weakest candidates are dropped instead of reviewed. The people who remain split critique attention evenly, which keeps reviewers from being overloaded and leaves a trusted, falsifiable shortlist.",
+      "operator": "isomorphism",
+      "source_domain": "network_congestion_control",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A failed prediction check triggers a forced halving of the active slate, which prevents reviewer overload while the weekly intake ramp-up continues, so critique attention is spread evenly over a small set of falsifiable survivors.",
+        "causal_structure": [
+          {
+            "cause": "Weekly critique cadence",
+            "relation": "increases",
+            "effect": "Hypothesis intake ramp-up"
+          },
+          {
+            "cause": "Hypothesis intake ramp-up",
+            "relation": "enables",
+            "effect": "Reviewer overload"
+          },
+          {
+            "cause": "Failed prediction check",
+            "relation": "enables",
+            "effect": "Slate cut to half"
+          },
+          {
+            "cause": "Hypothesis intake ramp-up",
+            "relation": "enables",
+            "effect": "Slate cut to half"
+          },
+          {
+            "cause": "Slate cut to half",
+            "relation": "prevents",
+            "effect": "Reviewer overload"
+          },
+          {
+            "cause": "Slate cut to half",
+            "relation": "enables",
+            "effect": "Even critique attention among surviving hypotheses"
+          },
+          {
+            "cause": "Hypothesis intake ramp-up",
+            "relation": "enables",
+            "effect": "Even critique attention among surviving hypotheses"
+          },
+          {
+            "cause": "Even critique attention among surviving hypotheses",
+            "relation": "enables",
+            "effect": "Trusted falsifiable shortlist"
+          },
+          {
+            "cause": "Pre-registered kill criterion",
+            "relation": "enables",
+            "effect": "Failed prediction check"
+          },
+          {
+            "cause": "Rough one-page sketch rule",
+            "relation": "decreases",
+            "effect": "Polish attachment"
+          },
+          {
+            "cause": "Polish attachment",
+            "relation": "decreases",
+            "effect": "Honest critique depth"
+          },
+          {
+            "cause": "Reviewer overload",
+            "relation": "decreases",
+            "effect": "Honest critique depth"
+          }
+        ],
+        "affected_system": "Research team hypothesis intake, critique, and prioritization workflow (hypothesis triage pipeline)",
+        "payoff": "Trusted falsifiable shortlist"
+      },
+      "mechanism_fingerprint": "bbf8943a8332b088",
+      "wl_hash": "90af924469e75b4ff3c0117e73769576",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "aimd_loss_backoff_fairness",
+        "role_map": {
+          "ack_clock": "Weekly critique cadence",
+          "send_rate_growth": "Hypothesis intake ramp-up",
+          "loss_event": "Failed prediction check",
+          "window_halving": "Slate cut to half",
+          "queue_overflow_risk": "Reviewer overload",
+          "flow_share_equalisation": "Even critique attention among surviving hypotheses",
+          "fair_equilibrium": "Trusted falsifiable shortlist"
+        }
+      },
+      "scores": {
+        "novelty": 0.6730595172806058,
+        "appropriateness": 0.55,
+        "utility": 0.4,
+        "surprise": 0.35,
+        "coherence": 0.5,
+        "mechanism_uniqueness": 0.9261363636363636
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "low",
+        "feedback_horizon": "immediate"
+      },
+      "dynamics": {
+        "causal_depth": 4,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 3
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": true
+    },
+    {
+      "niche_key": "centroid_5",
+      "id": "63962b957feb0295",
+      "title": "Weekly Kill-Test Sweep",
+      "description": "Everyone drops rough, one-paragraph ideas onto a shared intake board, with polish discouraged. Once a week the team runs a short sweep in which each idea must name a concrete result that would refute it, or it is discarded on the spot. Ideas that survive graduate to a small vetted queue where deeper critique happens. Because the sweep keeps the pile from growing into an unmanageable review burden, people give candid critique to a few testable ideas instead of skimming many.",
+      "operator": "isomorphism",
+      "source_domain": "runtime_memory_management",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A short, regular kill-test sweep prevents review overload by discarding ideas that cannot name a refuting result, so only a few falsifiable ideas graduate to deeper critique and become trusted findings.",
+        "causal_structure": [
+          {
+            "cause": "Incoming idea submissions",
+            "relation": "enables",
+            "effect": "Pile of unreviewed rough ideas awaiting first look"
+          },
+          {
+            "cause": "Pile of unreviewed rough ideas awaiting first look",
+            "relation": "enables",
+            "effect": "Review overload and critique fatigue"
+          },
+          {
+            "cause": "Shared expectation that most raw ideas die early",
+            "relation": "enables",
+            "effect": "Weekly kill-test sweep"
+          },
+          {
+            "cause": "Pile of unreviewed rough ideas awaiting first look",
+            "relation": "enables",
+            "effect": "Weekly kill-test sweep"
+          },
+          {
+            "cause": "Weekly kill-test sweep",
+            "relation": "prevents",
+            "effect": "Review overload and critique fatigue"
+          },
+          {
+            "cause": "Weekly kill-test sweep",
+            "relation": "enables",
+            "effect": "Graduation to the vetted queue"
+          },
+          {
+            "cause": "Graduation to the vetted queue",
+            "relation": "enables",
+            "effect": "Steady flow of trusted findings"
+          },
+          {
+            "cause": "Incoming idea submissions",
+            "relation": "enables",
+            "effect": "Steady flow of trusted findings"
+          },
+          {
+            "cause": "Weekly kill-test sweep",
+            "relation": "prevents",
+            "effect": "Unfalsifiable claims in the vetted queue"
+          },
+          {
+            "cause": "Unfalsifiable claims in the vetted queue",
+            "relation": "decreases",
+            "effect": "Steady flow of trusted findings"
+          },
+          {
+            "cause": "Review overload and critique fatigue",
+            "relation": "decreases",
+            "effect": "Candid critique"
+          },
+          {
+            "cause": "Rough one-paragraph format",
+            "relation": "enables",
+            "effect": "Candid critique"
+          }
+        ],
+        "affected_system": "Research team hypothesis intake, critique, and prioritization workflow (hypothesis triage pipeline)",
+        "payoff": "Steady flow of trusted findings"
+      },
+      "mechanism_fingerprint": "efebffdac6913b2b",
+      "wl_hash": "0638a5f21847884bd9c41c86d4099d63",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "generational_gc_reclaim_gate",
+        "role_map": {
+          "allocation_stream": "Incoming idea submissions",
+          "weak_generational_hypothesis": "Shared expectation that most raw ideas die early",
+          "young_space_fill": "Pile of unreviewed rough ideas awaiting first look",
+          "minor_collection": "Weekly kill-test sweep",
+          "heap_exhaustion_risk": "Review overload and critique fatigue",
+          "survivor_promotion": "Graduation to the vetted queue",
+          "stable_throughput": "Steady flow of trusted findings"
+        }
+      },
+      "scores": {
+        "novelty": 0.6729443470587955,
+        "appropriateness": 0.82,
+        "utility": 0.45,
+        "surprise": 0.28,
+        "coherence": 0.88,
+        "mechanism_uniqueness": 0.9276733500417711
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "low",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 4,
+        "branching_factor": 1.2,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "45 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_unfalsifiable_claims_in_the_vetted_queue",
+            "satisfy_candid_critique",
+            "satisfy_pile_of_unreviewed_rough_ideas_awaiting_first_look",
+            "satisfy_weekly_kill_test_sweep",
+            "satisfy_graduation_to_the_vetted_queue"
+          ]
+        }
+      ],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_0",
+      "id": "61010c0184d02698",
+      "title": "Rival Kill-Test Cards with Polish Embargo",
+      "description": "When two rough hypotheses land in the same intake week, the first owner posts a one-page kill-test card saying what result would falsify it. The rival owner must answer with their own kill-test card before they may circulate any polished write-up, so the pitch deck is never produced during the critique window. Reviewers then sort the pair into 'test now' and 'parked' by comparing the cards, which leaves a small portfolio of rough, falsifiable hypotheses and a bounded review load.",
+      "operator": "isomorphism",
+      "source_domain": "developmental_biology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A posted kill-test card on one hypothesis obliges the rival's owner to answer in kind, which blocks the rival's polished pitch during the critique window, so the queue splits into test-now and parked items and review load stays small.",
+        "causal_structure": [
+          {
+            "cause": "Owner A's momentum behind a rough hypothesis A",
+            "relation": "increases",
+            "effect": "Posted kill-test card for hypothesis A"
+          },
+          {
+            "cause": "Posted kill-test card for hypothesis A",
+            "relation": "enables",
+            "effect": "Obligation on owner B to answer with a rival kill-test card"
+          },
+          {
+            "cause": "Owner B's momentum behind a rival rough hypothesis B",
+            "relation": "enables",
+            "effect": "Polished consensus-seeking pitch for hypothesis B"
+          },
+          {
+            "cause": "Obligation on owner B to answer with a rival kill-test card",
+            "relation": "prevents",
+            "effect": "Polished consensus-seeking pitch for hypothesis B"
+          },
+          {
+            "cause": "Posted kill-test card for hypothesis A",
+            "relation": "enables",
+            "effect": "Test-now versus parked sorting of the rival pair"
+          },
+          {
+            "cause": "Obligation on owner B to answer with a rival kill-test card",
+            "relation": "enables",
+            "effect": "Test-now versus parked sorting of the rival pair"
+          },
+          {
+            "cause": "Test-now versus parked sorting of the rival pair",
+            "relation": "enables",
+            "effect": "Small portfolio of rough, falsifiable hypotheses with bounded review load"
+          },
+          {
+            "cause": "Polished consensus-seeking pitch for hypothesis B",
+            "relation": "increases",
+            "effect": "Premature team consensus"
+          },
+          {
+            "cause": "Premature team consensus",
+            "relation": "decreases",
+            "effect": "Honest critique of rough ideas"
+          },
+          {
+            "cause": "Test-now versus parked sorting of the rival pair",
+            "relation": "decreases",
+            "effect": "Reviewer load per intake week"
+          },
+          {
+            "cause": "Posted kill-test card for hypothesis A",
+            "relation": "increases",
+            "effect": "Trust in reported results"
+          }
+        ],
+        "affected_system": "Research team hypothesis intake, critique, and prioritization workflow (hypothesis triage pipeline)",
+        "payoff": "Small portfolio of rough, falsifiable hypotheses with bounded review load"
+      },
+      "mechanism_fingerprint": "711da61e78dbd50d",
+      "wl_hash": "08a94794d8f00359e17656dac3289baf",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "notch_lateral_inhibition_pattern",
+        "role_map": {
+          "proneural_bias_a": "Owner A's momentum behind a rough hypothesis A",
+          "proneural_bias_b": "Owner B's momentum behind a rival rough hypothesis B",
+          "delta_ligand_a": "Posted kill-test card for hypothesis A",
+          "notch_signal_b": "Obligation on owner B to answer with a rival kill-test card",
+          "delta_ligand_b": "Polished consensus-seeking pitch for hypothesis B",
+          "fate_divergence": "Test-now versus parked sorting of the rival pair",
+          "fine_grained_pattern": "Small portfolio of rough, falsifiable hypotheses with bounded review load"
+        }
+      },
+      "scores": {
+        "novelty": 0.6630432713316341,
+        "appropriateness": 0.82,
+        "utility": 0.58,
+        "surprise": 0.5,
+        "coherence": 0.8,
+        "mechanism_uniqueness": 0.9159796494355318
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "low",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.0,
+        "loop_density": 0.0,
+        "payoff_path_length": 3
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_8",
+      "id": "af7c62e2fe82c2b6",
+      "title": "Kill-Criterion Gate with a Demotion Ladder",
+      "description": "Every new hypothesis lands in an intake queue where two peers spend ten minutes trying to name an observation that would refute it. If none can be named, the claim is demoted a step on a ladder (flagged, then parked, then dropped from the board) rather than argued over, so polished but untestable pitches never reach the full review. Over time, submitters begin each pitch with a one-line kill-criterion, which keeps the shortlist small and testable.",
+      "operator": "isomorphism",
+      "source_domain": "institutional_economics",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Peer falsification probing at intake triggers a tiered demotion of untestable claims, which suppresses the urge to push polished unfalsifiable pitches through and builds a habit of stating kill-criteria that keeps the shortlist trusted.",
+        "causal_structure": [
+          {
+            "cause": "Incoming hypothesis submission flood",
+            "relation": "enables",
+            "effect": "Peer-run falsification check at intake"
+          },
+          {
+            "cause": "Incoming hypothesis submission flood",
+            "relation": "enables",
+            "effect": "Urge to push polished unfalsifiable pitch through"
+          },
+          {
+            "cause": "Tiered demotion ladder charter",
+            "relation": "enables",
+            "effect": "Demotion of untestable claim to the parking queue"
+          },
+          {
+            "cause": "Peer-run falsification check at intake",
+            "relation": "enables",
+            "effect": "Demotion of untestable claim to the parking queue"
+          },
+          {
+            "cause": "Demotion of untestable claim to the parking queue",
+            "relation": "prevents",
+            "effect": "Urge to push polished unfalsifiable pitch through"
+          },
+          {
+            "cause": "Demotion of untestable claim to the parking queue",
+            "relation": "enables",
+            "effect": "Habit of stating a kill-criterion up front"
+          },
+          {
+            "cause": "Habit of stating a kill-criterion up front",
+            "relation": "enables",
+            "effect": "Durable trusted shortlist of testable hypotheses"
+          },
+          {
+            "cause": "Peer-run falsification check at intake",
+            "relation": "enables",
+            "effect": "Durable trusted shortlist of testable hypotheses"
+          },
+          {
+            "cause": "Urge to push polished unfalsifiable pitch through",
+            "relation": "increases",
+            "effect": "Review queue load"
+          },
+          {
+            "cause": "Review queue load",
+            "relation": "decreases",
+            "effect": "Peer-run falsification check at intake"
+          },
+          {
+            "cause": "Habit of stating a kill-criterion up front",
+            "relation": "decreases",
+            "effect": "Review queue load"
+          },
+          {
+            "cause": "Durable trusted shortlist of testable hypotheses",
+            "relation": "increases",
+            "effect": "Team trust in results"
+          }
+        ],
+        "affected_system": "Research team hypothesis intake, critique, and prioritization workflow (hypothesis triage pipeline)",
+        "payoff": "Durable trusted shortlist of testable hypotheses"
+      },
+      "mechanism_fingerprint": "e0f65891acf5f7c5",
+      "wl_hash": "e2336972eae9666fc7895701c80e0fea",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "ostrom_graduated_sanction_commons",
+        "role_map": {
+          "harvest_pressure": "Incoming hypothesis submission flood",
+          "monitoring_by_users": "Peer-run falsification check at intake",
+          "graduated_sanction_rule": "Tiered demotion ladder charter",
+          "sanction_application": "Demotion of untestable claim to the parking queue",
+          "defection_temptation": "Urge to push polished unfalsifiable pitch through",
+          "compliance_norm": "Habit of stating a kill-criterion up front",
+          "commons_persistence": "Durable trusted shortlist of testable hypotheses"
+        }
+      },
+      "scores": {
+        "novelty": 0.6732127939048775,
+        "appropriateness": 0.82,
+        "utility": 0.5,
+        "surprise": 0.42,
+        "coherence": 0.85,
+        "mechanism_uniqueness": 0.9304812834224598
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "low",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 3,
+        "branching_factor": 1.333333,
+        "loop_density": 0.5,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "12 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_urge_to_push_polished_unfalsifiable_pitch_through",
+            "satisfy_review_queue_load"
+          ]
+        }
+      ],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_7",
+      "id": "87c255473ea2bec0",
+      "title": "Parking Lottery for Rough Ideas",
+      "description": "Each week, incoming hypotheses are drawn by lot, and a random share go onto a 'parked' shelf as one-paragraph rough drafts that are barred from polishing or consensus talk. The rest get elaborated, then face a scheduled falsification round where team members try to refute them, and the elaborated ones that fail are retired. After the round, parked ideas re-enter with a sharpened, testable prediction, so the team ends up with a few durable, funded threads instead of a pile of equally polished claims.",
+      "operator": "isomorphism",
+      "source_domain": "microbiology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A random draw shields some rough ideas from the falsification round that eliminates elaborated claims, so those shielded ideas can re-enter afterward with sharper predictions and become durable research threads.",
+        "causal_structure": [
+          {
+            "cause": "Random-draw parking lottery",
+            "relation": "enables",
+            "effect": "Unpolished parked-idea shelf"
+          },
+          {
+            "cause": "Scheduled falsification round",
+            "relation": "enables",
+            "effect": "Refutation of elaborated claims"
+          },
+          {
+            "cause": "Idea elaboration and polishing drafts",
+            "relation": "enables",
+            "effect": "Refutation of elaborated claims"
+          },
+          {
+            "cause": "Unpolished parked-idea shelf",
+            "relation": "prevents",
+            "effect": "Refutation of elaborated claims"
+          },
+          {
+            "cause": "Unpolished parked-idea shelf",
+            "relation": "enables",
+            "effect": "Revived idea re-entry with sharpened prediction"
+          },
+          {
+            "cause": "Scheduled falsification round",
+            "relation": "enables",
+            "effect": "Revived idea re-entry with sharpened prediction"
+          },
+          {
+            "cause": "Revived idea re-entry with sharpened prediction",
+            "relation": "enables",
+            "effect": "Durable funded research thread"
+          },
+          {
+            "cause": "Idea elaboration and polishing drafts",
+            "relation": "decreases",
+            "effect": "Candid critique quality"
+          },
+          {
+            "cause": "Refutation of elaborated claims",
+            "relation": "increases",
+            "effect": "Team trust in results"
+          },
+          {
+            "cause": "Refutation of elaborated claims",
+            "relation": "decreases",
+            "effect": "Review queue load"
+          },
+          {
+            "cause": "Random-draw parking lottery",
+            "relation": "prevents",
+            "effect": "Premature consensus"
+          }
+        ],
+        "affected_system": "Research team hypothesis intake, critique, and prioritization workflow (hypothesis triage pipeline)",
+        "payoff": "Durable funded research thread"
+      },
+      "mechanism_fingerprint": "05e66e6083175def",
+      "wl_hash": "37d3355565c0e4bda5bebaae38f79acc",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "persister_bet_hedge_survival",
+        "role_map": {
+          "stochastic_switch": "Random-draw parking lottery",
+          "antibiotic_exposure": "Scheduled falsification round",
+          "dormant_subpopulation": "Unpolished parked-idea shelf",
+          "growth_dependent_killing": "Refutation of elaborated claims",
+          "active_division": "Idea elaboration and polishing drafts",
+          "post_exposure_regrowth": "Revived idea re-entry with sharpened prediction",
+          "lineage_survival": "Durable funded research thread"
+        }
+      },
+      "scores": {
+        "novelty": 0.6753241465705745,
+        "appropriateness": 0.68,
+        "utility": 0.5,
+        "surprise": 0.55,
+        "coherence": 0.52,
+        "mechanism_uniqueness": 0.9337121212121212
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "medium",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 3,
+        "branching_factor": 1.0,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_2",
+      "id": "05da643fd1b6e337",
+      "title": "Rough Hunches, Rapid Kills",
+      "description": "Anyone posts a raw, unpolished hunch with a one-line prediction to a shared pool, and unreviewed claims pile up in a backlog. When the backlog passes a reviewer's tolerance, a time-boxed round of quick disconfirming tests starts on the oldest or most agreed-upon claims. The round stops early consensus from hardening, and claims that fail are archived with a brief note. What remains is a short list of testable claims the team trusts.",
+      "operator": "isomorphism",
+      "source_domain": "statistical_physics",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Raw hunches accumulate until review overload triggers a burst of rapid disconfirming tests, which prevents early consensus lock-in and clears failed claims, leaving a lean list of trusted, testable claims.",
+        "causal_structure": [
+          {
+            "cause": "Raw hunch submitted to the shared pool",
+            "relation": "increases",
+            "effect": "Unreviewed backlog of claims"
+          },
+          {
+            "cause": "Unreviewed backlog of claims",
+            "relation": "enables",
+            "effect": "Early consensus lock-in"
+          },
+          {
+            "cause": "Unreviewed backlog of claims",
+            "relation": "enables",
+            "effect": "Review queue overflow signal"
+          },
+          {
+            "cause": "Review queue overflow signal",
+            "relation": "enables",
+            "effect": "Rapid-fire disconfirming tests"
+          },
+          {
+            "cause": "Rapid-fire disconfirming tests",
+            "relation": "prevents",
+            "effect": "Early consensus lock-in"
+          },
+          {
+            "cause": "Rapid-fire disconfirming tests",
+            "relation": "enables",
+            "effect": "Closed claims archived with a brief note"
+          },
+          {
+            "cause": "Closed claims archived with a brief note",
+            "relation": "enables",
+            "effect": "Lean shortlist of trusted, testable claims"
+          },
+          {
+            "cause": "Raw hunch submitted to the shared pool",
+            "relation": "enables",
+            "effect": "Lean shortlist of trusted, testable claims"
+          },
+          {
+            "cause": "Early consensus lock-in",
+            "relation": "decreases",
+            "effect": "Lean shortlist of trusted, testable claims"
+          },
+          {
+            "cause": "Closed claims archived with a brief note",
+            "relation": "enables",
+            "effect": "Reuse of recorded null results"
+          },
+          {
+            "cause": "Reuse of recorded null results",
+            "relation": "decreases",
+            "effect": "Unreviewed backlog of claims"
+          },
+          {
+            "cause": "Rapid-fire disconfirming tests",
+            "relation": "depends_on",
+            "effect": "Prediction written before testing"
+          }
+        ],
+        "affected_system": "Research team hypothesis intake, critique, and prioritization workflow (hypothesis triage pipeline)",
+        "payoff": "Lean shortlist of trusted, testable claims"
+      },
+      "mechanism_fingerprint": "d0d3c80fbd1190c8",
+      "wl_hash": "82ca16d35b041386f43be7753f9a2694",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "sandpile_toppling_criticality",
+        "role_map": {
+          "grain_drop": "Raw hunch submitted to the shared pool",
+          "slope_buildup": "Unreviewed backlog of claims",
+          "threshold_exceedance": "Review queue overflow signal",
+          "toppling_cascade": "Rapid-fire disconfirming tests",
+          "runaway_slope": "Early consensus lock-in",
+          "dissipation_at_boundary": "Closed claims archived with a brief note",
+          "critical_steady_state": "Lean shortlist of trusted, testable claims"
+        }
+      },
+      "scores": {
+        "novelty": 0.6768535573125873,
+        "appropriateness": 0.72,
+        "utility": 0.45,
+        "surprise": 0.33,
+        "coherence": 0.58,
+        "mechanism_uniqueness": 0.927210772319468
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "low",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 3,
+        "branching_factor": 1.333333,
+        "loop_density": 0.416667,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "53 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_unreviewed_backlog_of_claims",
+            "satisfy_review_queue_overflow_signal",
+            "satisfy_early_consensus_lock_in",
+            "satisfy_rapid_fire_disconfirming_tests",
+            "satisfy_prediction_written_before_testing",
+            "satisfy_closed_claims_archived_with_a_brief_note",
+            "satisfy_reuse_of_recorded_null_results"
+          ]
+        }
+      ],
+      "is_niche_elite": true
+    },
+    {
+      "niche_key": "centroid_8",
+      "id": "991e06f92c614ebe",
+      "title": "Timed Teardown Before the Bandwagon",
+      "description": "Rough hypotheses sit in a shared backlog, each with a short note of pre-registered kill criteria written by its proposer. At a fixed, time-boxed adversarial session, the team tears down the ideas whose kill criteria are weak or untestable, before anyone can rally around a favorite. Because the bandwagon never forms, ideas leave the session as exposed core claims, agenda slots are free, and a small wave of well-posed, falsifiable experiments goes forward.",
+      "operator": "isomorphism",
+      "source_domain": "fire_ecology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A scheduled adversarial teardown, fed by pre-registered kill criteria, suppresses early consensus within the critique window, which frees agenda slots and releases backlog ideas as falsifiable experiments.",
+        "causal_structure": [
+          {
+            "cause": "Time-boxed Adversarial Review Session",
+            "relation": "enables",
+            "effect": "Red-Team Teardown"
+          },
+          {
+            "cause": "Pre-registered Kill Criteria Notes",
+            "relation": "enables",
+            "effect": "Red-Team Teardown"
+          },
+          {
+            "cause": "Red-Team Teardown",
+            "relation": "enables",
+            "effect": "Backlog Ideas Unlocked for Testing"
+          },
+          {
+            "cause": "Parked Rough-Hypothesis Backlog",
+            "relation": "enables",
+            "effect": "Backlog Ideas Unlocked for Testing"
+          },
+          {
+            "cause": "Red-Team Teardown",
+            "relation": "prevents",
+            "effect": "Early Consensus Bandwagon"
+          },
+          {
+            "cause": "Red-Team Teardown",
+            "relation": "enables",
+            "effect": "Cleared Agenda Slots"
+          },
+          {
+            "cause": "Backlog Ideas Unlocked for Testing",
+            "relation": "enables",
+            "effect": "Wave of Falsifiable Candidate Experiments"
+          },
+          {
+            "cause": "Cleared Agenda Slots",
+            "relation": "enables",
+            "effect": "Wave of Falsifiable Candidate Experiments"
+          },
+          {
+            "cause": "Early Consensus Bandwagon",
+            "relation": "decreases",
+            "effect": "Pre-registered Kill Criteria Notes"
+          },
+          {
+            "cause": "Wave of Falsifiable Candidate Experiments",
+            "relation": "increases",
+            "effect": "Review Queue Load"
+          },
+          {
+            "cause": "Review Queue Load",
+            "relation": "decreases",
+            "effect": "Cleared Agenda Slots"
+          }
+        ],
+        "affected_system": "Research team hypothesis intake, critique, and prioritization workflow (hypothesis triage pipeline)",
+        "payoff": "Wave of Falsifiable Candidate Experiments"
+      },
+      "mechanism_fingerprint": "398badfad6f7ff87",
+      "wl_hash": "a2c61a0422021e78262e412d2a75bd2a",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "serotiny_fire_gated_release",
+        "role_map": {
+          "canopy_seed_store": "Parked Rough-Hypothesis Backlog",
+          "heat_pulse": "Time-boxed Adversarial Review Session",
+          "understory_fuel": "Pre-registered Kill Criteria Notes",
+          "ground_combustion": "Red-Team Teardown",
+          "resin_seal_melt": "Backlog Ideas Unlocked for Testing",
+          "shade_competitor_growth": "Early Consensus Bandwagon",
+          "open_seedbed": "Cleared Agenda Slots",
+          "regeneration_flush": "Wave of Falsifiable Candidate Experiments"
+        }
+      },
+      "scores": {
+        "novelty": 0.6679108968065054,
+        "appropriateness": 0.78,
+        "utility": 0.5,
+        "surprise": 0.38,
+        "coherence": 0.66,
+        "mechanism_uniqueness": 0.9183368764793548
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "low",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 3,
+        "branching_factor": 1.222222,
+        "loop_density": 0.545455,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "29 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_early_consensus_bandwagon"
+          ]
+        }
+      ],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_1",
+      "id": "89238d0dd53a846c",
+      "title": "Sealed Stakes, Runner-Up Charge",
+      "description": "Before the weekly triage meeting, each member privately files a short note with a confidence number, the stake of review hours they would put behind the hypothesis, and one falsifying result. The highest stake gets the single test slot that cycle, but the stake the author is charged is only the runner-up's. Polishing or inflating a claim therefore buys no extra slot probability or discount, and an honest confidence number is the best move. The team ends up with a ledger of calibrated confidences, and every hypothesis arrives with a clear falsifier.",
+      "operator": "isomorphism",
+      "source_domain": "auction_mechanism_design",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A charge fixed at the runner-up's stake, not the author's own, keeps authors from inflating or polishing claims, so each author's best move is to file an honest confidence number.",
+        "causal_structure": [
+          {
+            "cause": "Sealed confidence estimate",
+            "relation": "enables",
+            "effect": "Filed stake note with falsifier"
+          },
+          {
+            "cause": "Filed stake note with falsifier",
+            "relation": "enables",
+            "effect": "Temptation to inflate or polish the claim"
+          },
+          {
+            "cause": "Filed stake note with falsifier",
+            "relation": "enables",
+            "effect": "Single test-slot award"
+          },
+          {
+            "cause": "Runner-up-stake charge clause",
+            "relation": "enables",
+            "effect": "Review-cost settlement at runner-up level"
+          },
+          {
+            "cause": "Single test-slot award",
+            "relation": "enables",
+            "effect": "Review-cost settlement at runner-up level"
+          },
+          {
+            "cause": "Review-cost settlement at runner-up level",
+            "relation": "prevents",
+            "effect": "Temptation to inflate or polish the claim"
+          },
+          {
+            "cause": "Review-cost settlement at runner-up level",
+            "relation": "enables",
+            "effect": "Honest confidence recorded in team ledger"
+          },
+          {
+            "cause": "Sealed confidence estimate",
+            "relation": "enables",
+            "effect": "Honest confidence recorded in team ledger"
+          },
+          {
+            "cause": "Temptation to inflate or polish the claim",
+            "relation": "increases",
+            "effect": "Review load"
+          },
+          {
+            "cause": "Single test-slot award",
+            "relation": "decreases",
+            "effect": "Premature consensus"
+          },
+          {
+            "cause": "Filed stake note with falsifier",
+            "relation": "decreases",
+            "effect": "Unfalsifiable claims"
+          },
+          {
+            "cause": "Honest confidence recorded in team ledger",
+            "relation": "enables",
+            "effect": "Reusable calibrated results"
+          }
+        ],
+        "affected_system": "Research team hypothesis intake, critique, and prioritization workflow (hypothesis triage pipeline)",
+        "payoff": "Honest confidence recorded in team ledger"
+      },
+      "mechanism_fingerprint": "e038abe4d013ea8c",
+      "wl_hash": "f5bd9470f7dc1c6d9bc77b36fe652736",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "vickrey_second_price_truth",
+        "role_map": {
+          "private_valuation": "Sealed confidence estimate",
+          "second_price_rule": "Runner-up-stake charge clause",
+          "bid_submission": "Filed stake note with falsifier",
+          "winner_selection": "Single test-slot award",
+          "bid_shading_incentive": "Temptation to inflate or polish the claim",
+          "price_determination": "Review-cost settlement at runner-up level",
+          "truthful_revelation": "Honest confidence recorded in team ledger"
+        }
+      },
+      "scores": {
+        "novelty": 0.6750710111292222,
+        "appropriateness": 0.6,
+        "utility": 0.5,
+        "surprise": 0.5,
+        "coherence": 0.55,
+        "mechanism_uniqueness": 0.9319005270092227
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "low",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_1",
+      "id": "737de897c7997fe5",
+      "title": "Kill-Window Triage: The Timeboxed Falsifier Sweep",
+      "description": "Anyone can drop a rough, unpolished claim card onto the intake board at any time, with no slides allowed. Each week a 30-minute sweep runs before the pile outgrows reviewer capacity. In it, the team tries to kill every card using a pre-stated falsifier, which is the one observation that would prove it wrong. Cards with no falsifier are dropped on the spot, and cards that survive two sweeps get a funded test slot.",
+      "operator": "isomorphism",
+      "source_domain": "runtime_memory_management",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A frequent, timeboxed kill-or-keep sweep runs while the pile of rough claims is still small. It prevents reviewer overload, so only falsifiable claims that have survived repeated attacks reach funded testing, and that produces a steady flow of trusted findings.",
+        "causal_structure": [
+          {
+            "cause": "Steady inflow of raw claim pitches",
+            "relation": "enables",
+            "effect": "Pile of unreviewed rough claims on the intake board"
+          },
+          {
+            "cause": "Pile of unreviewed rough claims on the intake board",
+            "relation": "enables",
+            "effect": "Reviewer overload from queue overflow"
+          },
+          {
+            "cause": "Early-death expectation: most raw ideas are wrong or dull",
+            "relation": "enables",
+            "effect": "Timeboxed weekly kill-or-keep sweep with a falsifier prompt"
+          },
+          {
+            "cause": "Pile of unreviewed rough claims on the intake board",
+            "relation": "enables",
+            "effect": "Timeboxed weekly kill-or-keep sweep with a falsifier prompt"
+          },
+          {
+            "cause": "Timeboxed weekly kill-or-keep sweep with a falsifier prompt",
+            "relation": "prevents",
+            "effect": "Reviewer overload from queue overflow"
+          },
+          {
+            "cause": "Timeboxed weekly kill-or-keep sweep with a falsifier prompt",
+            "relation": "enables",
+            "effect": "Graduation of sweep-tested claims to a funded test slot"
+          },
+          {
+            "cause": "Graduation of sweep-tested claims to a funded test slot",
+            "relation": "enables",
+            "effect": "Steady flow of trusted, falsifiable findings"
+          },
+          {
+            "cause": "Steady inflow of raw claim pitches",
+            "relation": "enables",
+            "effect": "Steady flow of trusted, falsifiable findings"
+          },
+          {
+            "cause": "Pre-stated kill criterion",
+            "relation": "prevents",
+            "effect": "Unfalsifiable claims reaching funded testing"
+          },
+          {
+            "cause": "Rough-format rule (no slides)",
+            "relation": "increases",
+            "effect": "Honest critique quality"
+          },
+          {
+            "cause": "Reviewer overload from queue overflow",
+            "relation": "decreases",
+            "effect": "Honest critique quality"
+          },
+          {
+            "cause": "Honest critique quality",
+            "relation": "enables",
+            "effect": "Steady flow of trusted, falsifiable findings"
+          }
+        ],
+        "affected_system": "Research team hypothesis intake, critique, and prioritization workflow (hypothesis triage pipeline)",
+        "payoff": "Steady flow of trusted, falsifiable findings"
+      },
+      "mechanism_fingerprint": "8e950bdd5315667f",
+      "wl_hash": "44f5435c63f99f74251f8328e65b5f96",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "generational_gc_reclaim_gate",
+        "role_map": {
+          "allocation_stream": "Steady inflow of raw claim pitches",
+          "weak_generational_hypothesis": "Early-death expectation: most raw ideas are wrong or dull",
+          "young_space_fill": "Pile of unreviewed rough claims on the intake board",
+          "minor_collection": "Timeboxed weekly kill-or-keep sweep with a falsifier prompt",
+          "heap_exhaustion_risk": "Reviewer overload from queue overflow",
+          "survivor_promotion": "Graduation of sweep-tested claims to a funded test slot",
+          "stable_throughput": "Steady flow of trusted, falsifiable findings"
+        }
+      },
+      "scores": {
+        "novelty": 0.6775383145147649,
+        "appropriateness": 0.82,
+        "utility": 0.55,
+        "surprise": 0.38,
+        "coherence": 0.85,
+        "mechanism_uniqueness": 0.929928754489505
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "low",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "5 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_pile_of_unreviewed_rough_claims_on_the_intake_board",
+            "satisfy_reviewer_overload_from_queue_overflow",
+            "satisfy_timeboxed_weekly_kill_or_keep_sweep_with_a_falsifier_prompt",
+            "satisfy_graduation_of_sweep_tested_claims_to_a_funded_test_slot"
+          ]
+        }
+      ],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_0",
+      "id": "c67eed2e5c6f777e",
+      "title": "Kill-Test Gate: Rough Sketches Open, Polish Held Back",
+      "description": "When one person posts a rough one-page sketch of idea A, the owner of rival idea B gets a mandatory request to write down what result would kill B before B may be pitched. While that request is open, B's polished pitch is held back, so the team cannot settle on B before a kill-test exists. Both ideas then sort into 'test now' or 'park' queues, and the team ends up with a small portfolio of falsifiable hypotheses and a bounded review backlog.",
+      "operator": "isomorphism",
+      "source_domain": "developmental_biology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "An open rough sketch of one idea triggers a mandatory kill-test request on its rival, which prevents the rival's polished pitch during the early window, so sorting into test-now or park queues happens before consensus forms and leaves a small, falsifiable portfolio.",
+        "causal_structure": [
+          {
+            "cause": "Champion's early enthusiasm for idea A",
+            "relation": "increases",
+            "effect": "Rough one-page sketch of idea A posted openly"
+          },
+          {
+            "cause": "Rough one-page sketch of idea A posted openly",
+            "relation": "enables",
+            "effect": "Mandatory kill-test request landing on idea B's owner"
+          },
+          {
+            "cause": "Rival champion's momentum for idea B",
+            "relation": "enables",
+            "effect": "Polished pitch of idea B to the team"
+          },
+          {
+            "cause": "Mandatory kill-test request landing on idea B's owner",
+            "relation": "prevents",
+            "effect": "Polished pitch of idea B to the team"
+          },
+          {
+            "cause": "Rough one-page sketch of idea A posted openly",
+            "relation": "enables",
+            "effect": "Split into 'test now' versus 'park' queues"
+          },
+          {
+            "cause": "Mandatory kill-test request landing on idea B's owner",
+            "relation": "enables",
+            "effect": "Split into 'test now' versus 'park' queues"
+          },
+          {
+            "cause": "Split into 'test now' versus 'park' queues",
+            "relation": "enables",
+            "effect": "Sparse, falsifiable portfolio with bounded review load"
+          },
+          {
+            "cause": "Polished pitch of idea B to the team",
+            "relation": "increases",
+            "effect": "Premature team consensus"
+          },
+          {
+            "cause": "Premature team consensus",
+            "relation": "decreases",
+            "effect": "Sparse, falsifiable portfolio with bounded review load"
+          },
+          {
+            "cause": "Mandatory kill-test request landing on idea B's owner",
+            "relation": "depends_on",
+            "effect": "Written refutation criterion"
+          },
+          {
+            "cause": "Split into 'test now' versus 'park' queues",
+            "relation": "decreases",
+            "effect": "Open review backlog"
+          }
+        ],
+        "affected_system": "Research team hypothesis intake, critique, and prioritization workflow (hypothesis triage pipeline)",
+        "payoff": "Sparse, falsifiable portfolio with bounded review load"
+      },
+      "mechanism_fingerprint": "64f192ac5d3cdeee",
+      "wl_hash": "9a9b976a4548769a397d118d45a5666b",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "notch_lateral_inhibition_pattern",
+        "role_map": {
+          "proneural_bias_a": "Champion's early enthusiasm for idea A",
+          "proneural_bias_b": "Rival champion's momentum for idea B",
+          "delta_ligand_a": "Rough one-page sketch of idea A posted openly",
+          "notch_signal_b": "Mandatory kill-test request landing on idea B's owner",
+          "delta_ligand_b": "Polished pitch of idea B to the team",
+          "fate_divergence": "Split into 'test now' versus 'park' queues",
+          "fine_grained_pattern": "Sparse, falsifiable portfolio with bounded review load"
+        }
+      },
+      "scores": {
+        "novelty": 0.6747999297176444,
+        "appropriateness": 0.72,
+        "utility": 0.5,
+        "surprise": 0.5,
+        "coherence": 0.62,
+        "mechanism_uniqueness": 0.9252149877149877
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "low",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.1,
+        "loop_density": 0.0,
+        "payoff_path_length": 3
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "43 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_polished_pitch_of_idea_b_to_the_team",
+            "satisfy_premature_team_consensus",
+            "satisfy_rough_one_page_sketch_of_idea_a_posted_openly",
+            "satisfy_mandatory_kill_test_request_landing_on_idea_b_s_owner",
+            "satisfy_written_refutation_criterion",
+            "satisfy_split_into_test_now_versus_park_queues"
+          ]
+        }
+      ],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_8",
+      "id": "012192993309be18",
+      "title": "Kill-Criterion Gate with Tiered Demotion",
+      "description": "Each Monday new hypotheses arrive as rough one-liners, and teammates spend ten minutes asking what result would kill each one. If no kill criterion emerges, the claim drops to a sandbox tier with a 'sharpen it' ticket. A repeat miss costs the author their intake slot for a cycle. Because vague claims lose standing before anyone invests in polish, authors learn to pre-register kill criteria, and the team's shortlist stays small, testable and trusted.",
+      "operator": "isomorphism",
+      "source_domain": "institutional_economics",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Early demotion of unfalsifiable claims, triggered during the intake window, stops authors from polishing vague ideas into consensus, so pre-registered kill criteria become the habit and the shortlist stays small and trusted.",
+        "causal_structure": [
+          {
+            "cause": "Weekly influx of new hypotheses",
+            "relation": "enables",
+            "effect": "Peer falsifiability probes during intake"
+          },
+          {
+            "cause": "Weekly influx of new hypotheses",
+            "relation": "enables",
+            "effect": "Urge to polish vague claims"
+          },
+          {
+            "cause": "Tiered escalation ladder for vague claims",
+            "relation": "enables",
+            "effect": "Demotion of unfalsifiable claim to the sandbox tier"
+          },
+          {
+            "cause": "Peer falsifiability probes during intake",
+            "relation": "enables",
+            "effect": "Demotion of unfalsifiable claim to the sandbox tier"
+          },
+          {
+            "cause": "Demotion of unfalsifiable claim to the sandbox tier",
+            "relation": "prevents",
+            "effect": "Urge to polish vague claims"
+          },
+          {
+            "cause": "Demotion of unfalsifiable claim to the sandbox tier",
+            "relation": "enables",
+            "effect": "Habit of pre-registering kill criteria"
+          },
+          {
+            "cause": "Habit of pre-registering kill criteria",
+            "relation": "enables",
+            "effect": "Durable trusted shortlist of testable hypotheses"
+          },
+          {
+            "cause": "Peer falsifiability probes during intake",
+            "relation": "enables",
+            "effect": "Durable trusted shortlist of testable hypotheses"
+          },
+          {
+            "cause": "Urge to polish vague claims",
+            "relation": "increases",
+            "effect": "Review load per meeting"
+          },
+          {
+            "cause": "Review load per meeting",
+            "relation": "decreases",
+            "effect": "Peer falsifiability probes during intake"
+          },
+          {
+            "cause": "Habit of pre-registering kill criteria",
+            "relation": "decreases",
+            "effect": "Review load per meeting"
+          },
+          {
+            "cause": "Weekly influx of new hypotheses",
+            "relation": "increases",
+            "effect": "Review load per meeting"
+          }
+        ],
+        "affected_system": "Research team hypothesis intake, critique, and prioritization workflow (hypothesis triage pipeline)",
+        "payoff": "Durable trusted shortlist of testable hypotheses"
+      },
+      "mechanism_fingerprint": "f63b96a9e6ae1012",
+      "wl_hash": "0bd52a306a8ce6e53e2a84d3e71e299c",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "ostrom_graduated_sanction_commons",
+        "role_map": {
+          "harvest_pressure": "Weekly influx of new hypotheses",
+          "monitoring_by_users": "Peer falsifiability probes during intake",
+          "graduated_sanction_rule": "Tiered escalation ladder for vague claims",
+          "sanction_application": "Demotion of unfalsifiable claim to the sandbox tier",
+          "defection_temptation": "Urge to polish vague claims",
+          "compliance_norm": "Habit of pre-registering kill criteria",
+          "commons_persistence": "Durable trusted shortlist of testable hypotheses"
+        }
+      },
+      "scores": {
+        "novelty": 0.6749771871468908,
+        "appropriateness": 0.82,
+        "utility": 0.45,
+        "surprise": 0.3,
+        "coherence": 0.85,
+        "mechanism_uniqueness": 0.9259563965446318
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "low",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 2,
+        "branching_factor": 1.5,
+        "loop_density": 0.5,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "12 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_urge_to_polish_vague_claims",
+            "satisfy_review_load_per_meeting"
+          ]
+        }
+      ],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_9",
+      "id": "34fb6830c57a6161",
+      "title": "Kill-Test Gate: Earned Hold Before Endorsement",
+      "description": "When someone pitches an idea, a reviewer asks 'what result would prove this wrong?'. If the answer is vague, the idea is automatically held back from the shared backlog, so excited teammates cannot rally around it yet. During the hold, the author gets a time-boxed rough-draft sandbox where peers help turn the claim into a concrete kill-test and a pre-registered drop rule. Ideas then either graduate as falsifiable or are retired cheaply, leaving a small, trusted portfolio.",
+      "operator": "isomorphism",
+      "source_domain": "cell_biology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A vague claim triggers a falsifiability question that earns a hold on team-wide endorsement, and that hold buys a rough-draft sandbox in which the idea is sharpened into a testable claim or retired.",
+        "causal_structure": [
+          {
+            "cause": "Vague or unfalsifiable claim surfaced in a pitch",
+            "relation": "enables",
+            "effect": "Kill-criterion question: 'what result would prove this wrong?'"
+          },
+          {
+            "cause": "Kill-criterion question: 'what result would prove this wrong?'",
+            "relation": "enables",
+            "effect": "Mandatory hold on promotion to the shared backlog"
+          },
+          {
+            "cause": "Advocacy momentum and enthusiasm for a shiny idea",
+            "relation": "enables",
+            "effect": "Rush to team-wide endorsement and project kickoff"
+          },
+          {
+            "cause": "Mandatory hold on promotion to the shared backlog",
+            "relation": "prevents",
+            "effect": "Rush to team-wide endorsement and project kickoff"
+          },
+          {
+            "cause": "Mandatory hold on promotion to the shared backlog",
+            "relation": "enables",
+            "effect": "Time-boxed rough-draft sandbox for sharpening the claim"
+          },
+          {
+            "cause": "Time-boxed rough-draft sandbox for sharpening the claim",
+            "relation": "enables",
+            "effect": "Pre-registered drop rule that retires failing ideas"
+          },
+          {
+            "cause": "Pre-registered drop rule that retires failing ideas",
+            "relation": "enables",
+            "effect": "Lean portfolio of trusted, falsifiable hypotheses"
+          },
+          {
+            "cause": "Time-boxed rough-draft sandbox for sharpening the claim",
+            "relation": "enables",
+            "effect": "Lean portfolio of trusted, falsifiable hypotheses"
+          },
+          {
+            "cause": "Time-boxed rough-draft sandbox for sharpening the claim",
+            "relation": "decreases",
+            "effect": "Polish pressure on authors"
+          },
+          {
+            "cause": "Polish pressure on authors",
+            "relation": "prevents",
+            "effect": "Honest peer critique"
+          },
+          {
+            "cause": "Rush to team-wide endorsement and project kickoff",
+            "relation": "increases",
+            "effect": "Review load"
+          },
+          {
+            "cause": "Pre-registered drop rule that retires failing ideas",
+            "relation": "decreases",
+            "effect": "Review load"
+          }
+        ],
+        "affected_system": "Research team hypothesis intake, critique, and prioritization workflow (hypothesis triage pipeline)",
+        "payoff": "Lean portfolio of trusted, falsifiable hypotheses"
+      },
+      "mechanism_fingerprint": "ffebccf988916ffc",
+      "wl_hash": "85a99414c319f419802285b63c35fc81",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "p53_damage_checkpoint_arrest",
+        "role_map": {
+          "genotoxic_lesion": "Vague or unfalsifiable claim surfaced in a pitch",
+          "growth_mitogen": "Advocacy momentum and enthusiasm for a shiny idea",
+          "sensor_kinase": "Kill-criterion question: 'what result would prove this wrong?'",
+          "checkpoint_effector": "Mandatory hold on promotion to the shared backlog",
+          "division_drive": "Rush to team-wide endorsement and project kickoff",
+          "repair_window": "Time-boxed rough-draft sandbox for sharpening the claim",
+          "apoptotic_commitment": "Pre-registered drop rule that retires failing ideas",
+          "tissue_integrity": "Lean portfolio of trusted, falsifiable hypotheses"
+        }
+      },
+      "scores": {
+        "novelty": 0.6717451234615814,
+        "appropriateness": 0.82,
+        "utility": 0.55,
+        "surprise": 0.4,
+        "coherence": 0.84,
+        "mechanism_uniqueness": 0.9209936173883043
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "medium",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 4
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": true
+    },
+    {
+      "niche_key": "centroid_4",
+      "id": "5223a06d81ab2506",
+      "title": "Overflow-Triggered Kill-or-Sharpen Sprint",
+      "description": "Anyone can drop a rough, unpolished idea pitch into a shared queue. While the queue is small, nothing happens. Once untested claims pile past what reviewers can handle, the team stops adding and runs a short kill-or-sharpen sprint. Each claim must state a pre-registered kill criterion or be shelved in a public archive. Because the sprint is forced, nobody can polish a favorite claim into early consensus, and the portfolio that survives is small, falsifiable and trusted.",
+      "operator": "isomorphism",
+      "source_domain": "statistical_physics",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A reviewer-capacity limit forces a periodic kill-or-sharpen sprint, which prevents early consensus lock-in and moves weak claims to an archive, so the surviving portfolio stays small and falsifiable.",
+        "causal_structure": [
+          {
+            "cause": "Rough idea pitch",
+            "relation": "increases",
+            "effect": "Backlog of untested claims"
+          },
+          {
+            "cause": "Backlog of untested claims",
+            "relation": "enables",
+            "effect": "Over-polished consensus lock-in"
+          },
+          {
+            "cause": "Backlog of untested claims",
+            "relation": "enables",
+            "effect": "Reviewer limit reached"
+          },
+          {
+            "cause": "Reviewer limit reached",
+            "relation": "enables",
+            "effect": "Forced kill-or-sharpen sprint"
+          },
+          {
+            "cause": "Forced kill-or-sharpen sprint",
+            "relation": "prevents",
+            "effect": "Over-polished consensus lock-in"
+          },
+          {
+            "cause": "Forced kill-or-sharpen sprint",
+            "relation": "enables",
+            "effect": "Retired claims shelved in public archive"
+          },
+          {
+            "cause": "Retired claims shelved in public archive",
+            "relation": "enables",
+            "effect": "Trusted falsifiable portfolio"
+          },
+          {
+            "cause": "Rough idea pitch",
+            "relation": "enables",
+            "effect": "Trusted falsifiable portfolio"
+          },
+          {
+            "cause": "Pre-registered kill criterion",
+            "relation": "enables",
+            "effect": "Forced kill-or-sharpen sprint"
+          },
+          {
+            "cause": "Retired claims shelved in public archive",
+            "relation": "enables",
+            "effect": "Reuse of past dead-end results"
+          },
+          {
+            "cause": "Reuse of past dead-end results",
+            "relation": "decreases",
+            "effect": "Wasted effort"
+          },
+          {
+            "cause": "Anonymous early critique",
+            "relation": "prevents",
+            "effect": "Over-polished consensus lock-in"
+          }
+        ],
+        "affected_system": "Research team hypothesis intake, critique, and prioritization workflow (hypothesis triage pipeline)",
+        "payoff": "Trusted falsifiable portfolio"
+      },
+      "mechanism_fingerprint": "f8a7f1f341f89cb5",
+      "wl_hash": "5a2a0e687c4af41eca7057c736c5cad2",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "sandpile_toppling_criticality",
+        "role_map": {
+          "grain_drop": "Rough idea pitch",
+          "slope_buildup": "Backlog of untested claims",
+          "threshold_exceedance": "Reviewer limit reached",
+          "toppling_cascade": "Forced kill-or-sharpen sprint",
+          "runaway_slope": "Over-polished consensus lock-in",
+          "dissipation_at_boundary": "Retired claims shelved in public archive",
+          "critical_steady_state": "Trusted falsifiable portfolio"
+        }
+      },
+      "scores": {
+        "novelty": 0.6769491759156055,
+        "appropriateness": 0.82,
+        "utility": 0.5,
+        "surprise": 0.4,
+        "coherence": 0.8,
+        "mechanism_uniqueness": 0.9296328671328671
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "medium",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 6,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": true
+    },
+    {
+      "niche_key": "centroid_7",
+      "id": "77df3ed89aaa9d10",
+      "title": "Parked Claims, Scheduled Stress-Test, Kept-Empty Slots",
+      "description": "Team members drop rough, unpolished claims into a shared parked-claim ledger, each with written refutation criteria, and nobody champions them yet. At a fixed timeboxed adversarial session, the team stress-tests the parked claims before any early favorite can attract agreement. This keeps consensus lock-in from forming in that window. Surviving claims are stripped of presentation polish and move into agenda slots that were deliberately kept vacant, so what reaches the work queue is a small batch of falsifiable, trusted hypotheses.",
+      "operator": "isomorphism",
+      "source_domain": "fire_ecology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A scheduled adversarial stress-test, fed by pre-written refutation criteria, suppresses early-favorite consensus lock-in during a short window, so surviving rough claims can be stripped of polish and fill vacant agenda slots.",
+        "causal_structure": [
+          {
+            "cause": "timeboxed adversarial critique session",
+            "relation": "enables",
+            "effect": "falsification stress-test round"
+          },
+          {
+            "cause": "written refutation criteria attached to each claim",
+            "relation": "enables",
+            "effect": "falsification stress-test round"
+          },
+          {
+            "cause": "falsification stress-test round",
+            "relation": "enables",
+            "effect": "polish-stripping of a surviving claim"
+          },
+          {
+            "cause": "parked rough-claim ledger",
+            "relation": "enables",
+            "effect": "polish-stripping of a surviving claim"
+          },
+          {
+            "cause": "falsification stress-test round",
+            "relation": "prevents",
+            "effect": "early-favorite consensus lock-in"
+          },
+          {
+            "cause": "falsification stress-test round",
+            "relation": "enables",
+            "effect": "vacant agenda slots with no incumbent idea"
+          },
+          {
+            "cause": "polish-stripping of a surviving claim",
+            "relation": "enables",
+            "effect": "batch of falsifiable, trusted hypotheses entering the work queue"
+          },
+          {
+            "cause": "vacant agenda slots with no incumbent idea",
+            "relation": "enables",
+            "effect": "batch of falsifiable, trusted hypotheses entering the work queue"
+          },
+          {
+            "cause": "early-favorite consensus lock-in",
+            "relation": "decreases",
+            "effect": "candid reviewer dissent"
+          },
+          {
+            "cause": "polish-stripping of a surviving claim",
+            "relation": "increases",
+            "effect": "candid reviewer dissent"
+          },
+          {
+            "cause": "parked rough-claim ledger",
+            "relation": "increases",
+            "effect": "review backlog"
+          },
+          {
+            "cause": "review backlog",
+            "relation": "decreases",
+            "effect": "vacant agenda slots with no incumbent idea"
+          }
+        ],
+        "affected_system": "Research team hypothesis intake, critique, and prioritization workflow (hypothesis triage pipeline)",
+        "payoff": "batch of falsifiable, trusted hypotheses entering the work queue"
+      },
+      "mechanism_fingerprint": "ed8e00049e94535f",
+      "wl_hash": "a8927281dc85220051149617e9018a5a",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "serotiny_fire_gated_release",
+        "role_map": {
+          "canopy_seed_store": "parked rough-claim ledger",
+          "heat_pulse": "timeboxed adversarial critique session",
+          "understory_fuel": "written refutation criteria attached to each claim",
+          "ground_combustion": "falsification stress-test round",
+          "resin_seal_melt": "polish-stripping of a surviving claim",
+          "shade_competitor_growth": "early-favorite consensus lock-in",
+          "open_seedbed": "vacant agenda slots with no incumbent idea",
+          "regeneration_flush": "batch of falsifiable, trusted hypotheses entering the work queue"
+        }
+      },
+      "scores": {
+        "novelty": 0.6720210573765191,
+        "appropriateness": 0.82,
+        "utility": 0.6,
+        "surprise": 0.42,
+        "coherence": 0.8,
+        "mechanism_uniqueness": 0.9214476699770817
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "medium",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 3,
+        "branching_factor": 1.2,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "57 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_early_favorite_consensus_lock_in",
+            "satisfy_review_backlog",
+            "satisfy_falsification_stress_test_round",
+            "satisfy_polish_stripping_of_a_surviving_claim"
+          ]
+        }
+      ],
+      "is_niche_elite": true
+    },
+    {
+      "niche_key": "centroid_5",
+      "id": "5ff37287f7ffbc6c",
+      "title": "Kill-Criteria Triage with a Rotating Red-Team Seat",
+      "description": "Each week one team member holds the red-team seat and is tasked only with trying to break incoming hypotheses. Because everyone knows the seat exists and the review queue is crowded, authors submit rough one-page drafts with kill criteria already written (\"I'd drop this if X is observed\"). Early agreement on a shiny idea is blocked until its kill test has been run or scheduled, so fragile ideas get a real critique round before anyone invests effort, and the survivors form a short, trusted, falsifiable list.",
+      "operator": "isomorphism",
+      "source_domain": "community_ecology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A rotating red-team seat plus an overloaded review queue push authors to pre-state kill criteria, which keeps early consensus from locking in on untested ideas and gives rough hypotheses room to survive critique and become a trusted shortlist.",
+        "causal_structure": [
+          {
+            "cause": "Hypothesis submission surge",
+            "relation": "enables",
+            "effect": "Reviewer attention load"
+          },
+          {
+            "cause": "Reviewer attention load",
+            "relation": "enables",
+            "effect": "Premature consensus lock-in"
+          },
+          {
+            "cause": "Rotating red-team seat",
+            "relation": "enables",
+            "effect": "Pre-stated kill criteria on rough drafts"
+          },
+          {
+            "cause": "Reviewer attention load",
+            "relation": "enables",
+            "effect": "Pre-stated kill criteria on rough drafts"
+          },
+          {
+            "cause": "Pre-stated kill criteria on rough drafts",
+            "relation": "prevents",
+            "effect": "Premature consensus lock-in"
+          },
+          {
+            "cause": "Pre-stated kill criteria on rough drafts",
+            "relation": "enables",
+            "effect": "Rough ideas surviving first critique round"
+          },
+          {
+            "cause": "Rough ideas surviving first critique round",
+            "relation": "enables",
+            "effect": "Trusted falsifiable shortlist"
+          },
+          {
+            "cause": "Rotating red-team seat",
+            "relation": "enables",
+            "effect": "Trusted falsifiable shortlist"
+          },
+          {
+            "cause": "Premature consensus lock-in",
+            "relation": "increases",
+            "effect": "Wasted effort on untested claims"
+          },
+          {
+            "cause": "Pre-stated kill criteria on rough drafts",
+            "relation": "decreases",
+            "effect": "Over-polished drafts"
+          },
+          {
+            "cause": "Over-polished drafts",
+            "relation": "prevents",
+            "effect": "Honest critique"
+          },
+          {
+            "cause": "Rough ideas surviving first critique round",
+            "relation": "depends_on",
+            "effect": "Honest critique"
+          }
+        ],
+        "affected_system": "Research team hypothesis intake, critique, and prioritization workflow (hypothesis triage pipeline)",
+        "payoff": "Trusted falsifiable shortlist"
+      },
+      "mechanism_fingerprint": "4b6e5a07f7dff8af",
+      "wl_hash": "cafba32b0af532aec66d2653ca19874c",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "trophic_cascade_predator_gate",
+        "role_map": {
+          "herbivore_growth": "Hypothesis submission surge",
+          "predator_return": "Rotating red-team seat",
+          "browsing_pressure": "Reviewer attention load",
+          "fear_avoidance_behaviour": "Pre-stated kill criteria on rough drafts",
+          "riparian_overbrowse": "Premature consensus lock-in",
+          "seedling_escape": "Rough ideas surviving first critique round",
+          "riparian_recovery": "Trusted falsifiable shortlist"
+        }
+      },
+      "scores": {
+        "novelty": 0.6703473281297895,
+        "appropriateness": 0.88,
+        "utility": 0.55,
+        "surprise": 0.3,
+        "coherence": 0.85,
+        "mechanism_uniqueness": 0.9238636363636363
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "low",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 4,
+        "branching_factor": 1.2,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": true
+    },
+    {
+      "niche_key": "centroid_0",
+      "id": "be3f14bf5a6b6c17",
+      "title": "Falsifier-Gated Intake Brake",
+      "description": "Each week the team meets for a falsifier review, and each member can add rough one-page hypotheses with a stated disproof test. Submissions climb as people see the review is quick and low-stakes. When a prediction fails in public, the intake quota is halved until the open critiques are cleared, so the reviewer pile-up never forms and attention is spread evenly across the surviving ideas. Members feel a brief slowdown after a failure, but they end up with a short list of trusted, falsifiable hypotheses.",
+      "operator": "isomorphism",
+      "source_domain": "network_congestion_control",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A failed prediction triggers a temporary halving of the intake quota, which keeps reviewer overload from happening and leaves critique attention evenly spread over a trusted, falsifiable portfolio.",
+        "causal_structure": [
+          {
+            "cause": "Weekly Falsifier Review Cadence",
+            "relation": "increases",
+            "effect": "Rising Count of Submitted Hypotheses"
+          },
+          {
+            "cause": "Rising Count of Submitted Hypotheses",
+            "relation": "enables",
+            "effect": "Reviewer Overload Pile-Up"
+          },
+          {
+            "cause": "Failed Prediction Result",
+            "relation": "enables",
+            "effect": "Halved Intake Quota Until Critiques Clear"
+          },
+          {
+            "cause": "Rising Count of Submitted Hypotheses",
+            "relation": "enables",
+            "effect": "Halved Intake Quota Until Critiques Clear"
+          },
+          {
+            "cause": "Halved Intake Quota Until Critiques Clear",
+            "relation": "prevents",
+            "effect": "Reviewer Overload Pile-Up"
+          },
+          {
+            "cause": "Halved Intake Quota Until Critiques Clear",
+            "relation": "enables",
+            "effect": "Even Spread of Critique Attention Across Ideas"
+          },
+          {
+            "cause": "Rising Count of Submitted Hypotheses",
+            "relation": "enables",
+            "effect": "Even Spread of Critique Attention Across Ideas"
+          },
+          {
+            "cause": "Even Spread of Critique Attention Across Ideas",
+            "relation": "enables",
+            "effect": "Trusted Falsifiable Portfolio"
+          },
+          {
+            "cause": "Rough One-Page Claim Format",
+            "relation": "prevents",
+            "effect": "Over-Polished Idea Attachment"
+          },
+          {
+            "cause": "Failed Prediction Result",
+            "relation": "decreases",
+            "effect": "Over-Polished Idea Attachment"
+          },
+          {
+            "cause": "Halved Intake Quota Until Critiques Clear",
+            "relation": "prevents",
+            "effect": "Unfalsifiable Claim Admission"
+          },
+          {
+            "cause": "Unfalsifiable Claim Admission",
+            "relation": "decreases",
+            "effect": "Trusted Falsifiable Portfolio"
+          }
+        ],
+        "affected_system": "Research team hypothesis intake, critique, and prioritization workflow (hypothesis triage pipeline)",
+        "payoff": "Trusted Falsifiable Portfolio"
+      },
+      "mechanism_fingerprint": "a9e7e5e7c55bf6ee",
+      "wl_hash": "20fc803ece3eccd5076e32a0d3f07ad2",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "aimd_loss_backoff_fairness",
+        "role_map": {
+          "ack_clock": "Weekly Falsifier Review Cadence",
+          "send_rate_growth": "Rising Count of Submitted Hypotheses",
+          "loss_event": "Failed Prediction Result",
+          "window_halving": "Halved Intake Quota Until Critiques Clear",
+          "queue_overflow_risk": "Reviewer Overload Pile-Up",
+          "flow_share_equalisation": "Even Spread of Critique Attention Across Ideas",
+          "fair_equilibrium": "Trusted Falsifiable Portfolio"
+        }
+      },
+      "scores": {
+        "novelty": 0.6749489928621173,
+        "appropriateness": 0.62,
+        "utility": 0.4,
+        "surprise": 0.35,
+        "coherence": 0.66,
+        "mechanism_uniqueness": 0.9283718330849479
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "low",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 4,
+        "branching_factor": 1.2,
+        "loop_density": 0.0,
+        "payoff_path_length": 3
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "49 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_unfalsifiable_claim_admission",
+            "satisfy_rising_count_of_submitted_hypotheses",
+            "satisfy_halved_intake_quota_until_critiques_clear",
+            "satisfy_even_spread_of_critique_attention_across_ideas"
+          ]
+        }
+      ],
+      "is_niche_elite": true
+    },
+    {
+      "niche_key": "centroid_1",
+      "id": "52e1c36c2edfdf91",
+      "title": "Rough-Sketch Intake with a Kill-or-Keep Critique Window",
+      "description": "Anyone can drop a rough, deliberately unpolished conjecture sketch on the team board at any time. Each sketch must state a one-line refutation condition. Twice a week, a short time-boxed critique round tries to kill each sketch, and sketches without a refutation condition are dropped on the spot. Only the few sketches that survive get a funded test slot, so reviewers never face a growing pile and the team ends up with trusted, reusable results.",
+      "operator": "isomorphism",
+      "source_domain": "runtime_memory_management",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A frequent, time-boxed kill-or-keep critique round, fed by cheap rough sketches that expect most ideas to die early, prevents the unreviewed pile from overloading reviewers, and only falsifiable survivors advance to produce trusted, reusable results.",
+        "causal_structure": [
+          {
+            "cause": "Steady inflow of rough conjecture sketches from all team members",
+            "relation": "enables",
+            "effect": "Backlog of untested sketches piling up on the board"
+          },
+          {
+            "cause": "Backlog of untested sketches piling up on the board",
+            "relation": "enables",
+            "effect": "Reviewer overload from a pile of unreviewed sketches"
+          },
+          {
+            "cause": "Shared expectation that most rough ideas die quickly under first challenge",
+            "relation": "enables",
+            "effect": "Twice-weekly time-boxed kill-or-keep critique round demanding a refutation condition"
+          },
+          {
+            "cause": "Backlog of untested sketches piling up on the board",
+            "relation": "enables",
+            "effect": "Twice-weekly time-boxed kill-or-keep critique round demanding a refutation condition"
+          },
+          {
+            "cause": "Twice-weekly time-boxed kill-or-keep critique round demanding a refutation condition",
+            "relation": "prevents",
+            "effect": "Reviewer overload from a pile of unreviewed sketches"
+          },
+          {
+            "cause": "Twice-weekly time-boxed kill-or-keep critique round demanding a refutation condition",
+            "relation": "enables",
+            "effect": "Advancing falsifiable sketches into a funded test slot"
+          },
+          {
+            "cause": "Advancing falsifiable sketches into a funded test slot",
+            "relation": "enables",
+            "effect": "Steady flow of trusted, reusable results"
+          },
+          {
+            "cause": "Steady inflow of rough conjecture sketches from all team members",
+            "relation": "enables",
+            "effect": "Steady flow of trusted, reusable results"
+          },
+          {
+            "cause": "Reviewer overload from a pile of unreviewed sketches",
+            "relation": "decreases",
+            "effect": "Candor of critique among reviewers"
+          },
+          {
+            "cause": "Twice-weekly time-boxed kill-or-keep critique round demanding a refutation condition",
+            "relation": "depends_on",
+            "effect": "Rough sketch format with a one-line refutation condition"
+          },
+          {
+            "cause": "Advancing falsifiable sketches into a funded test slot",
+            "relation": "increases",
+            "effect": "Team trust in reported results"
+          },
+          {
+            "cause": "Steady flow of trusted, reusable results",
+            "relation": "increases",
+            "effect": "Team willingness to share rough sketches early"
+          }
+        ],
+        "affected_system": "Research team hypothesis intake, critique, and prioritization workflow (hypothesis triage pipeline)",
+        "payoff": "Steady flow of trusted, reusable results"
+      },
+      "mechanism_fingerprint": "4c81adb5f664855f",
+      "wl_hash": "c4f6bad855da07d7aeb1a2d724375895",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "generational_gc_reclaim_gate",
+        "role_map": {
+          "allocation_stream": "Steady inflow of rough conjecture sketches from all team members",
+          "weak_generational_hypothesis": "Shared expectation that most rough ideas die quickly under first challenge",
+          "young_space_fill": "Backlog of untested sketches piling up on the board",
+          "minor_collection": "Twice-weekly time-boxed kill-or-keep critique round demanding a refutation condition",
+          "heap_exhaustion_risk": "Reviewer overload from a pile of unreviewed sketches",
+          "survivor_promotion": "Advancing falsifiable sketches into a funded test slot",
+          "stable_throughput": "Steady flow of trusted, reusable results"
+        }
+      },
+      "scores": {
+        "novelty": 0.6744608212306358,
+        "appropriateness": 0.82,
+        "utility": 0.5,
+        "surprise": 0.27,
+        "coherence": 0.85,
+        "mechanism_uniqueness": 0.9259252815973575
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "low",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_0",
+      "id": "e9a52d1fc273edd1",
+      "title": "Kill-Test Gate: Earn Your Polish",
+      "description": "When someone posts a rough one-paragraph claim for hypothesis A, the owner of rival hypothesis B receives a mandatory kill-test request: write down what result would refute B. Until B's owner answers it, B is blocked from producing a polished pitch deck before the Friday review. Team members therefore see only rough, falsifiable claims in the review slot, and the room sorts them into test-now and park tiers.",
+      "operator": "isomorphism",
+      "source_domain": "developmental_biology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A rival's rough claim triggers a mandatory refutation request that blocks the competing hypothesis from being polished before review, so critique happens on rough, falsifiable claims and the portfolio stays small.",
+        "causal_structure": [
+          {
+            "cause": "Champion enthusiasm for hypothesis A",
+            "relation": "increases",
+            "effect": "Rough one-paragraph claim posted for A"
+          },
+          {
+            "cause": "Rough one-paragraph claim posted for A",
+            "relation": "enables",
+            "effect": "Mandatory kill-test request addressed to B"
+          },
+          {
+            "cause": "Champion enthusiasm for hypothesis B",
+            "relation": "enables",
+            "effect": "Polished pitch deck for B"
+          },
+          {
+            "cause": "Mandatory kill-test request addressed to B",
+            "relation": "prevents",
+            "effect": "Polished pitch deck for B"
+          },
+          {
+            "cause": "Rough one-paragraph claim posted for A",
+            "relation": "enables",
+            "effect": "Test-now versus park sorting"
+          },
+          {
+            "cause": "Mandatory kill-test request addressed to B",
+            "relation": "enables",
+            "effect": "Test-now versus park sorting"
+          },
+          {
+            "cause": "Test-now versus park sorting",
+            "relation": "enables",
+            "effect": "Compact portfolio of falsifiable experiments"
+          },
+          {
+            "cause": "Polished pitch deck for B",
+            "relation": "decreases",
+            "effect": "Reviewer willingness to critique openly"
+          },
+          {
+            "cause": "Mandatory kill-test request addressed to B",
+            "relation": "depends_on",
+            "effect": "Written refutation criterion"
+          },
+          {
+            "cause": "Compact portfolio of falsifiable experiments",
+            "relation": "decreases",
+            "effect": "Review load per meeting"
+          },
+          {
+            "cause": "Written refutation criterion",
+            "relation": "increases",
+            "effect": "Team trust in reported results"
+          }
+        ],
+        "affected_system": "Research team hypothesis intake, critique, and prioritization workflow (hypothesis triage pipeline)",
+        "payoff": "Compact portfolio of falsifiable experiments"
+      },
+      "mechanism_fingerprint": "48939ad5f3d6b39e",
+      "wl_hash": "098692e04a4872d39337806d7cf8b845",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "notch_lateral_inhibition_pattern",
+        "role_map": {
+          "proneural_bias_a": "Champion enthusiasm for hypothesis A",
+          "proneural_bias_b": "Champion enthusiasm for hypothesis B",
+          "delta_ligand_a": "Rough one-paragraph claim posted for A",
+          "notch_signal_b": "Mandatory kill-test request addressed to B",
+          "delta_ligand_b": "Polished pitch deck for B",
+          "fate_divergence": "Test-now versus park sorting",
+          "fine_grained_pattern": "Compact portfolio of falsifiable experiments"
+        }
+      },
+      "scores": {
+        "novelty": 0.6682719321415529,
+        "appropriateness": 0.68,
+        "utility": 0.45,
+        "surprise": 0.42,
+        "coherence": 0.62,
+        "mechanism_uniqueness": 0.9276733500417711
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "low",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.0,
+        "loop_density": 0.0,
+        "payoff_path_length": 3
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_8",
+      "id": "54c6a028c5680eb7",
+      "title": "Rough-Draft Ladder: Early Demotion of Untestable Claims",
+      "description": "Every hypothesis enters as a rough one-paragraph draft with a stated refutation test. Teammates probe each draft for falsifiability during a short window before anyone has invested in polishing it. Claims that cannot name a failing observation are moved down a tiered ladder (flag, then pause, then archive), so the author never gets to build a polished deck around an untestable idea. Authors learn that posting rough, testable drafts is the safe and respected move.",
+      "operator": "isomorphism",
+      "source_domain": "institutional_economics",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A tiered demotion ladder, triggered by teammates' falsifiability probing, stops authors from polishing and championing untestable ideas during the early window, so rough testable drafts become the habit and the shortlist stays lean and trusted.",
+        "causal_structure": [
+          {
+            "cause": "Inflow of new hypotheses each week",
+            "relation": "enables",
+            "effect": "Peer teammates reading each claim for refutation tests"
+          },
+          {
+            "cause": "Inflow of new hypotheses each week",
+            "relation": "enables",
+            "effect": "Urge to polish and champion a pet idea before critique"
+          },
+          {
+            "cause": "Tiered escalation ladder for vague claims",
+            "relation": "enables",
+            "effect": "Stepwise demotion of untestable claims"
+          },
+          {
+            "cause": "Peer teammates reading each claim for refutation tests",
+            "relation": "enables",
+            "effect": "Stepwise demotion of untestable claims"
+          },
+          {
+            "cause": "Stepwise demotion of untestable claims",
+            "relation": "prevents",
+            "effect": "Urge to polish and champion a pet idea before critique"
+          },
+          {
+            "cause": "Stepwise demotion of untestable claims",
+            "relation": "enables",
+            "effect": "Habit of posting rough falsifiable drafts"
+          },
+          {
+            "cause": "Habit of posting rough falsifiable drafts",
+            "relation": "enables",
+            "effect": "Trusted, lean shortlist of tested hypotheses"
+          },
+          {
+            "cause": "Peer teammates reading each claim for refutation tests",
+            "relation": "enables",
+            "effect": "Trusted, lean shortlist of tested hypotheses"
+          },
+          {
+            "cause": "Urge to polish and champion a pet idea before critique",
+            "relation": "increases",
+            "effect": "Review queue length"
+          },
+          {
+            "cause": "Review queue length",
+            "relation": "decreases",
+            "effect": "Peer teammates reading each claim for refutation tests"
+          },
+          {
+            "cause": "Habit of posting rough falsifiable drafts",
+            "relation": "decreases",
+            "effect": "Urge to polish and champion a pet idea before critique"
+          }
+        ],
+        "affected_system": "Research team hypothesis intake, critique, and prioritization workflow (hypothesis triage pipeline)",
+        "payoff": "Trusted, lean shortlist of tested hypotheses"
+      },
+      "mechanism_fingerprint": "1e52cd04bed34ce1",
+      "wl_hash": "004573fc9add0a7bf911d68da6c5538f",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "ostrom_graduated_sanction_commons",
+        "role_map": {
+          "harvest_pressure": "Inflow of new hypotheses each week",
+          "monitoring_by_users": "Peer teammates reading each claim for refutation tests",
+          "graduated_sanction_rule": "Tiered escalation ladder for vague claims",
+          "sanction_application": "Stepwise demotion of untestable claims",
+          "defection_temptation": "Urge to polish and champion a pet idea before critique",
+          "compliance_norm": "Habit of posting rough falsifiable drafts",
+          "commons_persistence": "Trusted, lean shortlist of tested hypotheses"
+        }
+      },
+      "scores": {
+        "novelty": 0.6773444481768722,
+        "appropriateness": 0.82,
+        "utility": 0.5,
+        "surprise": 0.35,
+        "coherence": 0.84,
+        "mechanism_uniqueness": 0.9302617926410727
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "low",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 2,
+        "branching_factor": 1.375,
+        "loop_density": 0.545455,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "13 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_urge_to_polish_and_champion_a_pet_idea_before_critique",
+            "satisfy_review_queue_length"
+          ]
+        }
+      ],
+      "is_niche_elite": true
+    },
+    {
+      "niche_key": "centroid_9",
+      "id": "48d4fce5a743f7f1",
+      "title": "Sharpen-or-Shelve Gate",
+      "description": "Every new idea arrives as a rough one-paragraph pitch. A rotating skeptic flags any claim that lacks a refutable prediction, and that flag automatically freezes scheduling and consensus-building for 48 hours. During the freeze the proposer, with a peer, rewrites the claim as a concrete 'we would be wrong if...' prediction. If no such prediction exists by the end, the idea is shelved in a visible archive without blame. Ideas that pass enter a short backlog, so people feel enthusiasm held back briefly, then see a cleaner and smaller review queue.",
+      "operator": "isomorphism",
+      "source_domain": "cell_biology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A flag on an untestable claim earns a mandatory hold that blocks the rush to consensus and experiment launch, and the pause leaves time to either sharpen the claim into a refutable prediction or shelve it, which keeps the backlog trustworthy and light.",
+        "causal_structure": [
+          {
+            "cause": "Unfalsifiable claim surfacing in a pitch",
+            "relation": "enables",
+            "effect": "Rotating skeptic's red-flag note"
+          },
+          {
+            "cause": "Rotating skeptic's red-flag note",
+            "relation": "enables",
+            "effect": "Enforced 48-hour hold on scheduling and endorsement"
+          },
+          {
+            "cause": "Excitement and social momentum around a new idea",
+            "relation": "enables",
+            "effect": "Rush toward team consensus and experiment launch"
+          },
+          {
+            "cause": "Enforced 48-hour hold on scheduling and endorsement",
+            "relation": "prevents",
+            "effect": "Rush toward team consensus and experiment launch"
+          },
+          {
+            "cause": "Enforced 48-hour hold on scheduling and endorsement",
+            "relation": "enables",
+            "effect": "Sharpening period for rewriting the claim as a refutable prediction"
+          },
+          {
+            "cause": "Sharpening period for rewriting the claim as a refutable prediction",
+            "relation": "enables",
+            "effect": "Blameless shelving of the idea into the closed-ideas archive"
+          },
+          {
+            "cause": "Blameless shelving of the idea into the closed-ideas archive",
+            "relation": "enables",
+            "effect": "Trustworthy, low-load backlog of falsifiable ideas"
+          },
+          {
+            "cause": "Sharpening period for rewriting the claim as a refutable prediction",
+            "relation": "enables",
+            "effect": "Trustworthy, low-load backlog of falsifiable ideas"
+          },
+          {
+            "cause": "Rush toward team consensus and experiment launch",
+            "relation": "increases",
+            "effect": "Review queue load"
+          },
+          {
+            "cause": "Review queue load",
+            "relation": "decreases",
+            "effect": "Trustworthy, low-load backlog of falsifiable ideas"
+          },
+          {
+            "cause": "Rough one-paragraph pitch format",
+            "relation": "enables",
+            "effect": "Candid peer critique"
+          },
+          {
+            "cause": "Candid peer critique",
+            "relation": "enables",
+            "effect": "Rotating skeptic's red-flag note"
+          }
+        ],
+        "affected_system": "Research team hypothesis intake, critique, and prioritization workflow (hypothesis triage pipeline)",
+        "payoff": "Trustworthy, low-load backlog of falsifiable ideas"
+      },
+      "mechanism_fingerprint": "ddffe4cafc008498",
+      "wl_hash": "e1e6104b6b693b6c9aa49abebb4c8edd",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "p53_damage_checkpoint_arrest",
+        "role_map": {
+          "genotoxic_lesion": "Unfalsifiable claim surfacing in a pitch",
+          "growth_mitogen": "Excitement and social momentum around a new idea",
+          "sensor_kinase": "Rotating skeptic's red-flag note",
+          "checkpoint_effector": "Enforced 48-hour hold on scheduling and endorsement",
+          "division_drive": "Rush toward team consensus and experiment launch",
+          "repair_window": "Sharpening period for rewriting the claim as a refutable prediction",
+          "apoptotic_commitment": "Blameless shelving of the idea into the closed-ideas archive",
+          "tissue_integrity": "Trustworthy, low-load backlog of falsifiable ideas"
+        }
+      },
+      "scores": {
+        "novelty": 0.6681173736389507,
+        "appropriateness": 0.82,
+        "utility": 0.58,
+        "surprise": 0.4,
+        "coherence": 0.8,
+        "mechanism_uniqueness": 0.9191210449727646
+      },
+      "niche": {
+        "intervention_level": "team",
+        "resource_intensity": "medium",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 6,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 3
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "51 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_candid_peer_critique",
+            "satisfy_rush_toward_team_consensus_and_experiment_launch",
+            "satisfy_rotating_skeptic_s_red_flag_note",
+            "satisfy_review_queue_load",
+            "satisfy_enforced_48_hour_hold_on_scheduling_and_endorsement",
+            "satisfy_sharpening_period_for_rewriting_the_claim_as_a_refutable_prediction",
+            "satisfy_blameless_shelving_of_the_idea_into_the_closed_ideas_archive"
+          ]
+        }
+      ],
+      "is_niche_elite": false
+    }
+  ]
+}

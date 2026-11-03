@@ -1,0 +1,2652 @@
+[Minerva Backend] Dispatching task to OpenAI Codex CLI...
+[Minerva Backend] Model: cx/gpt-6-sol (Reasoning: high) via 9Router
+[Minerva Backend] Target Directory: /home/arcturus/hermesWorkspace/projects/CounterField
+[Minerva Backend] Task: # TASK (Backend / TDD): SSE-tolerant LLMIdeaProvider._call + strict (no silent mock) mode
+
+Target file: creative_agent/providers.py (class LLMIdeaProvider). Test runner: .venv/bin/pytest
+
+## Problem (measured)
+9Router (http://127.0.0.1:20128/v1/chat/completions) answers with `text/event-stream`
+(`data: {"choices":[{"delta":{"content":"..."}}]}` ... `data: [DONE]`) regardless of `"stream": false`.
+`LLMIdeaProvider._call` does `json.loads(resp.read())` -> JSONDecodeError -> every public method
+(normalize/mine_baselines/generate/canonicalize/assess/describe_niche) swallows it with `except Exception`
+and silently falls back to MockIdeaProvider. That contaminates "LLM" runs with mock data.
+
+## Required (contract)
+1. Add a pure module-level helper `decode_chat_response(raw: bytes, content_type: str | None = None) -> str`
+   in providers.py returning the assistant text. Must support BOTH:
+   (a) normal JSON `{"choices":[{"message":{"content":...}}]}`,
+   (b) SSE stream (accumulate `choices[0].delta.content` of every `data:` line; ignore `[DONE]` and malformed chunks).
+   Detect by content (stripped body starts with `data:` or contains "\ndata: "), not only by header.
+   Raise ValueError if no content could be extracted.
+2. `LLMIdeaProvider._call` must use it and send `"stream": True`; keep the markdown-fence stripping.
+   Add constructor kwarg `timeout: float = 90.0` (was hardcoded 45) and use it in urlopen.
+3. Add constructor kwarg `strict: bool = False`. When strict=True, any exception inside
+   normalize/mine_baselines/generate/canonicalize/assess/describe_niche MUST propagate (no mock fallback).
+   Default False keeps legacy behaviour. In non-strict mode, increment `self.fallbacks: int` (init 0) on every fallback to Mock.
+4. Do NOT change Protocol signatures, and do NOT edit any file other than providers.py and the new test file.
+5. Tests: create tests/test_llm_provider_sse.py (zero network; monkeypatch `urllib.request.urlopen` with a fake
+   response object that is iterable/readable and has `.headers`), covering: JSON body, SSE body,
+   SSE with fenced ```json block, malformed chunk skipped, empty -> ValueError, strict=True propagates,
+   strict=False falls back and increments `fallbacks`.
+6. Done only when `.venv/bin/pytest -q` in the project root exits 0 (currently 89 pass). Print the final pytest tail.
+   No network calls, no background loops, no tuning. If something fails twice, STOP and report the failure evidence (Report-First).
+----------------------------------------------------------------------
+Reading additional input from stdin...
+OpenAI Codex v0.161.0
+--------
+workdir: /home/arcturus/hermesWorkspace/projects/CounterField
+model: cx/gpt-6-sol
+provider: custom
+approval: never
+sandbox: danger-full-access
+reasoning effort: high
+reasoning summaries: none
+session id: 01a15fdb-d497-77d1-add1-ddf0be32ae38
+--------
+user
+You are Minerva Backend, core logic and backend API engineer of Team Minerva.
+You follow strict Contract-First and TDD principles.
+Target Directory: /home/arcturus/hermesWorkspace/projects/CounterField
+Task: # TASK (Backend / TDD): SSE-tolerant LLMIdeaProvider._call + strict (no silent mock) mode
+
+Target file: creative_agent/providers.py (class LLMIdeaProvider). Test runner: .venv/bin/pytest
+
+## Problem (measured)
+9Router (http://127.0.0.1:20128/v1/chat/completions) answers with `text/event-stream`
+(`data: {"choices":[{"delta":{"content":"..."}}]}` ... `data: [DONE]`) regardless of `"stream": false`.
+`LLMIdeaProvider._call` does `json.loads(resp.read())` -> JSONDecodeError -> every public method
+(normalize/mine_baselines/generate/canonicalize/assess/describe_niche) swallows it with `except Exception`
+and silently falls back to MockIdeaProvider. That contaminates "LLM" runs with mock data.
+
+## Required (contract)
+1. Add a pure module-level helper `decode_chat_response(raw: bytes, content_type: str | None = None) -> str`
+   in providers.py returning the assistant text. Must support BOTH:
+   (a) normal JSON `{"choices":[{"message":{"content":...}}]}`,
+   (b) SSE stream (accumulate `choices[0].delta.content` of every `data:` line; ignore `[DONE]` and malformed chunks).
+   Detect by content (stripped body starts with `data:` or contains "\ndata: "), not only by header.
+   Raise ValueError if no content could be extracted.
+2. `LLMIdeaProvider._call` must use it and send `"stream": True`; keep the markdown-fence stripping.
+   Add constructor kwarg `timeout: float = 90.0` (was hardcoded 45) and use it in urlopen.
+3. Add constructor kwarg `strict: bool = False`. When strict=True, any exception inside
+   normalize/mine_baselines/generate/canonicalize/assess/describe_niche MUST propagate (no mock fallback).
+   Default False keeps legacy behaviour. In non-strict mode, increment `self.fallbacks: int` (init 0) on every fallback to Mock.
+4. Do NOT change Protocol signatures, and do NOT edit any file other than providers.py and the new test file.
+5. Tests: create tests/test_llm_provider_sse.py (zero network; monkeypatch `urllib.request.urlopen` with a fake
+   response object that is iterable/readable and has `.headers`), covering: JSON body, SSE body,
+   SSE with fenced ```json block, malformed chunk skipped, empty -> ValueError, strict=True propagates,
+   strict=False falls back and increments `fallbacks`.
+6. Done only when `.venv/bin/pytest -q` in the project root exits 0 (currently 89 pass). Print the final pytest tail.
+   No network calls, no background loops, no tuning. If something fails twice, STOP and report the failure evidence (Report-First).
+
+Implement the required backend logic, write/run tests, and verify exit code 0 before concluding.
+codex
+I’ll inspect `LLMIdeaProvider` and the existing provider tests, then update the parser and fallback behavior within the two allowed files. After that I’ll run the targeted tests and the full suite.
+exec
+/bin/bash -lc 'rg -n "class LLMIdeaProvider|def _call|def (normalize|mine_baselines|generate|canonicalize|assess|describe_niche)" creative_agent/providers.py' in /home/arcturus/hermesWorkspace/projects/CounterField
+ succeeded in 0ms:
+15:    def normalize(self, problem: str) -> NormalizedProblem: ...
+16:    def mine_baselines(self, problem: NormalizedProblem, count: int) -> list[IdeaCandidate]: ...
+17:    def generate(self, problem: NormalizedProblem, operator: str, private_history: tuple[IdeaCandidate, ...] | list[IdeaCandidate], count: int) -> list[IdeaCandidate]: ...
+18:    def canonicalize(self, problem: NormalizedProblem, candidate: IdeaCandidate) -> IdeaCandidate: ...
+19:    def assess(self, problem: NormalizedProblem, candidate: IdeaCandidate) -> EvaluationScores: ...
+20:    def describe_niche(self, problem: NormalizedProblem, candidate: IdeaCandidate) -> NicheDescriptor: ...
+54:    def normalize(self, problem: str) -> NormalizedProblem:
+63:    def mine_baselines(self, problem: NormalizedProblem, count: int) -> list[IdeaCandidate]:
+71:    def generate(self, problem, operator, private_history, count):
+83:    def canonicalize(self, problem, candidate):
+92:    def assess(self, problem, candidate):
+95:    def describe_niche(self, problem, candidate):
+112:class LLMIdeaProvider:
+135:    def _call(self, prompt: str, system: str = "You are a specialized game design and ideation engine. Output strictly valid JSON without preamble.") -> Any:
+164:    def normalize(self, problem: str) -> NormalizedProblem:
+184:    def mine_baselines(self, problem: NormalizedProblem, count: int) -> list[IdeaCandidate]:
+207:    def generate(self, problem: NormalizedProblem, operator: str, private_history: Any, count: int) -> list[IdeaCandidate]:
+276:    def canonicalize(self, problem: NormalizedProblem, candidate: IdeaCandidate) -> IdeaCandidate:
+321:    def assess(self, problem: NormalizedProblem, candidate: IdeaCandidate) -> EvaluationScores:
+349:    def describe_niche(self, problem: NormalizedProblem, candidate: IdeaCandidate) -> NicheDescriptor:
+
+exec
+/bin/bash -lc "rg --files -g 'AGENTS.md' -g '"'!**/.venv/**'"'" in /home/arcturus/hermesWorkspace/projects/CounterField
+ exited 1 in 0ms:
+exec
+/bin/bash -lc 'git status --short' in /home/arcturus/hermesWorkspace/projects/CounterField
+ succeeded in 0ms:
+ M .gitignore
+ M creative_agent/__init__.py
+ M creative_agent/archive.py
+ M creative_agent/cli.py
+ M creative_agent/evaluator.py
+ M creative_agent/harness.py
+ M creative_agent/models.py
+ M creative_agent/providers.py
+ M pyproject.toml
+?? INSTRUCTION_MODULAR_CONTRACTS.md
+?? INSTRUCTION_P0_REPAIR.md
+?? INSTRUCTION_PHASE_0_FOUNDATION.md
+?? INSTRUCTION_PHASE_1_DIALECTIC.md
+?? INSTRUCTION_PHASE_2_INVERSION.md
+?? INSTRUCTION_PHASE_3_ISOMORPHISM.md
+?? INSTRUCTION_PHASE_4_OPEN_NICHES.md
+?? creative_agent/contracts.py
+?? creative_agent/creativity/
+?? daily_research/
+?? data/
+?? docs/
+?? run_daily_research.sh
+?? run_design_ideation_30.py
+?? tests/test_creativity_phase0.py
+?? tests/test_creativity_phase1.py
+?? tests/test_creativity_phase2.py
+?? tests/test_creativity_phase3.py
+?? tests/test_creativity_phase4.py
+?? tests/test_curated_templates.py
+?? tests/test_modular_contracts.py
+?? tests/test_p0_invariants.py
+
+exec
+/bin/bash -lc 'rg --files tests | sort' in /home/arcturus/hermesWorkspace/projects/CounterField
+ succeeded in 0ms:
+tests/test_architecture_enhancements.py
+tests/test_creative_agent.py
+tests/test_creativity_phase0.py
+tests/test_creativity_phase1.py
+tests/test_creativity_phase2.py
+tests/test_creativity_phase3.py
+tests/test_creativity_phase4.py
+tests/test_curated_templates.py
+tests/test_dsl.py
+tests/test_modular_contracts.py
+tests/test_p0_invariants.py
+tests/test_redteam.py
+tests/test_verifier.py
+
+exec
+/bin/bash -lc "rg -n \"LLMIdeaProvider|_call\\(|fallback|urlopen|MockIdeaProvider\" tests creative_agent | head -160" in /home/arcturus/hermesWorkspace/projects/CounterField
+ succeeded in 0ms:
+creative_agent/creativity/metrics.py:10:    "evaluation_errors", "evidence_errors", "provider_fallbacks",
+creative_agent/__init__.py:26:from .providers import HashEmbeddingProvider, MockIdeaProvider
+creative_agent/__init__.py:115:    "MockIdeaProvider",
+creative_agent/harness.py:196:                    "provenance": candidate.provenance.model_copy(update={"provider_mode": "mock-fallback"})
+creative_agent/harness.py:198:                metrics.count_error("provider_fallbacks")
+creative_agent/cli.py:5:from .providers import MockIdeaProvider, LLMIdeaProvider
+creative_agent/cli.py:36:            provider = LLMIdeaProvider(model=args.model)
+creative_agent/cli.py:38:            provider = MockIdeaProvider()
+creative_agent/providers.py:51:class MockIdeaProvider:
+creative_agent/providers.py:112:class LLMIdeaProvider:
+creative_agent/providers.py:135:    def _call(self, prompt: str, system: str = "You are a specialized game design and ideation engine. Output strictly valid JSON without preamble.") -> Any:
+creative_agent/providers.py:151:        with urllib.request.urlopen(req, timeout=45) as resp:
+creative_agent/providers.py:173:            res = self._call(prompt)
+creative_agent/providers.py:182:            return MockIdeaProvider().normalize(problem)
+creative_agent/providers.py:192:            items = self._call(prompt)
+creative_agent/providers.py:205:            return MockIdeaProvider().mine_baselines(problem, count)
+creative_agent/providers.py:233:            items = self._call(prompt)
+creative_agent/providers.py:274:            return MockIdeaProvider().generate(problem, operator, private_history, count)
+creative_agent/providers.py:291:            res = self._call(prompt)
+creative_agent/providers.py:319:            return MockIdeaProvider().canonicalize(problem, candidate)
+creative_agent/providers.py:337:            res = self._call(prompt)
+creative_agent/providers.py:347:            return MockIdeaProvider().assess(problem, candidate)
+creative_agent/providers.py:364:            res = self._call(prompt)
+creative_agent/providers.py:376:            return MockIdeaProvider().describe_niche(problem, candidate)
+tests/test_creativity_phase3.py:1:from creative_agent import MockIdeaProvider
+tests/test_creativity_phase3.py:92:    h = IdeationHarness(MockIdeaProvider(), operators=[op])
+tests/test_p0_invariants.py:16:    MockIdeaProvider,
+tests/test_p0_invariants.py:34:    provider = MockIdeaProvider()
+tests/test_p0_invariants.py:146:    monkeypatch.setattr(urllib.request, "urlopen", deny)
+tests/test_creativity_phase2.py:3:from creative_agent import MockIdeaProvider
+tests/test_creativity_phase2.py:33:    h = IdeationHarness(MockIdeaProvider())
+tests/test_creativity_phase2.py:109:    h = IdeationHarness(MockIdeaProvider(), operators=[op])
+tests/test_verifier.py:6:from creative_agent.providers import MockIdeaProvider
+tests/test_verifier.py:100:    provider = MockIdeaProvider()
+tests/test_creativity_phase0.py:5:from creative_agent import DefaultDomainAdapter, MockIdeaProvider
+tests/test_creativity_phase0.py:37:    h = IdeationHarness(MockIdeaProvider(), *result_harness_args)
+tests/test_creativity_phase0.py:41:    r1, r2 = _log(), IdeationHarness(MockIdeaProvider(), operators=None).run(PROBLEM, CFG)
+tests/test_creativity_phase0.py:55:    h = IdeationHarness(MockIdeaProvider())
+tests/test_creativity_phase0.py:76:    adapter = Recorder(MockIdeaProvider())
+tests/test_creativity_phase0.py:92:        IdeationHarness(MockIdeaProvider(), operators=[Spy()]).run(PROBLEM, CFG)
+tests/test_creativity_phase0.py:102:    r = IdeationHarness(Boom(MockIdeaProvider())).run(PROBLEM, CFG)
+tests/test_creativity_phase0.py:114:    adapter = Recorder(MockIdeaProvider())
+tests/test_modular_contracts.py:10:    MockIdeaProvider,
+tests/test_modular_contracts.py:36:    provider = MockIdeaProvider()
+tests/test_modular_contracts.py:48:    provider = MockIdeaProvider()
+tests/test_modular_contracts.py:62:    provider = MockIdeaProvider()
+tests/test_modular_contracts.py:97:    provider = MockIdeaProvider()
+tests/test_architecture_enhancements.py:34:from creative_agent.providers import HashEmbeddingProvider, MockIdeaProvider
+tests/test_architecture_enhancements.py:109:    provider = MockIdeaProvider()
+tests/test_architecture_enhancements.py:129:    provider = MockIdeaProvider()
+tests/test_architecture_enhancements.py:143:    provider = MockIdeaProvider()
+tests/test_architecture_enhancements.py:164:    provider = MockIdeaProvider()
+tests/test_creative_agent.py:12:from creative_agent.providers import MockIdeaProvider, HashEmbeddingProvider
+tests/test_creative_agent.py:55:    provider = MockIdeaProvider()
+tests/test_creative_agent.py:68:    provider = MockIdeaProvider()
+tests/test_creative_agent.py:89:    provider = MockIdeaProvider()
+tests/test_creative_agent.py:111:    provider = MockIdeaProvider()
+tests/test_creativity_phase4.py:4:    AdmissionResult, AdmissionStage, AdmissionStatus, EvaluationDiagnostics, MockIdeaProvider,
+tests/test_creativity_phase4.py:19:    provider = MockIdeaProvider()
+tests/test_creativity_phase4.py:77:    result = IdeationHarness(MockIdeaProvider(), niche_space=CentroidNicheSpace()).run(
+tests/test_creativity_phase1.py:3:from creative_agent import MockIdeaProvider
+tests/test_creativity_phase1.py:47:class FixedProvider(MockIdeaProvider):
+
+exec
+/bin/bash -lc "sed -n '1,410p' creative_agent/providers.py" in /home/arcturus/hermesWorkspace/projects/CounterField
+exec
+/bin/bash -lc 'git diff -- creative_agent/providers.py' in /home/arcturus/hermesWorkspace/projects/CounterField
+ succeeded in 0ms:
+diff --git a/creative_agent/providers.py b/creative_agent/providers.py
+index bbf46fb..af6e144 100644
+--- a/creative_agent/providers.py
++++ b/creative_agent/providers.py
+@@ -112,7 +112,7 @@ class MockIdeaProvider:
+ class LLMIdeaProvider:
+     mode = "llm"
+ 
+-    def __init__(self, base_url: str | None = None, model: str = "Hermes-delegate", api_key: str | None = None):
++    def __init__(self, base_url: str | None = None, model: str = "hermes-main", api_key: str | None = None):
+         self.base_url = (base_url or os.environ.get("OPENAI_BASE_URL", "http://127.0.0.1:20128/v1")).rstrip("/")
+         self.model = model
+         resolved_key = api_key or os.environ.get("OPENAI_API_KEY", "")
+
+ succeeded in 0ms:
+from __future__ import annotations
+
+import hashlib
+import json
+import math
+import os
+import re
+import urllib.request
+from typing import Protocol, Any
+
+from .models import *
+
+
+class IdeaProvider(Protocol):
+    def normalize(self, problem: str) -> NormalizedProblem: ...
+    def mine_baselines(self, problem: NormalizedProblem, count: int) -> list[IdeaCandidate]: ...
+    def generate(self, problem: NormalizedProblem, operator: str, private_history: tuple[IdeaCandidate, ...] | list[IdeaCandidate], count: int) -> list[IdeaCandidate]: ...
+    def canonicalize(self, problem: NormalizedProblem, candidate: IdeaCandidate) -> IdeaCandidate: ...
+    def assess(self, problem: NormalizedProblem, candidate: IdeaCandidate) -> EvaluationScores: ...
+    def describe_niche(self, problem: NormalizedProblem, candidate: IdeaCandidate) -> NicheDescriptor: ...
+
+
+class EmbeddingProvider(Protocol):
+    def embed(self, texts: list[str]) -> list[list[float]]: ...
+
+
+class HashEmbeddingProvider:
+    mode = "hash-lexical-proxy"
+
+    def __init__(self, dimensions: int = 64):
+        self.dimensions = dimensions
+        self._cache: dict[str, list[float]] = {}
+
+    def embed(self, texts: list[str]) -> list[list[float]]:
+        result = []
+        for text in texts:
+            key = " ".join(text.casefold().split())
+            if key not in self._cache:
+                vector = [0.0] * self.dimensions
+                features = re.findall(r"\w+", key, re.UNICODE)
+                features += [key[i:i + 3] for i in range(max(0, len(key) - 2))]
+                for feature in features:
+                    digest = hashlib.sha256(feature.encode()).digest()
+                    vector[int.from_bytes(digest[:4], "big") % self.dimensions] += 1
+                norm = math.sqrt(sum(x * x for x in vector))
+                self._cache[key] = [x / norm for x in vector] if norm else vector
+            result.append(self._cache[key][:])
+        return result
+
+
+class MockIdeaProvider:
+    mode = "mock"
+
+    def normalize(self, problem: str) -> NormalizedProblem:
+        text = " ".join(problem.split())
+        if not text:
+            raise ValueError("problem must not be empty")
+        return NormalizedProblem(
+            id=stable_id(text), original_prompt=text, objective=text,
+            constraints=("avoid unnecessary complexity",), affected_system="people and their workflow",
+        )
+
+    def mine_baselines(self, problem: NormalizedProblem, count: int) -> list[IdeaCandidate]:
+        templates = [
+            ("Add a checklist", "Use a standard checklist to guide each participant."),
+            ("Add a meeting", "Schedule a recurring meeting so information is shared."),
+            ("Add a dashboard", "Display progress metrics so people can monitor work."),
+        ]
+        return [self._candidate(problem, title, desc, "baseline", i) for i, (title, desc) in enumerate(templates[:count])]
+
+    def generate(self, problem, operator, private_history, count):
+        ops = {
+            "Inversion": ("Reverse the usual information flow", "The recipient initiates a signal that causes the provider to adapt."),
+            "Extreme constraints": ("Design for one minute", "A tiny input triggers an automated default and removes coordination cost."),
+            "Removal": ("Remove the meeting", "Asynchronous evidence replaces synchronized discussion and preserves accountability."),
+            "Cross-domain analogy": ("Borrow from ecosystems", "Local signals cause neighboring participants to share resources when capacity changes."),
+            "Role shift": ("Move ownership to the user", "The person experiencing friction decides the next action and receives immediate feedback."),
+            "Multilingual/cultural conceptualization": ("Use reciprocity as a lens", "A reciprocal exchange makes each action create a visible benefit for another participant."),
+        }
+        title, desc = ops.get(operator, ("Adaptive experiment", "A small reversible experiment creates feedback before commitment."))
+        return [self._candidate(problem, title, desc, operator, i) for i in range(count)]
+
+    def canonicalize(self, problem, candidate):
+        if candidate.mechanism:
+            return candidate
+        link = CausalLink(cause=candidate.title, relation="increases", effect="lower friction")
+        return candidate.model_copy(update={"mechanism": CanonicalMechanism(
+            core_mechanism=candidate.description, causal_structure=(link,),
+            affected_system=problem.affected_system, payoff="lower friction",
+        )})
+
+    def assess(self, problem, candidate):
+        return EvaluationScores(novelty=.8, appropriateness=.75, utility=.7, surprise=.7, coherence=.85, mechanism_uniqueness=.8)
+
+    def describe_niche(self, problem, candidate):
+        choices: list[tuple[Any, Any, Any]] = [
+            ("individual", "low", "immediate"),
+            ("team", "medium", "short"),
+            ("organization", "high", "long"),
+        ]
+        lvl, res, hor = choices[int(candidate.id[-2:], 16) % len(choices)]
+        return NicheDescriptor(intervention_level=lvl, resource_intensity=res, feedback_horizon=hor)
+
+    def _candidate(self, problem, title, description, operator, index):
+        return IdeaCandidate(
+            id=stable_id(problem.id, operator, str(index), title), problem_id=problem.id,
+            title=title, description=description, operator=operator,
+            provenance=Provenance(provider_mode="mock"),
+        )
+
+
+class LLMIdeaProvider:
+    mode = "llm"
+
+    def __init__(self, base_url: str | None = None, model: str = "hermes-main", api_key: str | None = None):
+        self.base_url = (base_url or os.environ.get("OPENAI_BASE_URL", "http://127.0.0.1:20128/v1")).rstrip("/")
+        self.model = model
+        resolved_key = api_key or os.environ.get("OPENAI_API_KEY", "")
+        if not resolved_key:
+            try:
+                import yaml
+                cfg_path = os.path.expanduser("~/.hermes/config.yaml")
+                if os.path.exists(cfg_path):
+                    with open(cfg_path, "r", encoding="utf-8") as f:
+                        cfg = yaml.safe_load(f)
+                    for item in cfg.get("custom_providers", []):
+                        if isinstance(item, dict) and ("20128" in str(item.get("base_url", "")) or "localhost" in str(item.get("base_url", ""))):
+                            resolved_key = item.get("api_key", "")
+                            if resolved_key:
+                                break
+            except Exception:
+                pass
+        self.api_key = resolved_key
+
+    def _call(self, prompt: str, system: str = "You are a specialized game design and ideation engine. Output strictly valid JSON without preamble.") -> Any:
+        url = f"{self.base_url}/chat/completions"
+        headers = {
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {self.api_key}",
+        }
+        payload = {
+            "model": self.model,
+            "messages": [
+                {"role": "system", "content": "You are a creative systems architect and game designer. Always output strict, valid JSON without extra chat or conversational filler."},
+                {"role": "user", "content": prompt},
+            ],
+            "temperature": 0.85,
+            "stream": False,
+        }
+        req = urllib.request.Request(url, data=json.dumps(payload).encode("utf-8"), headers=headers)
+        with urllib.request.urlopen(req, timeout=45) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+        content = data["choices"][0]["message"]["content"].strip()
+        # Strip markdown fences if present
+        if content.startswith("```"):
+            lines = content.splitlines()
+            if lines[0].startswith("```"):
+                lines = lines[1:]
+            if lines and lines[-1].strip() == "```":
+                lines = lines[:-1]
+            content = "\n".join(lines).strip()
+        return json.loads(content)
+
+    def normalize(self, problem: str) -> NormalizedProblem:
+        prompt = (
+            f"Analyze this problem/design goal: '{problem}'\n"
+            "Return JSON with:\n"
+            "- objective: clear primary objective\n"
+            "- constraints: list of constraints or negative conditions\n"
+            "- affected_system: target system name (e.g. 'boss combat encounter', 'inventory system')\n"
+        )
+        try:
+            res = self._call(prompt)
+            return NormalizedProblem(
+                id=stable_id(problem),
+                original_prompt=problem,
+                objective=res.get("objective", problem),
+                constraints=tuple(res.get("constraints", ())),
+                affected_system=res.get("affected_system", "core gameplay system"),
+            )
+        except Exception:
+            return MockIdeaProvider().normalize(problem)
+
+    def mine_baselines(self, problem: NormalizedProblem, count: int) -> list[IdeaCandidate]:
+        prompt = (
+            f"Problem: {problem.objective}\n"
+            f"Affected system: {problem.affected_system}\n"
+            f"Generate exactly {count} most CLICHÉ, PREDICTABLE, OBVIOUS baseline ideas/solutions that typical designers default to.\n"
+            "Return JSON array of objects with keys: 'title', 'description'."
+        )
+        try:
+            items = self._call(prompt)
+            candidates = []
+            for i, it in enumerate(items[:count]):
+                candidates.append(IdeaCandidate(
+                    id=stable_id(problem.id, "baseline", str(i), it["title"]),
+                    problem_id=problem.id,
+                    title=it["title"],
+                    description=it["description"],
+                    operator="baseline",
+                    provenance=Provenance(provider_mode="llm", source_domain="baseline-miner"),
+                ))
+            return candidates
+        except Exception:
+            return MockIdeaProvider().mine_baselines(problem, count)
+
+    def generate(self, problem: NormalizedProblem, operator: str, private_history: Any, count: int) -> list[IdeaCandidate]:
+        operator_guides = {
+            "Inversion": "Invert standard cause-and-effect or flip the direction of power/agency.",
+            "Extreme constraints": "Eliminate 90% of resources, buttons, or time; make the severe constraint the core mechanic.",
+            "Removal": "Identify a foundational assumption everyone takes for granted in this genre and completely delete it.",
+            "Cross-domain analogy": "Extract an abstract causal mechanism from an external field (biology, fluid dynamics, logistics, economics) and map it structurally onto the mechanic.",
+            "Role shift": "Shift ownership/control dynamically between player, enemy, and environment.",
+            "Multilingual/cultural conceptualization": "Anchor the mechanic around a non-Western cultural or philosophical concept (e.g. Jeong, Ma, Wabi-sabi, Han, Ubuntu).",
+        }
+        guide = operator_guides.get(operator, "Divergent mutation")
+        prompt = (
+            f"Design Goal: {problem.objective}\n"
+            f"Target System: {problem.affected_system}\n"
+            f"Constraints: {list(problem.constraints)}\n"
+            f"Assigned Mutation Operator: [{operator}]\n"
+            f"Operator Directive: {guide}\n\n"
+            f"Generate {count} highly creative, mechanically concrete, playable game mechanic concept(s).\n"
+            "Return JSON array of objects with keys:\n"
+            "- 'title': concise name\n"
+            "- 'description': concrete gameplay mechanics\n"
+            "- 'core_mechanism': 1-sentence underlying mechanical causal logic\n"
+            "- 'causal_structure': list of {'cause': string, 'relation': 'increases'|'decreases'|'enables'|'prevents'|'depends_on', 'effect': string}\n"
+            "- 'payoff': exact target state/gameplay payoff (CRITICAL: at least one causal link's effect MUST end in this exact 'payoff' string so the intervention graph reaches it)\n"
+            "- 'niche': {'intervention_level': 'individual'|'team'|'organization'|'ecosystem', 'resource_intensity': 'low'|'medium'|'high', 'feedback_horizon': 'immediate'|'short'|'long'}\n"
+        )
+        try:
+            items = self._call(prompt)
+            candidates = []
+            valid_relations = {"increases", "decreases", "enables", "prevents", "depends_on"}
+            for i, it in enumerate(items[:count]):
+                links = []
+                for c in it.get("causal_structure", []):
+                    rel = c.get("relation", "enables").lower()
+                    if rel not in valid_relations:
+                        rel = "enables"
+                    links.append(CausalLink(cause=c.get("cause", ""), relation=rel, effect=c.get("effect", "")))
+                mech = CanonicalMechanism(
+                    core_mechanism=it.get("core_mechanism", it.get("description", "")),
+                    causal_structure=tuple(links) if links else (CausalLink(cause=it["title"], relation="enables", effect="payoff"),),
+                    affected_system=problem.affected_system,
+                    payoff=it.get("payoff", "tactical dynamic"),
+                )
+                niche_data = it.get("niche", {})
+                lvl = niche_data.get("intervention_level", "individual")
+                if lvl not in ("individual", "team", "organization", "ecosystem"):
+                    lvl = "individual"
+                res_int = niche_data.get("resource_intensity", "medium")
+                if res_int not in ("low", "medium", "high"):
+                    res_int = "medium"
+                hor = niche_data.get("feedback_horizon", "short")
+                if hor not in ("immediate", "short", "long"):
+                    hor = "short"
+                
+                cand = IdeaCandidate(
+                    id=stable_id(problem.id, operator, str(i), it["title"]),
+                    problem_id=problem.id,
+                    title=it["title"],
+                    description=it["description"],
+                    operator=operator,
+                    mechanism=mech,
+                    provenance=Provenance(provider_mode="llm", source_domain=operator),
+                )
+                # Cache niche descriptor on object to avoid extra roundtrips
+                setattr(cand, "_cached_niche", NicheDescriptor(intervention_level=lvl, resource_intensity=res_int, feedback_horizon=hor))
+                candidates.append(cand)
+            return candidates
+        except Exception:
+            return MockIdeaProvider().generate(problem, operator, private_history, count)
+
+    def canonicalize(self, problem: NormalizedProblem, candidate: IdeaCandidate) -> IdeaCandidate:
+        if candidate.mechanism:
+            return candidate
+        prompt = (
+            f"Deconstruct this mechanic into its core causal mechanism structure.\n"
+            f"Title: {candidate.title}\n"
+            f"Description: {candidate.description}\n"
+            f"System: {problem.affected_system}\n"
+            "Return JSON object with keys:\n"
+            "- core_mechanism: concise 1-sentence summary of the underlying mechanical logic\n"
+            "- causal_structure: list of objects with {'cause': string, 'relation': string ('increases'|'decreases'|'triggers'|'inverts'), 'effect': string}\n"
+            "- affected_system: specific subsystem affected\n"
+            "- payoff: what tactical tension or emotional dynamic this creates"
+        )
+        try:
+            res = self._call(prompt)
+            valid_relations = {"increases", "decreases", "enables", "prevents", "depends_on"}
+            def clean_rel(r: str) -> Any:
+                r = r.lower().strip()
+                if r in valid_relations:
+                    return r
+                if "inc" in r or "amp" in r:
+                    return "increases"
+                if "dec" in r or "reduc" in r:
+                    return "decreases"
+                if "prev" in r or "block" in r or "stop" in r:
+                    return "prevents"
+                if "dep" in r or "need" in r or "req" in r:
+                    return "depends_on"
+                return "enables"
+
+            links = tuple(
+                CausalLink(cause=x.get("cause", ""), relation=clean_rel(x.get("relation", "enables")), effect=x.get("effect", ""))
+                for x in res.get("causal_structure", [])
+            )
+            mech = CanonicalMechanism(
+                core_mechanism=res.get("core_mechanism", candidate.description),
+                causal_structure=links if links else (CausalLink(cause=candidate.title, relation="enables", effect="tactical feedback"),),
+                affected_system=res.get("affected_system", problem.affected_system),
+                payoff=res.get("payoff", "tactical dynamic"),
+            )
+            return candidate.model_copy(update={"mechanism": mech})
+        except Exception:
+            return MockIdeaProvider().canonicalize(problem, candidate)
+
+    def assess(self, problem: NormalizedProblem, candidate: IdeaCandidate) -> EvaluationScores:
+        prompt = (
+            f"Evaluate this candidate mechanic on 6 independent dimensions (0.0 to 1.0):\n"
+            f"Objective: {problem.objective}\n"
+            f"Title: {candidate.title}\n"
+            f"Description: {candidate.description}\n"
+            "Dimensions:\n"
+            "- novelty: how surprising and unprecedented is this mechanic? (0=cliché, 1=groundbreaking)\n"
+            "- appropriateness: does it fit the genre and actually solve the objective? (0=irrelevant/broken, 1=ideal)\n"
+            "- utility: how deep is the gameplay and player decision-making? (0=shallow gimmick, 1=rich mastery)\n"
+            "- surprise: does it create a delightful 'aha' moment? (0=predictable, 1=mind-bending)\n"
+            "- coherence: is the mechanical logic intuitive and non-contradictory? (0=confusing, 1=crystal clear)\n"
+            "- mechanism_uniqueness: how distinct is the causal chain from standard gaming tropes? (0=standard, 1=unique)\n"
+            "Return JSON with float values for: novelty, appropriateness, utility, surprise, coherence, mechanism_uniqueness"
+        )
+        try:
+            res = self._call(prompt)
+            return EvaluationScores(
+                novelty=float(res.get("novelty", 0.7)),
+                appropriateness=float(res.get("appropriateness", 0.8)),
+                utility=float(res.get("utility", 0.75)),
+                surprise=float(res.get("surprise", 0.7)),
+                coherence=float(res.get("coherence", 0.8)),
+                mechanism_uniqueness=float(res.get("mechanism_uniqueness", 0.75)),
+            )
+        except Exception:
+            return MockIdeaProvider().assess(problem, candidate)
+
+    def describe_niche(self, problem: NormalizedProblem, candidate: IdeaCandidate) -> NicheDescriptor:
+        cached = getattr(candidate, "_cached_niche", None)
+        if cached is not None:
+            return cached
+        prompt = (
+            f"Classify this mechanic into the MAP-Elites behavioral niche dimensions:\n"
+            f"Title: {candidate.title}\n"
+            f"Description: {candidate.description}\n"
+            "Options:\n"
+            "- intervention_level: 'individual' (single player only) | 'team' (cooperative/allies) | 'organization' (boss+minions/squad) | 'ecosystem' (whole environment/ambient world)\n"
+            "- resource_intensity: 'low' | 'medium' | 'high'\n"
+            "- feedback_horizon: 'immediate' | 'short' | 'long'\n"
+            "Return JSON with keys: intervention_level, resource_intensity, feedback_horizon"
+        )
+        try:
+            res = self._call(prompt)
+            lvl = res.get("intervention_level", "individual")
+            if lvl not in ("individual", "team", "organization", "ecosystem"):
+                lvl = "individual"
+            res_int = res.get("resource_intensity", "medium")
+            if res_int not in ("low", "medium", "high"):
+                res_int = "medium"
+            hor = res.get("feedback_horizon", "short")
+            if hor not in ("immediate", "short", "long"):
+                hor = "short"
+            return NicheDescriptor(intervention_level=lvl, resource_intensity=res_int, feedback_horizon=hor)
+        except Exception:
+            return MockIdeaProvider().describe_niche(problem, candidate)
+
+codex
+`providers.py` already has uncommitted changes, so I’ll keep those intact. The six public methods each catch exceptions and return mock results; I’ll add a strict check and fallback counter at those catch points.
+apply patch
+patch: completed
+/home/arcturus/hermesWorkspace/projects/CounterField/tests/test_llm_provider_sse.py
+diff --git a/tests/test_llm_provider_sse.py b/tests/test_llm_provider_sse.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..9c41f56ca9836dcce3cb732a3a57f3ae8701e08d
+--- /dev/null
++++ b/tests/test_llm_provider_sse.py
+@@ -0,0 +1,125 @@
++import json
++import urllib.request
++
++import pytest
++
++from creative_agent.providers import LLMIdeaProvider, MockIdeaProvider, decode_chat_response
++
++
++class FakeResponse:
++    def __init__(self, body: bytes, content_type: str = "application/json"):
++        self.body = body
++        self.headers = {"Content-Type": content_type}
++
++    def __enter__(self):
++        return self
++
++    def __exit__(self, *args):
++        return False
++
++    def __iter__(self):
++        return iter(self.body.splitlines(keepends=True))
++
++    def read(self):
++        return self.body
++
++
++def fake_urlopen(monkeypatch, body, content_type="application/json"):
++    calls = []
++
++    def urlopen(request, timeout):
++        calls.append((json.loads(request.data), timeout))
++        return FakeResponse(body, content_type)
++
++    monkeypatch.setattr(urllib.request, "urlopen", urlopen)
++    return calls
++
++
++def test_json_chat_body(monkeypatch):
++    body = json.dumps({"choices": [{"message": {"content": '{"objective": "play"}'}}]}).encode()
++    calls = fake_urlopen(monkeypatch, body)
++    provider = LLMIdeaProvider(api_key="test", timeout=12.5)
++
++    assert decode_chat_response(body, "application/json") == '{"objective": "play"}'
++    assert provider._call("prompt") == {"objective": "play"}
++    assert calls == [({"model": "hermes-main", "messages": [
++        {"role": "system", "content": "You are a creative systems architect and game designer. Always output strict, valid JSON without extra chat or conversational filler."},
++        {"role": "user", "content": "prompt"},
++    ], "temperature": 0.85, "stream": True}, 12.5)]
++
++
++def test_sse_chat_body_detected_without_stream_header(monkeypatch):
++    body = (b'data: {"choices":[{"delta":{"content":"{\\"objective\\": "}}]}\n'
++            b'data: {"choices":[{"delta":{"content":"\\"play\\"}"}}]}\n'
++            b'data: [DONE]\n')
++    fake_urlopen(monkeypatch, body)
++
++    assert decode_chat_response(body, "application/json") == '{"objective": "play"}'
++    assert LLMIdeaProvider(api_key="test")._call("prompt") == {"objective": "play"}
++
++
++def test_sse_fenced_json(monkeypatch):
++    body = (b'data: {"choices":[{"delta":{"content":"```json\\n{\\"count\\": 1}"}}]}\n'
++            b'data: {"choices":[{"delta":{"content":"\\n```"}}]}\n'
++            b'data: [DONE]\n')
++    fake_urlopen(monkeypatch, body, "text/event-stream")
++
++    assert LLMIdeaProvider(api_key="test")._call("prompt") == {"count": 1}
++
++
++def test_malformed_sse_chunk_is_skipped():
++    body = (b'data: {bad json}\n'
++            b'data: {"choices":[{"delta":{"content":"hello"}}]}\n'
++            b'data: {"choices":[]}\n'
++            b'data: [DONE]\n')
++
++    assert decode_chat_response(body, "text/event-stream") == "hello"
++
++
++@pytest.mark.parametrize("body", [b"", b"data: [DONE]\n", b'{"choices":[]}'])
++def test_empty_chat_content_raises_value_error(body):
++    with pytest.raises(ValueError):
++        decode_chat_response(body)
++
++
++def test_strict_mode_propagates_from_every_public_method(monkeypatch):
++    provider = LLMIdeaProvider(api_key="test", strict=True)
++    mock = MockIdeaProvider()
++    problem = mock.normalize("Improve a game")
++    candidate = mock.mine_baselines(problem, 1)[0]
++
++    def fail(*args, **kwargs):
++        raise RuntimeError("model unavailable")
++
++    monkeypatch.setattr(provider, "_call", fail)
++    calls = [
++        lambda: provider.normalize("Improve a game"),
++        lambda: provider.mine_baselines(problem, 1),
++        lambda: provider.generate(problem, "Inversion", (), 1),
++        lambda: provider.canonicalize(problem, candidate),
++        lambda: provider.assess(problem, candidate),
++        lambda: provider.describe_niche(problem, candidate),
++    ]
++    for call in calls:
++        with pytest.raises(RuntimeError, match="model unavailable"):
++            call()
++    assert provider.fallbacks == 0
++
++
++def test_non_strict_mode_counts_each_mock_fallback(monkeypatch):
++    provider = LLMIdeaProvider(api_key="test")
++    mock = MockIdeaProvider()
++    problem = mock.normalize("Improve a game")
++    candidate = mock.mine_baselines(problem, 1)[0]
++
++    def fail(*args, **kwargs):
++        raise RuntimeError("model unavailable")
++
++    monkeypatch.setattr(provider, "_call", fail)
++    assert provider.normalize("Improve a game") == problem
++    assert provider.mine_baselines(problem, 1) == mock.mine_baselines(problem, 1)
++    assert provider.generate(problem, "Inversion", (), 1) == mock.generate(problem, "Inversion", (), 1)
++    assert provider.canonicalize(problem, candidate) == mock.canonicalize(problem, candidate)
++    assert provider.assess(problem, candidate) == mock.assess(problem, candidate)
++    assert provider.describe_niche(problem, candidate) == mock.describe_niche(problem, candidate)
++    assert provider.fallbacks == 6
+
+diff --git a/tests/test_llm_provider_sse.py b/tests/test_llm_provider_sse.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..9c41f56ca9836dcce3cb732a3a57f3ae8701e08d
+--- /dev/null
++++ b/tests/test_llm_provider_sse.py
+@@ -0,0 +1,125 @@
++import json
++import urllib.request
++
++import pytest
++
++from creative_agent.providers import LLMIdeaProvider, MockIdeaProvider, decode_chat_response
++
++
++class FakeResponse:
++    def __init__(self, body: bytes, content_type: str = "application/json"):
++        self.body = body
++        self.headers = {"Content-Type": content_type}
++
++    def __enter__(self):
++        return self
++
++    def __exit__(self, *args):
++        return False
++
++    def __iter__(self):
++        return iter(self.body.splitlines(keepends=True))
++
++    def read(self):
++        return self.body
++
++
++def fake_urlopen(monkeypatch, body, content_type="application/json"):
++    calls = []
++
++    def urlopen(request, timeout):
++        calls.append((json.loads(request.data), timeout))
++        return FakeResponse(body, content_type)
++
++    monkeypatch.setattr(urllib.request, "urlopen", urlopen)
++    return calls
++
++
++def test_json_chat_body(monkeypatch):
++    body = json.dumps({"choices": [{"message": {"content": '{"objective": "play"}'}}]}).encode()
++    calls = fake_urlopen(monkeypatch, body)
++    provider = LLMIdeaProvider(api_key="test", timeout=12.5)
++
++    assert decode_chat_response(body, "application/json") == '{"objective": "play"}'
++    assert provider._call("prompt") == {"objective": "play"}
++    assert calls == [({"model": "hermes-main", "messages": [
++        {"role": "system", "content": "You are a creative systems architect and game designer. Always output strict, valid JSON without extra chat or conversational filler."},
++        {"role": "user", "content": "prompt"},
++    ], "temperature": 0.85, "stream": True}, 12.5)]
++
++
++def test_sse_chat_body_detected_without_stream_header(monkeypatch):
++    body = (b'data: {"choices":[{"delta":{"content":"{\\"objective\\": "}}]}\n'
++            b'data: {"choices":[{"delta":{"content":"\\"play\\"}"}}]}\n'
++            b'data: [DONE]\n')
++    fake_urlopen(monkeypatch, body)
++
++    assert decode_chat_response(body, "application/json") == '{"objective": "play"}'
++    assert LLMIdeaProvider(api_key="test")._call("prompt") == {"objective": "play"}
++
++
++def test_sse_fenced_json(monkeypatch):
++    body = (b'data: {"choices":[{"delta":{"content":"```json\\n{\\"count\\": 1}"}}]}\n'
++            b'data: {"choices":[{"delta":{"content":"\\n```"}}]}\n'
++            b'data: [DONE]\n')
++    fake_urlopen(monkeypatch, body, "text/event-stream")
++
++    assert LLMIdeaProvider(api_key="test")._call("prompt") == {"count": 1}
++
++
++def test_malformed_sse_chunk_is_skipped():
++    body = (b'data: {bad json}\n'
++            b'data: {"choices":[{"delta":{"content":"hello"}}]}\n'
++            b'data: {"choices":[]}\n'
++            b'data: [DONE]\n')
++
++    assert decode_chat_response(body, "text/event-stream") == "hello"
++
++
++@pytest.mark.parametrize("body", [b"", b"data: [DONE]\n", b'{"choices":[]}'])
++def test_empty_chat_content_raises_value_error(body):
++    with pytest.raises(ValueError):
++        decode_chat_response(body)
++
++
++def test_strict_mode_propagates_from_every_public_method(monkeypatch):
++    provider = LLMIdeaProvider(api_key="test", strict=True)
++    mock = MockIdeaProvider()
++    problem = mock.normalize("Improve a game")
++    candidate = mock.mine_baselines(problem, 1)[0]
++
++    def fail(*args, **kwargs):
++        raise RuntimeError("model unavailable")
++
++    monkeypatch.setattr(provider, "_call", fail)
++    calls = [
++        lambda: provider.normalize("Improve a game"),
++        lambda: provider.mine_baselines(problem, 1),
++        lambda: provider.generate(problem, "Inversion", (), 1),
++        lambda: provider.canonicalize(problem, candidate),
++        lambda: provider.assess(problem, candidate),
++        lambda: provider.describe_niche(problem, candidate),
++    ]
++    for call in calls:
++        with pytest.raises(RuntimeError, match="model unavailable"):
++            call()
++    assert provider.fallbacks == 0
++
++
++def test_non_strict_mode_counts_each_mock_fallback(monkeypatch):
++    provider = LLMIdeaProvider(api_key="test")
++    mock = MockIdeaProvider()
++    problem = mock.normalize("Improve a game")
++    candidate = mock.mine_baselines(problem, 1)[0]
++
++    def fail(*args, **kwargs):
++        raise RuntimeError("model unavailable")
++
++    monkeypatch.setattr(provider, "_call", fail)
++    assert provider.normalize("Improve a game") == problem
++    assert provider.mine_baselines(problem, 1) == mock.mine_baselines(problem, 1)
++    assert provider.generate(problem, "Inversion", (), 1) == mock.generate(problem, "Inversion", (), 1)
++    assert provider.canonicalize(problem, candidate) == mock.canonicalize(problem, candidate)
++    assert provider.assess(problem, candidate) == mock.assess(problem, candidate)
++    assert provider.describe_niche(problem, candidate) == mock.describe_niche(problem, candidate)
++    assert provider.fallbacks == 6
+
+exec
+/bin/bash -lc '.venv/bin/pytest -q tests/test_llm_provider_sse.py' in /home/arcturus/hermesWorkspace/projects/CounterField
+ exited 2 in 247ms:
+
+==================================== ERRORS ====================================
+_______________ ERROR collecting tests/test_llm_provider_sse.py ________________
+ImportError while importing test module '/home/arcturus/hermesWorkspace/projects/CounterField/tests/test_llm_provider_sse.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+../../../.local/share/uv/python/cpython-3.12.15-linux-x86_64-gnu/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_llm_provider_sse.py:6: in <module>
+    from creative_agent.providers import LLMIdeaProvider, MockIdeaProvider, decode_chat_response
+E   ImportError: cannot import name 'decode_chat_response' from 'creative_agent.providers' (/home/arcturus/hermesWorkspace/projects/CounterField/creative_agent/providers.py)
+=========================== short test summary info ============================
+ERROR tests/test_llm_provider_sse.py
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+1 error in 0.23s
+
+diff --git a/tests/test_llm_provider_sse.py b/tests/test_llm_provider_sse.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..9c41f56ca9836dcce3cb732a3a57f3ae8701e08d
+--- /dev/null
++++ b/tests/test_llm_provider_sse.py
+@@ -0,0 +1,125 @@
++import json
++import urllib.request
++
++import pytest
++
++from creative_agent.providers import LLMIdeaProvider, MockIdeaProvider, decode_chat_response
++
++
++class FakeResponse:
++    def __init__(self, body: bytes, content_type: str = "application/json"):
++        self.body = body
++        self.headers = {"Content-Type": content_type}
++
++    def __enter__(self):
++        return self
++
++    def __exit__(self, *args):
++        return False
++
++    def __iter__(self):
++        return iter(self.body.splitlines(keepends=True))
++
++    def read(self):
++        return self.body
++
++
++def fake_urlopen(monkeypatch, body, content_type="application/json"):
++    calls = []
++
++    def urlopen(request, timeout):
++        calls.append((json.loads(request.data), timeout))
++        return FakeResponse(body, content_type)
++
++    monkeypatch.setattr(urllib.request, "urlopen", urlopen)
++    return calls
++
++
++def test_json_chat_body(monkeypatch):
++    body = json.dumps({"choices": [{"message": {"content": '{"objective": "play"}'}}]}).encode()
++    calls = fake_urlopen(monkeypatch, body)
++    provider = LLMIdeaProvider(api_key="test", timeout=12.5)
++
++    assert decode_chat_response(body, "application/json") == '{"objective": "play"}'
++    assert provider._call("prompt") == {"objective": "play"}
++    assert calls == [({"model": "hermes-main", "messages": [
++        {"role": "system", "content": "You are a creative systems architect and game designer. Always output strict, valid JSON without extra chat or conversational filler."},
++        {"role": "user", "content": "prompt"},
++    ], "temperature": 0.85, "stream": True}, 12.5)]
++
++
++def test_sse_chat_body_detected_without_stream_header(monkeypatch):
++    body = (b'data: {"choices":[{"delta":{"content":"{\\"objective\\": "}}]}\n'
++            b'data: {"choices":[{"delta":{"content":"\\"play\\"}"}}]}\n'
++            b'data: [DONE]\n')
++    fake_urlopen(monkeypatch, body)
++
++    assert decode_chat_response(body, "application/json") == '{"objective": "play"}'
++    assert LLMIdeaProvider(api_key="test")._call("prompt") == {"objective": "play"}
++
++
++def test_sse_fenced_json(monkeypatch):
++    body = (b'data: {"choices":[{"delta":{"content":"```json\\n{\\"count\\": 1}"}}]}\n'
++            b'data: {"choices":[{"delta":{"content":"\\n```"}}]}\n'
++            b'data: [DONE]\n')
++    fake_urlopen(monkeypatch, body, "text/event-stream")
++
++    assert LLMIdeaProvider(api_key="test")._call("prompt") == {"count": 1}
++
++
++def test_malformed_sse_chunk_is_skipped():
++    body = (b'data: {bad json}\n'
++            b'data: {"choices":[{"delta":{"content":"hello"}}]}\n'
++            b'data: {"choices":[]}\n'
++            b'data: [DONE]\n')
++
++    assert decode_chat_response(body, "text/event-stream") == "hello"
++
++
++@pytest.mark.parametrize("body", [b"", b"data: [DONE]\n", b'{"choices":[]}'])
++def test_empty_chat_content_raises_value_error(body):
++    with pytest.raises(ValueError):
++        decode_chat_response(body)
++
++
++def test_strict_mode_propagates_from_every_public_method(monkeypatch):
++    provider = LLMIdeaProvider(api_key="test", strict=True)
++    mock = MockIdeaProvider()
++    problem = mock.normalize("Improve a game")
++    candidate = mock.mine_baselines(problem, 1)[0]
++
++    def fail(*args, **kwargs):
++        raise RuntimeError("model unavailable")
++
++    monkeypatch.setattr(provider, "_call", fail)
++    calls = [
++        lambda: provider.normalize("Improve a game"),
++        lambda: provider.mine_baselines(problem, 1),
++        lambda: provider.generate(problem, "Inversion", (), 1),
++        lambda: provider.canonicalize(problem, candidate),
++        lambda: provider.assess(problem, candidate),
++        lambda: provider.describe_niche(problem, candidate),
++    ]
++    for call in calls:
++        with pytest.raises(RuntimeError, match="model unavailable"):
++            call()
++    assert provider.fallbacks == 0
++
++
++def test_non_strict_mode_counts_each_mock_fallback(monkeypatch):
++    provider = LLMIdeaProvider(api_key="test")
++    mock = MockIdeaProvider()
++    problem = mock.normalize("Improve a game")
++    candidate = mock.mine_baselines(problem, 1)[0]
++
++    def fail(*args, **kwargs):
++        raise RuntimeError("model unavailable")
++
++    monkeypatch.setattr(provider, "_call", fail)
++    assert provider.normalize("Improve a game") == problem
++    assert provider.mine_baselines(problem, 1) == mock.mine_baselines(problem, 1)
++    assert provider.generate(problem, "Inversion", (), 1) == mock.generate(problem, "Inversion", (), 1)
++    assert provider.canonicalize(problem, candidate) == mock.canonicalize(problem, candidate)
++    assert provider.assess(problem, candidate) == mock.assess(problem, candidate)
++    assert provider.describe_niche(problem, candidate) == mock.describe_niche(problem, candidate)
++    assert provider.fallbacks == 6
+
+codex
+The new tests fail at collection because `decode_chat_response` is missing, as expected for the first TDD check. I’ll implement the decoder, then wire it into `_call` and the six exception handlers.
+apply patch
+patch: completed
+/home/arcturus/hermesWorkspace/projects/CounterField/creative_agent/providers.py
+diff --git a/creative_agent/providers.py b/creative_agent/providers.py
+index af6e144466accab03545a614ee549de982afa8f6..5fa38de7915365d463730d1b64cfaff10f2614f4
+--- a/creative_agent/providers.py
++++ b/creative_agent/providers.py
+@@ -109,12 +109,45 @@
+         )
+ 
+ 
++def decode_chat_response(raw: bytes, content_type: str | None = None) -> str:
++    """Extract assistant text from a chat completion JSON body or SSE stream."""
++    body = raw.decode("utf-8")
++    if any(line.lstrip().startswith("data:") for line in body.splitlines()):
++        parts = []
++        for line in body.splitlines():
++            line = line.lstrip()
++            if not line.startswith("data:"):
++                continue
++            chunk = line[5:].strip()
++            if chunk == "[DONE]":
++                continue
++            try:
++                content = json.loads(chunk)["choices"][0]["delta"]["content"]
++            except (ValueError, TypeError, KeyError, IndexError):
++                continue
++            if isinstance(content, str):
++                parts.append(content)
++        content = "".join(parts)
++    else:
++        try:
++            content = json.loads(body)["choices"][0]["message"]["content"]
++        except (ValueError, TypeError, KeyError, IndexError) as exc:
++            raise ValueError("No assistant content in chat response") from exc
++    if not isinstance(content, str) or not content.strip():
++        raise ValueError("No assistant content in chat response")
++    return content
++
++
+ class LLMIdeaProvider:
+     mode = "llm"
+ 
+-    def __init__(self, base_url: str | None = None, model: str = "hermes-main", api_key: str | None = None):
++    def __init__(self, base_url: str | None = None, model: str = "hermes-main", api_key: str | None = None,
++                 timeout: float = 90.0, strict: bool = False):
+         self.base_url = (base_url or os.environ.get("OPENAI_BASE_URL", "http://127.0.0.1:20128/v1")).rstrip("/")
+         self.model = model
++        self.timeout = timeout
++        self.strict = strict
++        self.fallbacks: int = 0
+         resolved_key = api_key or os.environ.get("OPENAI_API_KEY", "")
+         if not resolved_key:
+             try:
+@@ -145,12 +178,11 @@
+                 {"role": "user", "content": prompt},
+             ],
+             "temperature": 0.85,
+-            "stream": False,
++            "stream": True,
+         }
+         req = urllib.request.Request(url, data=json.dumps(payload).encode("utf-8"), headers=headers)
+-        with urllib.request.urlopen(req, timeout=45) as resp:
+-            data = json.loads(resp.read().decode("utf-8"))
+-        content = data["choices"][0]["message"]["content"].strip()
++        with urllib.request.urlopen(req, timeout=self.timeout) as resp:
++            content = decode_chat_response(resp.read(), resp.headers.get("Content-Type")).strip()
+         # Strip markdown fences if present
+         if content.startswith("```"):
+             lines = content.splitlines()
+@@ -179,6 +211,9 @@
+                 affected_system=res.get("affected_system", "core gameplay system"),
+             )
+         except Exception:
++            if self.strict:
++                raise
++            self.fallbacks += 1
+             return MockIdeaProvider().normalize(problem)
+ 
+     def mine_baselines(self, problem: NormalizedProblem, count: int) -> list[IdeaCandidate]:
+@@ -202,6 +237,9 @@
+                 ))
+             return candidates
+         except Exception:
++            if self.strict:
++                raise
++            self.fallbacks += 1
+             return MockIdeaProvider().mine_baselines(problem, count)
+ 
+     def generate(self, problem: NormalizedProblem, operator: str, private_history: Any, count: int) -> list[IdeaCandidate]:
+@@ -271,6 +309,9 @@
+                 candidates.append(cand)
+             return candidates
+         except Exception:
++            if self.strict:
++                raise
++            self.fallbacks += 1
+             return MockIdeaProvider().generate(problem, operator, private_history, count)
+ 
+     def canonicalize(self, problem: NormalizedProblem, candidate: IdeaCandidate) -> IdeaCandidate:
+@@ -316,6 +357,9 @@
+             )
+             return candidate.model_copy(update={"mechanism": mech})
+         except Exception:
++            if self.strict:
++                raise
++            self.fallbacks += 1
+             return MockIdeaProvider().canonicalize(problem, candidate)
+ 
+     def assess(self, problem: NormalizedProblem, candidate: IdeaCandidate) -> EvaluationScores:
+@@ -344,6 +388,9 @@
+                 mechanism_uniqueness=float(res.get("mechanism_uniqueness", 0.75)),
+             )
+         except Exception:
++            if self.strict:
++                raise
++            self.fallbacks += 1
+             return MockIdeaProvider().assess(problem, candidate)
+ 
+     def describe_niche(self, problem: NormalizedProblem, candidate: IdeaCandidate) -> NicheDescriptor:
+@@ -373,4 +420,7 @@
+                 hor = "short"
+             return NicheDescriptor(intervention_level=lvl, resource_intensity=res_int, feedback_horizon=hor)
+         except Exception:
++            if self.strict:
++                raise
++            self.fallbacks += 1
+             return MockIdeaProvider().describe_niche(problem, candidate)
+diff --git a/tests/test_llm_provider_sse.py b/tests/test_llm_provider_sse.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..9c41f56ca9836dcce3cb732a3a57f3ae8701e08d
+--- /dev/null
++++ b/tests/test_llm_provider_sse.py
+@@ -0,0 +1,125 @@
++import json
++import urllib.request
++
++import pytest
++
++from creative_agent.providers import LLMIdeaProvider, MockIdeaProvider, decode_chat_response
++
++
++class FakeResponse:
++    def __init__(self, body: bytes, content_type: str = "application/json"):
++        self.body = body
++        self.headers = {"Content-Type": content_type}
++
++    def __enter__(self):
++        return self
++
++    def __exit__(self, *args):
++        return False
++
++    def __iter__(self):
++        return iter(self.body.splitlines(keepends=True))
++
++    def read(self):
++        return self.body
++
++
++def fake_urlopen(monkeypatch, body, content_type="application/json"):
++    calls = []
++
++    def urlopen(request, timeout):
++        calls.append((json.loads(request.data), timeout))
++        return FakeResponse(body, content_type)
++
++    monkeypatch.setattr(urllib.request, "urlopen", urlopen)
++    return calls
++
++
++def test_json_chat_body(monkeypatch):
++    body = json.dumps({"choices": [{"message": {"content": '{"objective": "play"}'}}]}).encode()
++    calls = fake_urlopen(monkeypatch, body)
++    provider = LLMIdeaProvider(api_key="test", timeout=12.5)
++
++    assert decode_chat_response(body, "application/json") == '{"objective": "play"}'
++    assert provider._call("prompt") == {"objective": "play"}
++    assert calls == [({"model": "hermes-main", "messages": [
++        {"role": "system", "content": "You are a creative systems architect and game designer. Always output strict, valid JSON without extra chat or conversational filler."},
++        {"role": "user", "content": "prompt"},
++    ], "temperature": 0.85, "stream": True}, 12.5)]
++
++
++def test_sse_chat_body_detected_without_stream_header(monkeypatch):
++    body = (b'data: {"choices":[{"delta":{"content":"{\\"objective\\": "}}]}\n'
++            b'data: {"choices":[{"delta":{"content":"\\"play\\"}"}}]}\n'
++            b'data: [DONE]\n')
++    fake_urlopen(monkeypatch, body)
++
++    assert decode_chat_response(body, "application/json") == '{"objective": "play"}'
++    assert LLMIdeaProvider(api_key="test")._call("prompt") == {"objective": "play"}
++
++
++def test_sse_fenced_json(monkeypatch):
++    body = (b'data: {"choices":[{"delta":{"content":"```json\\n{\\"count\\": 1}"}}]}\n'
++            b'data: {"choices":[{"delta":{"content":"\\n```"}}]}\n'
++            b'data: [DONE]\n')
++    fake_urlopen(monkeypatch, body, "text/event-stream")
++
++    assert LLMIdeaProvider(api_key="test")._call("prompt") == {"count": 1}
++
++
++def test_malformed_sse_chunk_is_skipped():
++    body = (b'data: {bad json}\n'
++            b'data: {"choices":[{"delta":{"content":"hello"}}]}\n'
++            b'data: {"choices":[]}\n'
++            b'data: [DONE]\n')
++
++    assert decode_chat_response(body, "text/event-stream") == "hello"
++
++
++@pytest.mark.parametrize("body", [b"", b"data: [DONE]\n", b'{"choices":[]}'])
++def test_empty_chat_content_raises_value_error(body):
++    with pytest.raises(ValueError):
++        decode_chat_response(body)
++
++
++def test_strict_mode_propagates_from_every_public_method(monkeypatch):
++    provider = LLMIdeaProvider(api_key="test", strict=True)
++    mock = MockIdeaProvider()
++    problem = mock.normalize("Improve a game")
++    candidate = mock.mine_baselines(problem, 1)[0]
++
++    def fail(*args, **kwargs):
++        raise RuntimeError("model unavailable")
++
++    monkeypatch.setattr(provider, "_call", fail)
++    calls = [
++        lambda: provider.normalize("Improve a game"),
++        lambda: provider.mine_baselines(problem, 1),
++        lambda: provider.generate(problem, "Inversion", (), 1),
++        lambda: provider.canonicalize(problem, candidate),
++        lambda: provider.assess(problem, candidate),
++        lambda: provider.describe_niche(problem, candidate),
++    ]
++    for call in calls:
++        with pytest.raises(RuntimeError, match="model unavailable"):
++            call()
++    assert provider.fallbacks == 0
++
++
++def test_non_strict_mode_counts_each_mock_fallback(monkeypatch):
++    provider = LLMIdeaProvider(api_key="test")
++    mock = MockIdeaProvider()
++    problem = mock.normalize("Improve a game")
++    candidate = mock.mine_baselines(problem, 1)[0]
++
++    def fail(*args, **kwargs):
++        raise RuntimeError("model unavailable")
++
++    monkeypatch.setattr(provider, "_call", fail)
++    assert provider.normalize("Improve a game") == problem
++    assert provider.mine_baselines(problem, 1) == mock.mine_baselines(problem, 1)
++    assert provider.generate(problem, "Inversion", (), 1) == mock.generate(problem, "Inversion", (), 1)
++    assert provider.canonicalize(problem, candidate) == mock.canonicalize(problem, candidate)
++    assert provider.assess(problem, candidate) == mock.assess(problem, candidate)
++    assert provider.describe_niche(problem, candidate) == mock.describe_niche(problem, candidate)
++    assert provider.fallbacks == 6
+
+diff --git a/creative_agent/providers.py b/creative_agent/providers.py
+index af6e144466accab03545a614ee549de982afa8f6..5fa38de7915365d463730d1b64cfaff10f2614f4
+--- a/creative_agent/providers.py
++++ b/creative_agent/providers.py
+@@ -109,12 +109,45 @@
+         )
+ 
+ 
++def decode_chat_response(raw: bytes, content_type: str | None = None) -> str:
++    """Extract assistant text from a chat completion JSON body or SSE stream."""
++    body = raw.decode("utf-8")
++    if any(line.lstrip().startswith("data:") for line in body.splitlines()):
++        parts = []
++        for line in body.splitlines():
++            line = line.lstrip()
++            if not line.startswith("data:"):
++                continue
++            chunk = line[5:].strip()
++            if chunk == "[DONE]":
++                continue
++            try:
++                content = json.loads(chunk)["choices"][0]["delta"]["content"]
++            except (ValueError, TypeError, KeyError, IndexError):
++                continue
++            if isinstance(content, str):
++                parts.append(content)
++        content = "".join(parts)
++    else:
++        try:
++            content = json.loads(body)["choices"][0]["message"]["content"]
++        except (ValueError, TypeError, KeyError, IndexError) as exc:
++            raise ValueError("No assistant content in chat response") from exc
++    if not isinstance(content, str) or not content.strip():
++        raise ValueError("No assistant content in chat response")
++    return content
++
++
+ class LLMIdeaProvider:
+     mode = "llm"
+ 
+-    def __init__(self, base_url: str | None = None, model: str = "hermes-main", api_key: str | None = None):
++    def __init__(self, base_url: str | None = None, model: str = "hermes-main", api_key: str | None = None,
++                 timeout: float = 90.0, strict: bool = False):
+         self.base_url = (base_url or os.environ.get("OPENAI_BASE_URL", "http://127.0.0.1:20128/v1")).rstrip("/")
+         self.model = model
++        self.timeout = timeout
++        self.strict = strict
++        self.fallbacks: int = 0
+         resolved_key = api_key or os.environ.get("OPENAI_API_KEY", "")
+         if not resolved_key:
+             try:
+@@ -145,12 +178,11 @@
+                 {"role": "user", "content": prompt},
+             ],
+             "temperature": 0.85,
+-            "stream": False,
++            "stream": True,
+         }
+         req = urllib.request.Request(url, data=json.dumps(payload).encode("utf-8"), headers=headers)
+-        with urllib.request.urlopen(req, timeout=45) as resp:
+-            data = json.loads(resp.read().decode("utf-8"))
+-        content = data["choices"][0]["message"]["content"].strip()
++        with urllib.request.urlopen(req, timeout=self.timeout) as resp:
++            content = decode_chat_response(resp.read(), resp.headers.get("Content-Type")).strip()
+         # Strip markdown fences if present
+         if content.startswith("```"):
+             lines = content.splitlines()
+@@ -179,6 +211,9 @@
+                 affected_system=res.get("affected_system", "core gameplay system"),
+             )
+         except Exception:
++            if self.strict:
++                raise
++            self.fallbacks += 1
+             return MockIdeaProvider().normalize(problem)
+ 
+     def mine_baselines(self, problem: NormalizedProblem, count: int) -> list[IdeaCandidate]:
+@@ -202,6 +237,9 @@
+                 ))
+             return candidates
+         except Exception:
++            if self.strict:
++                raise
++            self.fallbacks += 1
+             return MockIdeaProvider().mine_baselines(problem, count)
+ 
+     def generate(self, problem: NormalizedProblem, operator: str, private_history: Any, count: int) -> list[IdeaCandidate]:
+@@ -271,6 +309,9 @@
+                 candidates.append(cand)
+             return candidates
+         except Exception:
++            if self.strict:
++                raise
++            self.fallbacks += 1
+             return MockIdeaProvider().generate(problem, operator, private_history, count)
+ 
+     def canonicalize(self, problem: NormalizedProblem, candidate: IdeaCandidate) -> IdeaCandidate:
+@@ -316,6 +357,9 @@
+             )
+             return candidate.model_copy(update={"mechanism": mech})
+         except Exception:
++            if self.strict:
++                raise
++            self.fallbacks += 1
+             return MockIdeaProvider().canonicalize(problem, candidate)
+ 
+     def assess(self, problem: NormalizedProblem, candidate: IdeaCandidate) -> EvaluationScores:
+@@ -344,6 +388,9 @@
+                 mechanism_uniqueness=float(res.get("mechanism_uniqueness", 0.75)),
+             )
+         except Exception:
++            if self.strict:
++                raise
++            self.fallbacks += 1
+             return MockIdeaProvider().assess(problem, candidate)
+ 
+     def describe_niche(self, problem: NormalizedProblem, candidate: IdeaCandidate) -> NicheDescriptor:
+@@ -373,4 +420,7 @@
+                 hor = "short"
+             return NicheDescriptor(intervention_level=lvl, resource_intensity=res_int, feedback_horizon=hor)
+         except Exception:
++            if self.strict:
++                raise
++            self.fallbacks += 1
+             return MockIdeaProvider().describe_niche(problem, candidate)
+diff --git a/tests/test_llm_provider_sse.py b/tests/test_llm_provider_sse.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..9c41f56ca9836dcce3cb732a3a57f3ae8701e08d
+--- /dev/null
++++ b/tests/test_llm_provider_sse.py
+@@ -0,0 +1,125 @@
++import json
++import urllib.request
++
++import pytest
++
++from creative_agent.providers import LLMIdeaProvider, MockIdeaProvider, decode_chat_response
++
++
++class FakeResponse:
++    def __init__(self, body: bytes, content_type: str = "application/json"):
++        self.body = body
++        self.headers = {"Content-Type": content_type}
++
++    def __enter__(self):
++        return self
++
++    def __exit__(self, *args):
++        return False
++
++    def __iter__(self):
++        return iter(self.body.splitlines(keepends=True))
++
++    def read(self):
++        return self.body
++
++
++def fake_urlopen(monkeypatch, body, content_type="application/json"):
++    calls = []
++
++    def urlopen(request, timeout):
++        calls.append((json.loads(request.data), timeout))
++        return FakeResponse(body, content_type)
++
++    monkeypatch.setattr(urllib.request, "urlopen", urlopen)
++    return calls
++
++
++def test_json_chat_body(monkeypatch):
++    body = json.dumps({"choices": [{"message": {"content": '{"objective": "play"}'}}]}).encode()
++    calls = fake_urlopen(monkeypatch, body)
++    provider = LLMIdeaProvider(api_key="test", timeout=12.5)
++
++    assert decode_chat_response(body, "application/json") == '{"objective": "play"}'
++    assert provider._call("prompt") == {"objective": "play"}
++    assert calls == [({"model": "hermes-main", "messages": [
++        {"role": "system", "content": "You are a creative systems architect and game designer. Always output strict, valid JSON without extra chat or conversational filler."},
++        {"role": "user", "content": "prompt"},
++    ], "temperature": 0.85, "stream": True}, 12.5)]
++
++
++def test_sse_chat_body_detected_without_stream_header(monkeypatch):
++    body = (b'data: {"choices":[{"delta":{"content":"{\\"objective\\": "}}]}\n'
++            b'data: {"choices":[{"delta":{"content":"\\"play\\"}"}}]}\n'
++            b'data: [DONE]\n')
++    fake_urlopen(monkeypatch, body)
++
++    assert decode_chat_response(body, "application/json") == '{"objective": "play"}'
++    assert LLMIdeaProvider(api_key="test")._call("prompt") == {"objective": "play"}
++
++
++def test_sse_fenced_json(monkeypatch):
++    body = (b'data: {"choices":[{"delta":{"content":"```json\\n{\\"count\\": 1}"}}]}\n'
++            b'data: {"choices":[{"delta":{"content":"\\n```"}}]}\n'
++            b'data: [DONE]\n')
++    fake_urlopen(monkeypatch, body, "text/event-stream")
++
++    assert LLMIdeaProvider(api_key="test")._call("prompt") == {"count": 1}
++
++
++def test_malformed_sse_chunk_is_skipped():
++    body = (b'data: {bad json}\n'
++            b'data: {"choices":[{"delta":{"content":"hello"}}]}\n'
++            b'data: {"choices":[]}\n'
++            b'data: [DONE]\n')
++
++    assert decode_chat_response(body, "text/event-stream") == "hello"
++
++
++@pytest.mark.parametrize("body", [b"", b"data: [DONE]\n", b'{"choices":[]}'])
++def test_empty_chat_content_raises_value_error(body):
++    with pytest.raises(ValueError):
++        decode_chat_response(body)
++
++
++def test_strict_mode_propagates_from_every_public_method(monkeypatch):
++    provider = LLMIdeaProvider(api_key="test", strict=True)
++    mock = MockIdeaProvider()
++    problem = mock.normalize("Improve a game")
++    candidate = mock.mine_baselines(problem, 1)[0]
++
++    def fail(*args, **kwargs):
++        raise RuntimeError("model unavailable")
++
++    monkeypatch.setattr(provider, "_call", fail)
++    calls = [
++        lambda: provider.normalize("Improve a game"),
++        lambda: provider.mine_baselines(problem, 1),
++        lambda: provider.generate(problem, "Inversion", (), 1),
++        lambda: provider.canonicalize(problem, candidate),
++        lambda: provider.assess(problem, candidate),
++        lambda: provider.describe_niche(problem, candidate),
++    ]
++    for call in calls:
++        with pytest.raises(RuntimeError, match="model unavailable"):
++            call()
++    assert provider.fallbacks == 0
++
++
++def test_non_strict_mode_counts_each_mock_fallback(monkeypatch):
++    provider = LLMIdeaProvider(api_key="test")
++    mock = MockIdeaProvider()
++    problem = mock.normalize("Improve a game")
++    candidate = mock.mine_baselines(problem, 1)[0]
++
++    def fail(*args, **kwargs):
++        raise RuntimeError("model unavailable")
++
++    monkeypatch.setattr(provider, "_call", fail)
++    assert provider.normalize("Improve a game") == problem
++    assert provider.mine_baselines(problem, 1) == mock.mine_baselines(problem, 1)
++    assert provider.generate(problem, "Inversion", (), 1) == mock.generate(problem, "Inversion", (), 1)
++    assert provider.canonicalize(problem, candidate) == mock.canonicalize(problem, candidate)
++    assert provider.assess(problem, candidate) == mock.assess(problem, candidate)
++    assert provider.describe_niche(problem, candidate) == mock.describe_niche(problem, candidate)
++    assert provider.fallbacks == 6
+
+exec
+/bin/bash -lc '.venv/bin/pytest -q tests/test_llm_provider_sse.py' in /home/arcturus/hermesWorkspace/projects/CounterField
+ succeeded in 164ms:
+.........                                                                [100%]
+9 passed in 0.15s
+
+diff --git a/creative_agent/providers.py b/creative_agent/providers.py
+index af6e144466accab03545a614ee549de982afa8f6..5fa38de7915365d463730d1b64cfaff10f2614f4
+--- a/creative_agent/providers.py
++++ b/creative_agent/providers.py
+@@ -109,12 +109,45 @@
+         )
+ 
+ 
++def decode_chat_response(raw: bytes, content_type: str | None = None) -> str:
++    """Extract assistant text from a chat completion JSON body or SSE stream."""
++    body = raw.decode("utf-8")
++    if any(line.lstrip().startswith("data:") for line in body.splitlines()):
++        parts = []
++        for line in body.splitlines():
++            line = line.lstrip()
++            if not line.startswith("data:"):
++                continue
++            chunk = line[5:].strip()
++            if chunk == "[DONE]":
++                continue
++            try:
++                content = json.loads(chunk)["choices"][0]["delta"]["content"]
++            except (ValueError, TypeError, KeyError, IndexError):
++                continue
++            if isinstance(content, str):
++                parts.append(content)
++        content = "".join(parts)
++    else:
++        try:
++            content = json.loads(body)["choices"][0]["message"]["content"]
++        except (ValueError, TypeError, KeyError, IndexError) as exc:
++            raise ValueError("No assistant content in chat response") from exc
++    if not isinstance(content, str) or not content.strip():
++        raise ValueError("No assistant content in chat response")
++    return content
++
++
+ class LLMIdeaProvider:
+     mode = "llm"
+ 
+-    def __init__(self, base_url: str | None = None, model: str = "hermes-main", api_key: str | None = None):
++    def __init__(self, base_url: str | None = None, model: str = "hermes-main", api_key: str | None = None,
++                 timeout: float = 90.0, strict: bool = False):
+         self.base_url = (base_url or os.environ.get("OPENAI_BASE_URL", "http://127.0.0.1:20128/v1")).rstrip("/")
+         self.model = model
++        self.timeout = timeout
++        self.strict = strict
++        self.fallbacks: int = 0
+         resolved_key = api_key or os.environ.get("OPENAI_API_KEY", "")
+         if not resolved_key:
+             try:
+@@ -145,12 +178,11 @@
+                 {"role": "user", "content": prompt},
+             ],
+             "temperature": 0.85,
+-            "stream": False,
++            "stream": True,
+         }
+         req = urllib.request.Request(url, data=json.dumps(payload).encode("utf-8"), headers=headers)
+-        with urllib.request.urlopen(req, timeout=45) as resp:
+-            data = json.loads(resp.read().decode("utf-8"))
+-        content = data["choices"][0]["message"]["content"].strip()
++        with urllib.request.urlopen(req, timeout=self.timeout) as resp:
++            content = decode_chat_response(resp.read(), resp.headers.get("Content-Type")).strip()
+         # Strip markdown fences if present
+         if content.startswith("```"):
+             lines = content.splitlines()
+@@ -179,6 +211,9 @@
+                 affected_system=res.get("affected_system", "core gameplay system"),
+             )
+         except Exception:
++            if self.strict:
++                raise
++            self.fallbacks += 1
+             return MockIdeaProvider().normalize(problem)
+ 
+     def mine_baselines(self, problem: NormalizedProblem, count: int) -> list[IdeaCandidate]:
+@@ -202,6 +237,9 @@
+                 ))
+             return candidates
+         except Exception:
++            if self.strict:
++                raise
++            self.fallbacks += 1
+             return MockIdeaProvider().mine_baselines(problem, count)
+ 
+     def generate(self, problem: NormalizedProblem, operator: str, private_history: Any, count: int) -> list[IdeaCandidate]:
+@@ -271,6 +309,9 @@
+                 candidates.append(cand)
+             return candidates
+         except Exception:
++            if self.strict:
++                raise
++            self.fallbacks += 1
+             return MockIdeaProvider().generate(problem, operator, private_history, count)
+ 
+     def canonicalize(self, problem: NormalizedProblem, candidate: IdeaCandidate) -> IdeaCandidate:
+@@ -316,6 +357,9 @@
+             )
+             return candidate.model_copy(update={"mechanism": mech})
+         except Exception:
++            if self.strict:
++                raise
++            self.fallbacks += 1
+             return MockIdeaProvider().canonicalize(problem, candidate)
+ 
+     def assess(self, problem: NormalizedProblem, candidate: IdeaCandidate) -> EvaluationScores:
+@@ -344,6 +388,9 @@
+                 mechanism_uniqueness=float(res.get("mechanism_uniqueness", 0.75)),
+             )
+         except Exception:
++            if self.strict:
++                raise
++            self.fallbacks += 1
+             return MockIdeaProvider().assess(problem, candidate)
+ 
+     def describe_niche(self, problem: NormalizedProblem, candidate: IdeaCandidate) -> NicheDescriptor:
+@@ -373,4 +420,7 @@
+                 hor = "short"
+             return NicheDescriptor(intervention_level=lvl, resource_intensity=res_int, feedback_horizon=hor)
+         except Exception:
++            if self.strict:
++                raise
++            self.fallbacks += 1
+             return MockIdeaProvider().describe_niche(problem, candidate)
+diff --git a/tests/test_llm_provider_sse.py b/tests/test_llm_provider_sse.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..9c41f56ca9836dcce3cb732a3a57f3ae8701e08d
+--- /dev/null
++++ b/tests/test_llm_provider_sse.py
+@@ -0,0 +1,125 @@
++import json
++import urllib.request
++
++import pytest
++
++from creative_agent.providers import LLMIdeaProvider, MockIdeaProvider, decode_chat_response
++
++
++class FakeResponse:
++    def __init__(self, body: bytes, content_type: str = "application/json"):
++        self.body = body
++        self.headers = {"Content-Type": content_type}
++
++    def __enter__(self):
++        return self
++
++    def __exit__(self, *args):
++        return False
++
++    def __iter__(self):
++        return iter(self.body.splitlines(keepends=True))
++
++    def read(self):
++        return self.body
++
++
++def fake_urlopen(monkeypatch, body, content_type="application/json"):
++    calls = []
++
++    def urlopen(request, timeout):
++        calls.append((json.loads(request.data), timeout))
++        return FakeResponse(body, content_type)
++
++    monkeypatch.setattr(urllib.request, "urlopen", urlopen)
++    return calls
++
++
++def test_json_chat_body(monkeypatch):
++    body = json.dumps({"choices": [{"message": {"content": '{"objective": "play"}'}}]}).encode()
++    calls = fake_urlopen(monkeypatch, body)
++    provider = LLMIdeaProvider(api_key="test", timeout=12.5)
++
++    assert decode_chat_response(body, "application/json") == '{"objective": "play"}'
++    assert provider._call("prompt") == {"objective": "play"}
++    assert calls == [({"model": "hermes-main", "messages": [
++        {"role": "system", "content": "You are a creative systems architect and game designer. Always output strict, valid JSON without extra chat or conversational filler."},
++        {"role": "user", "content": "prompt"},
++    ], "temperature": 0.85, "stream": True}, 12.5)]
++
++
++def test_sse_chat_body_detected_without_stream_header(monkeypatch):
++    body = (b'data: {"choices":[{"delta":{"content":"{\\"objective\\": "}}]}\n'
++            b'data: {"choices":[{"delta":{"content":"\\"play\\"}"}}]}\n'
++            b'data: [DONE]\n')
++    fake_urlopen(monkeypatch, body)
++
++    assert decode_chat_response(body, "application/json") == '{"objective": "play"}'
++    assert LLMIdeaProvider(api_key="test")._call("prompt") == {"objective": "play"}
++
++
++def test_sse_fenced_json(monkeypatch):
++    body = (b'data: {"choices":[{"delta":{"content":"```json\\n{\\"count\\": 1}"}}]}\n'
++            b'data: {"choices":[{"delta":{"content":"\\n```"}}]}\n'
++            b'data: [DONE]\n')
++    fake_urlopen(monkeypatch, body, "text/event-stream")
++
++    assert LLMIdeaProvider(api_key="test")._call("prompt") == {"count": 1}
++
++
++def test_malformed_sse_chunk_is_skipped():
++    body = (b'data: {bad json}\n'
++            b'data: {"choices":[{"delta":{"content":"hello"}}]}\n'
++            b'data: {"choices":[]}\n'
++            b'data: [DONE]\n')
++
++    assert decode_chat_response(body, "text/event-stream") == "hello"
++
++
++@pytest.mark.parametrize("body", [b"", b"data: [DONE]\n", b'{"choices":[]}'])
++def test_empty_chat_content_raises_value_error(body):
++    with pytest.raises(ValueError):
++        decode_chat_response(body)
++
++
++def test_strict_mode_propagates_from_every_public_method(monkeypatch):
++    provider = LLMIdeaProvider(api_key="test", strict=True)
++    mock = MockIdeaProvider()
++    problem = mock.normalize("Improve a game")
++    candidate = mock.mine_baselines(problem, 1)[0]
++
++    def fail(*args, **kwargs):
++        raise RuntimeError("model unavailable")
++
++    monkeypatch.setattr(provider, "_call", fail)
++    calls = [
++        lambda: provider.normalize("Improve a game"),
++        lambda: provider.mine_baselines(problem, 1),
++        lambda: provider.generate(problem, "Inversion", (), 1),
++        lambda: provider.canonicalize(problem, candidate),
++        lambda: provider.assess(problem, candidate),
++        lambda: provider.describe_niche(problem, candidate),
++    ]
++    for call in calls:
++        with pytest.raises(RuntimeError, match="model unavailable"):
++            call()
++    assert provider.fallbacks == 0
++
++
++def test_non_strict_mode_counts_each_mock_fallback(monkeypatch):
++    provider = LLMIdeaProvider(api_key="test")
++    mock = MockIdeaProvider()
++    problem = mock.normalize("Improve a game")
++    candidate = mock.mine_baselines(problem, 1)[0]
++
++    def fail(*args, **kwargs):
++        raise RuntimeError("model unavailable")
++
++    monkeypatch.setattr(provider, "_call", fail)
++    assert provider.normalize("Improve a game") == problem
++    assert provider.mine_baselines(problem, 1) == mock.mine_baselines(problem, 1)
++    assert provider.generate(problem, "Inversion", (), 1) == mock.generate(problem, "Inversion", (), 1)
++    assert provider.canonicalize(problem, candidate) == mock.canonicalize(problem, candidate)
++    assert provider.assess(problem, candidate) == mock.assess(problem, candidate)
++    assert provider.describe_niche(problem, candidate) == mock.describe_niche(problem, candidate)
++    assert provider.fallbacks == 6
+
+codex
+The targeted tests pass: 9 cases cover JSON and SSE responses, malformed chunks, fenced JSON, empty responses, and strict versus mock fallback behavior. I’ll run the full project suite now.
+exec
+/bin/bash -lc '.venv/bin/pytest -q' in /home/arcturus/hermesWorkspace/projects/CounterField
+ succeeded in 546ms:
+........................................................................ [ 73%]
+..........................                                               [100%]
+=============================== warnings summary ===============================
+tests/test_creative_agent.py: 1 warning
+tests/test_creativity_phase0.py: 5 warnings
+tests/test_creativity_phase1.py: 3 warnings
+tests/test_creativity_phase2.py: 1 warning
+tests/test_creativity_phase3.py: 2 warnings
+tests/test_creativity_phase4.py: 1 warning
+tests/test_modular_contracts.py: 3 warnings
+tests/test_p0_invariants.py: 1 warning
+  /home/arcturus/hermesWorkspace/projects/CounterField/.venv/lib/python3.12/site-packages/networkx/utils/backends.py:551: UserWarning: The hashes produced for directed graphs changed in version v3.5 due to a bugfix to track in and out edges separately (see documentation).
+    return self.orig_func(*args, **kwargs)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+98 passed, 17 warnings in 0.51s
+
+diff --git a/creative_agent/providers.py b/creative_agent/providers.py
+index af6e144466accab03545a614ee549de982afa8f6..5fa38de7915365d463730d1b64cfaff10f2614f4
+--- a/creative_agent/providers.py
++++ b/creative_agent/providers.py
+@@ -109,12 +109,45 @@
+         )
+ 
+ 
++def decode_chat_response(raw: bytes, content_type: str | None = None) -> str:
++    """Extract assistant text from a chat completion JSON body or SSE stream."""
++    body = raw.decode("utf-8")
++    if any(line.lstrip().startswith("data:") for line in body.splitlines()):
++        parts = []
++        for line in body.splitlines():
++            line = line.lstrip()
++            if not line.startswith("data:"):
++                continue
++            chunk = line[5:].strip()
++            if chunk == "[DONE]":
++                continue
++            try:
++                content = json.loads(chunk)["choices"][0]["delta"]["content"]
++            except (ValueError, TypeError, KeyError, IndexError):
++                continue
++            if isinstance(content, str):
++                parts.append(content)
++        content = "".join(parts)
++    else:
++        try:
++            content = json.loads(body)["choices"][0]["message"]["content"]
++        except (ValueError, TypeError, KeyError, IndexError) as exc:
++            raise ValueError("No assistant content in chat response") from exc
++    if not isinstance(content, str) or not content.strip():
++        raise ValueError("No assistant content in chat response")
++    return content
++
++
+ class LLMIdeaProvider:
+     mode = "llm"
+ 
+-    def __init__(self, base_url: str | None = None, model: str = "hermes-main", api_key: str | None = None):
++    def __init__(self, base_url: str | None = None, model: str = "hermes-main", api_key: str | None = None,
++                 timeout: float = 90.0, strict: bool = False):
+         self.base_url = (base_url or os.environ.get("OPENAI_BASE_URL", "http://127.0.0.1:20128/v1")).rstrip("/")
+         self.model = model
++        self.timeout = timeout
++        self.strict = strict
++        self.fallbacks: int = 0
+         resolved_key = api_key or os.environ.get("OPENAI_API_KEY", "")
+         if not resolved_key:
+             try:
+@@ -145,12 +178,11 @@
+                 {"role": "user", "content": prompt},
+             ],
+             "temperature": 0.85,
+-            "stream": False,
++            "stream": True,
+         }
+         req = urllib.request.Request(url, data=json.dumps(payload).encode("utf-8"), headers=headers)
+-        with urllib.request.urlopen(req, timeout=45) as resp:
+-            data = json.loads(resp.read().decode("utf-8"))
+-        content = data["choices"][0]["message"]["content"].strip()
++        with urllib.request.urlopen(req, timeout=self.timeout) as resp:
++            content = decode_chat_response(resp.read(), resp.headers.get("Content-Type")).strip()
+         # Strip markdown fences if present
+         if content.startswith("```"):
+             lines = content.splitlines()
+@@ -179,6 +211,9 @@
+                 affected_system=res.get("affected_system", "core gameplay system"),
+             )
+         except Exception:
++            if self.strict:
++                raise
++            self.fallbacks += 1
+             return MockIdeaProvider().normalize(problem)
+ 
+     def mine_baselines(self, problem: NormalizedProblem, count: int) -> list[IdeaCandidate]:
+@@ -202,6 +237,9 @@
+                 ))
+             return candidates
+         except Exception:
++            if self.strict:
++                raise
++            self.fallbacks += 1
+             return MockIdeaProvider().mine_baselines(problem, count)
+ 
+     def generate(self, problem: NormalizedProblem, operator: str, private_history: Any, count: int) -> list[IdeaCandidate]:
+@@ -271,6 +309,9 @@
+                 candidates.append(cand)
+             return candidates
+         except Exception:
++            if self.strict:
++                raise
++            self.fallbacks += 1
+             return MockIdeaProvider().generate(problem, operator, private_history, count)
+ 
+     def canonicalize(self, problem: NormalizedProblem, candidate: IdeaCandidate) -> IdeaCandidate:
+@@ -316,6 +357,9 @@
+             )
+             return candidate.model_copy(update={"mechanism": mech})
+         except Exception:
++            if self.strict:
++                raise
++            self.fallbacks += 1
+             return MockIdeaProvider().canonicalize(problem, candidate)
+ 
+     def assess(self, problem: NormalizedProblem, candidate: IdeaCandidate) -> EvaluationScores:
+@@ -344,6 +388,9 @@
+                 mechanism_uniqueness=float(res.get("mechanism_uniqueness", 0.75)),
+             )
+         except Exception:
++            if self.strict:
++                raise
++            self.fallbacks += 1
+             return MockIdeaProvider().assess(problem, candidate)
+ 
+     def describe_niche(self, problem: NormalizedProblem, candidate: IdeaCandidate) -> NicheDescriptor:
+@@ -373,4 +420,7 @@
+                 hor = "short"
+             return NicheDescriptor(intervention_level=lvl, resource_intensity=res_int, feedback_horizon=hor)
+         except Exception:
++            if self.strict:
++                raise
++            self.fallbacks += 1
+             return MockIdeaProvider().describe_niche(problem, candidate)
+diff --git a/tests/test_llm_provider_sse.py b/tests/test_llm_provider_sse.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..9c41f56ca9836dcce3cb732a3a57f3ae8701e08d
+--- /dev/null
++++ b/tests/test_llm_provider_sse.py
+@@ -0,0 +1,125 @@
++import json
++import urllib.request
++
++import pytest
++
++from creative_agent.providers import LLMIdeaProvider, MockIdeaProvider, decode_chat_response
++
++
++class FakeResponse:
++    def __init__(self, body: bytes, content_type: str = "application/json"):
++        self.body = body
++        self.headers = {"Content-Type": content_type}
++
++    def __enter__(self):
++        return self
++
++    def __exit__(self, *args):
++        return False
++
++    def __iter__(self):
++        return iter(self.body.splitlines(keepends=True))
++
++    def read(self):
++        return self.body
++
++
++def fake_urlopen(monkeypatch, body, content_type="application/json"):
++    calls = []
++
++    def urlopen(request, timeout):
++        calls.append((json.loads(request.data), timeout))
++        return FakeResponse(body, content_type)
++
++    monkeypatch.setattr(urllib.request, "urlopen", urlopen)
++    return calls
++
++
++def test_json_chat_body(monkeypatch):
++    body = json.dumps({"choices": [{"message": {"content": '{"objective": "play"}'}}]}).encode()
++    calls = fake_urlopen(monkeypatch, body)
++    provider = LLMIdeaProvider(api_key="test", timeout=12.5)
++
++    assert decode_chat_response(body, "application/json") == '{"objective": "play"}'
++    assert provider._call("prompt") == {"objective": "play"}
++    assert calls == [({"model": "hermes-main", "messages": [
++        {"role": "system", "content": "You are a creative systems architect and game designer. Always output strict, valid JSON without extra chat or conversational filler."},
++        {"role": "user", "content": "prompt"},
++    ], "temperature": 0.85, "stream": True}, 12.5)]
++
++
++def test_sse_chat_body_detected_without_stream_header(monkeypatch):
++    body = (b'data: {"choices":[{"delta":{"content":"{\\"objective\\": "}}]}\n'
++            b'data: {"choices":[{"delta":{"content":"\\"play\\"}"}}]}\n'
++            b'data: [DONE]\n')
++    fake_urlopen(monkeypatch, body)
++
++    assert decode_chat_response(body, "application/json") == '{"objective": "play"}'
++    assert LLMIdeaProvider(api_key="test")._call("prompt") == {"objective": "play"}
++
++
++def test_sse_fenced_json(monkeypatch):
++    body = (b'data: {"choices":[{"delta":{"content":"```json\\n{\\"count\\": 1}"}}]}\n'
++            b'data: {"choices":[{"delta":{"content":"\\n```"}}]}\n'
++            b'data: [DONE]\n')
++    fake_urlopen(monkeypatch, body, "text/event-stream")
++
++    assert LLMIdeaProvider(api_key="test")._call("prompt") == {"count": 1}
++
++
++def test_malformed_sse_chunk_is_skipped():
++    body = (b'data: {bad json}\n'
++            b'data: {"choices":[{"delta":{"content":"hello"}}]}\n'
++            b'data: {"choices":[]}\n'
++            b'data: [DONE]\n')
++
++    assert decode_chat_response(body, "text/event-stream") == "hello"
++
++
++@pytest.mark.parametrize("body", [b"", b"data: [DONE]\n", b'{"choices":[]}'])
++def test_empty_chat_content_raises_value_error(body):
++    with pytest.raises(ValueError):
++        decode_chat_response(body)
++
++
++def test_strict_mode_propagates_from_every_public_method(monkeypatch):
++    provider = LLMIdeaProvider(api_key="test", strict=True)
++    mock = MockIdeaProvider()
++    problem = mock.normalize("Improve a game")
++    candidate = mock.mine_baselines(problem, 1)[0]
++
++    def fail(*args, **kwargs):
++        raise RuntimeError("model unavailable")
++
++    monkeypatch.setattr(provider, "_call", fail)
++    calls = [
++        lambda: provider.normalize("Improve a game"),
++        lambda: provider.mine_baselines(problem, 1),
++        lambda: provider.generate(problem, "Inversion", (), 1),
++        lambda: provider.canonicalize(problem, candidate),
++        lambda: provider.assess(problem, candidate),
++        lambda: provider.describe_niche(problem, candidate),
++    ]
++    for call in calls:
++        with pytest.raises(RuntimeError, match="model unavailable"):
++            call()
++    assert provider.fallbacks == 0
++
++
++def test_non_strict_mode_counts_each_mock_fallback(monkeypatch):
++    provider = LLMIdeaProvider(api_key="test")
++    mock = MockIdeaProvider()
++    problem = mock.normalize("Improve a game")
++    candidate = mock.mine_baselines(problem, 1)[0]
++
++    def fail(*args, **kwargs):
++        raise RuntimeError("model unavailable")
++
++    monkeypatch.setattr(provider, "_call", fail)
++    assert provider.normalize("Improve a game") == problem
++    assert provider.mine_baselines(problem, 1) == mock.mine_baselines(problem, 1)
++    assert provider.generate(problem, "Inversion", (), 1) == mock.generate(problem, "Inversion", (), 1)
++    assert provider.canonicalize(problem, candidate) == mock.canonicalize(problem, candidate)
++    assert provider.assess(problem, candidate) == mock.assess(problem, candidate)
++    assert provider.describe_niche(problem, candidate) == mock.describe_niche(problem, candidate)
++    assert provider.fallbacks == 6
+
+exec
+/bin/bash -lc 'git status --short -- creative_agent/providers.py tests/test_llm_provider_sse.py' in /home/arcturus/hermesWorkspace/projects/CounterField
+ succeeded in 0ms:
+ M creative_agent/providers.py
+?? tests/test_llm_provider_sse.py
+
+exec
+/bin/bash -lc 'git diff --check -- creative_agent/providers.py' in /home/arcturus/hermesWorkspace/projects/CounterField
+ succeeded in 0ms:
+diff --git a/creative_agent/providers.py b/creative_agent/providers.py
+index af6e144466accab03545a614ee549de982afa8f6..5fa38de7915365d463730d1b64cfaff10f2614f4
+--- a/creative_agent/providers.py
++++ b/creative_agent/providers.py
+@@ -109,12 +109,45 @@
+         )
+ 
+ 
++def decode_chat_response(raw: bytes, content_type: str | None = None) -> str:
++    """Extract assistant text from a chat completion JSON body or SSE stream."""
++    body = raw.decode("utf-8")
++    if any(line.lstrip().startswith("data:") for line in body.splitlines()):
++        parts = []
++        for line in body.splitlines():
++            line = line.lstrip()
++            if not line.startswith("data:"):
++                continue
++            chunk = line[5:].strip()
++            if chunk == "[DONE]":
++                continue
++            try:
++                content = json.loads(chunk)["choices"][0]["delta"]["content"]
++            except (ValueError, TypeError, KeyError, IndexError):
++                continue
++            if isinstance(content, str):
++                parts.append(content)
++        content = "".join(parts)
++    else:
++        try:
++            content = json.loads(body)["choices"][0]["message"]["content"]
++        except (ValueError, TypeError, KeyError, IndexError) as exc:
++            raise ValueError("No assistant content in chat response") from exc
++    if not isinstance(content, str) or not content.strip():
++        raise ValueError("No assistant content in chat response")
++    return content
++
++
+ class LLMIdeaProvider:
+     mode = "llm"
+ 
+-    def __init__(self, base_url: str | None = None, model: str = "hermes-main", api_key: str | None = None):
++    def __init__(self, base_url: str | None = None, model: str = "hermes-main", api_key: str | None = None,
++                 timeout: float = 90.0, strict: bool = False):
+         self.base_url = (base_url or os.environ.get("OPENAI_BASE_URL", "http://127.0.0.1:20128/v1")).rstrip("/")
+         self.model = model
++        self.timeout = timeout
++        self.strict = strict
++        self.fallbacks: int = 0
+         resolved_key = api_key or os.environ.get("OPENAI_API_KEY", "")
+         if not resolved_key:
+             try:
+@@ -145,12 +178,11 @@
+                 {"role": "user", "content": prompt},
+             ],
+             "temperature": 0.85,
+-            "stream": False,
++            "stream": True,
+         }
+         req = urllib.request.Request(url, data=json.dumps(payload).encode("utf-8"), headers=headers)
+-        with urllib.request.urlopen(req, timeout=45) as resp:
+-            data = json.loads(resp.read().decode("utf-8"))
+-        content = data["choices"][0]["message"]["content"].strip()
++        with urllib.request.urlopen(req, timeout=self.timeout) as resp:
++            content = decode_chat_response(resp.read(), resp.headers.get("Content-Type")).strip()
+         # Strip markdown fences if present
+         if content.startswith("```"):
+             lines = content.splitlines()
+@@ -179,6 +211,9 @@
+                 affected_system=res.get("affected_system", "core gameplay system"),
+             )
+         except Exception:
++            if self.strict:
++                raise
++            self.fallbacks += 1
+             return MockIdeaProvider().normalize(problem)
+ 
+     def mine_baselines(self, problem: NormalizedProblem, count: int) -> list[IdeaCandidate]:
+@@ -202,6 +237,9 @@
+                 ))
+             return candidates
+         except Exception:
++            if self.strict:
++                raise
++            self.fallbacks += 1
+             return MockIdeaProvider().mine_baselines(problem, count)
+ 
+     def generate(self, problem: NormalizedProblem, operator: str, private_history: Any, count: int) -> list[IdeaCandidate]:
+@@ -271,6 +309,9 @@
+                 candidates.append(cand)
+             return candidates
+         except Exception:
++            if self.strict:
++                raise
++            self.fallbacks += 1
+             return MockIdeaProvider().generate(problem, operator, private_history, count)
+ 
+     def canonicalize(self, problem: NormalizedProblem, candidate: IdeaCandidate) -> IdeaCandidate:
+@@ -316,6 +357,9 @@
+             )
+             return candidate.model_copy(update={"mechanism": mech})
+         except Exception:
++            if self.strict:
++                raise
++            self.fallbacks += 1
+             return MockIdeaProvider().canonicalize(problem, candidate)
+ 
+     def assess(self, problem: NormalizedProblem, candidate: IdeaCandidate) -> EvaluationScores:
+@@ -344,6 +388,9 @@
+                 mechanism_uniqueness=float(res.get("mechanism_uniqueness", 0.75)),
+             )
+         except Exception:
++            if self.strict:
++                raise
++            self.fallbacks += 1
+             return MockIdeaProvider().assess(problem, candidate)
+ 
+     def describe_niche(self, problem: NormalizedProblem, candidate: IdeaCandidate) -> NicheDescriptor:
+@@ -373,4 +420,7 @@
+                 hor = "short"
+             return NicheDescriptor(intervention_level=lvl, resource_intensity=res_int, feedback_horizon=hor)
+         except Exception:
++            if self.strict:
++                raise
++            self.fallbacks += 1
+             return MockIdeaProvider().describe_niche(problem, candidate)
+diff --git a/tests/test_llm_provider_sse.py b/tests/test_llm_provider_sse.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..9c41f56ca9836dcce3cb732a3a57f3ae8701e08d
+--- /dev/null
++++ b/tests/test_llm_provider_sse.py
+@@ -0,0 +1,125 @@
++import json
++import urllib.request
++
++import pytest
++
++from creative_agent.providers import LLMIdeaProvider, MockIdeaProvider, decode_chat_response
++
++
++class FakeResponse:
++    def __init__(self, body: bytes, content_type: str = "application/json"):
++        self.body = body
++        self.headers = {"Content-Type": content_type}
++
++    def __enter__(self):
++        return self
++
++    def __exit__(self, *args):
++        return False
++
++    def __iter__(self):
++        return iter(self.body.splitlines(keepends=True))
++
++    def read(self):
++        return self.body
++
++
++def fake_urlopen(monkeypatch, body, content_type="application/json"):
++    calls = []
++
++    def urlopen(request, timeout):
++        calls.append((json.loads(request.data), timeout))
++        return FakeResponse(body, content_type)
++
++    monkeypatch.setattr(urllib.request, "urlopen", urlopen)
++    return calls
++
++
++def test_json_chat_body(monkeypatch):
++    body = json.dumps({"choices": [{"message": {"content": '{"objective": "play"}'}}]}).encode()
++    calls = fake_urlopen(monkeypatch, body)
++    provider = LLMIdeaProvider(api_key="test", timeout=12.5)
++
++    assert decode_chat_response(body, "application/json") == '{"objective": "play"}'
++    assert provider._call("prompt") == {"objective": "play"}
++    assert calls == [({"model": "hermes-main", "messages": [
++        {"role": "system", "content": "You are a creative systems architect and game designer. Always output strict, valid JSON without extra chat or conversational filler."},
++        {"role": "user", "content": "prompt"},
++    ], "temperature": 0.85, "stream": True}, 12.5)]
++
++
++def test_sse_chat_body_detected_without_stream_header(monkeypatch):
++    body = (b'data: {"choices":[{"delta":{"content":"{\\"objective\\": "}}]}\n'
++            b'data: {"choices":[{"delta":{"content":"\\"play\\"}"}}]}\n'
++            b'data: [DONE]\n')
++    fake_urlopen(monkeypatch, body)
++
++    assert decode_chat_response(body, "application/json") == '{"objective": "play"}'
++    assert LLMIdeaProvider(api_key="test")._call("prompt") == {"objective": "play"}
++
++
++def test_sse_fenced_json(monkeypatch):
++    body = (b'data: {"choices":[{"delta":{"content":"```json\\n{\\"count\\": 1}"}}]}\n'
++            b'data: {"choices":[{"delta":{"content":"\\n```"}}]}\n'
++            b'data: [DONE]\n')
++    fake_urlopen(monkeypatch, body, "text/event-stream")
++
++    assert LLMIdeaProvider(api_key="test")._call("prompt") == {"count": 1}
++
++
++def test_malformed_sse_chunk_is_skipped():
++    body = (b'data: {bad json}\n'
++            b'data: {"choices":[{"delta":{"content":"hello"}}]}\n'
++            b'data: {"choices":[]}\n'
++            b'data: [DONE]\n')
++
++    assert decode_chat_response(body, "text/event-stream") == "hello"
++
++
++@pytest.mark.parametrize("body", [b"", b"data: [DONE]\n", b'{"choices":[]}'])
++def test_empty_chat_content_raises_value_error(body):
++    with pytest.raises(ValueError):
++        decode_chat_response(body)
++
++
++def test_strict_mode_propagates_from_every_public_method(monkeypatch):
++    provider = LLMIdeaProvider(api_key="test", strict=True)
++    mock = MockIdeaProvider()
++    problem = mock.normalize("Improve a game")
++    candidate = mock.mine_baselines(problem, 1)[0]
++
++    def fail(*args, **kwargs):
++        raise RuntimeError("model unavailable")
++
++    monkeypatch.setattr(provider, "_call", fail)
++    calls = [
++        lambda: provider.normalize("Improve a game"),
++        lambda: provider.mine_baselines(problem, 1),
++        lambda: provider.generate(problem, "Inversion", (), 1),
++        lambda: provider.canonicalize(problem, candidate),
++        lambda: provider.assess(problem, candidate),
++        lambda: provider.describe_niche(problem, candidate),
++    ]
++    for call in calls:
++        with pytest.raises(RuntimeError, match="model unavailable"):
++            call()
++    assert provider.fallbacks == 0
++
++
++def test_non_strict_mode_counts_each_mock_fallback(monkeypatch):
++    provider = LLMIdeaProvider(api_key="test")
++    mock = MockIdeaProvider()
++    problem = mock.normalize("Improve a game")
++    candidate = mock.mine_baselines(problem, 1)[0]
++
++    def fail(*args, **kwargs):
++        raise RuntimeError("model unavailable")
++
++    monkeypatch.setattr(provider, "_call", fail)
++    assert provider.normalize("Improve a game") == problem
++    assert provider.mine_baselines(problem, 1) == mock.mine_baselines(problem, 1)
++    assert provider.generate(problem, "Inversion", (), 1) == mock.generate(problem, "Inversion", (), 1)
++    assert provider.canonicalize(problem, candidate) == mock.canonicalize(problem, candidate)
++    assert provider.assess(problem, candidate) == mock.assess(problem, candidate)
++    assert provider.describe_niche(problem, candidate) == mock.describe_niche(problem, candidate)
++    assert provider.fallbacks == 6
+
+codex
+Implemented the SSE decoder, configurable timeout, and strict mode in [providers.py](/home/arcturus/hermesWorkspace/projects/CounterField/creative_agent/providers.py). Non-strict mode now counts each mock fallback. Added zero-network coverage in [test_llm_provider_sse.py](/home/arcturus/hermesWorkspace/projects/CounterField/tests/test_llm_provider_sse.py).
+
+`.venv/bin/pytest -q` exited 0. Final pytest tail:
+
+```text
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+98 passed, 17 warnings in 0.51s
+```
+diff --git a/creative_agent/providers.py b/creative_agent/providers.py
+index af6e144466accab03545a614ee549de982afa8f6..5fa38de7915365d463730d1b64cfaff10f2614f4
+--- a/creative_agent/providers.py
++++ b/creative_agent/providers.py
+@@ -109,12 +109,45 @@
+         )
+ 
+ 
++def decode_chat_response(raw: bytes, content_type: str | None = None) -> str:
++    """Extract assistant text from a chat completion JSON body or SSE stream."""
++    body = raw.decode("utf-8")
++    if any(line.lstrip().startswith("data:") for line in body.splitlines()):
++        parts = []
++        for line in body.splitlines():
++            line = line.lstrip()
++            if not line.startswith("data:"):
++                continue
++            chunk = line[5:].strip()
++            if chunk == "[DONE]":
++                continue
++            try:
++                content = json.loads(chunk)["choices"][0]["delta"]["content"]
++            except (ValueError, TypeError, KeyError, IndexError):
++                continue
++            if isinstance(content, str):
++                parts.append(content)
++        content = "".join(parts)
++    else:
++        try:
++            content = json.loads(body)["choices"][0]["message"]["content"]
++        except (ValueError, TypeError, KeyError, IndexError) as exc:
++            raise ValueError("No assistant content in chat response") from exc
++    if not isinstance(content, str) or not content.strip():
++        raise ValueError("No assistant content in chat response")
++    return content
++
++
+ class LLMIdeaProvider:
+     mode = "llm"
+ 
+-    def __init__(self, base_url: str | None = None, model: str = "hermes-main", api_key: str | None = None):
++    def __init__(self, base_url: str | None = None, model: str = "hermes-main", api_key: str | None = None,
++                 timeout: float = 90.0, strict: bool = False):
+         self.base_url = (base_url or os.environ.get("OPENAI_BASE_URL", "http://127.0.0.1:20128/v1")).rstrip("/")
+         self.model = model
++        self.timeout = timeout
++        self.strict = strict
++        self.fallbacks: int = 0
+         resolved_key = api_key or os.environ.get("OPENAI_API_KEY", "")
+         if not resolved_key:
+             try:
+@@ -145,12 +178,11 @@
+                 {"role": "user", "content": prompt},
+             ],
+             "temperature": 0.85,
+-            "stream": False,
++            "stream": True,
+         }
+         req = urllib.request.Request(url, data=json.dumps(payload).encode("utf-8"), headers=headers)
+-        with urllib.request.urlopen(req, timeout=45) as resp:
+-            data = json.loads(resp.read().decode("utf-8"))
+-        content = data["choices"][0]["message"]["content"].strip()
++        with urllib.request.urlopen(req, timeout=self.timeout) as resp:
++            content = decode_chat_response(resp.read(), resp.headers.get("Content-Type")).strip()
+         # Strip markdown fences if present
+         if content.startswith("```"):
+             lines = content.splitlines()
+@@ -179,6 +211,9 @@
+                 affected_system=res.get("affected_system", "core gameplay system"),
+             )
+         except Exception:
++            if self.strict:
++                raise
++            self.fallbacks += 1
+             return MockIdeaProvider().normalize(problem)
+ 
+     def mine_baselines(self, problem: NormalizedProblem, count: int) -> list[IdeaCandidate]:
+@@ -202,6 +237,9 @@
+                 ))
+             return candidates
+         except Exception:
++            if self.strict:
++                raise
++            self.fallbacks += 1
+             return MockIdeaProvider().mine_baselines(problem, count)
+ 
+     def generate(self, problem: NormalizedProblem, operator: str, private_history: Any, count: int) -> list[IdeaCandidate]:
+@@ -271,6 +309,9 @@
+                 candidates.append(cand)
+             return candidates
+         except Exception:
++            if self.strict:
++                raise
++            self.fallbacks += 1
+             return MockIdeaProvider().generate(problem, operator, private_history, count)
+ 
+     def canonicalize(self, problem: NormalizedProblem, candidate: IdeaCandidate) -> IdeaCandidate:
+@@ -316,6 +357,9 @@
+             )
+             return candidate.model_copy(update={"mechanism": mech})
+         except Exception:
++            if self.strict:
++                raise
++            self.fallbacks += 1
+             return MockIdeaProvider().canonicalize(problem, candidate)
+ 
+     def assess(self, problem: NormalizedProblem, candidate: IdeaCandidate) -> EvaluationScores:
+@@ -344,6 +388,9 @@
+                 mechanism_uniqueness=float(res.get("mechanism_uniqueness", 0.75)),
+             )
+         except Exception:
++            if self.strict:
++                raise
++            self.fallbacks += 1
+             return MockIdeaProvider().assess(problem, candidate)
+ 
+     def describe_niche(self, problem: NormalizedProblem, candidate: IdeaCandidate) -> NicheDescriptor:
+@@ -373,4 +420,7 @@
+                 hor = "short"
+             return NicheDescriptor(intervention_level=lvl, resource_intensity=res_int, feedback_horizon=hor)
+         except Exception:
++            if self.strict:
++                raise
++            self.fallbacks += 1
+             return MockIdeaProvider().describe_niche(problem, candidate)
+diff --git a/tests/test_llm_provider_sse.py b/tests/test_llm_provider_sse.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..9c41f56ca9836dcce3cb732a3a57f3ae8701e08d
+--- /dev/null
++++ b/tests/test_llm_provider_sse.py
+@@ -0,0 +1,125 @@
++import json
++import urllib.request
++
++import pytest
++
++from creative_agent.providers import LLMIdeaProvider, MockIdeaProvider, decode_chat_response
++
++
++class FakeResponse:
++    def __init__(self, body: bytes, content_type: str = "application/json"):
++        self.body = body
++        self.headers = {"Content-Type": content_type}
++
++    def __enter__(self):
++        return self
++
++    def __exit__(self, *args):
++        return False
++
++    def __iter__(self):
++        return iter(self.body.splitlines(keepends=True))
++
++    def read(self):
++        return self.body
++
++
++def fake_urlopen(monkeypatch, body, content_type="application/json"):
++    calls = []
++
++    def urlopen(request, timeout):
++        calls.append((json.loads(request.data), timeout))
++        return FakeResponse(body, content_type)
++
++    monkeypatch.setattr(urllib.request, "urlopen", urlopen)
++    return calls
++
++
++def test_json_chat_body(monkeypatch):
++    body = json.dumps({"choices": [{"message": {"content": '{"objective": "play"}'}}]}).encode()
++    calls = fake_urlopen(monkeypatch, body)
++    provider = LLMIdeaProvider(api_key="test", timeout=12.5)
++
++    assert decode_chat_response(body, "application/json") == '{"objective": "play"}'
++    assert provider._call("prompt") == {"objective": "play"}
++    assert calls == [({"model": "hermes-main", "messages": [
++        {"role": "system", "content": "You are a creative systems architect and game designer. Always output strict, valid JSON without extra chat or conversational filler."},
++        {"role": "user", "content": "prompt"},
++    ], "temperature": 0.85, "stream": True}, 12.5)]
++
++
++def test_sse_chat_body_detected_without_stream_header(monkeypatch):
++    body = (b'data: {"choices":[{"delta":{"content":"{\\"objective\\": "}}]}\n'
++            b'data: {"choices":[{"delta":{"content":"\\"play\\"}"}}]}\n'
++            b'data: [DONE]\n')
++    fake_urlopen(monkeypatch, body)
++
++    assert decode_chat_response(body, "application/json") == '{"objective": "play"}'
++    assert LLMIdeaProvider(api_key="test")._call("prompt") == {"objective": "play"}
++
++
++def test_sse_fenced_json(monkeypatch):
++    body = (b'data: {"choices":[{"delta":{"content":"```json\\n{\\"count\\": 1}"}}]}\n'
++            b'data: {"choices":[{"delta":{"content":"\\n```"}}]}\n'
++            b'data: [DONE]\n')
++    fake_urlopen(monkeypatch, body, "text/event-stream")
++
++    assert LLMIdeaProvider(api_key="test")._call("prompt") == {"count": 1}
++
++
++def test_malformed_sse_chunk_is_skipped():
++    body = (b'data: {bad json}\n'
++            b'data: {"choices":[{"delta":{"content":"hello"}}]}\n'
++            b'data: {"choices":[]}\n'
++            b'data: [DONE]\n')
++
++    assert decode_chat_response(body, "text/event-stream") == "hello"
++
++
++@pytest.mark.parametrize("body", [b"", b"data: [DONE]\n", b'{"choices":[]}'])
++def test_empty_chat_content_raises_value_error(body):
++    with pytest.raises(ValueError):
++        decode_chat_response(body)
++
++
++def test_strict_mode_propagates_from_every_public_method(monkeypatch):
++    provider = LLMIdeaProvider(api_key="test", strict=True)
++    mock = MockIdeaProvider()
++    problem = mock.normalize("Improve a game")
++    candidate = mock.mine_baselines(problem, 1)[0]
++
++    def fail(*args, **kwargs):
++        raise RuntimeError("model unavailable")
++
++    monkeypatch.setattr(provider, "_call", fail)
++    calls = [
++        lambda: provider.normalize("Improve a game"),
++        lambda: provider.mine_baselines(problem, 1),
++        lambda: provider.generate(problem, "Inversion", (), 1),
++        lambda: provider.canonicalize(problem, candidate),
++        lambda: provider.assess(problem, candidate),
++        lambda: provider.describe_niche(problem, candidate),
++    ]
++    for call in calls:
++        with pytest.raises(RuntimeError, match="model unavailable"):
++            call()
++    assert provider.fallbacks == 0
++
++
++def test_non_strict_mode_counts_each_mock_fallback(monkeypatch):
++    provider = LLMIdeaProvider(api_key="test")
++    mock = MockIdeaProvider()
++    problem = mock.normalize("Improve a game")
++    candidate = mock.mine_baselines(problem, 1)[0]
++
++    def fail(*args, **kwargs):
++        raise RuntimeError("model unavailable")
++
++    monkeypatch.setattr(provider, "_call", fail)
++    assert provider.normalize("Improve a game") == problem
++    assert provider.mine_baselines(problem, 1) == mock.mine_baselines(problem, 1)
++    assert provider.generate(problem, "Inversion", (), 1) == mock.generate(problem, "Inversion", (), 1)
++    assert provider.canonicalize(problem, candidate) == mock.canonicalize(problem, candidate)
++    assert provider.assess(problem, candidate) == mock.assess(problem, candidate)
++    assert provider.describe_niche(problem, candidate) == mock.describe_niche(problem, candidate)
++    assert provider.fallbacks == 6
+
+tokens used
+29,847
+Implemented the SSE decoder, configurable timeout, and strict mode in [providers.py](/home/arcturus/hermesWorkspace/projects/CounterField/creative_agent/providers.py). Non-strict mode now counts each mock fallback. Added zero-network coverage in [test_llm_provider_sse.py](/home/arcturus/hermesWorkspace/projects/CounterField/tests/test_llm_provider_sse.py).
+
+`.venv/bin/pytest -q` exited 0. Final pytest tail:
+
+```text
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+98 passed, 17 warnings in 0.51s
+```
+[Minerva Backend] Completed successfully.
+EXIT:0

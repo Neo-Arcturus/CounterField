@@ -1,0 +1,9 @@
+{
+ "mode": "control",
+ "admitted": 3,
+ "elites": 2,
+ "all_pass": true,
+ "failed": [],
+ "unique_wl_hashes": 3,
+ "unique_fingerprints": 3
+}

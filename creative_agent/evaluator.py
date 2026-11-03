@@ -130,6 +130,8 @@ class ThreeLayerEvaluator:
                 scores=None,
                 diagnostics=diagnostics,
                 admission=admission,
+                candidate_id=candidate.id,
+                candidate_fingerprint=mechanism.fingerprint if mechanism else None,
             )
         playtest_report = None
         counterexamples = ()
@@ -178,6 +180,8 @@ class ThreeLayerEvaluator:
             diagnostics=diagnostics,
             admission=admission,
             dynamics=dynamical_niche_descriptor(mechanism),
+            candidate_id=candidate.id,
+            candidate_fingerprint=mechanism.fingerprint if mechanism else None,
         )
 
     def _embedding(self, text, archive):

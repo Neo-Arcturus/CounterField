@@ -1,0 +1,4239 @@
+{
+  "meta": {
+    "mode": "llm",
+    "context": "ecosystem",
+    "date": "2026-10-23",
+    "seed": 20261023,
+    "budget": 48,
+    "problem": "Design a norm and incentive layer for an open ecosystem of independent labs sharing hypotheses publicly. Herding increases monoculture. Duplicate effort decreases collective discovery rate. Unretracted errors prevent reliable reuse.",
+    "provider": "LLMIdeaProvider",
+    "model": "cc/claude-sonnet-5-5",
+    "provider_fallbacks": 0,
+    "backend_stats": {
+      "backend_ok": 36
+    },
+    "template_library": "/home/arcturus/hermesWorkspace/projects/CounterField/data/templates/negative_space_v3_20261023.json",
+    "wall_seconds": 772.8
+  },
+  "metrics": {
+    "coverage": null,
+    "duplicate_rate": 0.0,
+    "attempts": 48,
+    "structural_failures": 1,
+    "occupied_niches": 8,
+    "repair_incubator": 38,
+    "failure_archive": 0,
+    "generation_errors": 0,
+    "canonicalize_errors": 0,
+    "validation_errors": 0,
+    "evaluation_errors": 0,
+    "evidence_errors": 0,
+    "provider_fallbacks": 0,
+    "inversion_attempts": 0,
+    "inversion_successes": 0,
+    "isomorphism_attempts": 25,
+    "isomorphism_successes": 25,
+    "synthesis_attempts": 16,
+    "synthesis_successes": 0,
+    "rules_promoted": 0,
+    "niche_count": 8,
+    "qd_score": 10.27395358169166
+  },
+  "admission_log": [
+    {
+      "operator": "dialectic",
+      "status": "REPAIRABLE",
+      "stage": "red_team",
+      "n": 16
+    },
+    {
+      "operator": "inversion",
+      "status": "REPAIRABLE",
+      "stage": "quality_constraints",
+      "n": 4
+    },
+    {
+      "operator": "inversion",
+      "status": "REPAIRABLE",
+      "stage": "red_team",
+      "n": 8
+    },
+    {
+      "operator": "isomorphism",
+      "status": "ACCEPTED",
+      "stage": "complete",
+      "n": 25
+    },
+    {
+      "operator": "isomorphism",
+      "status": "REPAIRABLE",
+      "stage": "quality_constraints",
+      "n": 3
+    },
+    {
+      "operator": "isomorphism",
+      "status": "REPAIRABLE",
+      "stage": "red_team",
+      "n": 7
+    }
+  ],
+  "centroids": [
+    [
+      1.0,
+      0.5,
+      0.0,
+      0.4,
+      0.26666660000000003,
+      0.0,
+      0.2
+    ],
+    [
+      1.0,
+      0.5,
+      0.5,
+      0.5,
+      0.26666660000000003,
+      0.0,
+      0.1
+    ],
+    [
+      1.0,
+      0.5,
+      0.5,
+      0.6,
+      0.21818179999999998,
+      0.0,
+      0.4
+    ],
+    [
+      1.0,
+      0.5,
+      1.0,
+      0.3,
+      0.24444439999999998,
+      0.0,
+      0.2
+    ],
+    [
+      1.0,
+      0.5,
+      1.0,
+      0.5,
+      0.24,
+      0.0,
+      0.1
+    ],
+    [
+      1.0,
+      1.0,
+      1.0,
+      0.5,
+      0.2,
+      0.0,
+      0.1
+    ],
+    [
+      0.66,
+      0.5,
+      1.0,
+      0.6,
+      0.21818179999999998,
+      0.0,
+      0.1
+    ],
+    [
+      1.0,
+      0.5,
+      1.0,
+      0.5,
+      0.275,
+      0.0,
+      0.3
+    ]
+  ],
+  "elites": [
+    {
+      "niche_key": "centroid_0",
+      "id": "071d503e0ef0c747",
+      "title": "Adoption Step-Down Ledger",
+      "description": "Each public hypothesis carries a live adoption meter. Every independent replication confirmation nudges the meter up by one unit, and labs earn credit for each confirmation. When the meter crosses a crowding threshold, or a falsification finding is posted, every adopting lab's committed budget on that hypothesis automatically steps down by a fixed fraction. The freed effort is routed to rival hypotheses, and a lab that retracts promptly and moves early to a rival earns extra credit, so labs lose nothing by backing away from a crowded or refuted idea.",
+      "operator": "isomorphism",
+      "source_domain": "network_congestion_control",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Confirmations steadily raise lab uptake of a hypothesis, and either crowding or a public falsification triggers a multiplicative cut in commitment, which keeps monoculture and duplicated effort from forming and spreads effort over rival hypotheses.",
+        "causal_structure": [
+          {
+            "cause": "Independent replication confirmations",
+            "relation": "increases",
+            "effect": "Escalating lab uptake of a hypothesis"
+          },
+          {
+            "cause": "Escalating lab uptake of a hypothesis",
+            "relation": "enables",
+            "effect": "Monoculture lock-in and duplicated effort"
+          },
+          {
+            "cause": "Public falsification finding",
+            "relation": "enables",
+            "effect": "Automatic commitment step-down by adopting labs"
+          },
+          {
+            "cause": "Escalating lab uptake of a hypothesis",
+            "relation": "enables",
+            "effect": "Automatic commitment step-down by adopting labs"
+          },
+          {
+            "cause": "Automatic commitment step-down by adopting labs",
+            "relation": "prevents",
+            "effect": "Monoculture lock-in and duplicated effort"
+          },
+          {
+            "cause": "Automatic commitment step-down by adopting labs",
+            "relation": "enables",
+            "effect": "Effort spread across rival hypotheses"
+          },
+          {
+            "cause": "Escalating lab uptake of a hypothesis",
+            "relation": "enables",
+            "effect": "Effort spread across rival hypotheses"
+          },
+          {
+            "cause": "Effort spread across rival hypotheses",
+            "relation": "enables",
+            "effect": "Diverse, correction-ready portfolio of reusable results"
+          },
+          {
+            "cause": "Public falsification finding",
+            "relation": "enables",
+            "effect": "Credit for prompt self-retraction"
+          },
+          {
+            "cause": "Credit for prompt self-retraction",
+            "relation": "increases",
+            "effect": "Diverse, correction-ready portfolio of reusable results"
+          },
+          {
+            "cause": "Monoculture lock-in and duplicated effort",
+            "relation": "decreases",
+            "effect": "Diverse, correction-ready portfolio of reusable results"
+          },
+          {
+            "cause": "Credit for early rival-hypothesis work",
+            "relation": "increases",
+            "effect": "Effort spread across rival hypotheses"
+          }
+        ],
+        "affected_system": "Incentive and norm layer (reputation, credit, coordination and correction mechanisms) for a decentralized public hypothesis-sharing ecosystem of independent research labs",
+        "payoff": "Diverse, correction-ready portfolio of reusable results"
+      },
+      "mechanism_fingerprint": "ab117ca388d66ac9",
+      "wl_hash": "822c65e1c046c056cc2f66a4115d8f32",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "aimd_loss_backoff_fairness",
+        "role_map": {
+          "ack_clock": "Independent replication confirmations",
+          "send_rate_growth": "Escalating lab uptake of a hypothesis",
+          "loss_event": "Public falsification finding",
+          "window_halving": "Automatic commitment step-down by adopting labs",
+          "queue_overflow_risk": "Monoculture lock-in and duplicated effort",
+          "flow_share_equalisation": "Effort spread across rival hypotheses",
+          "fair_equilibrium": "Diverse, correction-ready portfolio of reusable results"
+        }
+      },
+      "scores": {
+        "novelty": 0.6779899275240604,
+        "appropriateness": 0.74,
+        "utility": 0.55,
+        "surprise": 0.5,
+        "coherence": 0.68,
+        "mechanism_uniqueness": 0.9337970935677815
+      },
+      "niche": {
+        "intervention_level": "ecosystem",
+        "resource_intensity": "medium",
+        "feedback_horizon": "immediate"
+      },
+      "dynamics": {
+        "causal_depth": 4,
+        "branching_factor": 1.333333,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "40 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_credit_for_prompt_self_retraction",
+            "satisfy_escalating_lab_uptake_of_a_hypothesis",
+            "satisfy_monoculture_lock_in_and_duplicated_effort",
+            "satisfy_automatic_commitment_step_down_by_adopting_labs",
+            "satisfy_effort_spread_across_rival_hypotheses"
+          ]
+        }
+      ]
+    },
+    {
+      "niche_key": "centroid_1",
+      "id": "125458d2be6d1d29",
+      "title": "Quarantine-Before-Pile-On: Flag-Triggered Credit Holds with a Correction Interval",
+      "description": "When a lab posts a hypothesis, early followers normally collect a surge of attention credit, which pulls many labs into the same replication. Any independent lab can file a stake-backed anomaly flag. Once enough flags accumulate, the hypothesis enters a quarantine hold: new follow-on work on it earns no credit or funding priority, so the pile-on is actively suppressed. During the hold, the authors have a fixed correction interval to fix or defend the claim. If they do, the hold lifts and they earn a bonus. If they don't, a binding retraction stamp is issued automatically and propagates to every dependent result. Labs then reuse only claims that were either cleared or cleanly retracted.",
+      "operator": "isomorphism",
+      "source_domain": "cell_biology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Credible anomaly flags earn a temporary hold that withholds credit from herd-style follow-on replication, creating a protected interval in which authors must correct or face an automatic retraction, so that only cleared claims enter the reusable commons.",
+        "causal_structure": [
+          {
+            "cause": "Hidden Error in Shared Hypothesis",
+            "relation": "enables",
+            "effect": "Stake-Backed Anomaly Flag"
+          },
+          {
+            "cause": "Stake-Backed Anomaly Flag",
+            "relation": "enables",
+            "effect": "Claim Quarantine Hold"
+          },
+          {
+            "cause": "Early-Follower Credit Surge",
+            "relation": "enables",
+            "effect": "Bandwagon Replication Rush"
+          },
+          {
+            "cause": "Claim Quarantine Hold",
+            "relation": "prevents",
+            "effect": "Bandwagon Replication Rush"
+          },
+          {
+            "cause": "Claim Quarantine Hold",
+            "relation": "enables",
+            "effect": "Author Correction Interval"
+          },
+          {
+            "cause": "Author Correction Interval",
+            "relation": "enables",
+            "effect": "Binding Retraction Stamp"
+          },
+          {
+            "cause": "Binding Retraction Stamp",
+            "relation": "enables",
+            "effect": "Reliably Reusable Result Commons"
+          },
+          {
+            "cause": "Author Correction Interval",
+            "relation": "enables",
+            "effect": "Reliably Reusable Result Commons"
+          },
+          {
+            "cause": "Bandwagon Replication Rush",
+            "relation": "increases",
+            "effect": "Methodological Monoculture"
+          },
+          {
+            "cause": "Methodological Monoculture",
+            "relation": "decreases",
+            "effect": "Reliably Reusable Result Commons"
+          },
+          {
+            "cause": "Graceful Retraction Credit Bonus",
+            "relation": "increases",
+            "effect": "Author Correction Interval"
+          },
+          {
+            "cause": "Stake-Backed Anomaly Flag",
+            "relation": "depends_on",
+            "effect": "Reputation Bond Posted by Flagger"
+          }
+        ],
+        "affected_system": "Incentive and norm layer (reputation, credit, coordination and correction mechanisms) for a decentralized public hypothesis-sharing ecosystem of independent research labs",
+        "payoff": "Reliably Reusable Result Commons"
+      },
+      "mechanism_fingerprint": "c6ddbe16140e851e",
+      "wl_hash": "007d17a572591abc0adc5a7d7c0273f1",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "p53_damage_checkpoint_arrest",
+        "role_map": {
+          "genotoxic_lesion": "Hidden Error in Shared Hypothesis",
+          "growth_mitogen": "Early-Follower Credit Surge",
+          "sensor_kinase": "Stake-Backed Anomaly Flag",
+          "checkpoint_effector": "Claim Quarantine Hold",
+          "division_drive": "Bandwagon Replication Rush",
+          "repair_window": "Author Correction Interval",
+          "apoptotic_commitment": "Binding Retraction Stamp",
+          "tissue_integrity": "Reliably Reusable Result Commons"
+        }
+      },
+      "scores": {
+        "novelty": 0.6874247243543754,
+        "appropriateness": 0.68,
+        "utility": 0.6,
+        "surprise": 0.5,
+        "coherence": 0.78,
+        "mechanism_uniqueness": 0.9432595573440644
+      },
+      "niche": {
+        "intervention_level": "ecosystem",
+        "resource_intensity": "medium",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "43 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_bandwagon_replication_rush",
+            "satisfy_methodological_monoculture",
+            "satisfy_stake_backed_anomaly_flag",
+            "satisfy_reputation_bond_posted_by_flagger",
+            "satisfy_claim_quarantine_hold",
+            "satisfy_author_correction_interval",
+            "satisfy_binding_retraction_stamp"
+          ]
+        }
+      ]
+    },
+    {
+      "niche_key": "centroid_2",
+      "id": "abd8a254c2bda197",
+      "title": "Cooling-Off Hold: An Earned Brake on Bandwagon Replication",
+      "description": "When an independent lab files a replication-failure report against a trending hypothesis, a discrepancy audit is triggered. If the audit confirms a credible discrepancy, the hypothesis gets a public cooling-off hold. The hold pauses the funding boosts, citation-credit multipliers, and pre-registered replication slots that a surge of attention would otherwise unlock. During the amendment grace period the originating lab can fix or defend the claim, and auditors earn reputation for each flaw they surface. If the flaw is not fixed by the deadline, a binding retraction is issued and downstream labs are notified. Labs therefore experience a visible, time-limited pause on the claim and are not drawn into a pile-on.",
+      "operator": "isomorphism",
+      "source_domain": "cell_biology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A confirmed replication-failure report earns a cooling-off hold that suppresses bandwagon replication during an amendment grace period, so the claim is either fixed or retracted before many labs build on it.",
+        "causal_structure": [
+          {
+            "cause": "Replication-failure report against a public hypothesis",
+            "relation": "enables",
+            "effect": "Independent discrepancy audit trigger"
+          },
+          {
+            "cause": "Independent discrepancy audit trigger",
+            "relation": "enables",
+            "effect": "Cooling-off hold stamp on the claim"
+          },
+          {
+            "cause": "Attention and citation surge around a trending hypothesis",
+            "relation": "enables",
+            "effect": "Bandwagon replication pile-on"
+          },
+          {
+            "cause": "Cooling-off hold stamp on the claim",
+            "relation": "prevents",
+            "effect": "Bandwagon replication pile-on"
+          },
+          {
+            "cause": "Cooling-off hold stamp on the claim",
+            "relation": "enables",
+            "effect": "Amendment grace period"
+          },
+          {
+            "cause": "Amendment grace period",
+            "relation": "enables",
+            "effect": "Binding retraction notice"
+          },
+          {
+            "cause": "Binding retraction notice",
+            "relation": "enables",
+            "effect": "Reliable reusable evidence base"
+          },
+          {
+            "cause": "Amendment grace period",
+            "relation": "enables",
+            "effect": "Reliable reusable evidence base"
+          },
+          {
+            "cause": "Bandwagon replication pile-on",
+            "relation": "increases",
+            "effect": "Monoculture of research directions"
+          },
+          {
+            "cause": "Independent discrepancy audit trigger",
+            "relation": "depends_on",
+            "effect": "Reputation credit for auditors who surface real flaws"
+          },
+          {
+            "cause": "Unretracted error in circulation",
+            "relation": "prevents",
+            "effect": "Reliable reusable evidence base"
+          },
+          {
+            "cause": "Binding retraction notice",
+            "relation": "decreases",
+            "effect": "Unretracted error in circulation"
+          }
+        ],
+        "affected_system": "Incentive and norm layer (reputation, credit, coordination and correction mechanisms) for a decentralized public hypothesis-sharing ecosystem of independent research labs",
+        "payoff": "Reliable reusable evidence base"
+      },
+      "mechanism_fingerprint": "a8204835e72112e0",
+      "wl_hash": "1f7e10e410a1b9a9981ba8a6587bdbfc",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "p53_damage_checkpoint_arrest",
+        "role_map": {
+          "genotoxic_lesion": "Replication-failure report against a public hypothesis",
+          "growth_mitogen": "Attention and citation surge around a trending hypothesis",
+          "sensor_kinase": "Independent discrepancy audit trigger",
+          "checkpoint_effector": "Cooling-off hold stamp on the claim",
+          "division_drive": "Bandwagon replication pile-on",
+          "repair_window": "Amendment grace period",
+          "apoptotic_commitment": "Binding retraction notice",
+          "tissue_integrity": "Reliable reusable evidence base"
+        }
+      },
+      "scores": {
+        "novelty": 0.688807088451929,
+        "appropriateness": 0.78,
+        "utility": 0.58,
+        "surprise": 0.5,
+        "coherence": 0.72,
+        "mechanism_uniqueness": 0.9457478005865103
+      },
+      "niche": {
+        "intervention_level": "ecosystem",
+        "resource_intensity": "medium",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 6,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 4
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "60 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_independent_discrepancy_audit_trigger",
+            "satisfy_cooling_off_hold_stamp_on_the_claim",
+            "satisfy_unretracted_error_in_circulation",
+            "satisfy_reputation_credit_for_auditors_who_surface_real_flaws",
+            "satisfy_amendment_grace_period",
+            "satisfy_binding_retraction_notice"
+          ]
+        }
+      ]
+    },
+    {
+      "niche_key": "centroid_3",
+      "id": "42d6a92e66979891",
+      "title": "Scheduled Audit Sweeps That Release Time-Locked Divergent Hypotheses",
+      "description": "Labs lodge time-locked preregistered hypotheses, including deliberately contrarian ones, in a vault that stays hidden. When critiques pile up and a funder-triggered audit call arrives, a Correction Sweep runs. It retracts or expires flawed claims, strips credit from imitation cascades that formed around popular claims, and frees their credit slots in the niche registry. Only then does the vault unlock. A lab sees its dormant divergent hypothesis become claimable in a freshly cleared niche, with no crowd already clustered on the old consensus.",
+      "operator": "isomorphism",
+      "source_domain": "fire_ecology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A periodic audit sweep, fed by accumulated critiques and triggered by a funder call, both unlocks vaulted divergent hypotheses and suppresses herding on popular claims, so a burst of diverse, non-duplicated work starts in cleared niches.",
+        "causal_structure": [
+          {
+            "cause": "Funder-triggered audit call",
+            "relation": "enables",
+            "effect": "Correction sweep"
+          },
+          {
+            "cause": "Backlog of unresolved critiques and flagged errors",
+            "relation": "enables",
+            "effect": "Correction sweep"
+          },
+          {
+            "cause": "Correction sweep",
+            "relation": "enables",
+            "effect": "Vault unlock on sweep completion"
+          },
+          {
+            "cause": "Time-locked preregistered hypothesis vault",
+            "relation": "enables",
+            "effect": "Vault unlock on sweep completion"
+          },
+          {
+            "cause": "Correction sweep",
+            "relation": "prevents",
+            "effect": "Herding cascade of imitation around the popular claim"
+          },
+          {
+            "cause": "Correction sweep",
+            "relation": "enables",
+            "effect": "Cleared niche registry with freed credit slots"
+          },
+          {
+            "cause": "Vault unlock on sweep completion",
+            "relation": "enables",
+            "effect": "Burst of diverse, non-duplicated hypothesis lines under test"
+          },
+          {
+            "cause": "Cleared niche registry with freed credit slots",
+            "relation": "enables",
+            "effect": "Burst of diverse, non-duplicated hypothesis lines under test"
+          },
+          {
+            "cause": "Correction sweep",
+            "relation": "decreases",
+            "effect": "Reuse of unretracted errors"
+          },
+          {
+            "cause": "Herding cascade of imitation around the popular claim",
+            "relation": "increases",
+            "effect": "Claim monoculture"
+          },
+          {
+            "cause": "Burst of diverse, non-duplicated hypothesis lines under test",
+            "relation": "decreases",
+            "effect": "Claim monoculture"
+          },
+          {
+            "cause": "Cleared niche registry with freed credit slots",
+            "relation": "decreases",
+            "effect": "Duplicate effort across labs"
+          }
+        ],
+        "affected_system": "Incentive and norm layer (reputation, credit, coordination and correction mechanisms) for a decentralized public hypothesis-sharing ecosystem of independent research labs",
+        "payoff": "Burst of diverse, non-duplicated hypothesis lines under test"
+      },
+      "mechanism_fingerprint": "4d5cc74cbcb8ffd7",
+      "wl_hash": "8d1ba5ace34692d9f6fb2e0993a1b3f5",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "serotiny_fire_gated_release",
+        "role_map": {
+          "canopy_seed_store": "Time-locked preregistered hypothesis vault",
+          "heat_pulse": "Funder-triggered audit call",
+          "understory_fuel": "Backlog of unresolved critiques and flagged errors",
+          "ground_combustion": "Correction sweep",
+          "resin_seal_melt": "Vault unlock on sweep completion",
+          "shade_competitor_growth": "Herding cascade of imitation around the popular claim",
+          "open_seedbed": "Cleared niche registry with freed credit slots",
+          "regeneration_flush": "Burst of diverse, non-duplicated hypothesis lines under test"
+        }
+      },
+      "scores": {
+        "novelty": 0.6834003326680151,
+        "appropriateness": 0.68,
+        "utility": 0.66,
+        "surprise": 0.7,
+        "coherence": 0.5,
+        "mechanism_uniqueness": 0.9440193503430532
+      },
+      "niche": {
+        "intervention_level": "ecosystem",
+        "resource_intensity": "medium",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 4,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": []
+    },
+    {
+      "niche_key": "centroid_4",
+      "id": "29b8617cf4cc862c",
+      "title": "Sealed Commitment Ledger with Runner-Up-Anchored Credit",
+      "description": "Each lab privately gauges its confidence in a hypothesis and its capacity to pursue it, then files a sealed commitment stating both, hidden from other labs until a window closes. When the window closes, the most committed lab gets the lead-pursuit slot. The credit it can earn, and the retraction liability it carries, are set by the runner-up's filed stance, not its own. Overstating, hedging or copying the crowd therefore gains the lab nothing, because its own filing never sets its terms. Labs do best by filing exactly what they believe, and the public record ends up with honest confidence levels and less duplicated work.",
+      "operator": "isomorphism",
+      "source_domain": "auction_mechanism_design",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Because the lead lab's credit and liability are anchored to the runner-up's filed stance rather than its own, the pull toward hedged or crowd-mimicking filings is removed, so honest confidence is the best strategy.",
+        "causal_structure": [
+          {
+            "cause": "Lab's internal credence and capacity estimate",
+            "relation": "enables",
+            "effect": "Sealed commitment filing"
+          },
+          {
+            "cause": "Sealed commitment filing",
+            "relation": "enables",
+            "effect": "Pull toward hedged, crowd-mimicking filings"
+          },
+          {
+            "cause": "Sealed commitment filing",
+            "relation": "enables",
+            "effect": "Lead-pursuit slot assignment"
+          },
+          {
+            "cause": "Runner-up-anchored credit schedule",
+            "relation": "enables",
+            "effect": "Credit and liability level fixed at the runner-up's filed stance"
+          },
+          {
+            "cause": "Lead-pursuit slot assignment",
+            "relation": "enables",
+            "effect": "Credit and liability level fixed at the runner-up's filed stance"
+          },
+          {
+            "cause": "Credit and liability level fixed at the runner-up's filed stance",
+            "relation": "prevents",
+            "effect": "Pull toward hedged, crowd-mimicking filings"
+          },
+          {
+            "cause": "Credit and liability level fixed at the runner-up's filed stance",
+            "relation": "enables",
+            "effect": "Honest disclosed confidence in the public record"
+          },
+          {
+            "cause": "Lab's internal credence and capacity estimate",
+            "relation": "enables",
+            "effect": "Honest disclosed confidence in the public record"
+          },
+          {
+            "cause": "Honest disclosed confidence in the public record",
+            "relation": "decreases",
+            "effect": "Duplicate pursuit of the same hypothesis"
+          },
+          {
+            "cause": "Sealed commitment filing",
+            "relation": "prevents",
+            "effect": "Herding on visible early filings"
+          },
+          {
+            "cause": "Credit and liability level fixed at the runner-up's filed stance",
+            "relation": "enables",
+            "effect": "Prompt retraction of failed claims"
+          },
+          {
+            "cause": "Honest disclosed confidence in the public record",
+            "relation": "enables",
+            "effect": "Reliable reuse of published results"
+          }
+        ],
+        "affected_system": "Incentive and norm layer (reputation, credit, coordination and correction mechanisms) for a decentralized public hypothesis-sharing ecosystem of independent research labs",
+        "payoff": "Honest disclosed confidence in the public record"
+      },
+      "mechanism_fingerprint": "2a6dc3058e89d1da",
+      "wl_hash": "5bb6c68d240a6860d0613fe88cbb983e",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "vickrey_second_price_truth",
+        "role_map": {
+          "private_valuation": "Lab's internal credence and capacity estimate",
+          "second_price_rule": "Runner-up-anchored credit schedule",
+          "bid_submission": "Sealed commitment filing",
+          "winner_selection": "Lead-pursuit slot assignment",
+          "bid_shading_incentive": "Pull toward hedged, crowd-mimicking filings",
+          "price_determination": "Credit and liability level fixed at the runner-up's filed stance",
+          "truthful_revelation": "Honest disclosed confidence in the public record"
+        }
+      },
+      "scores": {
+        "novelty": 0.6892756950417411,
+        "appropriateness": 0.55,
+        "utility": 0.58,
+        "surprise": 0.68,
+        "coherence": 0.52,
+        "mechanism_uniqueness": 0.9499482401656315
+      },
+      "niche": {
+        "intervention_level": "ecosystem",
+        "resource_intensity": "medium",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": []
+    },
+    {
+      "niche_key": "centroid_5",
+      "id": "9144d35fb391af57",
+      "title": "Audit Shadow: Crowd-Scaled Adversarial Review That Diverts Labs From Herd Claims",
+      "description": "A rotating, funded corps of adversarial auditors is reinstated and is paid for each verified flaw. Their attention scales with how many labs pile onto the same hypothesis cluster. A lab sees a public audit-exposure meter on every crowded claim. Labs that would have joined the bandwagon redirect toward under-explored hypotheses, where novelty-weighted credit is available. The payoff comes from the monoculture lock-in with uncorrected errors that never forms. Minority lines mature without being swamped, and the pool of verified, reusable results regains diversity.",
+      "operator": "isomorphism",
+      "source_domain": "community_ecology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Audit exposure that rises with crowd concentration makes herding costly, so labs divert before monoculture lock-in forms, and under-explored hypotheses can mature into verified reusable results.",
+        "causal_structure": [
+          {
+            "cause": "Swelling wave of follow-on replications of a trending hypothesis",
+            "relation": "enables",
+            "effect": "Crowd concentration on a single hypothesis cluster"
+          },
+          {
+            "cause": "Crowd concentration on a single hypothesis cluster",
+            "relation": "enables",
+            "effect": "Monoculture lock-in on one hypothesis family with uncorrected errors"
+          },
+          {
+            "cause": "Reinstatement of funded adversarial auditors paid per verified flaw",
+            "relation": "enables",
+            "effect": "Labs' anticipatory diversion away from crowded, audit-exposed claims"
+          },
+          {
+            "cause": "Crowd concentration on a single hypothesis cluster",
+            "relation": "enables",
+            "effect": "Labs' anticipatory diversion away from crowded, audit-exposed claims"
+          },
+          {
+            "cause": "Labs' anticipatory diversion away from crowded, audit-exposed claims",
+            "relation": "prevents",
+            "effect": "Monoculture lock-in on one hypothesis family with uncorrected errors"
+          },
+          {
+            "cause": "Labs' anticipatory diversion away from crowded, audit-exposed claims",
+            "relation": "enables",
+            "effect": "Contrarian hypothesis lines reaching maturity before herd dismissal"
+          },
+          {
+            "cause": "Contrarian hypothesis lines reaching maturity before herd dismissal",
+            "relation": "enables",
+            "effect": "Restored diversity of verified, reusable results"
+          },
+          {
+            "cause": "Reinstatement of funded adversarial auditors paid per verified flaw",
+            "relation": "enables",
+            "effect": "Restored diversity of verified, reusable results"
+          },
+          {
+            "cause": "Early-follower citation credit",
+            "relation": "increases",
+            "effect": "Swelling wave of follow-on replications of a trending hypothesis"
+          },
+          {
+            "cause": "Reinstatement of funded adversarial auditors paid per verified flaw",
+            "relation": "increases",
+            "effect": "Prompt retraction of flawed claims"
+          },
+          {
+            "cause": "Prompt retraction of flawed claims",
+            "relation": "enables",
+            "effect": "Restored diversity of verified, reusable results"
+          },
+          {
+            "cause": "Novelty-weighted credit for under-explored hypotheses",
+            "relation": "enables",
+            "effect": "Contrarian hypothesis lines reaching maturity before herd dismissal"
+          }
+        ],
+        "affected_system": "Incentive and norm layer (reputation, credit, coordination and correction mechanisms) for a decentralized public hypothesis-sharing ecosystem of independent research labs",
+        "payoff": "Restored diversity of verified, reusable results"
+      },
+      "mechanism_fingerprint": "04e26ee47b0c8622",
+      "wl_hash": "72350c0f2c70f95ecbad0ea2cbd60cc2",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "trophic_cascade_predator_gate",
+        "role_map": {
+          "herbivore_growth": "Swelling wave of follow-on replications of a trending hypothesis",
+          "predator_return": "Reinstatement of funded adversarial auditors paid per verified flaw",
+          "browsing_pressure": "Crowd concentration on a single hypothesis cluster",
+          "fear_avoidance_behaviour": "Labs' anticipatory diversion away from crowded, audit-exposed claims",
+          "riparian_overbrowse": "Monoculture lock-in on one hypothesis family with uncorrected errors",
+          "seedling_escape": "Contrarian hypothesis lines reaching maturity before herd dismissal",
+          "riparian_recovery": "Restored diversity of verified, reusable results"
+        }
+      },
+      "scores": {
+        "novelty": 0.6911631056868515,
+        "appropriateness": 0.78,
+        "utility": 0.66,
+        "surprise": 0.58,
+        "coherence": 0.72,
+        "mechanism_uniqueness": 0.9497215821812596
+      },
+      "niche": {
+        "intervention_level": "ecosystem",
+        "resource_intensity": "high",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.2,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": []
+    },
+    {
+      "niche_key": "centroid_6",
+      "id": "cc1cf09a867a8624",
+      "title": "Runner-Up-Anchored Confidence Stakes",
+      "description": "Before sharing a hypothesis, each lab files a public confidence stamp from 0 to 100. The most confident lab gets the lead-replicator slot and funding priority. Its credit if the claim holds, and its liability if the claim is retracted, are pegged to the next-most-confident rival's stamp, not its own. A lab therefore gains nothing by inflating its stamp, and it gains nothing by hedging toward the crowd's consensus. The lab simply reports what it believes, and the stamps show reviewers where real disagreement and real overlap lie.",
+      "operator": "isomorphism",
+      "source_domain": "auction_mechanism_design",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Pegging a lead claimant's credit and liability to the runner-up's stamp, not its own, removes the payoff from hedging toward consensus, so labs disclose calibrated confidence, which reduces herding and duplicate effort.",
+        "causal_structure": [
+          {
+            "cause": "Lab's internal confidence in its own hypothesis",
+            "relation": "enables",
+            "effect": "Public confidence-stamped claim filing"
+          },
+          {
+            "cause": "Public confidence-stamped claim filing",
+            "relation": "enables",
+            "effect": "Temptation to hedge confidence toward the herd consensus"
+          },
+          {
+            "cause": "Public confidence-stamped claim filing",
+            "relation": "enables",
+            "effect": "Lead-replicator slot assignment to the most confident claimant"
+          },
+          {
+            "cause": "Runner-up-anchored credit and liability norm",
+            "relation": "enables",
+            "effect": "Credit and liability stake pegged to the next-most-confident rival claim"
+          },
+          {
+            "cause": "Lead-replicator slot assignment to the most confident claimant",
+            "relation": "enables",
+            "effect": "Credit and liability stake pegged to the next-most-confident rival claim"
+          },
+          {
+            "cause": "Credit and liability stake pegged to the next-most-confident rival claim",
+            "relation": "prevents",
+            "effect": "Temptation to hedge confidence toward the herd consensus"
+          },
+          {
+            "cause": "Credit and liability stake pegged to the next-most-confident rival claim",
+            "relation": "enables",
+            "effect": "Candid calibrated confidence disclosure"
+          },
+          {
+            "cause": "Lab's internal confidence in its own hypothesis",
+            "relation": "enables",
+            "effect": "Candid calibrated confidence disclosure"
+          },
+          {
+            "cause": "Temptation to hedge confidence toward the herd consensus",
+            "relation": "increases",
+            "effect": "Monoculture of crowded hypotheses"
+          },
+          {
+            "cause": "Candid calibrated confidence disclosure",
+            "relation": "decreases",
+            "effect": "Duplicate effort across labs"
+          },
+          {
+            "cause": "Candid calibrated confidence disclosure",
+            "relation": "enables",
+            "effect": "Early retraction of flawed claims"
+          },
+          {
+            "cause": "Early retraction of flawed claims",
+            "relation": "enables",
+            "effect": "Reliable reuse of published results"
+          }
+        ],
+        "affected_system": "Incentive and norm layer (reputation, credit, coordination and correction mechanisms) for a decentralized public hypothesis-sharing ecosystem of independent research labs",
+        "payoff": "Candid calibrated confidence disclosure"
+      },
+      "mechanism_fingerprint": "f3d08b2e9193b11e",
+      "wl_hash": "a1fa5ee04584a48e287829a0ccede882",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "vickrey_second_price_truth",
+        "role_map": {
+          "private_valuation": "Lab's internal confidence in its own hypothesis",
+          "second_price_rule": "Runner-up-anchored credit and liability norm",
+          "bid_submission": "Public confidence-stamped claim filing",
+          "winner_selection": "Lead-replicator slot assignment to the most confident claimant",
+          "bid_shading_incentive": "Temptation to hedge confidence toward the herd consensus",
+          "price_determination": "Credit and liability stake pegged to the next-most-confident rival claim",
+          "truthful_revelation": "Candid calibrated confidence disclosure"
+        }
+      },
+      "scores": {
+        "novelty": 0.6824732723731086,
+        "appropriateness": 0.5,
+        "utility": 0.55,
+        "surprise": 0.66,
+        "coherence": 0.55,
+        "mechanism_uniqueness": 0.937220566318927
+      },
+      "niche": {
+        "intervention_level": "organization",
+        "resource_intensity": "medium",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 6,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": []
+    },
+    {
+      "niche_key": "centroid_7",
+      "id": "df3262434f582ad6",
+      "title": "Additive Endorsement, Multiplicative Standing Cut",
+      "description": "Each independent reproduction of a hypothesis adds a small, fixed increment of public standing, so trust builds slowly and linearly. When a lab files a credible refutation, the claim's standing is cut by a fixed fraction, and so is the credit of dependent claims and of labs still piling onto it. Labs see their stake in a crowded claim fall sharply on refutation, so they move toward under-explored alternatives, which carry pre-registered replication bounties funded from the cut standing.",
+      "operator": "isomorphism",
+      "source_domain": "network_congestion_control",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Standing grows by small steps with each independent reproduction, while a credible refutation triggers a proportional standing cut that keeps a popular claim from locking in the whole ecosystem and pushes labs toward a diverse, correctable knowledge base.",
+        "causal_structure": [
+          {
+            "cause": "Independent reproduction confirmations",
+            "relation": "increases",
+            "effect": "Citation uptake momentum"
+          },
+          {
+            "cause": "Citation uptake momentum",
+            "relation": "enables",
+            "effect": "Monoculture lock-in of crowded hypotheses"
+          },
+          {
+            "cause": "Credible refutation filing",
+            "relation": "enables",
+            "effect": "Multiplicative standing cut on contested claim"
+          },
+          {
+            "cause": "Citation uptake momentum",
+            "relation": "enables",
+            "effect": "Multiplicative standing cut on contested claim"
+          },
+          {
+            "cause": "Multiplicative standing cut on contested claim",
+            "relation": "prevents",
+            "effect": "Monoculture lock-in of crowded hypotheses"
+          },
+          {
+            "cause": "Multiplicative standing cut on contested claim",
+            "relation": "enables",
+            "effect": "Rebalancing of lab attention across hypotheses"
+          },
+          {
+            "cause": "Citation uptake momentum",
+            "relation": "enables",
+            "effect": "Rebalancing of lab attention across hypotheses"
+          },
+          {
+            "cause": "Rebalancing of lab attention across hypotheses",
+            "relation": "enables",
+            "effect": "Diverse, correctable shared knowledge base"
+          },
+          {
+            "cause": "Monoculture lock-in of crowded hypotheses",
+            "relation": "decreases",
+            "effect": "Diverse, correctable shared knowledge base"
+          },
+          {
+            "cause": "Multiplicative standing cut on contested claim",
+            "relation": "enables",
+            "effect": "Replication bounty for under-explored alternatives"
+          },
+          {
+            "cause": "Replication bounty for under-explored alternatives",
+            "relation": "increases",
+            "effect": "Rebalancing of lab attention across hypotheses"
+          }
+        ],
+        "affected_system": "Incentive and norm layer (reputation, credit, coordination and correction mechanisms) for a decentralized public hypothesis-sharing ecosystem of independent research labs",
+        "payoff": "Diverse, correctable shared knowledge base"
+      },
+      "mechanism_fingerprint": "eae47b6afa455e90",
+      "wl_hash": "8dbdce9ab90d56132332834ff5c892d4",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "aimd_loss_backoff_fairness",
+        "role_map": {
+          "ack_clock": "Independent reproduction confirmations",
+          "send_rate_growth": "Citation uptake momentum",
+          "loss_event": "Credible refutation filing",
+          "window_halving": "Multiplicative standing cut on contested claim",
+          "queue_overflow_risk": "Monoculture lock-in of crowded hypotheses",
+          "flow_share_equalisation": "Rebalancing of lab attention across hypotheses",
+          "fair_equilibrium": "Diverse, correctable shared knowledge base"
+        }
+      },
+      "scores": {
+        "novelty": 0.6934194355915796,
+        "appropriateness": 0.68,
+        "utility": 0.6,
+        "surprise": 0.5,
+        "coherence": 0.72,
+        "mechanism_uniqueness": 0.9490037950664136
+      },
+      "niche": {
+        "intervention_level": "ecosystem",
+        "resource_intensity": "medium",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.375,
+        "loop_density": 0.0,
+        "payoff_path_length": 3
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "33 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_citation_uptake_momentum",
+            "satisfy_monoculture_lock_in_of_crowded_hypotheses",
+            "satisfy_multiplicative_standing_cut_on_contested_claim",
+            "satisfy_replication_bounty_for_under_explored_alternatives",
+            "satisfy_rebalancing_of_lab_attention_across_hypotheses"
+          ]
+        }
+      ]
+    }
+  ],
+  "admitted": [
+    {
+      "niche_key": "centroid_0",
+      "id": "071d503e0ef0c747",
+      "title": "Adoption Step-Down Ledger",
+      "description": "Each public hypothesis carries a live adoption meter. Every independent replication confirmation nudges the meter up by one unit, and labs earn credit for each confirmation. When the meter crosses a crowding threshold, or a falsification finding is posted, every adopting lab's committed budget on that hypothesis automatically steps down by a fixed fraction. The freed effort is routed to rival hypotheses, and a lab that retracts promptly and moves early to a rival earns extra credit, so labs lose nothing by backing away from a crowded or refuted idea.",
+      "operator": "isomorphism",
+      "source_domain": "network_congestion_control",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Confirmations steadily raise lab uptake of a hypothesis, and either crowding or a public falsification triggers a multiplicative cut in commitment, which keeps monoculture and duplicated effort from forming and spreads effort over rival hypotheses.",
+        "causal_structure": [
+          {
+            "cause": "Independent replication confirmations",
+            "relation": "increases",
+            "effect": "Escalating lab uptake of a hypothesis"
+          },
+          {
+            "cause": "Escalating lab uptake of a hypothesis",
+            "relation": "enables",
+            "effect": "Monoculture lock-in and duplicated effort"
+          },
+          {
+            "cause": "Public falsification finding",
+            "relation": "enables",
+            "effect": "Automatic commitment step-down by adopting labs"
+          },
+          {
+            "cause": "Escalating lab uptake of a hypothesis",
+            "relation": "enables",
+            "effect": "Automatic commitment step-down by adopting labs"
+          },
+          {
+            "cause": "Automatic commitment step-down by adopting labs",
+            "relation": "prevents",
+            "effect": "Monoculture lock-in and duplicated effort"
+          },
+          {
+            "cause": "Automatic commitment step-down by adopting labs",
+            "relation": "enables",
+            "effect": "Effort spread across rival hypotheses"
+          },
+          {
+            "cause": "Escalating lab uptake of a hypothesis",
+            "relation": "enables",
+            "effect": "Effort spread across rival hypotheses"
+          },
+          {
+            "cause": "Effort spread across rival hypotheses",
+            "relation": "enables",
+            "effect": "Diverse, correction-ready portfolio of reusable results"
+          },
+          {
+            "cause": "Public falsification finding",
+            "relation": "enables",
+            "effect": "Credit for prompt self-retraction"
+          },
+          {
+            "cause": "Credit for prompt self-retraction",
+            "relation": "increases",
+            "effect": "Diverse, correction-ready portfolio of reusable results"
+          },
+          {
+            "cause": "Monoculture lock-in and duplicated effort",
+            "relation": "decreases",
+            "effect": "Diverse, correction-ready portfolio of reusable results"
+          },
+          {
+            "cause": "Credit for early rival-hypothesis work",
+            "relation": "increases",
+            "effect": "Effort spread across rival hypotheses"
+          }
+        ],
+        "affected_system": "Incentive and norm layer (reputation, credit, coordination and correction mechanisms) for a decentralized public hypothesis-sharing ecosystem of independent research labs",
+        "payoff": "Diverse, correction-ready portfolio of reusable results"
+      },
+      "mechanism_fingerprint": "ab117ca388d66ac9",
+      "wl_hash": "822c65e1c046c056cc2f66a4115d8f32",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "aimd_loss_backoff_fairness",
+        "role_map": {
+          "ack_clock": "Independent replication confirmations",
+          "send_rate_growth": "Escalating lab uptake of a hypothesis",
+          "loss_event": "Public falsification finding",
+          "window_halving": "Automatic commitment step-down by adopting labs",
+          "queue_overflow_risk": "Monoculture lock-in and duplicated effort",
+          "flow_share_equalisation": "Effort spread across rival hypotheses",
+          "fair_equilibrium": "Diverse, correction-ready portfolio of reusable results"
+        }
+      },
+      "scores": {
+        "novelty": 0.6779899275240604,
+        "appropriateness": 0.74,
+        "utility": 0.55,
+        "surprise": 0.5,
+        "coherence": 0.68,
+        "mechanism_uniqueness": 0.9337970935677815
+      },
+      "niche": {
+        "intervention_level": "ecosystem",
+        "resource_intensity": "medium",
+        "feedback_horizon": "immediate"
+      },
+      "dynamics": {
+        "causal_depth": 4,
+        "branching_factor": 1.333333,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "40 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_credit_for_prompt_self_retraction",
+            "satisfy_escalating_lab_uptake_of_a_hypothesis",
+            "satisfy_monoculture_lock_in_and_duplicated_effort",
+            "satisfy_automatic_commitment_step_down_by_adopting_labs",
+            "satisfy_effort_spread_across_rival_hypotheses"
+          ]
+        }
+      ],
+      "is_niche_elite": true
+    },
+    {
+      "niche_key": "centroid_1",
+      "id": "ce624074ddb80cb9",
+      "title": "Probation Board with Bounty-Paid Break-It Sweeps",
+      "description": "Every newly posted claim lands on a capped probation board, where labs see how many others are already working on it. When the board crosses a fill threshold, a short randomized sweep pays labs bounties to replicate or refute the claims that have drawn the most attention. Claims that break are retracted publicly and the refuters get credit. Claims that hold graduate to a trusted registry, so labs that avoided the crowd and verified something less visible are rewarded too.",
+      "operator": "isomorphism",
+      "source_domain": "runtime_memory_management",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Frequent, cheap, bounty-driven adversarial sweeps triggered by probation-board crowding retract the many claims that fail early, which keeps herding and duplicate effort from building up and lets the few sound claims graduate to a trusted registry that labs can reuse.",
+        "causal_structure": [
+          {
+            "cause": "Inflow of newly posted lab claims",
+            "relation": "enables",
+            "effect": "Crowded probation board of unvetted claims"
+          },
+          {
+            "cause": "Crowded probation board of unvetted claims",
+            "relation": "enables",
+            "effect": "Herd-and-duplicate pileup on the same unvetted claims"
+          },
+          {
+            "cause": "Early-failure prior: most fresh claims die quickly under scrutiny",
+            "relation": "enables",
+            "effect": "Bounty-paid break-it replication sweep"
+          },
+          {
+            "cause": "Crowded probation board of unvetted claims",
+            "relation": "enables",
+            "effect": "Bounty-paid break-it replication sweep"
+          },
+          {
+            "cause": "Bounty-paid break-it replication sweep",
+            "relation": "prevents",
+            "effect": "Herd-and-duplicate pileup on the same unvetted claims"
+          },
+          {
+            "cause": "Bounty-paid break-it replication sweep",
+            "relation": "enables",
+            "effect": "Graduation of sweep-tested claims to the trusted registry"
+          },
+          {
+            "cause": "Graduation of sweep-tested claims to the trusted registry",
+            "relation": "enables",
+            "effect": "Steady rate of reliable, reusable discoveries"
+          },
+          {
+            "cause": "Inflow of newly posted lab claims",
+            "relation": "enables",
+            "effect": "Steady rate of reliable, reusable discoveries"
+          },
+          {
+            "cause": "Herd-and-duplicate pileup on the same unvetted claims",
+            "relation": "decreases",
+            "effect": "Steady rate of reliable, reusable discoveries"
+          },
+          {
+            "cause": "Refutation and confirmation bounty credit",
+            "relation": "enables",
+            "effect": "Bounty-paid break-it replication sweep"
+          },
+          {
+            "cause": "Graduation of sweep-tested claims to the trusted registry",
+            "relation": "decreases",
+            "effect": "Herd-and-duplicate pileup on the same unvetted claims"
+          },
+          {
+            "cause": "Bounty-paid break-it replication sweep",
+            "relation": "increases",
+            "effect": "Public retraction record"
+          }
+        ],
+        "affected_system": "Incentive and norm layer (reputation, credit, coordination and correction mechanisms) for a decentralized public hypothesis-sharing ecosystem of independent research labs",
+        "payoff": "Steady rate of reliable, reusable discoveries"
+      },
+      "mechanism_fingerprint": "ee17e60f37150a66",
+      "wl_hash": "dddd93d2578fe04a5bf2c44d3110bf98",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "generational_gc_reclaim_gate",
+        "role_map": {
+          "allocation_stream": "Inflow of newly posted lab claims",
+          "weak_generational_hypothesis": "Early-failure prior: most fresh claims die quickly under scrutiny",
+          "young_space_fill": "Crowded probation board of unvetted claims",
+          "minor_collection": "Bounty-paid break-it replication sweep",
+          "heap_exhaustion_risk": "Herd-and-duplicate pileup on the same unvetted claims",
+          "survivor_promotion": "Graduation of sweep-tested claims to the trusted registry",
+          "stable_throughput": "Steady rate of reliable, reusable discoveries"
+        }
+      },
+      "scores": {
+        "novelty": 0.6811708655119894,
+        "appropriateness": 0.68,
+        "utility": 0.6,
+        "surprise": 0.45,
+        "coherence": 0.62,
+        "mechanism_uniqueness": 0.9322145793801392
+      },
+      "niche": {
+        "intervention_level": "ecosystem",
+        "resource_intensity": "medium",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.333333,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "35 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_crowded_probation_board_of_unvetted_claims",
+            "satisfy_herd_and_duplicate_pileup_on_the_same_unvetted_claims",
+            "satisfy_bounty_paid_break_it_replication_sweep",
+            "satisfy_graduation_of_sweep_tested_claims_to_the_trusted_registry",
+            "satisfy_public_retraction_record"
+          ]
+        }
+      ],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_1",
+      "id": "433a67865184a30b",
+      "title": "Escalating Ledger of Overlap and Error",
+      "description": "When many labs pile onto a trending hypothesis, downstream builders see overlap and unretracted flaws on an open audit ledger. A flagged claim moves up a published ladder: a correction request, then a visible credit haircut, then demotion in discovery feeds. A lab that retracts early or moves to an under-explored niche keeps its credit, so echoing the crowd or sitting on a known error stops paying off.",
+      "operator": "isomorphism",
+      "source_domain": "institutional_economics",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Surges of attention make overlap and errors visible on an open ledger, which triggers escalating credit and visibility penalties that stop labs from herd-copying or hiding flaws, so retraction and niche-spreading become the habit and reusable findings last.",
+        "causal_structure": [
+          {
+            "cause": "Surge of labs piling onto a trending hypothesis",
+            "relation": "enables",
+            "effect": "Downstream builders' open audit ledger of claims and overlaps"
+          },
+          {
+            "cause": "Surge of labs piling onto a trending hypothesis",
+            "relation": "enables",
+            "effect": "Pull to echo the popular hypothesis or sit on a known error for credit"
+          },
+          {
+            "cause": "Tiered escalation ladder for correcting flawed claims",
+            "relation": "enables",
+            "effect": "Credit haircut and visibility demotion actually imposed on uncorrected or herd-copying claims"
+          },
+          {
+            "cause": "Downstream builders' open audit ledger of claims and overlaps",
+            "relation": "enables",
+            "effect": "Credit haircut and visibility demotion actually imposed on uncorrected or herd-copying claims"
+          },
+          {
+            "cause": "Credit haircut and visibility demotion actually imposed on uncorrected or herd-copying claims",
+            "relation": "prevents",
+            "effect": "Pull to echo the popular hypothesis or sit on a known error for credit"
+          },
+          {
+            "cause": "Credit haircut and visibility demotion actually imposed on uncorrected or herd-copying claims",
+            "relation": "enables",
+            "effect": "Shared habit of prompt retraction and niche-diversifying claims"
+          },
+          {
+            "cause": "Shared habit of prompt retraction and niche-diversifying claims",
+            "relation": "enables",
+            "effect": "Durable pool of reliably reusable, diverse findings"
+          },
+          {
+            "cause": "Downstream builders' open audit ledger of claims and overlaps",
+            "relation": "enables",
+            "effect": "Durable pool of reliably reusable, diverse findings"
+          },
+          {
+            "cause": "Pull to echo the popular hypothesis or sit on a known error for credit",
+            "relation": "increases",
+            "effect": "Topic monoculture and duplicate effort"
+          },
+          {
+            "cause": "Topic monoculture and duplicate effort",
+            "relation": "decreases",
+            "effect": "Durable pool of reliably reusable, diverse findings"
+          },
+          {
+            "cause": "Shared habit of prompt retraction and niche-diversifying claims",
+            "relation": "decreases",
+            "effect": "Unretracted errors in circulation"
+          },
+          {
+            "cause": "Unretracted errors in circulation",
+            "relation": "prevents",
+            "effect": "Durable pool of reliably reusable, diverse findings"
+          }
+        ],
+        "affected_system": "Incentive and norm layer (reputation, credit, coordination and correction mechanisms) for a decentralized public hypothesis-sharing ecosystem of independent research labs",
+        "payoff": "Durable pool of reliably reusable, diverse findings"
+      },
+      "mechanism_fingerprint": "1f9c1091c17cc28d",
+      "wl_hash": "1bb364d3e6d37961f93bbb0bbfefd305",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "ostrom_graduated_sanction_commons",
+        "role_map": {
+          "harvest_pressure": "Surge of labs piling onto a trending hypothesis",
+          "monitoring_by_users": "Downstream builders' open audit ledger of claims and overlaps",
+          "graduated_sanction_rule": "Tiered escalation ladder for correcting flawed claims",
+          "sanction_application": "Credit haircut and visibility demotion actually imposed on uncorrected or herd-copying claims",
+          "defection_temptation": "Pull to echo the popular hypothesis or sit on a known error for credit",
+          "compliance_norm": "Shared habit of prompt retraction and niche-diversifying claims",
+          "commons_persistence": "Durable pool of reliably reusable, diverse findings"
+        }
+      },
+      "scores": {
+        "novelty": 0.6816378142180477,
+        "appropriateness": 0.72,
+        "utility": 0.55,
+        "surprise": 0.4,
+        "coherence": 0.7,
+        "mechanism_uniqueness": 0.9399213666567033
+      },
+      "niche": {
+        "intervention_level": "ecosystem",
+        "resource_intensity": "medium",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.333333,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "61 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_unretracted_errors_in_circulation",
+            "satisfy_downstream_builders_open_audit_ledger_of_claims_and_overlaps",
+            "satisfy_credit_haircut_and_visibility_demotion_actually_imposed_on_uncorrected_or_herd_copying_claims",
+            "satisfy_shared_habit_of_prompt_retraction_and_niche_diversifying_claims"
+          ]
+        }
+      ],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_2",
+      "id": "abd8a254c2bda197",
+      "title": "Cooling-Off Hold: An Earned Brake on Bandwagon Replication",
+      "description": "When an independent lab files a replication-failure report against a trending hypothesis, a discrepancy audit is triggered. If the audit confirms a credible discrepancy, the hypothesis gets a public cooling-off hold. The hold pauses the funding boosts, citation-credit multipliers, and pre-registered replication slots that a surge of attention would otherwise unlock. During the amendment grace period the originating lab can fix or defend the claim, and auditors earn reputation for each flaw they surface. If the flaw is not fixed by the deadline, a binding retraction is issued and downstream labs are notified. Labs therefore experience a visible, time-limited pause on the claim and are not drawn into a pile-on.",
+      "operator": "isomorphism",
+      "source_domain": "cell_biology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A confirmed replication-failure report earns a cooling-off hold that suppresses bandwagon replication during an amendment grace period, so the claim is either fixed or retracted before many labs build on it.",
+        "causal_structure": [
+          {
+            "cause": "Replication-failure report against a public hypothesis",
+            "relation": "enables",
+            "effect": "Independent discrepancy audit trigger"
+          },
+          {
+            "cause": "Independent discrepancy audit trigger",
+            "relation": "enables",
+            "effect": "Cooling-off hold stamp on the claim"
+          },
+          {
+            "cause": "Attention and citation surge around a trending hypothesis",
+            "relation": "enables",
+            "effect": "Bandwagon replication pile-on"
+          },
+          {
+            "cause": "Cooling-off hold stamp on the claim",
+            "relation": "prevents",
+            "effect": "Bandwagon replication pile-on"
+          },
+          {
+            "cause": "Cooling-off hold stamp on the claim",
+            "relation": "enables",
+            "effect": "Amendment grace period"
+          },
+          {
+            "cause": "Amendment grace period",
+            "relation": "enables",
+            "effect": "Binding retraction notice"
+          },
+          {
+            "cause": "Binding retraction notice",
+            "relation": "enables",
+            "effect": "Reliable reusable evidence base"
+          },
+          {
+            "cause": "Amendment grace period",
+            "relation": "enables",
+            "effect": "Reliable reusable evidence base"
+          },
+          {
+            "cause": "Bandwagon replication pile-on",
+            "relation": "increases",
+            "effect": "Monoculture of research directions"
+          },
+          {
+            "cause": "Independent discrepancy audit trigger",
+            "relation": "depends_on",
+            "effect": "Reputation credit for auditors who surface real flaws"
+          },
+          {
+            "cause": "Unretracted error in circulation",
+            "relation": "prevents",
+            "effect": "Reliable reusable evidence base"
+          },
+          {
+            "cause": "Binding retraction notice",
+            "relation": "decreases",
+            "effect": "Unretracted error in circulation"
+          }
+        ],
+        "affected_system": "Incentive and norm layer (reputation, credit, coordination and correction mechanisms) for a decentralized public hypothesis-sharing ecosystem of independent research labs",
+        "payoff": "Reliable reusable evidence base"
+      },
+      "mechanism_fingerprint": "a8204835e72112e0",
+      "wl_hash": "1f7e10e410a1b9a9981ba8a6587bdbfc",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "p53_damage_checkpoint_arrest",
+        "role_map": {
+          "genotoxic_lesion": "Replication-failure report against a public hypothesis",
+          "growth_mitogen": "Attention and citation surge around a trending hypothesis",
+          "sensor_kinase": "Independent discrepancy audit trigger",
+          "checkpoint_effector": "Cooling-off hold stamp on the claim",
+          "division_drive": "Bandwagon replication pile-on",
+          "repair_window": "Amendment grace period",
+          "apoptotic_commitment": "Binding retraction notice",
+          "tissue_integrity": "Reliable reusable evidence base"
+        }
+      },
+      "scores": {
+        "novelty": 0.688807088451929,
+        "appropriateness": 0.78,
+        "utility": 0.58,
+        "surprise": 0.5,
+        "coherence": 0.72,
+        "mechanism_uniqueness": 0.9457478005865103
+      },
+      "niche": {
+        "intervention_level": "ecosystem",
+        "resource_intensity": "medium",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 6,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 4
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "60 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_independent_discrepancy_audit_trigger",
+            "satisfy_cooling_off_hold_stamp_on_the_claim",
+            "satisfy_unretracted_error_in_circulation",
+            "satisfy_reputation_credit_for_auditors_who_surface_real_flaws",
+            "satisfy_amendment_grace_period",
+            "satisfy_binding_retraction_notice"
+          ]
+        }
+      ],
+      "is_niche_elite": true
+    },
+    {
+      "niche_key": "centroid_3",
+      "id": "1881f0173e122227",
+      "title": "Lottery Reserve Cohort with Audit-Triggered Re-expansion",
+      "description": "Each funding cycle, a small random fraction of labs is drawn by lottery into a reserve cohort. These labs receive guaranteed baseline credit for developing off-consensus hypotheses and do not pile onto the trending claim. When a community-wide error audit sweep runs, credit for heavily herded claims collapses in proportion to how many labs piled on, but reserve labs hold no stake in those claims and lose nothing. After the sweep, the reserve labs' hypotheses are the seeds for the next round of work, and they earn a premium for being the verified fallback.",
+      "operator": "isomorphism",
+      "source_domain": "microbiology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A random reserve cohort is deliberately kept out of the herd, so when an audit sweep collapses credit for crowded claims, the cohort is shielded from that collapse and can re-seed diverse, verified research afterward.",
+        "causal_structure": [
+          {
+            "cause": "Lottery-drawn reserve slot assignment",
+            "relation": "enables",
+            "effect": "Reserve cohort of labs holding off-consensus hypotheses"
+          },
+          {
+            "cause": "Community-wide error audit sweep",
+            "relation": "enables",
+            "effect": "Crowd-proportional credit collapse of herded claims"
+          },
+          {
+            "cause": "Herding pile-on of labs onto the trending hypothesis",
+            "relation": "enables",
+            "effect": "Crowd-proportional credit collapse of herded claims"
+          },
+          {
+            "cause": "Reserve cohort of labs holding off-consensus hypotheses",
+            "relation": "prevents",
+            "effect": "Crowd-proportional credit collapse of herded claims"
+          },
+          {
+            "cause": "Reserve cohort of labs holding off-consensus hypotheses",
+            "relation": "enables",
+            "effect": "Re-expansion of research from the reserve cohort after the audit"
+          },
+          {
+            "cause": "Community-wide error audit sweep",
+            "relation": "enables",
+            "effect": "Re-expansion of research from the reserve cohort after the audit"
+          },
+          {
+            "cause": "Re-expansion of research from the reserve cohort after the audit",
+            "relation": "enables",
+            "effect": "Persistence of a reliable, reusable and diverse knowledge base"
+          },
+          {
+            "cause": "Herding pile-on of labs onto the trending hypothesis",
+            "relation": "increases",
+            "effect": "Monoculture of approaches and duplicated effort"
+          },
+          {
+            "cause": "Re-expansion of research from the reserve cohort after the audit",
+            "relation": "decreases",
+            "effect": "Monoculture of approaches and duplicated effort"
+          },
+          {
+            "cause": "Community-wide error audit sweep",
+            "relation": "enables",
+            "effect": "Public retraction of erroneous claims"
+          },
+          {
+            "cause": "Public retraction of erroneous claims",
+            "relation": "enables",
+            "effect": "Persistence of a reliable, reusable and diverse knowledge base"
+          }
+        ],
+        "affected_system": "Incentive and norm layer (reputation, credit, coordination and correction mechanisms) for a decentralized public hypothesis-sharing ecosystem of independent research labs",
+        "payoff": "Persistence of a reliable, reusable and diverse knowledge base"
+      },
+      "mechanism_fingerprint": "57ecd58703ce34e0",
+      "wl_hash": "019d7bd6fcb1ba37c78945eef5044d32",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "persister_bet_hedge_survival",
+        "role_map": {
+          "stochastic_switch": "Lottery-drawn reserve slot assignment",
+          "antibiotic_exposure": "Community-wide error audit sweep",
+          "dormant_subpopulation": "Reserve cohort of labs holding off-consensus hypotheses",
+          "growth_dependent_killing": "Crowd-proportional credit collapse of herded claims",
+          "active_division": "Herding pile-on of labs onto the trending hypothesis",
+          "post_exposure_regrowth": "Re-expansion of research from the reserve cohort after the audit",
+          "lineage_survival": "Persistence of a reliable, reusable and diverse knowledge base"
+        }
+      },
+      "scores": {
+        "novelty": 0.6835496419429048,
+        "appropriateness": 0.68,
+        "utility": 0.45,
+        "surprise": 0.55,
+        "coherence": 0.6,
+        "mechanism_uniqueness": 0.9386227424963544
+      },
+      "niche": {
+        "intervention_level": "ecosystem",
+        "resource_intensity": "medium",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 3,
+        "branching_factor": 1.222222,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_4",
+      "id": "ac80019a2bac236b",
+      "title": "Bounty-Triggered Rival Retesting Commons",
+      "description": "Every lab that posts a hypothesis sees its claim collect an unvetted-load meter as other labs cite and build on it. When the meter reaches a published level, a challenge bounty opens automatically, and rival labs earn credit for retesting the claim, including credit for failed retests. Because the retesting wave fires before the claim becomes the default assumption, herd lock-in is prevented. Confirmed errors end in a public correction notice, and the original authors earn credit for retracting early, so reliably reusable claims accumulate.",
+      "operator": "isomorphism",
+      "source_domain": "statistical_physics",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Rising unvetted citation load on a claim automatically opens a rewarded challenge bounty, and the rival retesting it triggers keeps herd lock-in from forming while routing errors into credited retractions.",
+        "causal_structure": [
+          {
+            "cause": "Fresh public hypothesis posting",
+            "relation": "increases",
+            "effect": "Mounting unvetted claim load"
+          },
+          {
+            "cause": "Mounting unvetted claim load",
+            "relation": "enables",
+            "effect": "Herd lock-in on unchecked claim"
+          },
+          {
+            "cause": "Mounting unvetted claim load",
+            "relation": "enables",
+            "effect": "Challenge bounty trigger"
+          },
+          {
+            "cause": "Challenge bounty trigger",
+            "relation": "enables",
+            "effect": "Rival re-testing wave"
+          },
+          {
+            "cause": "Rival re-testing wave",
+            "relation": "prevents",
+            "effect": "Herd lock-in on unchecked claim"
+          },
+          {
+            "cause": "Rival re-testing wave",
+            "relation": "enables",
+            "effect": "Public retraction and correction notice"
+          },
+          {
+            "cause": "Public retraction and correction notice",
+            "relation": "enables",
+            "effect": "Reliable reusable claim commons"
+          },
+          {
+            "cause": "Fresh public hypothesis posting",
+            "relation": "enables",
+            "effect": "Reliable reusable claim commons"
+          },
+          {
+            "cause": "Credit for self-retraction",
+            "relation": "enables",
+            "effect": "Public retraction and correction notice"
+          },
+          {
+            "cause": "Herd lock-in on unchecked claim",
+            "relation": "decreases",
+            "effect": "Reliable reusable claim commons"
+          },
+          {
+            "cause": "Open registry of tests in flight",
+            "relation": "decreases",
+            "effect": "Redundant parallel work"
+          },
+          {
+            "cause": "Redundant parallel work",
+            "relation": "decreases",
+            "effect": "Rival re-testing wave"
+          }
+        ],
+        "affected_system": "Incentive and norm layer (reputation, credit, coordination and correction mechanisms) for a decentralized public hypothesis-sharing ecosystem of independent research labs",
+        "payoff": "Reliable reusable claim commons"
+      },
+      "mechanism_fingerprint": "c5e989865d896e74",
+      "wl_hash": "4c4777a1756d31cf4c5d7feda4c17dcd",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "sandpile_toppling_criticality",
+        "role_map": {
+          "grain_drop": "Fresh public hypothesis posting",
+          "slope_buildup": "Mounting unvetted claim load",
+          "threshold_exceedance": "Challenge bounty trigger",
+          "toppling_cascade": "Rival re-testing wave",
+          "runaway_slope": "Herd lock-in on unchecked claim",
+          "dissipation_at_boundary": "Public retraction and correction notice",
+          "critical_steady_state": "Reliable reusable claim commons"
+        }
+      },
+      "scores": {
+        "novelty": 0.6825179010510041,
+        "appropriateness": 0.78,
+        "utility": 0.6,
+        "surprise": 0.5,
+        "coherence": 0.8,
+        "mechanism_uniqueness": 0.9480846774193549
+      },
+      "niche": {
+        "intervention_level": "ecosystem",
+        "resource_intensity": "medium",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.2,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "51 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_mounting_unvetted_claim_load",
+            "satisfy_challenge_bounty_trigger",
+            "satisfy_herd_lock_in_on_unchecked_claim",
+            "satisfy_rival_re_testing_wave",
+            "satisfy_public_retraction_and_correction_notice"
+          ]
+        }
+      ],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_4",
+      "id": "819b7326db1cc5ef",
+      "title": "Escrowed Claims, Scheduled Audit Sweeps, and Herd-Credit Expiry",
+      "description": "Labs lodge hypotheses in a timestamped escrow vault with committed predictions, while critiques from the community pile up in a public backlog. At scheduled audit windows, a review sweep works through the backlog and does three things. It lifts the embargo on the escrowed claims, voids the stacked citation credit that accrues to bandwagon-following, and vacates attention slots on the public board. Labs then see freshly cleared slots and independent replication credit instead of crowd-following credit, so they spread across the claims being released rather than piling onto the loudest one.",
+      "operator": "isomorphism",
+      "source_domain": "fire_ecology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A scheduled audit window combined with a backlog of public critiques triggers a sweep that releases escrowed claims while preventing the bandwagon citation cascade, so freed attention slots are filled by a diverse wave of independent replications.",
+        "causal_structure": [
+          {
+            "cause": "Scheduled adversarial audit window",
+            "relation": "enables",
+            "effect": "Clearing review sweep"
+          },
+          {
+            "cause": "Accumulated public critiques backlog",
+            "relation": "enables",
+            "effect": "Clearing review sweep"
+          },
+          {
+            "cause": "Clearing review sweep",
+            "relation": "enables",
+            "effect": "Embargo release of escrowed claims"
+          },
+          {
+            "cause": "Escrowed hypothesis vault",
+            "relation": "enables",
+            "effect": "Embargo release of escrowed claims"
+          },
+          {
+            "cause": "Clearing review sweep",
+            "relation": "prevents",
+            "effect": "Herd-following bandwagon citation cascade"
+          },
+          {
+            "cause": "Clearing review sweep",
+            "relation": "enables",
+            "effect": "Vacated attention slots"
+          },
+          {
+            "cause": "Embargo release of escrowed claims",
+            "relation": "enables",
+            "effect": "Diverse independent replication wave"
+          },
+          {
+            "cause": "Vacated attention slots",
+            "relation": "enables",
+            "effect": "Diverse independent replication wave"
+          },
+          {
+            "cause": "Correction-credit payout",
+            "relation": "increases",
+            "effect": "Accumulated public critiques backlog"
+          },
+          {
+            "cause": "Herd-following bandwagon citation cascade",
+            "relation": "increases",
+            "effect": "Duplicate effort on same claim"
+          },
+          {
+            "cause": "Vacated attention slots",
+            "relation": "decreases",
+            "effect": "Duplicate effort on same claim"
+          },
+          {
+            "cause": "Diverse independent replication wave",
+            "relation": "decreases",
+            "effect": "Unretracted errors in reuse chain"
+          }
+        ],
+        "affected_system": "Incentive and norm layer (reputation, credit, coordination and correction mechanisms) for a decentralized public hypothesis-sharing ecosystem of independent research labs",
+        "payoff": "Diverse independent replication wave"
+      },
+      "mechanism_fingerprint": "5e63f47ed022067a",
+      "wl_hash": "21d194c78fbf33b4ab51a969c39ea7c5",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "serotiny_fire_gated_release",
+        "role_map": {
+          "canopy_seed_store": "Escrowed hypothesis vault",
+          "heat_pulse": "Scheduled adversarial audit window",
+          "understory_fuel": "Accumulated public critiques backlog",
+          "ground_combustion": "Clearing review sweep",
+          "resin_seal_melt": "Embargo release of escrowed claims",
+          "shade_competitor_growth": "Herd-following bandwagon citation cascade",
+          "open_seedbed": "Vacated attention slots",
+          "regeneration_flush": "Diverse independent replication wave"
+        }
+      },
+      "scores": {
+        "novelty": 0.6868367638337367,
+        "appropriateness": 0.68,
+        "utility": 0.55,
+        "surprise": 0.52,
+        "coherence": 0.58,
+        "mechanism_uniqueness": 0.9478237693519977
+      },
+      "niche": {
+        "intervention_level": "ecosystem",
+        "resource_intensity": "medium",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_1",
+      "id": "331225fcace14db3",
+      "title": "Crowd-Scaled Audit Bounties with Niche Credit",
+      "description": "When a hypothesis starts attracting many labs, an open red-team bounty on it grows with the number of labs piling on, so labs that join the herd without independent evidence risk public exposure. Labs therefore hold back from crowded claims and take up neglected hypotheses. Those hypotheses earn an early-niche credit multiplier, so their results can reach verified status before the crowd consolidates. Labs experience this as a visible bounty meter on each hypothesis and as extra credit for working where few others are.",
+      "operator": "isomorphism",
+      "source_domain": "community_ecology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Audit bounties that scale with crowding make labs hold back from piling onto popular hypotheses, which prevents monoculture lock-in and lets neglected hypotheses mature into reusable, corrected results.",
+        "causal_structure": [
+          {
+            "cause": "Trend adoption surge",
+            "relation": "enables",
+            "effect": "Crowding density on one hypothesis"
+          },
+          {
+            "cause": "Crowding density on one hypothesis",
+            "relation": "enables",
+            "effect": "Monoculture lock-in on one hypothesis family"
+          },
+          {
+            "cause": "Activation of crowd-scaled red-team bounties",
+            "relation": "enables",
+            "effect": "Self-restraint from piling onto crowded hypotheses"
+          },
+          {
+            "cause": "Crowding density on one hypothesis",
+            "relation": "enables",
+            "effect": "Self-restraint from piling onto crowded hypotheses"
+          },
+          {
+            "cause": "Self-restraint from piling onto crowded hypotheses",
+            "relation": "prevents",
+            "effect": "Monoculture lock-in on one hypothesis family"
+          },
+          {
+            "cause": "Self-restraint from piling onto crowded hypotheses",
+            "relation": "enables",
+            "effect": "Neglected hypotheses reaching verified status"
+          },
+          {
+            "cause": "Neglected hypotheses reaching verified status",
+            "relation": "enables",
+            "effect": "Reliable reuse of diverse, corrected results"
+          },
+          {
+            "cause": "Activation of crowd-scaled red-team bounties",
+            "relation": "enables",
+            "effect": "Reliable reuse of diverse, corrected results"
+          },
+          {
+            "cause": "Crowding density on one hypothesis",
+            "relation": "increases",
+            "effect": "Bounty payout size for flaw-finding"
+          },
+          {
+            "cause": "Early-niche credit multiplier",
+            "relation": "enables",
+            "effect": "Neglected hypotheses reaching verified status"
+          },
+          {
+            "cause": "Self-retraction credit",
+            "relation": "prevents",
+            "effect": "Persistence of unretracted errors"
+          },
+          {
+            "cause": "Persistence of unretracted errors",
+            "relation": "decreases",
+            "effect": "Reliable reuse of diverse, corrected results"
+          }
+        ],
+        "affected_system": "Incentive and norm layer (reputation, credit, coordination and correction mechanisms) for a decentralized public hypothesis-sharing ecosystem of independent research labs",
+        "payoff": "Reliable reuse of diverse, corrected results"
+      },
+      "mechanism_fingerprint": "48c870abca0771ab",
+      "wl_hash": "58ff8bb3e045d6be5c830ede2c8e02c6",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "trophic_cascade_predator_gate",
+        "role_map": {
+          "herbivore_growth": "Trend adoption surge",
+          "predator_return": "Activation of crowd-scaled red-team bounties",
+          "browsing_pressure": "Crowding density on one hypothesis",
+          "fear_avoidance_behaviour": "Self-restraint from piling onto crowded hypotheses",
+          "riparian_overbrowse": "Monoculture lock-in on one hypothesis family",
+          "seedling_escape": "Neglected hypotheses reaching verified status",
+          "riparian_recovery": "Reliable reuse of diverse, corrected results"
+        }
+      },
+      "scores": {
+        "novelty": 0.686414381386526,
+        "appropriateness": 0.68,
+        "utility": 0.6,
+        "surprise": 0.55,
+        "coherence": 0.72,
+        "mechanism_uniqueness": 0.9418391994478951
+      },
+      "niche": {
+        "intervention_level": "ecosystem",
+        "resource_intensity": "medium",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 4,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_4",
+      "id": "610857867055742e",
+      "title": "Probation Board with Scheduled Refutation Sweeps",
+      "description": "Every newly posted conjecture enters a public probation board with a visible count of labs already working on it. At fixed intervals a sweep assigns replication and critique slots, paid in bounty credit, to labs that were not involved. Claims that fail are retracted and the refuter is credited. Only claims that survive are graduated to a citable canon, so labs are not drawn into piling onto doomed or already crowded claims.",
+      "operator": "isomorphism",
+      "source_domain": "runtime_memory_management",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A scheduled, bounty-funded adversarial sweep retires early-failing claims and caps pile-ons before labs crowd the same claims, so only replicated results graduate to canon and reliable reuse is sustained.",
+        "causal_structure": [
+          {
+            "cause": "Continuous inflow of newly posted conjectures",
+            "relation": "enables",
+            "effect": "Probation board saturation with unvetted claims"
+          },
+          {
+            "cause": "Probation board saturation with unvetted claims",
+            "relation": "enables",
+            "effect": "Herding-and-duplication overload of labs"
+          },
+          {
+            "cause": "Early-mortality regularity of fresh claims",
+            "relation": "enables",
+            "effect": "Scheduled adversarial replication sweep"
+          },
+          {
+            "cause": "Probation board saturation with unvetted claims",
+            "relation": "enables",
+            "effect": "Scheduled adversarial replication sweep"
+          },
+          {
+            "cause": "Scheduled adversarial replication sweep",
+            "relation": "prevents",
+            "effect": "Herding-and-duplication overload of labs"
+          },
+          {
+            "cause": "Scheduled adversarial replication sweep",
+            "relation": "enables",
+            "effect": "Graduation of replicated claims to citable canon"
+          },
+          {
+            "cause": "Graduation of replicated claims to citable canon",
+            "relation": "enables",
+            "effect": "Reliable reuse and steady discovery rate"
+          },
+          {
+            "cause": "Continuous inflow of newly posted conjectures",
+            "relation": "enables",
+            "effect": "Reliable reuse and steady discovery rate"
+          },
+          {
+            "cause": "Bounty credit for refutations and retractions",
+            "relation": "enables",
+            "effect": "Scheduled adversarial replication sweep"
+          },
+          {
+            "cause": "Herding-and-duplication overload of labs",
+            "relation": "decreases",
+            "effect": "Reliable reuse and steady discovery rate"
+          },
+          {
+            "cause": "Public retraction ledger",
+            "relation": "prevents",
+            "effect": "Unretracted errors in reused results"
+          },
+          {
+            "cause": "Graduation of replicated claims to citable canon",
+            "relation": "depends_on",
+            "effect": "Public retraction ledger"
+          }
+        ],
+        "affected_system": "Incentive and norm layer (reputation, credit, coordination and correction mechanisms) for a decentralized public hypothesis-sharing ecosystem of independent research labs",
+        "payoff": "Reliable reuse and steady discovery rate"
+      },
+      "mechanism_fingerprint": "af902bc6a3b4e1bb",
+      "wl_hash": "2c5723d342520fb354286ac17ec2e764",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "generational_gc_reclaim_gate",
+        "role_map": {
+          "allocation_stream": "Continuous inflow of newly posted conjectures",
+          "weak_generational_hypothesis": "Early-mortality regularity of fresh claims",
+          "young_space_fill": "Probation board saturation with unvetted claims",
+          "minor_collection": "Scheduled adversarial replication sweep",
+          "heap_exhaustion_risk": "Herding-and-duplication overload of labs",
+          "survivor_promotion": "Graduation of replicated claims to citable canon",
+          "stable_throughput": "Reliable reuse and steady discovery rate"
+        }
+      },
+      "scores": {
+        "novelty": 0.6812127143744086,
+        "appropriateness": 0.68,
+        "utility": 0.45,
+        "surprise": 0.3,
+        "coherence": 0.72,
+        "mechanism_uniqueness": 0.9429172876304024
+      },
+      "niche": {
+        "intervention_level": "ecosystem",
+        "resource_intensity": "medium",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.2,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "30 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_probation_board_saturation_with_unvetted_claims",
+            "satisfy_herding_and_duplication_overload_of_labs",
+            "satisfy_scheduled_adversarial_replication_sweep",
+            "satisfy_graduation_of_replicated_claims_to_citable_canon",
+            "satisfy_public_retraction_ledger"
+          ]
+        }
+      ],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_3",
+      "id": "0e3c9613c0aa8178",
+      "title": "Escalating Credit Ladder with Replicator Spot-Checks",
+      "description": "Every public hypothesis carries a lineage record, and downstream labs that reuse it run cheap spot-checks and flag problems. A flagged claim moves up a published ladder of credit consequences: a warning tag, then a frozen citation bonus, then a badge downgrade, then forfeited priority. Labs that retract their own errors early stay on the lowest rung. The urge to rush-publish unvetted claims or sit on a known error is blunted because a quiet error costs more than an early self-correction.",
+      "operator": "isomorphism",
+      "source_domain": "institutional_economics",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Spot-checks by reusers, combined with a pre-announced escalating credit-penalty ladder, keep the rush-publish and error-hiding branch from happening during the race for priority, so verified claims stay reusable.",
+        "causal_structure": [
+          {
+            "cause": "Race for first-claim priority on hot open questions",
+            "relation": "enables",
+            "effect": "Downstream replicators' spot-checks"
+          },
+          {
+            "cause": "Race for first-claim priority on hot open questions",
+            "relation": "enables",
+            "effect": "Urge to rush-publish unvetted claims and sit on known errors"
+          },
+          {
+            "cause": "Escalating ladder of credit-penalty tiers for flawed claims",
+            "relation": "enables",
+            "effect": "Enforced credit demotion and badge downgrade on a flagged claim"
+          },
+          {
+            "cause": "Downstream replicators' spot-checks",
+            "relation": "enables",
+            "effect": "Enforced credit demotion and badge downgrade on a flagged claim"
+          },
+          {
+            "cause": "Enforced credit demotion and badge downgrade on a flagged claim",
+            "relation": "prevents",
+            "effect": "Urge to rush-publish unvetted claims and sit on known errors"
+          },
+          {
+            "cause": "Enforced credit demotion and badge downgrade on a flagged claim",
+            "relation": "enables",
+            "effect": "Habit of voluntary self-retraction and pre-registration"
+          },
+          {
+            "cause": "Habit of voluntary self-retraction and pre-registration",
+            "relation": "enables",
+            "effect": "Reliably reusable body of verified public hypotheses"
+          },
+          {
+            "cause": "Downstream replicators' spot-checks",
+            "relation": "enables",
+            "effect": "Reliably reusable body of verified public hypotheses"
+          },
+          {
+            "cause": "Race for first-claim priority on hot open questions",
+            "relation": "increases",
+            "effect": "Crowding of many labs onto the same fashionable hypothesis"
+          },
+          {
+            "cause": "Crowding of many labs onto the same fashionable hypothesis",
+            "relation": "decreases",
+            "effect": "Reliably reusable body of verified public hypotheses"
+          },
+          {
+            "cause": "Habit of voluntary self-retraction and pre-registration",
+            "relation": "decreases",
+            "effect": "Unretracted errors lingering in reuse chains"
+          },
+          {
+            "cause": "Downstream replicators' spot-checks",
+            "relation": "depends_on",
+            "effect": "Open lineage registry linking each claim to its reusers"
+          }
+        ],
+        "affected_system": "Incentive and norm layer (reputation, credit, coordination and correction mechanisms) for a decentralized public hypothesis-sharing ecosystem of independent research labs",
+        "payoff": "Reliably reusable body of verified public hypotheses"
+      },
+      "mechanism_fingerprint": "2eb9ffbafbf0efbe",
+      "wl_hash": "c9e0106895c622ec47d0669cad5333b4",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "ostrom_graduated_sanction_commons",
+        "role_map": {
+          "harvest_pressure": "Race for first-claim priority on hot open questions",
+          "monitoring_by_users": "Downstream replicators' spot-checks",
+          "graduated_sanction_rule": "Escalating ladder of credit-penalty tiers for flawed claims",
+          "sanction_application": "Enforced credit demotion and badge downgrade on a flagged claim",
+          "defection_temptation": "Urge to rush-publish unvetted claims and sit on known errors",
+          "compliance_norm": "Habit of voluntary self-retraction and pre-registration",
+          "commons_persistence": "Reliably reusable body of verified public hypotheses"
+        }
+      },
+      "scores": {
+        "novelty": 0.6848195074553249,
+        "appropriateness": 0.62,
+        "utility": 0.45,
+        "surprise": 0.35,
+        "coherence": 0.72,
+        "mechanism_uniqueness": 0.9465089819399708
+      },
+      "niche": {
+        "intervention_level": "ecosystem",
+        "resource_intensity": "medium",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 4,
+        "branching_factor": 1.2,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "61 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_crowding_of_many_labs_onto_the_same_fashionable_hypothesis",
+            "satisfy_downstream_replicators_spot_checks",
+            "satisfy_enforced_credit_demotion_and_badge_downgrade_on_a_flagged_claim",
+            "satisfy_habit_of_voluntary_self_retraction_and_pre_registration",
+            "satisfy_open_lineage_registry_linking_each_claim_to_its_reusers"
+          ]
+        }
+      ],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_4",
+      "id": "b31d4390ed6d1059",
+      "title": "Earned Pause Flags with a Correction Grace Period",
+      "description": "When independent labs post replication discrepancies against a public hypothesis, an open alert board aggregates them, and once staked reports from enough unrelated labs accumulate, the hypothesis gets an earned pause flag. While the flag is active, new endorsements, funding badges and replication-slot claims are frozen, so labs cannot pile in on a possibly flawed result. The original authors get a fixed grace period to post a fix or rebuttal for credit. If they do neither, an automatic retraction notice is issued, and self-initiated corrections earn more reputation than forced ones.",
+      "operator": "isomorphism",
+      "source_domain": "cell_biology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Staked discrepancy reports trigger an earned pause that blocks bandwagon endorsement and duplicate replication rushes during a bounded grace period, after which the hypothesis is either corrected or automatically retracted, so the public record stays reusable.",
+        "causal_structure": [
+          {
+            "cause": "Staked Replication Discrepancy Report",
+            "relation": "enables",
+            "effect": "Open Discrepancy Alert Board"
+          },
+          {
+            "cause": "Open Discrepancy Alert Board",
+            "relation": "enables",
+            "effect": "Earned Pause Flag"
+          },
+          {
+            "cause": "Hype Attention Surge",
+            "relation": "enables",
+            "effect": "Bandwagon Replication Rush"
+          },
+          {
+            "cause": "Earned Pause Flag",
+            "relation": "prevents",
+            "effect": "Bandwagon Replication Rush"
+          },
+          {
+            "cause": "Earned Pause Flag",
+            "relation": "enables",
+            "effect": "Correction Grace Period"
+          },
+          {
+            "cause": "Correction Grace Period",
+            "relation": "enables",
+            "effect": "Automatic Retraction Sunset"
+          },
+          {
+            "cause": "Automatic Retraction Sunset",
+            "relation": "enables",
+            "effect": "Reliably Reusable Public Record"
+          },
+          {
+            "cause": "Correction Grace Period",
+            "relation": "enables",
+            "effect": "Reliably Reusable Public Record"
+          },
+          {
+            "cause": "Bandwagon Replication Rush",
+            "relation": "decreases",
+            "effect": "Reliably Reusable Public Record"
+          },
+          {
+            "cause": "Hype Attention Surge",
+            "relation": "increases",
+            "effect": "Monoculture Concentration"
+          },
+          {
+            "cause": "Bandwagon Replication Rush",
+            "relation": "increases",
+            "effect": "Monoculture Concentration"
+          },
+          {
+            "cause": "Earned Pause Flag",
+            "relation": "depends_on",
+            "effect": "Reporter Reputation Stake"
+          }
+        ],
+        "affected_system": "Incentive and norm layer (reputation, credit, coordination and correction mechanisms) for a decentralized public hypothesis-sharing ecosystem of independent research labs",
+        "payoff": "Reliably Reusable Public Record"
+      },
+      "mechanism_fingerprint": "4127f3b695bb6bb3",
+      "wl_hash": "7fdb6e360716286673da3549708719ce",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "p53_damage_checkpoint_arrest",
+        "role_map": {
+          "genotoxic_lesion": "Staked Replication Discrepancy Report",
+          "growth_mitogen": "Hype Attention Surge",
+          "sensor_kinase": "Open Discrepancy Alert Board",
+          "checkpoint_effector": "Earned Pause Flag",
+          "division_drive": "Bandwagon Replication Rush",
+          "repair_window": "Correction Grace Period",
+          "apoptotic_commitment": "Automatic Retraction Sunset",
+          "tissue_integrity": "Reliably Reusable Public Record"
+        }
+      },
+      "scores": {
+        "novelty": 0.6804922584398839,
+        "appropriateness": 0.78,
+        "utility": 0.6,
+        "surprise": 0.45,
+        "coherence": 0.8,
+        "mechanism_uniqueness": 0.9453273244781784
+      },
+      "niche": {
+        "intervention_level": "ecosystem",
+        "resource_intensity": "medium",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.2,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "48 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_bandwagon_replication_rush",
+            "satisfy_monoculture_concentration",
+            "satisfy_open_discrepancy_alert_board",
+            "satisfy_earned_pause_flag",
+            "satisfy_reporter_reputation_stake",
+            "satisfy_correction_grace_period",
+            "satisfy_automatic_retraction_sunset"
+          ]
+        }
+      ],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_3",
+      "id": "6711f7c3bc0652e5",
+      "title": "Lottery-Seeded Reserve Cohorts with Audit-Triggered Reseeding",
+      "description": "Each review cycle, a random draw assigns a small share of labs to a shielded reserve track. These labs keep working on out-of-fashion or under-claimed hypotheses and delay disclosing their direction, so they are exempt from bandwagon credit races. When a public adversarial audit round exposes a flawed popular result, labs that rapidly piled onto it lose credit and their derived claims are flagged. Reserve labs are untouched, and they publish alternative lines that reseed the field, earning bonus credit for those lines and for any retraction they trigger.",
+      "operator": "isomorphism",
+      "source_domain": "microbiology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A random draw seeds a protected reserve of labs that stay out of the bandwagon, so when an audit wipes out correlated errors among crowd-followers, the reserve's independent lines are what survive and rebuild a reusable, verified body of knowledge.",
+        "causal_structure": [
+          {
+            "cause": "randomized_dissent_draw",
+            "relation": "enables",
+            "effect": "shielded_reserve_cohort"
+          },
+          {
+            "cause": "adversarial_replication_audit_round",
+            "relation": "enables",
+            "effect": "correlated_error_wipeout"
+          },
+          {
+            "cause": "rapid_bandwagon_replication",
+            "relation": "enables",
+            "effect": "correlated_error_wipeout"
+          },
+          {
+            "cause": "shielded_reserve_cohort",
+            "relation": "prevents",
+            "effect": "correlated_error_wipeout"
+          },
+          {
+            "cause": "shielded_reserve_cohort",
+            "relation": "enables",
+            "effect": "reserve_driven_field_recovery"
+          },
+          {
+            "cause": "adversarial_replication_audit_round",
+            "relation": "enables",
+            "effect": "reserve_driven_field_recovery"
+          },
+          {
+            "cause": "reserve_driven_field_recovery",
+            "relation": "enables",
+            "effect": "durable_verified_commons"
+          },
+          {
+            "cause": "claim_registry_overlap_alerts",
+            "relation": "decreases",
+            "effect": "rapid_bandwagon_replication"
+          },
+          {
+            "cause": "retraction_credit_bonus",
+            "relation": "enables",
+            "effect": "adversarial_replication_audit_round"
+          },
+          {
+            "cause": "reserve_stipend_with_delayed_disclosure",
+            "relation": "enables",
+            "effect": "shielded_reserve_cohort"
+          },
+          {
+            "cause": "correlated_error_wipeout",
+            "relation": "decreases",
+            "effect": "durable_verified_commons"
+          }
+        ],
+        "affected_system": "Incentive and norm layer (reputation, credit, coordination and correction mechanisms) for a decentralized public hypothesis-sharing ecosystem of independent research labs",
+        "payoff": "durable_verified_commons"
+      },
+      "mechanism_fingerprint": "843b9cc4a823eced",
+      "wl_hash": "726292d615ace60218396e7508902196",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "persister_bet_hedge_survival",
+        "role_map": {
+          "stochastic_switch": "randomized_dissent_draw",
+          "antibiotic_exposure": "adversarial_replication_audit_round",
+          "dormant_subpopulation": "shielded_reserve_cohort",
+          "growth_dependent_killing": "correlated_error_wipeout",
+          "active_division": "rapid_bandwagon_replication",
+          "post_exposure_regrowth": "reserve_driven_field_recovery",
+          "lineage_survival": "durable_verified_commons"
+        }
+      },
+      "scores": {
+        "novelty": 0.6813626365043852,
+        "appropriateness": 0.72,
+        "utility": 0.55,
+        "surprise": 0.6,
+        "coherence": 0.62,
+        "mechanism_uniqueness": 0.9413216177178623
+      },
+      "niche": {
+        "intervention_level": "ecosystem",
+        "resource_intensity": "medium",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 3,
+        "branching_factor": 1.1,
+        "loop_density": 0.0,
+        "payoff_path_length": 3
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_3",
+      "id": "8f253ac05daad9a1",
+      "title": "Backlog-Triggered Audit Sweeps That Release Escrowed Hypotheses",
+      "description": "Labs lodge pre-registered hypotheses in a time-locked escrow while the community accumulates unresolved critiques, which earn critics credit. When a retraction bounty is announced and the critique backlog is large enough, a synchronized audit sweep runs. It checks the herd-favored claims and stops the bandwagon citation cascade around them, clears the vacated-niche registry of crowded topics, and releases the escrowed hypotheses. Labs then see freed topic slots and launch a burst of diverse, independent follow-ups instead of piling onto the popular claim.",
+      "operator": "isomorphism",
+      "source_domain": "fire_ecology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A synchronized audit sweep, triggered by a retraction bounty and powered by accumulated critique backlog, suppresses the bandwagon citation cascade while it releases escrowed hypotheses and vacates crowded niches, so diverse independent follow-ups launch together.",
+        "causal_structure": [
+          {
+            "cause": "Retraction-bounty trigger announcement",
+            "relation": "enables",
+            "effect": "Synchronized audit sweep"
+          },
+          {
+            "cause": "Accumulated unresolved critique backlog",
+            "relation": "enables",
+            "effect": "Synchronized audit sweep"
+          },
+          {
+            "cause": "Synchronized audit sweep",
+            "relation": "enables",
+            "effect": "Escrow time-lock release"
+          },
+          {
+            "cause": "Time-locked pre-registered hypothesis escrow",
+            "relation": "enables",
+            "effect": "Escrow time-lock release"
+          },
+          {
+            "cause": "Synchronized audit sweep",
+            "relation": "prevents",
+            "effect": "Bandwagon citation cascade"
+          },
+          {
+            "cause": "Synchronized audit sweep",
+            "relation": "enables",
+            "effect": "Vacated-niche registry"
+          },
+          {
+            "cause": "Escrow time-lock release",
+            "relation": "enables",
+            "effect": "Burst of diverse independent follow-up hypotheses"
+          },
+          {
+            "cause": "Vacated-niche registry",
+            "relation": "enables",
+            "effect": "Burst of diverse independent follow-up hypotheses"
+          },
+          {
+            "cause": "Bandwagon citation cascade",
+            "relation": "increases",
+            "effect": "Duplicate lab effort"
+          },
+          {
+            "cause": "Vacated-niche registry",
+            "relation": "decreases",
+            "effect": "Duplicate lab effort"
+          },
+          {
+            "cause": "Accumulated unresolved critique backlog",
+            "relation": "depends_on",
+            "effect": "Reputation credit for filed critiques"
+          },
+          {
+            "cause": "Burst of diverse independent follow-up hypotheses",
+            "relation": "enables",
+            "effect": "Reliable reuse of corrected results"
+          }
+        ],
+        "affected_system": "Incentive and norm layer (reputation, credit, coordination and correction mechanisms) for a decentralized public hypothesis-sharing ecosystem of independent research labs",
+        "payoff": "Burst of diverse independent follow-up hypotheses"
+      },
+      "mechanism_fingerprint": "c7e2f3ddef3af853",
+      "wl_hash": "4fbf503563a9367b3ecb00e763f55046",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "serotiny_fire_gated_release",
+        "role_map": {
+          "canopy_seed_store": "Time-locked pre-registered hypothesis escrow",
+          "heat_pulse": "Retraction-bounty trigger announcement",
+          "understory_fuel": "Accumulated unresolved critique backlog",
+          "ground_combustion": "Synchronized audit sweep",
+          "resin_seal_melt": "Escrow time-lock release",
+          "shade_competitor_growth": "Bandwagon citation cascade",
+          "open_seedbed": "Vacated-niche registry",
+          "regeneration_flush": "Burst of diverse independent follow-up hypotheses"
+        }
+      },
+      "scores": {
+        "novelty": 0.6899018903018206,
+        "appropriateness": 0.68,
+        "utility": 0.6,
+        "surprise": 0.66,
+        "coherence": 0.52,
+        "mechanism_uniqueness": 0.9480734951323186
+      },
+      "niche": {
+        "intervention_level": "ecosystem",
+        "resource_intensity": "medium",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 4,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_1",
+      "id": "d8da40121e8dee75",
+      "title": "Audit Shadow: Crowd-Triggered Adversarial Replication That Pushes Labs Toward Neglected Hypotheses",
+      "description": "When many labs pile onto one public hypothesis, a standing corps of paid adversarial auditors becomes likely to stress-test it. Credit earned on the crowded claim is held provisionally and discounted until audits clear it. Labs therefore anticipate the audit and move their effort to neglected branches, which carry a novelty credit multiplier. The lock-in on a single, possibly flawed claim is kept from forming, and the labs experience this as a visible audit-risk and credit-discount signal next to each hypothesis.",
+      "operator": "isomorphism",
+      "source_domain": "community_ecology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A crowd-density-triggered adversarial audit threat, with provisional credit on crowded claims, makes labs pre-emptively diversify, which prevents monoculture lock-in and lets neglected hypotheses mature into reusable results.",
+        "causal_structure": [
+          {
+            "cause": "Surge of labs adopting a trending hypothesis",
+            "relation": "enables",
+            "effect": "Crowding load on a popular hypothesis"
+          },
+          {
+            "cause": "Crowding load on a popular hypothesis",
+            "relation": "enables",
+            "effect": "Monoculture lock-in of the field on one claim"
+          },
+          {
+            "cause": "Standing adversarial replication audit corps",
+            "relation": "enables",
+            "effect": "Audit-anticipating spread to neglected hypotheses"
+          },
+          {
+            "cause": "Crowding load on a popular hypothesis",
+            "relation": "enables",
+            "effect": "Audit-anticipating spread to neglected hypotheses"
+          },
+          {
+            "cause": "Audit-anticipating spread to neglected hypotheses",
+            "relation": "prevents",
+            "effect": "Monoculture lock-in of the field on one claim"
+          },
+          {
+            "cause": "Audit-anticipating spread to neglected hypotheses",
+            "relation": "enables",
+            "effect": "Niche hypotheses reaching replicated maturity"
+          },
+          {
+            "cause": "Niche hypotheses reaching replicated maturity",
+            "relation": "enables",
+            "effect": "Diverse, error-corrected, reusable knowledge base"
+          },
+          {
+            "cause": "Standing adversarial replication audit corps",
+            "relation": "enables",
+            "effect": "Diverse, error-corrected, reusable knowledge base"
+          },
+          {
+            "cause": "Standing adversarial replication audit corps",
+            "relation": "enables",
+            "effect": "Prompt retraction of flawed claims"
+          },
+          {
+            "cause": "Prompt retraction of flawed claims",
+            "relation": "enables",
+            "effect": "Diverse, error-corrected, reusable knowledge base"
+          },
+          {
+            "cause": "Provisional credit discount on crowded claims",
+            "relation": "depends_on",
+            "effect": "Crowding load on a popular hypothesis"
+          },
+          {
+            "cause": "Niche hypotheses reaching replicated maturity",
+            "relation": "decreases",
+            "effect": "Duplicate effort across labs"
+          }
+        ],
+        "affected_system": "Incentive and norm layer (reputation, credit, coordination and correction mechanisms) for a decentralized public hypothesis-sharing ecosystem of independent research labs",
+        "payoff": "Diverse, error-corrected, reusable knowledge base"
+      },
+      "mechanism_fingerprint": "c78130f6d878a1b0",
+      "wl_hash": "ee454d93a11775b298a3c3f7a6e919a5",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "trophic_cascade_predator_gate",
+        "role_map": {
+          "herbivore_growth": "Surge of labs adopting a trending hypothesis",
+          "predator_return": "Standing adversarial replication audit corps",
+          "browsing_pressure": "Crowding load on a popular hypothesis",
+          "fear_avoidance_behaviour": "Audit-anticipating spread to neglected hypotheses",
+          "riparian_overbrowse": "Monoculture lock-in of the field on one claim",
+          "seedling_escape": "Niche hypotheses reaching replicated maturity",
+          "riparian_recovery": "Diverse, error-corrected, reusable knowledge base"
+        }
+      },
+      "scores": {
+        "novelty": 0.6819170907254855,
+        "appropriateness": 0.78,
+        "utility": 0.7,
+        "surprise": 0.55,
+        "coherence": 0.74,
+        "mechanism_uniqueness": 0.9441784274193549
+      },
+      "niche": {
+        "intervention_level": "ecosystem",
+        "resource_intensity": "medium",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 4,
+        "branching_factor": 1.2,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_4",
+      "id": "29b8617cf4cc862c",
+      "title": "Sealed Commitment Ledger with Runner-Up-Anchored Credit",
+      "description": "Each lab privately gauges its confidence in a hypothesis and its capacity to pursue it, then files a sealed commitment stating both, hidden from other labs until a window closes. When the window closes, the most committed lab gets the lead-pursuit slot. The credit it can earn, and the retraction liability it carries, are set by the runner-up's filed stance, not its own. Overstating, hedging or copying the crowd therefore gains the lab nothing, because its own filing never sets its terms. Labs do best by filing exactly what they believe, and the public record ends up with honest confidence levels and less duplicated work.",
+      "operator": "isomorphism",
+      "source_domain": "auction_mechanism_design",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Because the lead lab's credit and liability are anchored to the runner-up's filed stance rather than its own, the pull toward hedged or crowd-mimicking filings is removed, so honest confidence is the best strategy.",
+        "causal_structure": [
+          {
+            "cause": "Lab's internal credence and capacity estimate",
+            "relation": "enables",
+            "effect": "Sealed commitment filing"
+          },
+          {
+            "cause": "Sealed commitment filing",
+            "relation": "enables",
+            "effect": "Pull toward hedged, crowd-mimicking filings"
+          },
+          {
+            "cause": "Sealed commitment filing",
+            "relation": "enables",
+            "effect": "Lead-pursuit slot assignment"
+          },
+          {
+            "cause": "Runner-up-anchored credit schedule",
+            "relation": "enables",
+            "effect": "Credit and liability level fixed at the runner-up's filed stance"
+          },
+          {
+            "cause": "Lead-pursuit slot assignment",
+            "relation": "enables",
+            "effect": "Credit and liability level fixed at the runner-up's filed stance"
+          },
+          {
+            "cause": "Credit and liability level fixed at the runner-up's filed stance",
+            "relation": "prevents",
+            "effect": "Pull toward hedged, crowd-mimicking filings"
+          },
+          {
+            "cause": "Credit and liability level fixed at the runner-up's filed stance",
+            "relation": "enables",
+            "effect": "Honest disclosed confidence in the public record"
+          },
+          {
+            "cause": "Lab's internal credence and capacity estimate",
+            "relation": "enables",
+            "effect": "Honest disclosed confidence in the public record"
+          },
+          {
+            "cause": "Honest disclosed confidence in the public record",
+            "relation": "decreases",
+            "effect": "Duplicate pursuit of the same hypothesis"
+          },
+          {
+            "cause": "Sealed commitment filing",
+            "relation": "prevents",
+            "effect": "Herding on visible early filings"
+          },
+          {
+            "cause": "Credit and liability level fixed at the runner-up's filed stance",
+            "relation": "enables",
+            "effect": "Prompt retraction of failed claims"
+          },
+          {
+            "cause": "Honest disclosed confidence in the public record",
+            "relation": "enables",
+            "effect": "Reliable reuse of published results"
+          }
+        ],
+        "affected_system": "Incentive and norm layer (reputation, credit, coordination and correction mechanisms) for a decentralized public hypothesis-sharing ecosystem of independent research labs",
+        "payoff": "Honest disclosed confidence in the public record"
+      },
+      "mechanism_fingerprint": "2a6dc3058e89d1da",
+      "wl_hash": "5bb6c68d240a6860d0613fe88cbb983e",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "vickrey_second_price_truth",
+        "role_map": {
+          "private_valuation": "Lab's internal credence and capacity estimate",
+          "second_price_rule": "Runner-up-anchored credit schedule",
+          "bid_submission": "Sealed commitment filing",
+          "winner_selection": "Lead-pursuit slot assignment",
+          "bid_shading_incentive": "Pull toward hedged, crowd-mimicking filings",
+          "price_determination": "Credit and liability level fixed at the runner-up's filed stance",
+          "truthful_revelation": "Honest disclosed confidence in the public record"
+        }
+      },
+      "scores": {
+        "novelty": 0.6892756950417411,
+        "appropriateness": 0.55,
+        "utility": 0.58,
+        "surprise": 0.68,
+        "coherence": 0.52,
+        "mechanism_uniqueness": 0.9499482401656315
+      },
+      "niche": {
+        "intervention_level": "ecosystem",
+        "resource_intensity": "medium",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": true
+    },
+    {
+      "niche_key": "centroid_1",
+      "id": "ff26f7437865591c",
+      "title": "Escalating Credit Discounts for Crowding and Stale Errors",
+      "description": "Every lab posts an intent stamp on an open claim board showing which hypothesis it is testing and how far along it is. When a lab piles onto an already-crowded hypothesis without declaring it, or leaves a flagged flaw uncorrected past a grace window, its credit for that claim is cut. The cut starts small and grows with repetition, and it is reversed after a fast, visible retraction. Labs therefore feel the pull to join the crowd or stay quiet about a flaw get blocked before it pays off, and they learn to diverge early and correct quickly.",
+      "operator": "isomorphism",
+      "source_domain": "institutional_economics",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Peers scanning an open claim board trigger an escalating credit discount that stops labs from profiting from crowding or hiding errors during the rush on a hot hypothesis, which builds an early-divergence and fast-retraction habit and keeps the public results pool reusable and diverse.",
+        "causal_structure": [
+          {
+            "cause": "Rush of labs toward a hot open hypothesis",
+            "relation": "enables",
+            "effect": "Open claim-board peer scanning of in-progress work"
+          },
+          {
+            "cause": "Rush of labs toward a hot open hypothesis",
+            "relation": "enables",
+            "effect": "Urge to join the crowd and quietly leave a flawed claim standing"
+          },
+          {
+            "cause": "Escalating credit-discount ladder for unflagged duplication and unretracted errors",
+            "relation": "enables",
+            "effect": "Triggered credit discount enacted on a lab that duplicates or leaves an error standing"
+          },
+          {
+            "cause": "Open claim-board peer scanning of in-progress work",
+            "relation": "enables",
+            "effect": "Triggered credit discount enacted on a lab that duplicates or leaves an error standing"
+          },
+          {
+            "cause": "Triggered credit discount enacted on a lab that duplicates or leaves an error standing",
+            "relation": "prevents",
+            "effect": "Urge to join the crowd and quietly leave a flawed claim standing"
+          },
+          {
+            "cause": "Triggered credit discount enacted on a lab that duplicates or leaves an error standing",
+            "relation": "enables",
+            "effect": "Habit of declaring intent early, diverging from crowded tracks, and retracting fast"
+          },
+          {
+            "cause": "Habit of declaring intent early, diverging from crowded tracks, and retracting fast",
+            "relation": "enables",
+            "effect": "Reusable, trustworthy, diverse pool of public results"
+          },
+          {
+            "cause": "Open claim-board peer scanning of in-progress work",
+            "relation": "enables",
+            "effect": "Reusable, trustworthy, diverse pool of public results"
+          },
+          {
+            "cause": "Urge to join the crowd and quietly leave a flawed claim standing",
+            "relation": "increases",
+            "effect": "Unretracted errors in circulation"
+          },
+          {
+            "cause": "Habit of declaring intent early, diverging from crowded tracks, and retracting fast",
+            "relation": "decreases",
+            "effect": "Unretracted errors in circulation"
+          },
+          {
+            "cause": "Open claim-board peer scanning of in-progress work",
+            "relation": "decreases",
+            "effect": "Duplicate effort across labs"
+          },
+          {
+            "cause": "Unretracted errors in circulation",
+            "relation": "prevents",
+            "effect": "Reusable, trustworthy, diverse pool of public results"
+          }
+        ],
+        "affected_system": "Incentive and norm layer (reputation, credit, coordination and correction mechanisms) for a decentralized public hypothesis-sharing ecosystem of independent research labs",
+        "payoff": "Reusable, trustworthy, diverse pool of public results"
+      },
+      "mechanism_fingerprint": "12bae372a121043e",
+      "wl_hash": "fe920f593022ac76a68bb1d653f9c65f",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "ostrom_graduated_sanction_commons",
+        "role_map": {
+          "harvest_pressure": "Rush of labs toward a hot open hypothesis",
+          "monitoring_by_users": "Open claim-board peer scanning of in-progress work",
+          "graduated_sanction_rule": "Escalating credit-discount ladder for unflagged duplication and unretracted errors",
+          "sanction_application": "Triggered credit discount enacted on a lab that duplicates or leaves an error standing",
+          "defection_temptation": "Urge to join the crowd and quietly leave a flawed claim standing",
+          "compliance_norm": "Habit of declaring intent early, diverging from crowded tracks, and retracting fast",
+          "commons_persistence": "Reusable, trustworthy, diverse pool of public results"
+        }
+      },
+      "scores": {
+        "novelty": 0.6731825946588668,
+        "appropriateness": 0.68,
+        "utility": 0.5,
+        "surprise": 0.35,
+        "coherence": 0.6,
+        "mechanism_uniqueness": 0.9370126097675423
+      },
+      "niche": {
+        "intervention_level": "ecosystem",
+        "resource_intensity": "medium",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.333333,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "44 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_urge_to_join_the_crowd_and_quietly_leave_a_flawed_claim_standing",
+            "satisfy_unretracted_errors_in_circulation",
+            "satisfy_open_claim_board_peer_scanning_of_in_progress_work",
+            "satisfy_triggered_credit_discount_enacted_on_a_lab_that_duplicates_or_leaves_an_error_standing",
+            "satisfy_habit_of_declaring_intent_early_diverging_from_crowded_tracks_and_retracting_fast"
+          ]
+        }
+      ],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_5",
+      "id": "d6c2b3aeb6eb1666",
+      "title": "Reliance-Triggered Replication Audits",
+      "description": "Every public claim carries a visible counter of how many labs have built on it without independent verification. When the counter reaches a published trigger level, a mandatory audit round starts. Labs outside the claim's citation cluster are drawn to replicate or critique it, so a flawed claim cannot become entrenched through herding. Auditors earn reputation for their findings, and original authors earn credit for quick self-retraction. The outcome is archived with credit, which lowers the reliance counter for everything downstream of it.",
+      "operator": "isomorphism",
+      "source_domain": "statistical_physics",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Unverified reliance on a claim accumulates until it triggers a randomized, outsider-staffed replication audit. The audit stops the claim from becoming an entrenched unretracted error, and credit paid out for archived corrections keeps the system in a self-tuning rhythm of claim turnover.",
+        "causal_structure": [
+          {
+            "cause": "hypothesis_posting",
+            "relation": "increases",
+            "effect": "unverified_reliance_load"
+          },
+          {
+            "cause": "unverified_reliance_load",
+            "relation": "enables",
+            "effect": "entrenched_unretracted_error"
+          },
+          {
+            "cause": "unverified_reliance_load",
+            "relation": "enables",
+            "effect": "audit_trigger_level_reached"
+          },
+          {
+            "cause": "audit_trigger_level_reached",
+            "relation": "enables",
+            "effect": "outsider_replication_audit_wave"
+          },
+          {
+            "cause": "outsider_replication_audit_wave",
+            "relation": "prevents",
+            "effect": "entrenched_unretracted_error"
+          },
+          {
+            "cause": "outsider_replication_audit_wave",
+            "relation": "enables",
+            "effect": "archived_correction_with_credit_payout"
+          },
+          {
+            "cause": "archived_correction_with_credit_payout",
+            "relation": "enables",
+            "effect": "self_tuning_claim_turnover_equilibrium"
+          },
+          {
+            "cause": "hypothesis_posting",
+            "relation": "enables",
+            "effect": "self_tuning_claim_turnover_equilibrium"
+          },
+          {
+            "cause": "open_claim_registry",
+            "relation": "decreases",
+            "effect": "duplicate_effort"
+          },
+          {
+            "cause": "archived_correction_with_credit_payout",
+            "relation": "increases",
+            "effect": "willingness_to_self_retract"
+          },
+          {
+            "cause": "entrenched_unretracted_error",
+            "relation": "decreases",
+            "effect": "safe_result_reuse"
+          },
+          {
+            "cause": "outsider_replication_audit_wave",
+            "relation": "decreases",
+            "effect": "herding_on_popular_claims"
+          }
+        ],
+        "affected_system": "Incentive and norm layer (reputation, credit, coordination and correction mechanisms) for a decentralized public hypothesis-sharing ecosystem of independent research labs",
+        "payoff": "self_tuning_claim_turnover_equilibrium"
+      },
+      "mechanism_fingerprint": "6632e08e7d9918e4",
+      "wl_hash": "5192adc302a8c8b47475a8558b6e890a",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "sandpile_toppling_criticality",
+        "role_map": {
+          "grain_drop": "hypothesis_posting",
+          "slope_buildup": "unverified_reliance_load",
+          "threshold_exceedance": "audit_trigger_level_reached",
+          "toppling_cascade": "outsider_replication_audit_wave",
+          "runaway_slope": "entrenched_unretracted_error",
+          "dissipation_at_boundary": "archived_correction_with_credit_payout",
+          "critical_steady_state": "self_tuning_claim_turnover_equilibrium"
+        }
+      },
+      "scores": {
+        "novelty": 0.6812902433581338,
+        "appropriateness": 0.86,
+        "utility": 0.7,
+        "surprise": 0.6,
+        "coherence": 0.82,
+        "mechanism_uniqueness": 0.9419705469845723
+      },
+      "niche": {
+        "intervention_level": "ecosystem",
+        "resource_intensity": "high",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.0,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_3",
+      "id": "42d6a92e66979891",
+      "title": "Scheduled Audit Sweeps That Release Time-Locked Divergent Hypotheses",
+      "description": "Labs lodge time-locked preregistered hypotheses, including deliberately contrarian ones, in a vault that stays hidden. When critiques pile up and a funder-triggered audit call arrives, a Correction Sweep runs. It retracts or expires flawed claims, strips credit from imitation cascades that formed around popular claims, and frees their credit slots in the niche registry. Only then does the vault unlock. A lab sees its dormant divergent hypothesis become claimable in a freshly cleared niche, with no crowd already clustered on the old consensus.",
+      "operator": "isomorphism",
+      "source_domain": "fire_ecology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A periodic audit sweep, fed by accumulated critiques and triggered by a funder call, both unlocks vaulted divergent hypotheses and suppresses herding on popular claims, so a burst of diverse, non-duplicated work starts in cleared niches.",
+        "causal_structure": [
+          {
+            "cause": "Funder-triggered audit call",
+            "relation": "enables",
+            "effect": "Correction sweep"
+          },
+          {
+            "cause": "Backlog of unresolved critiques and flagged errors",
+            "relation": "enables",
+            "effect": "Correction sweep"
+          },
+          {
+            "cause": "Correction sweep",
+            "relation": "enables",
+            "effect": "Vault unlock on sweep completion"
+          },
+          {
+            "cause": "Time-locked preregistered hypothesis vault",
+            "relation": "enables",
+            "effect": "Vault unlock on sweep completion"
+          },
+          {
+            "cause": "Correction sweep",
+            "relation": "prevents",
+            "effect": "Herding cascade of imitation around the popular claim"
+          },
+          {
+            "cause": "Correction sweep",
+            "relation": "enables",
+            "effect": "Cleared niche registry with freed credit slots"
+          },
+          {
+            "cause": "Vault unlock on sweep completion",
+            "relation": "enables",
+            "effect": "Burst of diverse, non-duplicated hypothesis lines under test"
+          },
+          {
+            "cause": "Cleared niche registry with freed credit slots",
+            "relation": "enables",
+            "effect": "Burst of diverse, non-duplicated hypothesis lines under test"
+          },
+          {
+            "cause": "Correction sweep",
+            "relation": "decreases",
+            "effect": "Reuse of unretracted errors"
+          },
+          {
+            "cause": "Herding cascade of imitation around the popular claim",
+            "relation": "increases",
+            "effect": "Claim monoculture"
+          },
+          {
+            "cause": "Burst of diverse, non-duplicated hypothesis lines under test",
+            "relation": "decreases",
+            "effect": "Claim monoculture"
+          },
+          {
+            "cause": "Cleared niche registry with freed credit slots",
+            "relation": "decreases",
+            "effect": "Duplicate effort across labs"
+          }
+        ],
+        "affected_system": "Incentive and norm layer (reputation, credit, coordination and correction mechanisms) for a decentralized public hypothesis-sharing ecosystem of independent research labs",
+        "payoff": "Burst of diverse, non-duplicated hypothesis lines under test"
+      },
+      "mechanism_fingerprint": "4d5cc74cbcb8ffd7",
+      "wl_hash": "8d1ba5ace34692d9f6fb2e0993a1b3f5",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "serotiny_fire_gated_release",
+        "role_map": {
+          "canopy_seed_store": "Time-locked preregistered hypothesis vault",
+          "heat_pulse": "Funder-triggered audit call",
+          "understory_fuel": "Backlog of unresolved critiques and flagged errors",
+          "ground_combustion": "Correction sweep",
+          "resin_seal_melt": "Vault unlock on sweep completion",
+          "shade_competitor_growth": "Herding cascade of imitation around the popular claim",
+          "open_seedbed": "Cleared niche registry with freed credit slots",
+          "regeneration_flush": "Burst of diverse, non-duplicated hypothesis lines under test"
+        }
+      },
+      "scores": {
+        "novelty": 0.6834003326680151,
+        "appropriateness": 0.68,
+        "utility": 0.66,
+        "surprise": 0.7,
+        "coherence": 0.5,
+        "mechanism_uniqueness": 0.9440193503430532
+      },
+      "niche": {
+        "intervention_level": "ecosystem",
+        "resource_intensity": "medium",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 4,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": true
+    },
+    {
+      "niche_key": "centroid_5",
+      "id": "9144d35fb391af57",
+      "title": "Audit Shadow: Crowd-Scaled Adversarial Review That Diverts Labs From Herd Claims",
+      "description": "A rotating, funded corps of adversarial auditors is reinstated and is paid for each verified flaw. Their attention scales with how many labs pile onto the same hypothesis cluster. A lab sees a public audit-exposure meter on every crowded claim. Labs that would have joined the bandwagon redirect toward under-explored hypotheses, where novelty-weighted credit is available. The payoff comes from the monoculture lock-in with uncorrected errors that never forms. Minority lines mature without being swamped, and the pool of verified, reusable results regains diversity.",
+      "operator": "isomorphism",
+      "source_domain": "community_ecology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Audit exposure that rises with crowd concentration makes herding costly, so labs divert before monoculture lock-in forms, and under-explored hypotheses can mature into verified reusable results.",
+        "causal_structure": [
+          {
+            "cause": "Swelling wave of follow-on replications of a trending hypothesis",
+            "relation": "enables",
+            "effect": "Crowd concentration on a single hypothesis cluster"
+          },
+          {
+            "cause": "Crowd concentration on a single hypothesis cluster",
+            "relation": "enables",
+            "effect": "Monoculture lock-in on one hypothesis family with uncorrected errors"
+          },
+          {
+            "cause": "Reinstatement of funded adversarial auditors paid per verified flaw",
+            "relation": "enables",
+            "effect": "Labs' anticipatory diversion away from crowded, audit-exposed claims"
+          },
+          {
+            "cause": "Crowd concentration on a single hypothesis cluster",
+            "relation": "enables",
+            "effect": "Labs' anticipatory diversion away from crowded, audit-exposed claims"
+          },
+          {
+            "cause": "Labs' anticipatory diversion away from crowded, audit-exposed claims",
+            "relation": "prevents",
+            "effect": "Monoculture lock-in on one hypothesis family with uncorrected errors"
+          },
+          {
+            "cause": "Labs' anticipatory diversion away from crowded, audit-exposed claims",
+            "relation": "enables",
+            "effect": "Contrarian hypothesis lines reaching maturity before herd dismissal"
+          },
+          {
+            "cause": "Contrarian hypothesis lines reaching maturity before herd dismissal",
+            "relation": "enables",
+            "effect": "Restored diversity of verified, reusable results"
+          },
+          {
+            "cause": "Reinstatement of funded adversarial auditors paid per verified flaw",
+            "relation": "enables",
+            "effect": "Restored diversity of verified, reusable results"
+          },
+          {
+            "cause": "Early-follower citation credit",
+            "relation": "increases",
+            "effect": "Swelling wave of follow-on replications of a trending hypothesis"
+          },
+          {
+            "cause": "Reinstatement of funded adversarial auditors paid per verified flaw",
+            "relation": "increases",
+            "effect": "Prompt retraction of flawed claims"
+          },
+          {
+            "cause": "Prompt retraction of flawed claims",
+            "relation": "enables",
+            "effect": "Restored diversity of verified, reusable results"
+          },
+          {
+            "cause": "Novelty-weighted credit for under-explored hypotheses",
+            "relation": "enables",
+            "effect": "Contrarian hypothesis lines reaching maturity before herd dismissal"
+          }
+        ],
+        "affected_system": "Incentive and norm layer (reputation, credit, coordination and correction mechanisms) for a decentralized public hypothesis-sharing ecosystem of independent research labs",
+        "payoff": "Restored diversity of verified, reusable results"
+      },
+      "mechanism_fingerprint": "04e26ee47b0c8622",
+      "wl_hash": "72350c0f2c70f95ecbad0ea2cbd60cc2",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "trophic_cascade_predator_gate",
+        "role_map": {
+          "herbivore_growth": "Swelling wave of follow-on replications of a trending hypothesis",
+          "predator_return": "Reinstatement of funded adversarial auditors paid per verified flaw",
+          "browsing_pressure": "Crowd concentration on a single hypothesis cluster",
+          "fear_avoidance_behaviour": "Labs' anticipatory diversion away from crowded, audit-exposed claims",
+          "riparian_overbrowse": "Monoculture lock-in on one hypothesis family with uncorrected errors",
+          "seedling_escape": "Contrarian hypothesis lines reaching maturity before herd dismissal",
+          "riparian_recovery": "Restored diversity of verified, reusable results"
+        }
+      },
+      "scores": {
+        "novelty": 0.6911631056868515,
+        "appropriateness": 0.78,
+        "utility": 0.66,
+        "surprise": 0.58,
+        "coherence": 0.72,
+        "mechanism_uniqueness": 0.9497215821812596
+      },
+      "niche": {
+        "intervention_level": "ecosystem",
+        "resource_intensity": "high",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.2,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": true
+    },
+    {
+      "niche_key": "centroid_6",
+      "id": "cc1cf09a867a8624",
+      "title": "Runner-Up-Anchored Confidence Stakes",
+      "description": "Before sharing a hypothesis, each lab files a public confidence stamp from 0 to 100. The most confident lab gets the lead-replicator slot and funding priority. Its credit if the claim holds, and its liability if the claim is retracted, are pegged to the next-most-confident rival's stamp, not its own. A lab therefore gains nothing by inflating its stamp, and it gains nothing by hedging toward the crowd's consensus. The lab simply reports what it believes, and the stamps show reviewers where real disagreement and real overlap lie.",
+      "operator": "isomorphism",
+      "source_domain": "auction_mechanism_design",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Pegging a lead claimant's credit and liability to the runner-up's stamp, not its own, removes the payoff from hedging toward consensus, so labs disclose calibrated confidence, which reduces herding and duplicate effort.",
+        "causal_structure": [
+          {
+            "cause": "Lab's internal confidence in its own hypothesis",
+            "relation": "enables",
+            "effect": "Public confidence-stamped claim filing"
+          },
+          {
+            "cause": "Public confidence-stamped claim filing",
+            "relation": "enables",
+            "effect": "Temptation to hedge confidence toward the herd consensus"
+          },
+          {
+            "cause": "Public confidence-stamped claim filing",
+            "relation": "enables",
+            "effect": "Lead-replicator slot assignment to the most confident claimant"
+          },
+          {
+            "cause": "Runner-up-anchored credit and liability norm",
+            "relation": "enables",
+            "effect": "Credit and liability stake pegged to the next-most-confident rival claim"
+          },
+          {
+            "cause": "Lead-replicator slot assignment to the most confident claimant",
+            "relation": "enables",
+            "effect": "Credit and liability stake pegged to the next-most-confident rival claim"
+          },
+          {
+            "cause": "Credit and liability stake pegged to the next-most-confident rival claim",
+            "relation": "prevents",
+            "effect": "Temptation to hedge confidence toward the herd consensus"
+          },
+          {
+            "cause": "Credit and liability stake pegged to the next-most-confident rival claim",
+            "relation": "enables",
+            "effect": "Candid calibrated confidence disclosure"
+          },
+          {
+            "cause": "Lab's internal confidence in its own hypothesis",
+            "relation": "enables",
+            "effect": "Candid calibrated confidence disclosure"
+          },
+          {
+            "cause": "Temptation to hedge confidence toward the herd consensus",
+            "relation": "increases",
+            "effect": "Monoculture of crowded hypotheses"
+          },
+          {
+            "cause": "Candid calibrated confidence disclosure",
+            "relation": "decreases",
+            "effect": "Duplicate effort across labs"
+          },
+          {
+            "cause": "Candid calibrated confidence disclosure",
+            "relation": "enables",
+            "effect": "Early retraction of flawed claims"
+          },
+          {
+            "cause": "Early retraction of flawed claims",
+            "relation": "enables",
+            "effect": "Reliable reuse of published results"
+          }
+        ],
+        "affected_system": "Incentive and norm layer (reputation, credit, coordination and correction mechanisms) for a decentralized public hypothesis-sharing ecosystem of independent research labs",
+        "payoff": "Candid calibrated confidence disclosure"
+      },
+      "mechanism_fingerprint": "f3d08b2e9193b11e",
+      "wl_hash": "a1fa5ee04584a48e287829a0ccede882",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "vickrey_second_price_truth",
+        "role_map": {
+          "private_valuation": "Lab's internal confidence in its own hypothesis",
+          "second_price_rule": "Runner-up-anchored credit and liability norm",
+          "bid_submission": "Public confidence-stamped claim filing",
+          "winner_selection": "Lead-replicator slot assignment to the most confident claimant",
+          "bid_shading_incentive": "Temptation to hedge confidence toward the herd consensus",
+          "price_determination": "Credit and liability stake pegged to the next-most-confident rival claim",
+          "truthful_revelation": "Candid calibrated confidence disclosure"
+        }
+      },
+      "scores": {
+        "novelty": 0.6824732723731086,
+        "appropriateness": 0.5,
+        "utility": 0.55,
+        "surprise": 0.66,
+        "coherence": 0.55,
+        "mechanism_uniqueness": 0.937220566318927
+      },
+      "niche": {
+        "intervention_level": "organization",
+        "resource_intensity": "medium",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 6,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": true
+    },
+    {
+      "niche_key": "centroid_7",
+      "id": "df3262434f582ad6",
+      "title": "Additive Endorsement, Multiplicative Standing Cut",
+      "description": "Each independent reproduction of a hypothesis adds a small, fixed increment of public standing, so trust builds slowly and linearly. When a lab files a credible refutation, the claim's standing is cut by a fixed fraction, and so is the credit of dependent claims and of labs still piling onto it. Labs see their stake in a crowded claim fall sharply on refutation, so they move toward under-explored alternatives, which carry pre-registered replication bounties funded from the cut standing.",
+      "operator": "isomorphism",
+      "source_domain": "network_congestion_control",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Standing grows by small steps with each independent reproduction, while a credible refutation triggers a proportional standing cut that keeps a popular claim from locking in the whole ecosystem and pushes labs toward a diverse, correctable knowledge base.",
+        "causal_structure": [
+          {
+            "cause": "Independent reproduction confirmations",
+            "relation": "increases",
+            "effect": "Citation uptake momentum"
+          },
+          {
+            "cause": "Citation uptake momentum",
+            "relation": "enables",
+            "effect": "Monoculture lock-in of crowded hypotheses"
+          },
+          {
+            "cause": "Credible refutation filing",
+            "relation": "enables",
+            "effect": "Multiplicative standing cut on contested claim"
+          },
+          {
+            "cause": "Citation uptake momentum",
+            "relation": "enables",
+            "effect": "Multiplicative standing cut on contested claim"
+          },
+          {
+            "cause": "Multiplicative standing cut on contested claim",
+            "relation": "prevents",
+            "effect": "Monoculture lock-in of crowded hypotheses"
+          },
+          {
+            "cause": "Multiplicative standing cut on contested claim",
+            "relation": "enables",
+            "effect": "Rebalancing of lab attention across hypotheses"
+          },
+          {
+            "cause": "Citation uptake momentum",
+            "relation": "enables",
+            "effect": "Rebalancing of lab attention across hypotheses"
+          },
+          {
+            "cause": "Rebalancing of lab attention across hypotheses",
+            "relation": "enables",
+            "effect": "Diverse, correctable shared knowledge base"
+          },
+          {
+            "cause": "Monoculture lock-in of crowded hypotheses",
+            "relation": "decreases",
+            "effect": "Diverse, correctable shared knowledge base"
+          },
+          {
+            "cause": "Multiplicative standing cut on contested claim",
+            "relation": "enables",
+            "effect": "Replication bounty for under-explored alternatives"
+          },
+          {
+            "cause": "Replication bounty for under-explored alternatives",
+            "relation": "increases",
+            "effect": "Rebalancing of lab attention across hypotheses"
+          }
+        ],
+        "affected_system": "Incentive and norm layer (reputation, credit, coordination and correction mechanisms) for a decentralized public hypothesis-sharing ecosystem of independent research labs",
+        "payoff": "Diverse, correctable shared knowledge base"
+      },
+      "mechanism_fingerprint": "eae47b6afa455e90",
+      "wl_hash": "8dbdce9ab90d56132332834ff5c892d4",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "aimd_loss_backoff_fairness",
+        "role_map": {
+          "ack_clock": "Independent reproduction confirmations",
+          "send_rate_growth": "Citation uptake momentum",
+          "loss_event": "Credible refutation filing",
+          "window_halving": "Multiplicative standing cut on contested claim",
+          "queue_overflow_risk": "Monoculture lock-in of crowded hypotheses",
+          "flow_share_equalisation": "Rebalancing of lab attention across hypotheses",
+          "fair_equilibrium": "Diverse, correctable shared knowledge base"
+        }
+      },
+      "scores": {
+        "novelty": 0.6934194355915796,
+        "appropriateness": 0.68,
+        "utility": 0.6,
+        "surprise": 0.5,
+        "coherence": 0.72,
+        "mechanism_uniqueness": 0.9490037950664136
+      },
+      "niche": {
+        "intervention_level": "ecosystem",
+        "resource_intensity": "medium",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.375,
+        "loop_density": 0.0,
+        "payoff_path_length": 3
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "33 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_citation_uptake_momentum",
+            "satisfy_monoculture_lock_in_of_crowded_hypotheses",
+            "satisfy_multiplicative_standing_cut_on_contested_claim",
+            "satisfy_replication_bounty_for_under_explored_alternatives",
+            "satisfy_rebalancing_of_lab_attention_across_hypotheses"
+          ]
+        }
+      ],
+      "is_niche_elite": true
+    },
+    {
+      "niche_key": "centroid_4",
+      "id": "3617048274f32fe7",
+      "title": "Triage Sweeps with Crowding Locks",
+      "description": "Labs post claims to a public board. When the queue of untested claims passes a threshold, a time-boxed sweep opens. Labs are assigned by lottery to try to refute or replicate the least-examined claims, and a claim already being worked by enough labs is locked against further duplicate effort. Labs earn credit for refutations, replications and self-retractions. Claims that survive a sweep get a 'certified-reusable' badge, and other labs can build on them with confidence.",
+      "operator": "isomorphism",
+      "source_domain": "runtime_memory_management",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A queue-triggered, lottery-assigned adversarial replication sweep with crowding locks prevents duplicate-effort pileup and herding, so only claims that withstand it are certified for reuse.",
+        "causal_structure": [
+          {
+            "cause": "Continuous inflow of newly posted public claims",
+            "relation": "enables",
+            "effect": "Crowded queue of untested fresh claims"
+          },
+          {
+            "cause": "Crowded queue of untested fresh claims",
+            "relation": "enables",
+            "effect": "Duplicate-effort pileup and herding onto the same claims"
+          },
+          {
+            "cause": "Most fresh claims fail or are abandoned early",
+            "relation": "enables",
+            "effect": "Short-cycle adversarial replication sweep with crowding locks"
+          },
+          {
+            "cause": "Crowded queue of untested fresh claims",
+            "relation": "enables",
+            "effect": "Short-cycle adversarial replication sweep with crowding locks"
+          },
+          {
+            "cause": "Short-cycle adversarial replication sweep with crowding locks",
+            "relation": "prevents",
+            "effect": "Duplicate-effort pileup and herding onto the same claims"
+          },
+          {
+            "cause": "Short-cycle adversarial replication sweep with crowding locks",
+            "relation": "enables",
+            "effect": "Certified-reusable status for claims that withstand sweeps"
+          },
+          {
+            "cause": "Certified-reusable status for claims that withstand sweeps",
+            "relation": "enables",
+            "effect": "Steady rate of reliable reusable discoveries"
+          },
+          {
+            "cause": "Continuous inflow of newly posted public claims",
+            "relation": "enables",
+            "effect": "Steady rate of reliable reusable discoveries"
+          },
+          {
+            "cause": "Credit for refutations and self-retractions",
+            "relation": "increases",
+            "effect": "Short-cycle adversarial replication sweep with crowding locks"
+          },
+          {
+            "cause": "Public retraction ledger",
+            "relation": "enables",
+            "effect": "Certified-reusable status for claims that withstand sweeps"
+          },
+          {
+            "cause": "Duplicate-effort pileup and herding onto the same claims",
+            "relation": "decreases",
+            "effect": "Steady rate of reliable reusable discoveries"
+          },
+          {
+            "cause": "Lottery assignment of labs to under-examined claims",
+            "relation": "prevents",
+            "effect": "Duplicate-effort pileup and herding onto the same claims"
+          }
+        ],
+        "affected_system": "Incentive and norm layer (reputation, credit, coordination and correction mechanisms) for a decentralized public hypothesis-sharing ecosystem of independent research labs",
+        "payoff": "Steady rate of reliable reusable discoveries"
+      },
+      "mechanism_fingerprint": "ab25c4b3708d1eb3",
+      "wl_hash": "65469135f9c9a6f265bd5556b22908be",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "generational_gc_reclaim_gate",
+        "role_map": {
+          "allocation_stream": "Continuous inflow of newly posted public claims",
+          "weak_generational_hypothesis": "Most fresh claims fail or are abandoned early",
+          "young_space_fill": "Crowded queue of untested fresh claims",
+          "minor_collection": "Short-cycle adversarial replication sweep with crowding locks",
+          "heap_exhaustion_risk": "Duplicate-effort pileup and herding onto the same claims",
+          "survivor_promotion": "Certified-reusable status for claims that withstand sweeps",
+          "stable_throughput": "Steady rate of reliable reusable discoveries"
+        }
+      },
+      "scores": {
+        "novelty": 0.6834355832838093,
+        "appropriateness": 0.75,
+        "utility": 0.5,
+        "surprise": 0.4,
+        "coherence": 0.8,
+        "mechanism_uniqueness": 0.9407930107526882
+      },
+      "niche": {
+        "intervention_level": "ecosystem",
+        "resource_intensity": "medium",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 4,
+        "branching_factor": 1.2,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_1",
+      "id": "608d159a59e5fe4d",
+      "title": "Escalating Credit Haircuts with a Public Claim Ledger",
+      "description": "Every lab posts a visible claim-stake on the hypothesis it is testing, and peers can see how crowded each hypothesis is. When a claim is flagged as flawed or as a crowd-following duplicate and the owner does not correct it, an escalating ladder cuts the lab's credit: first a warning tag, then a lower rank in reuse feeds, then loss of the verified badge. Labs feel the cost of piling onto the favorite or sitting on a known error before it lands, so they retract early and pick under-explored niches.",
+      "operator": "isomorphism",
+      "source_domain": "institutional_economics",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A visible ledger of who is testing what, combined with an escalating credit haircut for uncorrected errors and crowd-following duplicates, keeps labs from piling onto the leading hypothesis or sitting on known flaws, so the pool of public results stays reusable.",
+        "causal_structure": [
+          {
+            "cause": "Surge of labs chasing a hot open hypothesis",
+            "relation": "enables",
+            "effect": "Peer-visible claim ledger tracking who is testing what"
+          },
+          {
+            "cause": "Surge of labs chasing a hot open hypothesis",
+            "relation": "enables",
+            "effect": "Urge to pile onto the leading hypothesis or quietly sit on a known flaw"
+          },
+          {
+            "cause": "Escalating credit-haircut ladder for uncorrected errors",
+            "relation": "enables",
+            "effect": "Automatic credit haircut and badge demotion on a flagged claim"
+          },
+          {
+            "cause": "Peer-visible claim ledger tracking who is testing what",
+            "relation": "enables",
+            "effect": "Automatic credit haircut and badge demotion on a flagged claim"
+          },
+          {
+            "cause": "Automatic credit haircut and badge demotion on a flagged claim",
+            "relation": "prevents",
+            "effect": "Urge to pile onto the leading hypothesis or quietly sit on a known flaw"
+          },
+          {
+            "cause": "Automatic credit haircut and badge demotion on a flagged claim",
+            "relation": "enables",
+            "effect": "Shared habit of prompt self-retraction and claiming distinct niches"
+          },
+          {
+            "cause": "Shared habit of prompt self-retraction and claiming distinct niches",
+            "relation": "enables",
+            "effect": "Reliably reusable pool of verified public results"
+          },
+          {
+            "cause": "Peer-visible claim ledger tracking who is testing what",
+            "relation": "enables",
+            "effect": "Reliably reusable pool of verified public results"
+          },
+          {
+            "cause": "Surge of labs chasing a hot open hypothesis",
+            "relation": "increases",
+            "effect": "Duplicate parallel runs"
+          },
+          {
+            "cause": "Duplicate parallel runs",
+            "relation": "decreases",
+            "effect": "Collective discovery rate"
+          },
+          {
+            "cause": "Reliably reusable pool of verified public results",
+            "relation": "enables",
+            "effect": "Collective discovery rate"
+          },
+          {
+            "cause": "Urge to pile onto the leading hypothesis or quietly sit on a known flaw",
+            "relation": "decreases",
+            "effect": "Reliably reusable pool of verified public results"
+          }
+        ],
+        "affected_system": "Incentive and norm layer (reputation, credit, coordination and correction mechanisms) for a decentralized public hypothesis-sharing ecosystem of independent research labs",
+        "payoff": "Reliably reusable pool of verified public results"
+      },
+      "mechanism_fingerprint": "5e74982461f6fb2f",
+      "wl_hash": "3eeb7b13e83eb55caf0e061cfe57ae14",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "ostrom_graduated_sanction_commons",
+        "role_map": {
+          "harvest_pressure": "Surge of labs chasing a hot open hypothesis",
+          "monitoring_by_users": "Peer-visible claim ledger tracking who is testing what",
+          "graduated_sanction_rule": "Escalating credit-haircut ladder for uncorrected errors",
+          "sanction_application": "Automatic credit haircut and badge demotion on a flagged claim",
+          "defection_temptation": "Urge to pile onto the leading hypothesis or quietly sit on a known flaw",
+          "compliance_norm": "Shared habit of prompt self-retraction and claiming distinct niches",
+          "commons_persistence": "Reliably reusable pool of verified public results"
+        }
+      },
+      "scores": {
+        "novelty": 0.6807156322700927,
+        "appropriateness": 0.6,
+        "utility": 0.4,
+        "surprise": 0.3,
+        "coherence": 0.62,
+        "mechanism_uniqueness": 0.9370126097675423
+      },
+      "niche": {
+        "intervention_level": "ecosystem",
+        "resource_intensity": "medium",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.333333,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "48 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_urge_to_pile_onto_the_leading_hypothesis_or_quietly_sit_on_a_known_flaw",
+            "satisfy_duplicate_parallel_runs",
+            "satisfy_peer_visible_claim_ledger_tracking_who_is_testing_what",
+            "satisfy_automatic_credit_haircut_and_badge_demotion_on_a_flagged_claim",
+            "satisfy_shared_habit_of_prompt_self_retraction_and_claiming_distinct_niches"
+          ]
+        }
+      ],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_1",
+      "id": "125458d2be6d1d29",
+      "title": "Quarantine-Before-Pile-On: Flag-Triggered Credit Holds with a Correction Interval",
+      "description": "When a lab posts a hypothesis, early followers normally collect a surge of attention credit, which pulls many labs into the same replication. Any independent lab can file a stake-backed anomaly flag. Once enough flags accumulate, the hypothesis enters a quarantine hold: new follow-on work on it earns no credit or funding priority, so the pile-on is actively suppressed. During the hold, the authors have a fixed correction interval to fix or defend the claim. If they do, the hold lifts and they earn a bonus. If they don't, a binding retraction stamp is issued automatically and propagates to every dependent result. Labs then reuse only claims that were either cleared or cleanly retracted.",
+      "operator": "isomorphism",
+      "source_domain": "cell_biology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "Credible anomaly flags earn a temporary hold that withholds credit from herd-style follow-on replication, creating a protected interval in which authors must correct or face an automatic retraction, so that only cleared claims enter the reusable commons.",
+        "causal_structure": [
+          {
+            "cause": "Hidden Error in Shared Hypothesis",
+            "relation": "enables",
+            "effect": "Stake-Backed Anomaly Flag"
+          },
+          {
+            "cause": "Stake-Backed Anomaly Flag",
+            "relation": "enables",
+            "effect": "Claim Quarantine Hold"
+          },
+          {
+            "cause": "Early-Follower Credit Surge",
+            "relation": "enables",
+            "effect": "Bandwagon Replication Rush"
+          },
+          {
+            "cause": "Claim Quarantine Hold",
+            "relation": "prevents",
+            "effect": "Bandwagon Replication Rush"
+          },
+          {
+            "cause": "Claim Quarantine Hold",
+            "relation": "enables",
+            "effect": "Author Correction Interval"
+          },
+          {
+            "cause": "Author Correction Interval",
+            "relation": "enables",
+            "effect": "Binding Retraction Stamp"
+          },
+          {
+            "cause": "Binding Retraction Stamp",
+            "relation": "enables",
+            "effect": "Reliably Reusable Result Commons"
+          },
+          {
+            "cause": "Author Correction Interval",
+            "relation": "enables",
+            "effect": "Reliably Reusable Result Commons"
+          },
+          {
+            "cause": "Bandwagon Replication Rush",
+            "relation": "increases",
+            "effect": "Methodological Monoculture"
+          },
+          {
+            "cause": "Methodological Monoculture",
+            "relation": "decreases",
+            "effect": "Reliably Reusable Result Commons"
+          },
+          {
+            "cause": "Graceful Retraction Credit Bonus",
+            "relation": "increases",
+            "effect": "Author Correction Interval"
+          },
+          {
+            "cause": "Stake-Backed Anomaly Flag",
+            "relation": "depends_on",
+            "effect": "Reputation Bond Posted by Flagger"
+          }
+        ],
+        "affected_system": "Incentive and norm layer (reputation, credit, coordination and correction mechanisms) for a decentralized public hypothesis-sharing ecosystem of independent research labs",
+        "payoff": "Reliably Reusable Result Commons"
+      },
+      "mechanism_fingerprint": "c6ddbe16140e851e",
+      "wl_hash": "007d17a572591abc0adc5a7d7c0273f1",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "p53_damage_checkpoint_arrest",
+        "role_map": {
+          "genotoxic_lesion": "Hidden Error in Shared Hypothesis",
+          "growth_mitogen": "Early-Follower Credit Surge",
+          "sensor_kinase": "Stake-Backed Anomaly Flag",
+          "checkpoint_effector": "Claim Quarantine Hold",
+          "division_drive": "Bandwagon Replication Rush",
+          "repair_window": "Author Correction Interval",
+          "apoptotic_commitment": "Binding Retraction Stamp",
+          "tissue_integrity": "Reliably Reusable Result Commons"
+        }
+      },
+      "scores": {
+        "novelty": 0.6874247243543754,
+        "appropriateness": 0.68,
+        "utility": 0.6,
+        "surprise": 0.5,
+        "coherence": 0.78,
+        "mechanism_uniqueness": 0.9432595573440644
+      },
+      "niche": {
+        "intervention_level": "ecosystem",
+        "resource_intensity": "medium",
+        "feedback_horizon": "short"
+      },
+      "dynamics": {
+        "causal_depth": 5,
+        "branching_factor": 1.090909,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "43 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_bandwagon_replication_rush",
+            "satisfy_methodological_monoculture",
+            "satisfy_stake_backed_anomaly_flag",
+            "satisfy_reputation_bond_posted_by_flagger",
+            "satisfy_claim_quarantine_hold",
+            "satisfy_author_correction_interval",
+            "satisfy_binding_retraction_stamp"
+          ]
+        }
+      ],
+      "is_niche_elite": true
+    },
+    {
+      "niche_key": "centroid_3",
+      "id": "c49c269bb8f5548a",
+      "title": "Lottery-Held Reserve Labs with Audit-Triggered Credit Clawback",
+      "description": "When a hypothesis starts trending, a public lottery randomly assigns a small fraction of interested labs to a deferral slot. These labs agree not to build on the trending claim for a fixed window, and in return they get a small guaranteed credit stipend and a reserved funding line for alternative approaches. A public replication audit then sweeps the trending claim. Labs that rushed in lose credit on their derivative work if the claim fails, while the deferred labs are untouched and are first in line to rebuild the area with different approaches. The deferred labs' verified results become the reusable base.",
+      "operator": "isomorphism",
+      "source_domain": "microbiology",
+      "provider_mode": "llm",
+      "mechanism": {
+        "core_mechanism": "A random, compensated deferral of a few labs keeps them out of the bandwagon, so when a replication audit penalizes crowd-chasers they are shielded from the penalty and can rebuild the field's reusable knowledge.",
+        "causal_structure": [
+          {
+            "cause": "Lottery-Drawn Deferral Slot",
+            "relation": "enables",
+            "effect": "Held-Back Reserve Labs"
+          },
+          {
+            "cause": "Mass Replication Audit Sweep",
+            "relation": "enables",
+            "effect": "Crowd-Chasing Credit Penalty"
+          },
+          {
+            "cause": "Rapid Bandwagon Replication",
+            "relation": "enables",
+            "effect": "Crowd-Chasing Credit Penalty"
+          },
+          {
+            "cause": "Held-Back Reserve Labs",
+            "relation": "prevents",
+            "effect": "Crowd-Chasing Credit Penalty"
+          },
+          {
+            "cause": "Held-Back Reserve Labs",
+            "relation": "enables",
+            "effect": "Reserve-Led Rebuild of Alternative Lines"
+          },
+          {
+            "cause": "Mass Replication Audit Sweep",
+            "relation": "enables",
+            "effect": "Reserve-Led Rebuild of Alternative Lines"
+          },
+          {
+            "cause": "Reserve-Led Rebuild of Alternative Lines",
+            "relation": "enables",
+            "effect": "Continuity of Reusable Verified Knowledge"
+          },
+          {
+            "cause": "Rapid Bandwagon Replication",
+            "relation": "increases",
+            "effect": "Methodological Monoculture"
+          },
+          {
+            "cause": "Methodological Monoculture",
+            "relation": "decreases",
+            "effect": "Continuity of Reusable Verified Knowledge"
+          },
+          {
+            "cause": "Mass Replication Audit Sweep",
+            "relation": "enables",
+            "effect": "Public Retraction Record"
+          },
+          {
+            "cause": "Public Retraction Record",
+            "relation": "enables",
+            "effect": "Continuity of Reusable Verified Knowledge"
+          }
+        ],
+        "affected_system": "Incentive and norm layer (reputation, credit, coordination and correction mechanisms) for a decentralized public hypothesis-sharing ecosystem of independent research labs",
+        "payoff": "Continuity of Reusable Verified Knowledge"
+      },
+      "mechanism_fingerprint": "00fb5ce3facb2788",
+      "wl_hash": "e53a8463101773dc36bbb4d7c4dcd314",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "persister_bet_hedge_survival",
+        "role_map": {
+          "stochastic_switch": "Lottery-Drawn Deferral Slot",
+          "antibiotic_exposure": "Mass Replication Audit Sweep",
+          "dormant_subpopulation": "Held-Back Reserve Labs",
+          "growth_dependent_killing": "Crowd-Chasing Credit Penalty",
+          "active_division": "Rapid Bandwagon Replication",
+          "post_exposure_regrowth": "Reserve-Led Rebuild of Alternative Lines",
+          "lineage_survival": "Continuity of Reusable Verified Knowledge"
+        }
+      },
+      "scores": {
+        "novelty": 0.6874549103858634,
+        "appropriateness": 0.78,
+        "utility": 0.62,
+        "surprise": 0.68,
+        "coherence": 0.74,
+        "mechanism_uniqueness": 0.9420597833515583
+      },
+      "niche": {
+        "intervention_level": "ecosystem",
+        "resource_intensity": "medium",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 3,
+        "branching_factor": 1.222222,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "57 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_public_retraction_record",
+            "satisfy_methodological_monoculture",
+            "satisfy_held_back_reserve_labs",
+            "satisfy_reserve_led_rebuild_of_alternative_lines"
+          ]
+        }
+      ],
+      "is_niche_elite": false
+    }
+  ]
+}

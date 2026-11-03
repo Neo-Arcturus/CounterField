@@ -1,0 +1,451 @@
+{
+  "meta": {
+    "mode": "control",
+    "date": "2026-10-22",
+    "seed": 20261022,
+    "budget": 24,
+    "problem": "Design a self-improving hypothesis-evolution engine for one person. Failure increases wasted effort. Forgetting decreases accuracy. Disagreement prevents convergence. Noise decreases signal quality.",
+    "provider": "MockIdeaProvider",
+    "model": null,
+    "provider_fallbacks": 0,
+    "backend_stats": {},
+    "template_library": "default_templates()",
+    "wall_seconds": 0.1
+  },
+  "metrics": {
+    "coverage": null,
+    "duplicate_rate": 0.7,
+    "attempts": 24,
+    "structural_failures": 2,
+    "occupied_niches": 2,
+    "repair_incubator": 18,
+    "failure_archive": 0,
+    "generation_errors": 0,
+    "canonicalize_errors": 0,
+    "validation_errors": 0,
+    "evaluation_errors": 0,
+    "evidence_errors": 0,
+    "provider_fallbacks": 0,
+    "inversion_attempts": 0,
+    "inversion_successes": 0,
+    "isomorphism_attempts": 3,
+    "isomorphism_successes": 3,
+    "synthesis_attempts": 6,
+    "synthesis_successes": 0,
+    "rules_promoted": 0,
+    "niche_count": 2,
+    "qd_score": 2.8804747422321624
+  },
+  "admission_log": [
+    {
+      "operator": "dialectic",
+      "status": "REPAIRABLE",
+      "stage": "red_team",
+      "n": 6
+    },
+    {
+      "operator": "inversion",
+      "status": "REPAIRABLE",
+      "stage": "red_team",
+      "n": 12
+    },
+    {
+      "operator": "isomorphism",
+      "status": "ACCEPTED",
+      "stage": "complete",
+      "n": 10
+    }
+  ],
+  "centroids": [
+    [
+      0.66,
+      1.0,
+      1.0,
+      0.2,
+      0.2,
+      0.0,
+      0.1
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.2,
+      0.15,
+      0.0,
+      0.2
+    ]
+  ],
+  "elites": [
+    {
+      "niche_key": "centroid_0",
+      "id": "f36a24c601904c7d",
+      "title": "Blend: copy_on_write structure for Design a self-improving hypothesis-evolution engine for one person. Failure increases wasted effort. Forgetting decreases accuracy. Disagreement prevents convergence. Noise decreases signal quality.",
+      "description": "Project the os_kernel mechanism copy_on_write onto the problem.",
+      "operator": "isomorphism",
+      "source_domain": "generic",
+      "provider_mode": "scripted",
+      "mechanism": {
+        "core_mechanism": "Reuse the causal structure of copy_on_write within people and their workflow",
+        "causal_structure": [
+          {
+            "cause": "people and their workflow component B",
+            "relation": "enables",
+            "effect": "people and their workflow component C"
+          },
+          {
+            "cause": "people and their workflow component A",
+            "relation": "enables",
+            "effect": "people and their workflow component C"
+          },
+          {
+            "cause": "people and their workflow component C",
+            "relation": "enables",
+            "effect": "people and their workflow component D"
+          },
+          {
+            "cause": "people and their workflow component A",
+            "relation": "enables",
+            "effect": "people and their workflow component D"
+          }
+        ],
+        "affected_system": "people and their workflow",
+        "payoff": "people and their workflow component D"
+      },
+      "mechanism_fingerprint": "c8e3511b06476c4e",
+      "wl_hash": "1a9704cd3694d67d1a7053044c29ce9d",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "copy_on_write",
+        "role_map": {
+          "shared_page": "people and their workflow component A",
+          "writer": "people and their workflow component B",
+          "private_copy": "people and their workflow component C",
+          "isolation": "people and their workflow component D"
+        }
+      },
+      "scores": {
+        "novelty": 0.7382697813517957,
+        "appropriateness": 0.75,
+        "utility": 0.7,
+        "surprise": 0.7,
+        "coherence": 0.85,
+        "mechanism_uniqueness": 0.8611111111111112
+      },
+      "niche": {
+        "intervention_level": "organization",
+        "resource_intensity": "high",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 2,
+        "branching_factor": 1.0,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": []
+    },
+    {
+      "niche_key": "centroid_1",
+      "id": "dbd2206680941ffc",
+      "title": "Blend: clearinghouse_settlement structure for Design a self-improving hypothesis-evolution engine for one person. Failure increases wasted effort. Forgetting decreases accuracy. Disagreement prevents convergence. Noise decreases signal quality.",
+      "description": "Project the auction mechanism clearinghouse_settlement onto the problem.",
+      "operator": "isomorphism",
+      "source_domain": "generic",
+      "provider_mode": "scripted",
+      "mechanism": {
+        "core_mechanism": "Reuse the causal structure of clearinghouse_settlement within people and their workflow",
+        "causal_structure": [
+          {
+            "cause": "people and their workflow component A",
+            "relation": "enables",
+            "effect": "people and their workflow component B"
+          },
+          {
+            "cause": "people and their workflow component C",
+            "relation": "enables",
+            "effect": "people and their workflow component B"
+          },
+          {
+            "cause": "people and their workflow component B",
+            "relation": "enables",
+            "effect": "people and their workflow component D"
+          }
+        ],
+        "affected_system": "people and their workflow",
+        "payoff": "people and their workflow component D"
+      },
+      "mechanism_fingerprint": "8102269f1eecf9d6",
+      "wl_hash": "d6a7a199dc5be966f3e767ead22b3efd",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "clearinghouse_settlement",
+        "role_map": {
+          "order_flow": "people and their workflow component A",
+          "clearinghouse": "people and their workflow component B",
+          "counterparty": "people and their workflow component C",
+          "settled_state": "people and their workflow component D"
+        }
+      },
+      "scores": {
+        "novelty": 0.7422049608803667,
+        "appropriateness": 0.75,
+        "utility": 0.7,
+        "surprise": 0.7,
+        "coherence": 0.85,
+        "mechanism_uniqueness": 0.8611111111111112
+      },
+      "niche": {
+        "intervention_level": "individual",
+        "resource_intensity": "low",
+        "feedback_horizon": "immediate"
+      },
+      "dynamics": {
+        "causal_depth": 2,
+        "branching_factor": 0.75,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": []
+    }
+  ],
+  "admitted": [
+    {
+      "niche_key": "centroid_0",
+      "id": "f36a24c601904c7d",
+      "title": "Blend: copy_on_write structure for Design a self-improving hypothesis-evolution engine for one person. Failure increases wasted effort. Forgetting decreases accuracy. Disagreement prevents convergence. Noise decreases signal quality.",
+      "description": "Project the os_kernel mechanism copy_on_write onto the problem.",
+      "operator": "isomorphism",
+      "source_domain": "generic",
+      "provider_mode": "scripted",
+      "mechanism": {
+        "core_mechanism": "Reuse the causal structure of copy_on_write within people and their workflow",
+        "causal_structure": [
+          {
+            "cause": "people and their workflow component B",
+            "relation": "enables",
+            "effect": "people and their workflow component C"
+          },
+          {
+            "cause": "people and their workflow component A",
+            "relation": "enables",
+            "effect": "people and their workflow component C"
+          },
+          {
+            "cause": "people and their workflow component C",
+            "relation": "enables",
+            "effect": "people and their workflow component D"
+          },
+          {
+            "cause": "people and their workflow component A",
+            "relation": "enables",
+            "effect": "people and their workflow component D"
+          }
+        ],
+        "affected_system": "people and their workflow",
+        "payoff": "people and their workflow component D"
+      },
+      "mechanism_fingerprint": "c8e3511b06476c4e",
+      "wl_hash": "1a9704cd3694d67d1a7053044c29ce9d",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "copy_on_write",
+        "role_map": {
+          "shared_page": "people and their workflow component A",
+          "writer": "people and their workflow component B",
+          "private_copy": "people and their workflow component C",
+          "isolation": "people and their workflow component D"
+        }
+      },
+      "scores": {
+        "novelty": 0.7382697813517957,
+        "appropriateness": 0.75,
+        "utility": 0.7,
+        "surprise": 0.7,
+        "coherence": 0.85,
+        "mechanism_uniqueness": 0.8611111111111112
+      },
+      "niche": {
+        "intervention_level": "organization",
+        "resource_intensity": "high",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 2,
+        "branching_factor": 1.0,
+        "loop_density": 0.0,
+        "payoff_path_length": 1
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": true
+    },
+    {
+      "niche_key": "centroid_0",
+      "id": "5b52bdd624ff298c",
+      "title": "Blend: entropy_barrier structure for Design a self-improving hypothesis-evolution engine for one person. Failure increases wasted effort. Forgetting decreases accuracy. Disagreement prevents convergence. Noise decreases signal quality.",
+      "description": "Project the thermodynamics mechanism entropy_barrier onto the problem.",
+      "operator": "isomorphism",
+      "source_domain": "generic",
+      "provider_mode": "scripted",
+      "mechanism": {
+        "core_mechanism": "Reuse the causal structure of entropy_barrier within people and their workflow",
+        "causal_structure": [
+          {
+            "cause": "people and their workflow component A",
+            "relation": "increases",
+            "effect": "people and their workflow component B"
+          },
+          {
+            "cause": "people and their workflow component B",
+            "relation": "prevents",
+            "effect": "people and their workflow component C"
+          },
+          {
+            "cause": "people and their workflow component B",
+            "relation": "enables",
+            "effect": "people and their workflow component D"
+          },
+          {
+            "cause": "people and their workflow component C",
+            "relation": "enables",
+            "effect": "people and their workflow component D"
+          }
+        ],
+        "affected_system": "people and their workflow",
+        "payoff": "people and their workflow component D"
+      },
+      "mechanism_fingerprint": "98355c62aac1a5a9",
+      "wl_hash": "f0a635b876ce7e1819e4b8fc29fcbb01",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "entropy_barrier",
+        "role_map": {
+          "disorder_source": "people and their workflow component A",
+          "barrier": "people and their workflow component B",
+          "protected_order": "people and their workflow component C",
+          "persistence": "people and their workflow component D"
+        }
+      },
+      "scores": {
+        "novelty": 0.7101874115070791,
+        "appropriateness": 0.75,
+        "utility": 0.7,
+        "surprise": 0.7,
+        "coherence": 0.85,
+        "mechanism_uniqueness": 0.8611111111111112
+      },
+      "niche": {
+        "intervention_level": "organization",
+        "resource_intensity": "high",
+        "feedback_horizon": "long"
+      },
+      "dynamics": {
+        "causal_depth": 3,
+        "branching_factor": 1.0,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [
+        {
+          "severity": "WARNING",
+          "bot_name": "ChaosBot",
+          "issue_type": "reachable_stuck_state",
+          "description": "38 of 64 chaotic episodes reached a non-terminal state with no valid action.",
+          "witness_actions": [
+            "satisfy_people_and_their_workflow_component_b"
+          ]
+        }
+      ],
+      "is_niche_elite": false
+    },
+    {
+      "niche_key": "centroid_1",
+      "id": "dbd2206680941ffc",
+      "title": "Blend: clearinghouse_settlement structure for Design a self-improving hypothesis-evolution engine for one person. Failure increases wasted effort. Forgetting decreases accuracy. Disagreement prevents convergence. Noise decreases signal quality.",
+      "description": "Project the auction mechanism clearinghouse_settlement onto the problem.",
+      "operator": "isomorphism",
+      "source_domain": "generic",
+      "provider_mode": "scripted",
+      "mechanism": {
+        "core_mechanism": "Reuse the causal structure of clearinghouse_settlement within people and their workflow",
+        "causal_structure": [
+          {
+            "cause": "people and their workflow component A",
+            "relation": "enables",
+            "effect": "people and their workflow component B"
+          },
+          {
+            "cause": "people and their workflow component C",
+            "relation": "enables",
+            "effect": "people and their workflow component B"
+          },
+          {
+            "cause": "people and their workflow component B",
+            "relation": "enables",
+            "effect": "people and their workflow component D"
+          }
+        ],
+        "affected_system": "people and their workflow",
+        "payoff": "people and their workflow component D"
+      },
+      "mechanism_fingerprint": "8102269f1eecf9d6",
+      "wl_hash": "d6a7a199dc5be966f3e767ead22b3efd",
+      "lineage_evidence": {
+        "kind": "isomorphism",
+        "template_id": "clearinghouse_settlement",
+        "role_map": {
+          "order_flow": "people and their workflow component A",
+          "clearinghouse": "people and their workflow component B",
+          "counterparty": "people and their workflow component C",
+          "settled_state": "people and their workflow component D"
+        }
+      },
+      "scores": {
+        "novelty": 0.7422049608803667,
+        "appropriateness": 0.75,
+        "utility": 0.7,
+        "surprise": 0.7,
+        "coherence": 0.85,
+        "mechanism_uniqueness": 0.8611111111111112
+      },
+      "niche": {
+        "intervention_level": "individual",
+        "resource_intensity": "low",
+        "feedback_horizon": "immediate"
+      },
+      "dynamics": {
+        "causal_depth": 2,
+        "branching_factor": 0.75,
+        "loop_density": 0.0,
+        "payoff_path_length": 2
+      },
+      "admission": {
+        "status": "ACCEPTED",
+        "stage": "complete",
+        "reasons": []
+      },
+      "playtest_issues": [],
+      "is_niche_elite": true
+    }
+  ]
+}

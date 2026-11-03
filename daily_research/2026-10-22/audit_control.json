@@ -1,0 +1,55 @@
+{
+  "summary": {
+    "mode": "control",
+    "admitted": 3,
+    "elites": 2,
+    "all_pass": true,
+    "failed": [],
+    "unique_wl_hashes": 3,
+    "unique_fingerprints": 3
+  },
+  "rows": [
+    {
+      "id": "f36a24c601904c7d",
+      "operator": "isomorphism",
+      "structural_valid": true,
+      "fatal_playtest": [],
+      "wl_hash_match": true,
+      "fp_match": true,
+      "dynamics_match": true,
+      "payoff_in_graph": true,
+      "iso_template": "copy_on_write",
+      "iso_reasons": [],
+      "iso_verified": true,
+      "pass": true
+    },
+    {
+      "id": "5b52bdd624ff298c",
+      "operator": "isomorphism",
+      "structural_valid": true,
+      "fatal_playtest": [],
+      "wl_hash_match": true,
+      "fp_match": true,
+      "dynamics_match": true,
+      "payoff_in_graph": true,
+      "iso_template": "entropy_barrier",
+      "iso_reasons": [],
+      "iso_verified": true,
+      "pass": true
+    },
+    {
+      "id": "dbd2206680941ffc",
+      "operator": "isomorphism",
+      "structural_valid": true,
+      "fatal_playtest": [],
+      "wl_hash_match": true,
+      "fp_match": true,
+      "dynamics_match": true,
+      "payoff_in_graph": true,
+      "iso_template": "clearinghouse_settlement",
+      "iso_reasons": [],
+      "iso_verified": true,
+      "pass": true
+    }
+  ]
+}

@@ -109,12 +109,45 @@ class MockIdeaProvider:
         )
 
 
+def decode_chat_response(raw: bytes, content_type: str | None = None) -> str:
+    """Extract assistant text from a chat completion JSON body or SSE stream."""
+    body = raw.decode("utf-8")
+    if any(line.lstrip().startswith("data:") for line in body.splitlines()):
+        parts = []
+        for line in body.splitlines():
+            line = line.lstrip()
+            if not line.startswith("data:"):
+                continue
+            chunk = line[5:].strip()
+            if chunk == "[DONE]":
+                continue
+            try:
+                content = json.loads(chunk)["choices"][0]["delta"]["content"]
+            except (ValueError, TypeError, KeyError, IndexError):
+                continue
+            if isinstance(content, str):
+                parts.append(content)
+        content = "".join(parts)
+    else:
+        try:
+            content = json.loads(body)["choices"][0]["message"]["content"]
+        except (ValueError, TypeError, KeyError, IndexError) as exc:
+            raise ValueError("No assistant content in chat response") from exc
+    if not isinstance(content, str) or not content.strip():
+        raise ValueError("No assistant content in chat response")
+    return content
+
+
 class LLMIdeaProvider:
     mode = "llm"
 
-    def __init__(self, base_url: str | None = None, model: str = "Hermes-delegate", api_key: str | None = None):
+    def __init__(self, base_url: str | None = None, model: str = "hermes-main", api_key: str | None = None,
+                 timeout: float = 90.0, strict: bool = False):
         self.base_url = (base_url or os.environ.get("OPENAI_BASE_URL", "http://127.0.0.1:20128/v1")).rstrip("/")
         self.model = model
+        self.timeout = timeout
+        self.strict = strict
+        self.fallbacks: int = 0
         resolved_key = api_key or os.environ.get("OPENAI_API_KEY", "")
         if not resolved_key:
             try:
@@ -145,12 +178,11 @@ class LLMIdeaProvider:
                 {"role": "user", "content": prompt},
             ],
             "temperature": 0.85,
-            "stream": False,
+            "stream": True,
         }
         req = urllib.request.Request(url, data=json.dumps(payload).encode("utf-8"), headers=headers)
-        with urllib.request.urlopen(req, timeout=45) as resp:
-            data = json.loads(resp.read().decode("utf-8"))
-        content = data["choices"][0]["message"]["content"].strip()
+        with urllib.request.urlopen(req, timeout=self.timeout) as resp:
+            content = decode_chat_response(resp.read(), resp.headers.get("Content-Type")).strip()
         # Strip markdown fences if present
         if content.startswith("```"):
             lines = content.splitlines()
@@ -179,6 +211,9 @@ class LLMIdeaProvider:
                 affected_system=res.get("affected_system", "core gameplay system"),
             )
         except Exception:
+            if self.strict:
+                raise
+            self.fallbacks += 1
             return MockIdeaProvider().normalize(problem)
 
     def mine_baselines(self, problem: NormalizedProblem, count: int) -> list[IdeaCandidate]:
@@ -202,6 +237,9 @@ class LLMIdeaProvider:
                 ))
             return candidates
         except Exception:
+            if self.strict:
+                raise
+            self.fallbacks += 1
             return MockIdeaProvider().mine_baselines(problem, count)
 
     def generate(self, problem: NormalizedProblem, operator: str, private_history: Any, count: int) -> list[IdeaCandidate]:
@@ -271,6 +309,9 @@ class LLMIdeaProvider:
                 candidates.append(cand)
             return candidates
         except Exception:
+            if self.strict:
+                raise
+            self.fallbacks += 1
             return MockIdeaProvider().generate(problem, operator, private_history, count)
 
     def canonicalize(self, problem: NormalizedProblem, candidate: IdeaCandidate) -> IdeaCandidate:
@@ -316,6 +357,9 @@ class LLMIdeaProvider:
             )
             return candidate.model_copy(update={"mechanism": mech})
         except Exception:
+            if self.strict:
+                raise
+            self.fallbacks += 1
             return MockIdeaProvider().canonicalize(problem, candidate)
 
     def assess(self, problem: NormalizedProblem, candidate: IdeaCandidate) -> EvaluationScores:
@@ -344,6 +388,9 @@ class LLMIdeaProvider:
                 mechanism_uniqueness=float(res.get("mechanism_uniqueness", 0.75)),
             )
         except Exception:
+            if self.strict:
+                raise
+            self.fallbacks += 1
             return MockIdeaProvider().assess(problem, candidate)
 
     def describe_niche(self, problem: NormalizedProblem, candidate: IdeaCandidate) -> NicheDescriptor:
@@ -373,4 +420,7 @@ class LLMIdeaProvider:
                 hor = "short"
             return NicheDescriptor(intervention_level=lvl, resource_intensity=res_int, feedback_horizon=hor)
         except Exception:
+            if self.strict:
+                raise
+            self.fallbacks += 1
             return MockIdeaProvider().describe_niche(problem, candidate)

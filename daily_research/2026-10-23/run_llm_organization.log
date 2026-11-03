@@ -1,0 +1,48 @@
+/home/arcturus/hermesWorkspace/projects/CounterField/.venv/lib/python3.12/site-packages/networkx/utils/backends.py:551: UserWarning: The hashes produced for directed graphs changed in version v3.5 due to a bugfix to track in and out edges separately (see documentation).
+  return self.orig_func(*args, **kwargs)
+{
+ "mode": "llm",
+ "elites": 8,
+ "admitted": 18,
+ "metrics": {
+  "coverage": null,
+  "duplicate_rate": 0.0,
+  "attempts": 47,
+  "structural_failures": 0,
+  "occupied_niches": 8,
+  "repair_incubator": 59,
+  "failure_archive": 0,
+  "generation_errors": 1,
+  "canonicalize_errors": 0,
+  "validation_errors": 0,
+  "evaluation_errors": 0,
+  "evidence_errors": 0,
+  "provider_fallbacks": 0,
+  "inversion_attempts": 0,
+  "inversion_successes": 0,
+  "isomorphism_attempts": 18,
+  "isomorphism_successes": 18,
+  "synthesis_attempts": 30,
+  "synthesis_successes": 0,
+  "rules_promoted": 0,
+  "niche_count": 8,
+  "qd_score": 9.283381329126541
+ },
+ "meta": {
+  "mode": "llm",
+  "context": "organization",
+  "date": "2026-10-23",
+  "seed": 20261023,
+  "budget": 48,
+  "problem": "Design an organization-wide portfolio process that decides which of hundreds of competing research hypotheses get funded. Sunk cost increases escalation. Reporting overhead decreases experimentation speed. Prestige bias prevents unusual ideas from surviving review.",
+  "provider": "LLMIdeaProvider",
+  "model": "cc/claude-sonnet-5-5",
+  "provider_fallbacks": 0,
+  "backend_stats": {
+   "backend_ok": 35
+  },
+  "template_library": "/home/arcturus/hermesWorkspace/projects/CounterField/data/templates/negative_space_v3_20261023.json",
+  "wall_seconds": 813.8
+ }
+}
+wrote /home/arcturus/hermesWorkspace/projects/CounterField/daily_research/2026-10-23/archive_llm_organization.json

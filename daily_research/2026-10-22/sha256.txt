@@ -1,0 +1,2 @@
+9a004663f8f51e07a3b7afa0aa3f6f534c00cc2115209818c17f498231e9698b  data/templates/defect_harvest_v2_20261022.json
+4549a0ce3c9872f76c303d9d512a96ae481d72936c1a863361c9825dfa6efcfb  daily_research/2026-10-22/archive_llm.json

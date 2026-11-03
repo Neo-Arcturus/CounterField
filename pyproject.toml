@@ -6,6 +6,8 @@ build-backend = "setuptools.build_meta"
 name = "creative-agent"
 version = "0.1.0"
 description = "Production-grade Quality-Diversity (QD) Ideation & Brainstorming Harness"
+requires-python = ">=3.10"
+license = { text = "MIT" }
 authors = [{ name = "Northroom" }]
 dependencies = [
     "networkx>=3.0",
